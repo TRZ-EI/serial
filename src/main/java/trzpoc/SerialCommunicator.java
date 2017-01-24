@@ -3,6 +3,7 @@ package trzpoc;
 import crc.CRC32Calculator;
 import gnu.io.*;
 
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -50,108 +51,115 @@ public class SerialCommunicator implements SerialPortEventListener{
 
 
     public SerialCommunicator() throws IOException {
-            this.properties = new Properties();
-            InputStream s = this.getClass().getClassLoader().getResourceAsStream(this.propertiesName);
-            this.properties.load(s);
-            s.close();
-            this.buffer = new StringBuffer();
-        }
+        this.properties = new Properties();
+        InputStream s = this.getClass().getClassLoader().getResourceAsStream(this.propertiesName);
+        this.properties.load(s);
+        s.close();
+        this.buffer = new StringBuffer();
+    }
 
+    public SerialCommunicator(String arg) throws IOException {
+        InputStream stream = new FileInputStream(arg);
+        this.properties = new Properties();
+        this.properties.load(stream);
+        stream.close();
+        this.buffer = new StringBuffer();
+    }
 
-        public void connect() {
-            String selectedPort = this.properties.getProperty(Keys.PORT.toString());
+    public void connect() {
+        String selectedPort = this.properties.getProperty(Keys.PORT.toString());
 
-            try {
-                selectedPortIdentifier = CommPortIdentifier.getPortIdentifier(selectedPort);
-                //the method below returns an object of type CommPort
-                this.serialPort = (SerialPort) selectedPortIdentifier.open("TRZ-poc", TIMEOUT);
-                this.setSerialPortParameters();
-                this.initIOStream();
-                this.initListener();
-                //logging
-                logText = selectedPort + " opened successfully.";
-                System.out.println(logText);
-            }
-            catch (NoSuchPortException e){
-                logText = selectedPort + " doesn't exist. (" + e.toString() + ")";
-                System.out.println(logText);
-            }
-            catch (PortInUseException e){
-                logText = selectedPort + " is in use. (" + e.toString() + ")";
-                System.out.println(logText);
-            }
-            catch (Exception e){
-                logText = "Failed to open " + selectedPort + "(" + e.toString() + ")";
-                System.out.println(logText);
-            }
+        try {
+            selectedPortIdentifier = CommPortIdentifier.getPortIdentifier(selectedPort);
+            //the method below returns an object of type CommPort
+            this.serialPort = (SerialPort) selectedPortIdentifier.open("TRZ-poc", TIMEOUT);
+            this.setSerialPortParameters();
+            this.initIOStream();
+            this.initListener();
+            //logging
+            logText = selectedPort + " opened successfully.";
+            System.out.println(logText);
         }
-        //open the input and output streams
-        //pre: an open port
-        //post: initialized intput and output streams for use to communicate data
-        public boolean initIOStream(){
-            boolean successful = false;
-            try {
-                input = serialPort.getInputStream();
-                output = serialPort.getOutputStream();
-                successful = true;
-            } catch (IOException e) {
-                logText = "I/O Streams failed to open. (" + e.toString() + ")";
-            }
-            return successful;
+        catch (NoSuchPortException e){
+            logText = selectedPort + " doesn't exist. (" + e.toString() + ")";
+            System.out.println(logText);
         }
-        //starts the event listener that knows whenever data is available to be read
-        //pre: an open serial port
-        //post: an event listener for the serial port that knows when data is recieved
-        public void initListener(){
+        catch (PortInUseException e){
+            logText = selectedPort + " is in use. (" + e.toString() + ")";
+            System.out.println(logText);
+        }
+        catch (Exception e){
+            logText = "Failed to open " + selectedPort + "(" + e.toString() + ")";
+            System.out.println(logText);
+        }
+    }
+    //open the input and output streams
+    //pre: an open port
+    //post: initialized intput and output streams for use to communicate data
+    public boolean initIOStream(){
+        boolean successful = false;
+        try {
+            input = serialPort.getInputStream();
+            output = serialPort.getOutputStream();
+            successful = true;
+        } catch (IOException e) {
+            logText = "I/O Streams failed to open. (" + e.toString() + ")";
+        }
+        return successful;
+    }
+    //starts the event listener that knows whenever data is available to be read
+    //pre: an open serial port
+    //post: an event listener for the serial port that knows when data is recieved
+    public void initListener(){
+        try{
+            serialPort.addEventListener(this);
+            serialPort.notifyOnDataAvailable(true);
+        }catch (TooManyListenersException e){
+            logText = "Too many listeners. (" + e.toString() + ")";
+            System.out.println(logText);
+        }
+    }
+    public void disconnect(){
+        try{
+            serialPort.removeEventListener();
+            serialPort.close();
+            input.close();
+            output.close();
+            logText = "Disconnected.";
+            System.out.println(logText);
+        }catch (Exception e){
+            logText = "Failed to close " + serialPort.getName() + "(" + e.toString() + ")";
+            System.out.println(logText);
+        }
+    }
+
+    //what happens when data is received
+    //pre: serial event is triggered
+    //post: processing on the data it reads
+    public void serialEvent(SerialPortEvent evt) {
+
+        if (evt.getEventType() == SerialPortEvent.DATA_AVAILABLE){
             try{
-                serialPort.addEventListener(this);
-                serialPort.notifyOnDataAvailable(true);
-            }catch (TooManyListenersException e){
-                logText = "Too many listeners. (" + e.toString() + ")";
-                System.out.println(logText);
-            }
-        }
-        public void disconnect(){
-            try{
-                serialPort.removeEventListener();
-                serialPort.close();
-                input.close();
-                output.close();
-                logText = "Disconnected.";
-                System.out.println(logText);
-            }catch (Exception e){
-                logText = "Failed to close " + serialPort.getName() + "(" + e.toString() + ")";
-                System.out.println(logText);
-            }
-        }
-
-        //what happens when data is received
-        //pre: serial event is triggered
-        //post: processing on the data it reads
-        public void serialEvent(SerialPortEvent evt) {
-
-            if (evt.getEventType() == SerialPortEvent.DATA_AVAILABLE){
-                try{
 
 
-                    byte singleData = (byte)input.read();
+                byte singleData = (byte)input.read();
 
-                    if (singleData != NEW_LINE_ASCII){
-                        this.buffer.append(new String(new byte[] {singleData}));
-                    } else {
-                        this.calculateChecksumAndSendResponse(buffer.toString());
-                        System.out.println(buffer.toString());
-                        buffer.setLength(0);
-
-                    }
-                } catch (Exception e) {
-                    logText = "Failed to read data. (" + e.toString() + ")";
-                    System.out.println(logText);
+                if (singleData != NEW_LINE_ASCII){
+                    this.buffer.append(new String(new byte[] {singleData}));
+                } else {
+                    this.calculateChecksumAndSendResponse(buffer.toString());
+                    System.out.println(buffer.toString());
                     buffer.setLength(0);
 
                 }
+            } catch (Exception e) {
+                logText = "Failed to read data. (" + e.toString() + ")";
+                System.out.println(logText);
+                buffer.setLength(0);
+
             }
         }
+    }
 
     private void calculateChecksumAndSendResponse(String s) throws IOException {
             String receveid = s.replace('\r', ' ').trim();
@@ -168,16 +176,11 @@ public class SerialCommunicator implements SerialPortEventListener{
                 long calculatedChecksum = calculator.calculateCRC(message);
 
                 if (checksumValue == calculatedChecksum) {
+
                     this.output.write(new byte[]{'O', 'K', '\n'});
                     this.output.flush();
                 }
             }
-
-
-
-
-
-
     }
 
     //method that can be called to send data
@@ -213,7 +216,13 @@ public class SerialCommunicator implements SerialPortEventListener{
             }
         }
         public static void main(String[] args) throws IOException {
-            SerialCommunicator sc = new SerialCommunicator();
+            SerialCommunicator sc = null;
+
+            if (args[0] != null) {
+                sc = new SerialCommunicator(args[0]);
+            }else{
+                sc = new SerialCommunicator();
+            }
             sc.connect();
             java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
             String input = "run";
@@ -228,5 +237,5 @@ public class SerialCommunicator implements SerialPortEventListener{
 }
 
 enum Keys{
-    PORT,BAUD_RATE;
+    PORT, BAUD_RATE, SOURCE;
 }
