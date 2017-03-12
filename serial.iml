@@ -7,28 +7,9 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/main/resources" type="java-resource" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="true" />
-      <sourceFolder url="file://$MODULE_DIR$/src/main/external-resources" type="java-resource" />
       <excludeFolder url="file://$MODULE_DIR$/target" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
-    <orderEntry type="library" name="Maven: jacksum:jacksum:1.7.0" level="project" />
-    <orderEntry type="library" name="Maven: org.rxtx:rxtxcomm:2.2pre2" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-api-mockito:1.5.5" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-all:1.9.5" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-api-support:1.5.5" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-core:1.5.5" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.javassist:javassist:3.18.2-GA" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-reflect:1.5.5" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.objenesis:objenesis:2.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-classloading-base:1.5.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-module-testng:1.5.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.testng:testng:6.8.5" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: junit:junit:4.10" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.hamcrest:hamcrest-core:1.1" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.beanshell:bsh:2.0b4" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: com.beust:jcommander:1.27" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.yaml:snakeyaml:1.6" level="project" />
-    <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-module-testng-common:1.5.1" level="project" />
   </component>
 </module>

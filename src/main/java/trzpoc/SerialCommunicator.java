@@ -17,7 +17,7 @@ import java.util.regex.Pattern;
  * Date: 19/01/17
  * Time: 12.42
  */
-public class SerialCommunicator implements SerialPortEventListener{
+public class SerialCommunicator{
 
 /*
  * To change this template, choose Tools | Templates
@@ -49,21 +49,25 @@ public class SerialCommunicator implements SerialPortEventListener{
         private SerialPort serialPort;
         private StringBuffer buffer;
 
+        private SerialWriter writer;
+
 
     public SerialCommunicator() throws IOException {
-        this.properties = new Properties();
-        InputStream s = this.getClass().getClassLoader().getResourceAsStream(this.propertiesName);
-        this.properties.load(s);
-        s.close();
-        this.buffer = new StringBuffer();
+        InputStream stream = this.getClass().getClassLoader().getResourceAsStream(this.propertiesName);
+        this.init(stream);
     }
-
     public SerialCommunicator(String arg) throws IOException {
         InputStream stream = new FileInputStream(arg);
+        this.init(stream);
+    }
+
+
+    private void init(InputStream propertiesStream) throws IOException {
         this.properties = new Properties();
-        this.properties.load(stream);
-        stream.close();
+        this.properties.load(propertiesStream);
+        propertiesStream.close();
         this.buffer = new StringBuffer();
+
     }
 
     public void connect() {
@@ -73,6 +77,9 @@ public class SerialCommunicator implements SerialPortEventListener{
             selectedPortIdentifier = CommPortIdentifier.getPortIdentifier(selectedPort);
             //the method below returns an object of type CommPort
             this.serialPort = (SerialPort) selectedPortIdentifier.open("TRZ-poc", TIMEOUT);
+            this.serialPort.disableReceiveTimeout();
+            //this.serialPort.setLowLatency();
+
             this.setSerialPortParameters();
             this.initIOStream();
             this.initListener();
@@ -101,6 +108,10 @@ public class SerialCommunicator implements SerialPortEventListener{
         try {
             input = serialPort.getInputStream();
             output = serialPort.getOutputStream();
+            this.writer = new SerialWriter(output);
+            Thread t = new Thread(this.writer);
+            t.setPriority(Thread.MAX_PRIORITY);
+            t.start();
             successful = true;
         } catch (IOException e) {
             logText = "I/O Streams failed to open. (" + e.toString() + ")";
@@ -112,7 +123,7 @@ public class SerialCommunicator implements SerialPortEventListener{
     //post: an event listener for the serial port that knows when data is recieved
     public void initListener(){
         try{
-            serialPort.addEventListener(this);
+            serialPort.addEventListener(new SerialReader(this.input, this));
             serialPort.notifyOnDataAvailable(true);
         }catch (TooManyListenersException e){
             logText = "Too many listeners. (" + e.toString() + ")";
@@ -125,40 +136,23 @@ public class SerialCommunicator implements SerialPortEventListener{
             serialPort.close();
             input.close();
             output.close();
-            logText = "Disconnected.";
-            System.out.println(logText);
+            System.out.println("Disconnected.");
         }catch (Exception e){
-            logText = "Failed to close " + serialPort.getName() + "(" + e.toString() + ")";
-            System.out.println(logText);
+            System.out.println("Failed to close " + serialPort.getName() + "(" + e.toString() + ")");
         }
     }
 
     //what happens when data is received
     //pre: serial event is triggered
     //post: processing on the data it reads
-    public void serialEvent(SerialPortEvent evt) {
 
-        if (evt.getEventType() == SerialPortEvent.DATA_AVAILABLE){
-            try{
+    public void manageDataReceivedFromSerialPort(String s) throws IOException {
+         long startNanoseconds = System.nanoTime();
+         this.output.write(new byte[]{'O','K','\n'});
+         this.output.flush();
+         long endNanoSeconds = System.nanoTime();
 
-
-                byte singleData = (byte)input.read();
-
-                if (singleData != NEW_LINE_ASCII){
-                    this.buffer.append(new String(new byte[] {singleData}));
-                } else {
-                    this.calculateChecksumAndSendResponse(buffer.toString());
-                    System.out.println(buffer.toString());
-                    buffer.setLength(0);
-
-                }
-            } catch (Exception e) {
-                logText = "Failed to read data. (" + e.toString() + ")";
-                System.out.println(logText);
-                buffer.setLength(0);
-
-            }
-        }
+         System.out.println("Latency time(micros): " + (endNanoSeconds - startNanoseconds)/1000);
     }
 
     private void calculateChecksumAndSendResponse(String s) throws IOException {
@@ -176,6 +170,7 @@ public class SerialCommunicator implements SerialPortEventListener{
                 long calculatedChecksum = calculator.calculateCRC(message);
 
                 if (checksumValue == calculatedChecksum) {
+                    //this.writer.writeMessage(String.copyValueOf(new char[]{'O', 'K', '\n'}));
 
                     this.output.write(new byte[]{'O', 'K', '\n'});
                     this.output.flush();
@@ -234,6 +229,7 @@ public class SerialCommunicator implements SerialPortEventListener{
                 }
             }
         }
+
 }
 
 enum Keys{
