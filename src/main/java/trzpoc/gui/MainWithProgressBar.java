@@ -7,10 +7,15 @@ package trzpoc.gui;
  * Time: 11.06
  */
 
+import eu.hansolo.medusa.Gauge;
+import eu.hansolo.medusa.GaugeBuilder;
+import eu.hansolo.medusa.LcdDesign;
+import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -20,6 +25,8 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -30,10 +37,22 @@ import trzpoc.gui.dataProvider.Label;
 import trzpoc.gui.dataProvider.SerialReceiverMock;
 
 import java.util.Date;
+import java.util.Random;
 
 // Font height: big = 36, small = 20
 
-public class Main extends Application {
+public class MainWithProgressBar extends Application {
+
+
+
+    protected Gauge myGauge;
+    protected Gauge timeElapsedGauge;
+
+    private AnimationTimer timer;
+    private Random RND = new Random();
+    private double value = 0;
+    private long lastTimerCall;
+
 
 
     @Override
@@ -47,14 +66,58 @@ public class Main extends Application {
         //this.setVisualBounds(primaryStage);
         this.addCombinationKeyAcceleratorToExit(primaryStage);
 
+        //ProgressBar progressBar = new ProgressBar(0);
+        GaugeBuilder builder = GaugeBuilder.create().prefSize(180, 180).skinType(Gauge.SkinType.DIGITAL);
+
+        myGauge = builder.decimals(0).maxValue(10).unit("PSI").build();
+        Gauge myGauge1 = builder.decimals(0).maxValue(10).unit("PSI").build();
+        Gauge myGauge2 = builder.decimals(0).maxValue(10).unit("PSI").build();
+        
+        myGauge.setBarColor(Color.rgb(77,208,225));
+        myGauge.setBarBackgroundColor(Color.rgb(39,44,50));
+        myGauge.setAnimated(true);
+
+        timer = new AnimationTimer() {
+            @Override public void handle(long now) {
+                if (now > lastTimerCall + 3_000_000_000l) {
+                    value = (value <= 10)? value: 0;
+                    myGauge.setValue(value ++);
+                    lastTimerCall = now;
+                }
+            }
+        };
+        timer.start();
 
 
-        Canvas canvas = new Canvas(800, 480);
+
+
+        myGauge1.setBarColor(Color.rgb(77,208,225));
+        myGauge1.setBarBackgroundColor(Color.rgb(39,44,50));
+        myGauge1.setAnimated(true);
+
+        myGauge2.setBarColor(Color.rgb(77,208,225));
+        myGauge2.setBarBackgroundColor(Color.rgb(39,44,50));
+        myGauge2.setAnimated(true);
+
+        HBox controls = new HBox();
+        controls.setSpacing(10);
+        controls.setAlignment(Pos.CENTER);
+        controls.getChildren().add(myGauge);
+        controls.getChildren().add(myGauge1);
+        controls.getChildren().add(myGauge2);
+
+        Canvas canvas = new Canvas(800, 300);
+
+        VBox myGroup = new VBox();
+        myGroup.setSpacing(5);
+        myGroup.setAlignment(Pos.CENTER);
+        myGroup.getChildren().addAll(canvas, controls);
+
 
 
         // TO DO: CREATE A PRIVATE METHOD
         ScrollPane scrollPane = new ScrollPane();
-        scrollPane.setContent(canvas);
+        scrollPane.setContent(myGroup);  // was canvas
         scrollPane.setPrefSize(800, 480);
         scrollPane.setMaxSize(Double.MAX_VALUE, Double.MAX_VALUE);
         scrollPane.setFitToHeight(false);
@@ -142,6 +205,7 @@ public class Main extends Application {
                         gc.setFill(cb.getColor());
                         gc.setFont(cb.getFont());
                         gc.fillText(cb.getValue(), cb.getX(), cb.getY());
+
                         //canvas.
                     }
                 }
@@ -166,6 +230,9 @@ public class Main extends Application {
                 for (int i = 0; i < rows; i++){
                     gc.fillText("PROVA N 1                  Prova.                       172.9 sec", 0, y+= fontSize);
                 }
+
+
+
                 /*
                 SerialReceiverMock sm = SerialReceiverMock.getNewInstance();
                 while(sm.hasMoreMessages()){
@@ -177,14 +244,8 @@ public class Main extends Application {
                 }
                 */
                 me.consume();
-                this.writeRows(canvas);
             }
 
-            private void writeRows(Canvas canvas) {
-
-
-
-            }
         });
     }
 
@@ -210,6 +271,19 @@ public class Main extends Application {
 
         //stage.show();
     }
+    private Gauge createTimeElapsedTime(){
+        return GaugeBuilder.create()
+                .skinType(Gauge.SkinType.LCD)
+                .animated(true)
+                .title("Tempo")
+                .subTitle("Prova N 1")
+                .unit("sec")
+                .lcdDesign(LcdDesign.BLUE_LIGHTBLUE2)
+                .thresholdVisible(true)
+                .threshold(25)
+                .build();
+    }
+
 
     public static void main(String[] args) {
         launch(args);

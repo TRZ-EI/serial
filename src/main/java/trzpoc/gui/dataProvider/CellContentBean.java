@@ -1,7 +1,8 @@
 package trzpoc.gui.dataProvider;
 
-import java.awt.Color;
-import java.awt.Font;
+import javafx.geometry.Bounds;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,6 +16,8 @@ public abstract class CellContentBean {
     private int y;
     private Font font;
     private Color color;
+    private Bounds bounds;
+
 
     public CellContentBean(){
 
@@ -23,6 +26,12 @@ public abstract class CellContentBean {
     public CellContentBean(int x, int y, Font font, Color color){
         this.x = x;
         this.y = y;
+        this.font = font;
+        this.color = color;
+    }
+    public CellContentBean(Font font, Color color){
+        this.x = 0;
+        this.y = 0;
         this.font = font;
         this.color = color;
     }
@@ -59,5 +68,23 @@ public abstract class CellContentBean {
 
     public void setColor(Color color) {
         this.color = color;
+    }
+
+    public Bounds getBounds(){
+        return this.bounds;
+
+    }
+    public void setBound(Bounds bounds){
+        this.bounds = bounds;
+
+    }
+
+    public void updateYpos() {
+        Double height = this.bounds.getHeight();
+        if (this.y - height.intValue() < 0){
+            this.y = height.intValue();
+
+        }
+
     }
 }

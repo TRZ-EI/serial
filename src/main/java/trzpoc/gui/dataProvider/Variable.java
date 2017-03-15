@@ -1,8 +1,5 @@
 package trzpoc.gui.dataProvider;
 
-import java.awt.Color;
-import java.awt.Font;
-
 /**
  * Created with IntelliJ IDEA.
  * User: luigi
@@ -13,7 +10,7 @@ public class Variable extends CellContentBean {
 
     private String name;
     private String value;
-
+    /*
 
     public Variable(int x, int y, Font font, Color color){
         super(x, y, font, color);
@@ -27,7 +24,7 @@ public class Variable extends CellContentBean {
     public String getValue() {
         return value;
     }
-
+    */
     public void setValue(String value) {
         this.value = value;
     }
