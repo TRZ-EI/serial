@@ -7,9 +7,7 @@ package trzpoc.gui;
  * Time: 11.06
  */
 
-import eu.hansolo.medusa.Gauge;
-import eu.hansolo.medusa.GaugeBuilder;
-import eu.hansolo.medusa.LcdDesign;
+import eu.hansolo.medusa.*;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -28,6 +26,7 @@ import javafx.scene.input.TouchEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.Stop;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -35,9 +34,10 @@ import javafx.stage.Screen;
 import javafx.stage.Stage;
 import trzpoc.gui.dataProvider.Label;
 import trzpoc.gui.dataProvider.SerialReceiverMock;
+import trzpoc.utils.Chronometer;
+import trzpoc.utils.RandomGeneratorInRange;
 
 import java.util.Date;
-import java.util.Random;
 
 // Font height: big = 36, small = 20
 
@@ -45,14 +45,16 @@ public class MainWithProgressBar extends Application {
 
 
 
-    protected Gauge myGauge;
+    private Gauge pressorSensor1Gauge;
+    private Gauge pressorSensor2Gauge;
+    private Gauge pressorSensor3Gauge;
     protected Gauge timeElapsedGauge;
 
-    private AnimationTimer timer;
-    private Random RND = new Random();
-    private double value = 0;
-    private long lastTimerCall;
+    protected Gauge pressure1Gauge, pressure2Gauge;
 
+    private AnimationTimer timer;
+    private long lastTimerCall;
+    private Chronometer chronometer;
 
 
     @Override
@@ -67,22 +69,48 @@ public class MainWithProgressBar extends Application {
         this.addCombinationKeyAcceleratorToExit(primaryStage);
 
         //ProgressBar progressBar = new ProgressBar(0);
-        GaugeBuilder builder = GaugeBuilder.create().prefSize(180, 180).skinType(Gauge.SkinType.DIGITAL);
+        pressorSensor1Gauge = this.createTestExecutionGauge();
+        pressorSensor2Gauge = this.createTestExecutionGauge();
+        pressorSensor3Gauge = this.createTestExecutionGauge();
 
-        myGauge = builder.decimals(0).maxValue(10).unit("PSI").build();
-        Gauge myGauge1 = builder.decimals(0).maxValue(10).unit("PSI").build();
-        Gauge myGauge2 = builder.decimals(0).maxValue(10).unit("PSI").build();
-        
-        myGauge.setBarColor(Color.rgb(77,208,225));
-        myGauge.setBarBackgroundColor(Color.rgb(39,44,50));
-        myGauge.setAnimated(true);
 
+        timeElapsedGauge = this.createTimeElapsedGauge();
+        //timeElapsedGauge.setValue(Double.valueOf(172.9d));
+        pressure1Gauge = this.createPressureGauge(1);
+        pressure2Gauge = this.createPressureGauge(2);
+
+
+        chronometer = Chronometer.getInstance();
+        chronometer.start();
         timer = new AnimationTimer() {
+            
+            // 20.532.358.351.793
             @Override public void handle(long now) {
-                if (now > lastTimerCall + 3_000_000_000l) {
-                    value = (value <= 10)? value: 0;
-                    myGauge.setValue(value ++);
+
+                timeElapsedGauge.setValue(chronometer.getActualTimeInSeconds());
+
+                RandomGeneratorInRange pressureSensor1 = RandomGeneratorInRange.getInstanceByRange(-4d, 1d);
+                RandomGeneratorInRange pressureSensor2 = RandomGeneratorInRange.getInstanceByRange(-4d, 1d);
+                RandomGeneratorInRange pressureSensor3 = RandomGeneratorInRange.getInstanceByRange(-4d, 1d);
+                RandomGeneratorInRange pressureSensor4 = RandomGeneratorInRange.getInstanceByRange(0d, 10d);
+                RandomGeneratorInRange pressureSensor5 = RandomGeneratorInRange.getInstanceByRange(0d, 10d);
+
+                if (now > lastTimerCall + 5000_000_000l) {
+                    pressure1Gauge.setValue(pressureSensor4.getRandomValue());
+                    pressure2Gauge.setValue(pressureSensor5.getRandomValue());
+                    pressorSensor1Gauge.setValue(pressureSensor1.getRandomValue());
+                    pressorSensor2Gauge.setValue(pressureSensor2.getRandomValue());
+                    pressorSensor3Gauge.setValue(pressureSensor3.getRandomValue());
+
+
+
                     lastTimerCall = now;
+
+/*
+                    value = (value < 1d)? value: -4d;
+                    pressorSensor1Gauge.setValue(value += 0.1);
+
+*/
                 }
             }
         };
@@ -90,28 +118,34 @@ public class MainWithProgressBar extends Application {
 
 
 
+        /*
+        pressorSensor2Gauge.setBarColor(Color.rgb(77,208,225));
+        pressorSensor2Gauge.setBarBackgroundColor(Color.rgb(39,44,50));
+        pressorSensor2Gauge.setAnimated(true);
 
-        myGauge1.setBarColor(Color.rgb(77,208,225));
-        myGauge1.setBarBackgroundColor(Color.rgb(39,44,50));
-        myGauge1.setAnimated(true);
-
-        myGauge2.setBarColor(Color.rgb(77,208,225));
-        myGauge2.setBarBackgroundColor(Color.rgb(39,44,50));
-        myGauge2.setAnimated(true);
-
+        pressorSensor3Gauge.setBarColor(Color.rgb(77,208,225));
+        pressorSensor3Gauge.setBarBackgroundColor(Color.rgb(39,44,50));
+        pressorSensor3Gauge.setAnimated(true);
+        */
         HBox controls = new HBox();
         controls.setSpacing(10);
         controls.setAlignment(Pos.CENTER);
-        controls.getChildren().add(myGauge);
-        controls.getChildren().add(myGauge1);
-        controls.getChildren().add(myGauge2);
+        controls.getChildren().add(pressorSensor1Gauge);
+        controls.getChildren().add(pressorSensor2Gauge);
+        controls.getChildren().add(pressorSensor3Gauge);
+
+        HBox timeControls = new HBox();
+        timeControls.setSpacing(10);
+        timeControls.setAlignment(Pos.CENTER);
+        timeControls.getChildren().addAll(pressure1Gauge, pressure2Gauge, timeElapsedGauge);
+
 
         Canvas canvas = new Canvas(800, 300);
 
         VBox myGroup = new VBox();
         myGroup.setSpacing(5);
         myGroup.setAlignment(Pos.CENTER);
-        myGroup.getChildren().addAll(canvas, controls);
+        myGroup.getChildren().addAll(timeControls /*, canvas*/, controls);
 
 
 
@@ -271,17 +305,85 @@ public class MainWithProgressBar extends Application {
 
         //stage.show();
     }
-    private Gauge createTimeElapsedTime(){
-        return GaugeBuilder.create()
+    private Gauge createTimeElapsedGauge(){
+        return GaugeBuilder.create().prefSize(150, 75)
                 .skinType(Gauge.SkinType.LCD)
                 .animated(true)
-                .title("Tempo")
-                .subTitle("Prova N 1")
-                .unit("sec")
-                .lcdDesign(LcdDesign.BLUE_LIGHTBLUE2)
-                .thresholdVisible(true)
+                .title("Prova N 1").maxMeasuredValueVisible(false)
+                .minMeasuredValueVisible(false)
+                .oldValueVisible(false)
+                .unit("sec").decimals(1)
+                .lcdDesign(LcdDesign.YOCTOPUCE)
+                .thresholdVisible(false)
+                .averageVisible(false)
                 .threshold(25)
                 .build();
+    }
+    private Gauge createPressureGauge(int index){
+        return GaugeBuilder.create().prefSize(180, 180)
+                .skinType(Gauge.SkinType.DASHBOARD)
+                .animated(true)
+                .title("Pressione P" + index)
+                .unit("Bar")
+                .maxValue(10).decimals(3)
+                .barColor(Color.CRIMSON)
+                .valueColor(Color.BLUE)
+                .titleColor(Color.BLUE)
+                .unitColor(Color.BLUE)
+                .thresholdVisible(false)
+                .threshold(35)
+                .shadowsEnabled(true)
+                .gradientBarEnabled(true)
+                .gradientBarStops(new Stop(0.00, Color.BLUE),
+                        new Stop(0.25, Color.CYAN),
+                        new Stop(0.50, Color.LIME),
+                        new Stop(0.75, Color.YELLOW),
+                        new Stop(1.00, Color.RED))
+                .build();
+
+    }
+    private Gauge createTestExecutionGauge(){
+        return GaugeBuilder.create()
+                .minValue(-4)
+                .maxValue(1)
+                .tickLabelDecimals(1)
+                .autoScale(true)
+                .animated(true)
+                .startAngle(0)
+                .angleRange(300)
+                .threshold(0.5)
+                .thresholdVisible(true)
+                .majorTickMarkType(TickMarkType.TRAPEZOID)
+                .mediumTickMarkType(TickMarkType.TRAPEZOID)
+                .tickLabelColor(Color.BLUE)
+                .tickMarkColor(Color.BLUE)
+                .titleColor(Color.BLUE)
+                .subTitleColor(Color.BLUE)
+                .unitColor(Color.BLUE)
+                .zeroColor(Color.LIGHTSKYBLUE)
+                .lcdVisible(true)
+                .lcdDesign(LcdDesign.GRAY_PURPLE)
+
+                .title("DPI")
+
+                .unit("mBar")
+                .interactive(false)
+                .needleSize(Gauge.NeedleSize.THIN)
+                .tickLabelLocation(TickLabelLocation.OUTSIDE)
+                .scaleDirection(Gauge.ScaleDirection.CLOCKWISE)
+                .sectionsVisible(true)
+                .sections(new Section(-4, -2, Color.RED),
+                        new Section(-2, 0, Color.YELLOW),
+                        new Section(0, 1, Color.LIME))
+                .areasVisible(true)
+                .highlightAreas(true)
+                .areas(new Section(-4, -2, Color.rgb(200, 0, 0, 0.1), Color.rgb(255, 0, 0)))
+                .markersVisible(true)
+                //.markersInterActive(true)
+                .markers(new Marker(0.5, Color.LIME))
+                .needleColor(Color.CYAN)
+                .build();
+
     }
 
 
