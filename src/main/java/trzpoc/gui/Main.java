@@ -90,6 +90,11 @@ public class Main extends Application {
         */
         primaryStage.show();
     }
+    private int calculateTextWidthByFont(String text, Font font){
+        Text t = new Text(text);
+        t.setFont(font);
+        return Double.valueOf(t.getLayoutBounds().getWidth()).intValue();
+    }
 
     private int calculateRows(Canvas canvas) {
         Text text = new Text("PROVA N 1                  Prova.         172.9 sec");
@@ -163,9 +168,27 @@ public class Main extends Application {
                 GraphicsContext gc = canvas.getGraphicsContext2D();
                 gc.setFont(font);
                 gc.setFill(Color.RED);
-                for (int i = 0; i < rows; i++){
-                    gc.fillText("PROVA N 1                  Prova.                       172.9 sec", 0, y+= fontSize);
-                }
+                String label = "PROVA N 1                  Prova.                       ";
+                gc.setFill(Color.BLACK);
+                gc.fillText(label, 0, y=fontSize);
+                // Variable #1
+                int xPos = calculateTextWidthByFont(label, font);
+                gc.fillText("172.9 sec", xPos, y=fontSize);
+
+                Font small = Font.font("Arial", FontWeight.NORMAL, 16);
+                gc.setFont(small);
+                gc.fillText("Press. P1 ", 0, fontSize * 3);
+                gc.setFill(Color.BLUE);
+                // Variable #1
+                xPos = calculateTextWidthByFont("Press. P1 ", small);
+                gc.fillText("VAR #2 ", xPos, fontSize * 3);
+                gc.setFill(Color.BLACK);
+                xPos += calculateTextWidthByFont("VAR #2 ", small);
+                gc.fillText("BAR", xPos, fontSize * 3);
+
+
+
+
                 /*
                 SerialReceiverMock sm = SerialReceiverMock.getNewInstance();
                 while(sm.hasMoreMessages()){

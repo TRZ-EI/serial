@@ -1,0 +1,359 @@
+/**
+ * Created with IntelliJ IDEA.
+ * User: luigi
+ * Date: 02/02/17
+ * Time: 11.35
+ *
+ * Parse a string using a RegEX pattern, written in a properties file
+ *
+ #define nero_piccolo   'P'     //0x31
+ #define rosso_piccolo  'Q'
+ #define verde_piccolo  'R'
+ #define blu_piccolo    'S'
+
+
+ #define nero_grande   '9'  0x39
+ #define rosso_grande  'A'
+ #define verde_grande  'P'
+ #define blu_grande    'C'
+
+ #define fine_stringa 0x0a
+
+ Configuration string structure: char num_var1, char font_colore1, char num_caratteri1, char decimali1, char riga1, char colonna1
+ Command string structure:
+
+
+ Command string: "01
+
+ uint8_t dataToSend1[] = "5EV1P4211";
+ uint8_t dataToSend2[] = "5Ev1A4221";
+
+ */
+ ***************************************************************************************
+ void trasmissione_testo (char font_colore,char riga,int colonna, far char msg[60]){
+ 	char i, app;
+ 	int crc;
+ 	clear_vett_config();
+
+ 	punt_vett_config=&(vett_config[0]);
+ 	*punt_vett_config=0x5E;						// inserisce sincronismo
+ 	punt_vett_config++;
+ 	*punt_vett_config='t';						// inserisce comando visual testo
+ 	punt_vett_config++;
+ //	char_hex(font_colore);						// inserisce font + colcore
+ //	inserisce_char();
+ 	*punt_vett_config=font_colore ;	// inserisce numero decimali
+ 	*punt_vett_config++;
+ 	char_hex(riga);								// inserisce riga
+ 	inserisce_char();
+ 	char_hex(colonna);								// inserisce colonna
+ 	inserisce_char();
+ 	for (i=0;(i<60 && msg[i] !=0);i++){
+ 		*punt_vett_config=msg[i];
+ 		punt_vett_config++;
+ 	}
+ 	crc=calcola_crc();
+ 	int_hex(crc);
+ 	inserisce_int();
+ 	*punt_vett_config=fine_stringa;
+ 	tx_stringa_comandi();
+ }
+ ****************************************************************************
+ void tx_stringa_comandi(void){
+ 	int l,i;
+ 		l=strlen(vett_config);
+ 	for (i=0;i<l;i++){
+ 		UART0Txdato(vett_config[i]);
+ 	}
+ }
+ ****************************************************************************
+ void scrivi_riga_h(far char msg[30])
+ 		{
+         unsigned int i, ind_wri;
+         unsigned char car_wr;
+ 		ind_wri=ind_wr;
+
+ 		for (i=0 ; (msg [i]!=0 && i<30) ;i++)
+ 			{
+ 			car_wr=msg[i];			//indiv. caratt. da scrivere
+ 			wr_car_h(car_wr);			// scrive il carattere
+ 			}
+ 		}
+ ****************************************************************************
+ void scrivi_riga_l ( far char msg[30])
+ 	{
+         unsigned int i, ind_wri;
+         unsigned char car_wr;
+ 	ind_wri=ind_wr;
+
+ 	for (i=0 ; (msg [i]!=0 && i<30) ;i++)
+ 		{
+ 		car_wr=msg[i];			//indiv. caratt. da scrivere
+ 		wr_car_l (car_wr);		// scrive il carattere piccolo
+ 		}
+ 	}
+ ****************************************************************************
+ // scrive in memoria all'indirizzo ind_wr il dato car_wr
+
+  void wr_car_h (char car_wr)
+
+ 	{
+ 	char dttemp,cntbytes;
+ 	unsigned int car_wri,ind_wri;
+ 	car_wri=car_wr;
+ 	ind_wri=ind_wr;
+ 	for ( cntbytes=0; cntbytes <=31; cntbytes)
+ 		{
+ 		dttemp=(ascih [car_wri][cntbytes])^rev ;
+ 		disp_gr[ind_wri]=dttemp;
+ 		ind_wri++;			// inc indirizzo
+ 		cntbytes++;			// inc cont bytes
+ 		dttemp=(ascih [car_wri][cntbytes])^rev;
+ 		disp_gr[ind_wri]=dttemp;
+ 		ind_wri=ind_wri+29;
+ 		cntbytes++;
+ 		}
+ 	ind_wr=ind_wr+2;
+ 	}
+
+
+
+
+
+ // scrive un carattere piccolo
+
+  void wr_car_l (char car_wr)
+
+ 	{
+
+
+ 	char  dttemp,cntbytes;
+ 	unsigned int car_wri;
+ 	unsigned int ind_wri;
+ 	car_wri=car_wr;
+ 	ind_wri=ind_wr;
+ 	for ( cntbytes=0; cntbytes <8; cntbytes++)
+ 		{
+ 		dttemp=(ascil [car_wri][cntbytes])^rev ;
+ 		disp_gr[ind_wri]=dttemp;
+ 		ind_wri=ind_wri+30;			// inc indirizzo
+ 		}
+ 	ind_wr++;
+ //	ind_wr=ind_wr;
+ 	}
+**********************************************************************************
+void config_variabile1(char num_var1, char font_colore1,char num_caratteri1,char decimali1,char riga1, char colonna1){
+
+	char i, app;
+	iniz_vett_config();
+
+	char_hex(num_var1);
+	inserisce_char();
+
+	*punt_vett_config=font_colore1 ;	// inserisce font_colore
+	punt_vett_config++;
+
+	*punt_vett_config=tab_hex[num_caratteri1 & 0x0F][1];	// inserisce numero caratteri
+	*punt_vett_config++;
+
+	*punt_vett_config=tab_hex[decimali1 & 0x0F][1];	// inserisce numero decimali
+	*punt_vett_config++;
+
+//	*punt_vett_config=tab_hex [(riga1  & 0x0F)][1];	// inserisce riga
+//	*punt_vett_config++;
+	char_hex(riga1);								//converte colonna in Hex
+	inserisce_char();								//inserisce la varabile colonna
+
+	char_hex(colonna1);								//converte colonna in Hex
+	inserisce_char();								//inserisce la varabile colonna
+
+	fine_config_variabile();						// fine configurazione variabile e trasmissione
+//	Delay(50);
+}
+**********************************************************************************
+void fine_config_variabile (void){
+		int crc_display;
+		crc_display=calcola_crc();
+		int_hex(crc_display);
+		inserisce_int ();					// inserisce CRC
+		*punt_vett_config=fine_stringa;				// inserisce fine stringa
+		tx_stringa_comandi();
+}
+**********************************************************************************
+void tx_valore_variabile1(char num_var1, long val_var1){
+	char i, app;
+	int crc;
+	DI();
+	clear_vett_config();
+	iniz_vett_tx_variabile();
+	punt_vett_config=&(vett_config[0]);
+	*punt_vett_config=0x5E;						// inserisce sincronismo
+	punt_vett_config++;
+	*punt_vett_config='v';						// inserisce sincronismo
+	punt_vett_config++;
+	char_hex(num_var1);
+	inserisce_char();								// inserisce numero var 1
+	long_hex(val_var1);
+	inserisce_long();								// inserisce valore variabile 1
+	crc=calcola_crc();
+	int_hex(crc);
+	inserisce_int();
+	*punt_vett_config=fine_stringa;
+	EI();
+	tx_stringa_comandi();
+
+}
+**********************************************************************************
+
+
+// calcola il CRC della stringa residente nel vettore di configurazione usando M16
+
+int calcola_crc(void){
+	int l,i, crc;
+	char app;
+	l=strlen(vett_config);				// calcola la lunghezza del vettore
+//	crc=CRC16(&vett_config[0],l);
+	crcd=0;
+	for (i=0; i<l; i++){
+		app=vett_config[i];
+		crcin=app;
+	}
+	crc=crcd;
+	return(crc);
+}
+*************************************************************************************
+void int_hex (int numero){
+char 	*punt_hex32;
+char i,app, app_v;
+int num_int;
+		punt_hex32=&(vett_hex32[3]);			// inizializza puntatore all'ultimo elemento
+		for (i=0;i<4;i++){					// azzera VETTORE
+			vett_hex32[i]=0;
+		}
+			num_int=(char)(numero & 0x0F);
+			*punt_hex32=tab_hex[num_int &0x0F][1];
+			punt_hex32--;
+
+			numero=numero >> 4;				// schifta  4 bit
+
+			num_int=(char)(numero & 0xFF);
+			*punt_hex32=tab_hex[num_int &0x0F][1];
+			punt_hex32--;					// fatto byte meno significativo
+
+			numero=numero >> 4;
+			num_int=(char)(numero &0x0F);
+			*punt_hex32=tab_hex[num_int  & 0x0F][1];
+			punt_hex32--;
+
+			numero=numero >> 4;
+			num_int=(char)(numero &0x0F);
+			*punt_hex32=tab_hex[num_int  & 0x0F][1];
+			punt_hex32--;					// fatto byte piu' significativo
+}
+
+*************************************************************************************
+// converte il numero passato in esadecimale residente in vett_hex con la cifra + signif in vett_hex[0]
+
+void char_hex (char numero){
+char 	*punt_hex32;
+char i,app, app_v;
+int num_int;
+		punt_hex32=&(vett_hex32[1]);			// inizializza puntatore all'ultimo elemento
+		vett_hex32[0]=0;						// azzera vettore
+		vett_hex32[1]=0;
+
+		vett_hex32[0]=tab_hex[numero & 0x0F][1];
+		numero =numero >>4;
+		vett_hex32[1]=tab_hex[numero & 0x0F][1];
+}
+*************************************************************************************
+// inserisce un char il dato e' in vett_hex
+void inserisce_char (void){
+	char app;
+
+		*punt_vett_config=vett_hex32[1];
+		*punt_vett_config++;
+		*punt_vett_config=vett_hex32[0];
+		*punt_vett_config++;
+}
+*************************************************************************************
+// inserisce nel vettore di trasmissione una variabile di tipo int che si trova in vett_hex32
+
+ void inserisce_int (void){
+	int i;
+	for (i=0;i<4;i++){
+		*punt_vett_config=vett_hex32[i];
+		*punt_vett_config++;
+	}
+}
+*************************************************************************************
+// inserisce nel vettore di trasmissione una variabile di tipo long che si trova in vett_hex32
+
+void inserisce_long (void){
+	int i;
+	for (i=0;i<8;i++){
+		*punt_vett_config=vett_hex32[i];
+		*punt_vett_config++;
+	}
+}
+*************************************************************************************
+void barra (long DP,long SOGLIA_NEG,long SOGLIA_POS, unsigned int IND)
+	{
+	char VETT_BAR[33];
+	int i,j,k;
+	long VAL_BAR;
+	long DP_BAR,SOGLIA_P,SOGLIA_N;
+	DP_BAR=DP;
+	SOGLIA_P=SOGLIA_POS;
+	SOGLIA_N=SOGLIA_NEG;
+	for(i=0; i<32;i++)
+		VETT_BAR[i]=0;				// azzera vettore barra
+
+	if	(DP_BAR >=0)
+		{
+		if (SOGLIA_P > 0)
+			{
+			VAL_BAR=(DP_BAR*9/SOGLIA_P);
+			if (VAL_BAR>8)
+				VAL_BAR=9;
+				else
+				{}
+			}
+			else
+			VAL_BAR=0;
+		for( i=22;i<31;i++)
+			{
+			if(VAL_BAR==0)
+			break;
+			VETT_BAR[i]='@';
+			VAL_BAR--;
+			}
+		 }
+		else
+		{
+			DP_BAR=0-DP_BAR;
+			if (SOGLIA_N != 0)
+					{
+		//			VAL_BAR=(unsigned int)(DP_BAR*22/SOGLIA_N);
+					VAL_BAR=(DP_BAR*22/SOGLIA_N);
+				if (VAL_BAR > 22)
+					VAL_BAR = 22;
+
+					for (i = 22; i >= 0; i--)
+						{
+						if (VAL_BAR==0)
+						break;
+						VETT_BAR[i] = '@';
+						VAL_BAR--;
+						}
+					}
+					else
+					{
+					VAL_BAR = 0;
+					}
+		}
+	ind_wr = IND;
+	for (i = 1;i < 31;i++)
+		wr_car_l(VETT_BAR[i]);
+
+	}
