@@ -33,10 +33,11 @@ public class Variable extends Cell {
         super(font, color);
     }
 
+    public String getValue(){
+        return Long.toString(this.value, 10);
+    }
 
-
-    @Override
-    public String getValue() {
+    public String printFormattedValue() {
         String retValue = null;
 
         String initialValue = Long.toString(this.value, 10);
@@ -85,21 +86,18 @@ public class Variable extends Cell {
         return this;
     }
 
-    public int getId() {
-        return id;
+
+    public void updateData(Variable d) {
+        this.value = d.value;
+        this.decimalLenght = d.decimalLenght;
+        this.integerLenght = d.integerLenght;
     }
 
-    public Variable setId(int id) {
-        this.id = id;
-        return this;
+    public int getIntegerLenght() {
+        return integerLenght;
     }
-    public boolean equals(Object o) {
-        boolean  result = false;
-        if (o instanceof Variable){
-            Variable other = (Variable) o;
-            result = super.equals(other);
-            result &= this.id == other.getId();
-        }
-        return result;
+
+    public int getDecimalLenght() {
+        return decimalLenght;
     }
 }

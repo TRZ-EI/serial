@@ -86,9 +86,7 @@ public class VariableConfiguratorSerialDataParser implements SerialDataReader {
         int crcValue = this.converter.notAsciiBytesToInt(crc);
 
         Variable retValue = this.createVariable(fc);
-        retValue.setId(id).setIntegerLenght(integerDigits).setDecimalLenght(decimalDigits).setxPos(row).setyPos(column);
-
-
+        retValue.setIntegerLenght(integerDigits).setDecimalLenght(decimalDigits).setxPos(row).setyPos(column).setId(id);
         return retValue;
 
 

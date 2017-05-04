@@ -67,7 +67,7 @@ public class VariableTest {
 
     @Test(dataProvider = "prepareDataForTest")
     public void testSetAndGetValue(String rawValue, int intPart, int decimals, String expectedValue) throws Exception {
-        assertEquals(expectedValue, this.sut.setValue(rawValue).setIntegerLenght(intPart).setDecimalLenght(decimals).getValue());
+        assertEquals(expectedValue, this.sut.setValue(rawValue).setIntegerLenght(intPart).setDecimalLenght(decimals).printFormattedValue());
     }
     @Test
     public void testGetWidth() throws Exception {

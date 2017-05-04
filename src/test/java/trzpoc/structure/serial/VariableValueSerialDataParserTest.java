@@ -43,7 +43,8 @@ public class VariableValueSerialDataParserTest {
     public void testReadByteArray(String id, long value) throws Exception {
         SerialDataMock sdm = new SerialDataMock();
         byte[] rawData = sdm.prepareDataToTransmitAVariable(id, value);
-        Variable expectedValue = Variable.getInstance().setId(Integer.valueOf(id)).setValue(Long.toString(value));
+        Variable expectedValue = Variable.getInstance().setValue(Long.toString(value));
+        expectedValue.setId(Integer.valueOf(id));
         assertEquals(this.sut.readByteArray(rawData), expectedValue);
     }
 

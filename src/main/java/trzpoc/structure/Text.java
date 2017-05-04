@@ -19,4 +19,7 @@ public class Text extends Cell{
     public String getValue() {
         return super.getValue();
     }
+
+    public void updateData(Text dataParsed) {
+    }
 }

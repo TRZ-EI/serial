@@ -19,6 +19,10 @@ public class CellsRow {
         return new CellsRow();
     }
 
+    private CellsRow(){
+        this.cells = new ArrayList<Cell>();
+    }
+
 
     public int getWidthByCells(){
         int retValue = 0;
@@ -37,7 +41,41 @@ public class CellsRow {
         Collections.sort(heights);
         return heights.get(heights.size() - 1);
     }
-    
+
+    public Cell addOrUpdateACell(Cell cell){
+        return this.cells.contains(cell)? this.updateCell(cell): this.addCell(cell);
+    }
+    public Cell getCellByColumnIndex(int columnIndex){
+        return (Cell) this.cells.toArray()[columnIndex];
+    }
+
+    private Cell addCell(Cell cell) {
+        this.cells.add(cell);
+        int indexInCollection = this.cells.indexOf(cell);
+        return this.cells.get(indexInCollection);
+    }
+
+    private Cell updateCell(Cell cell) {
+        int indexInCollection = this.cells.indexOf(cell);
+        Cell cellToUpdate = this.cells.get(indexInCollection);
+        if (cell.getColor() != null){
+            cellToUpdate.setColor(cell.getColor());
+        }
+        if (cell.getFont() != null){
+            cellToUpdate.setFont(cell.getFont());
+        }
+        if (cell instanceof Variable && cellToUpdate instanceof Variable){
+            Variable v = (Variable)cellToUpdate;
+            Variable c = (Variable)cell;
+            v.setDecimalLenght(c.getDecimalLenght());
+            v.setIntegerLenght(c.getIntegerLenght());
+        }
+
+        cellToUpdate.setValue(cell.getValue());
+        this.cells.add(indexInCollection, cellToUpdate);
+        return this.cells.get(indexInCollection);
+    }
+
     public int getCellsCount(){
         return this.cells.size();
     }

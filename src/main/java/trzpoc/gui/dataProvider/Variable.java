@@ -21,7 +21,7 @@ public class Variable extends CellContentBean {
     public void setName(String name) {
         this.name = name;
     }
-    public String getValue() {
+    public String printFormattedValue() {
         return value;
     }
     */

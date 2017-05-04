@@ -196,7 +196,7 @@ public class Main extends Application {
                     GraphicsContext gc = canvas.getGraphicsContext2D();
                     gc.setFill(cb.getColor());
                     gc.setFont(cb.getFont());
-                    gc.fillText(cb.getValue(), cb.getX(), cb.getY());
+                    gc.fillText(cb.printFormattedValue(), cb.getX(), cb.getY());
                 }
                 */
                 me.consume();

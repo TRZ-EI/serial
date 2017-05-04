@@ -1,8 +1,6 @@
 package trzpoc.structure;
 
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.Iterator;
+import java.util.ArrayList;
 
 /**
  * Created with IntelliJ IDEA.
@@ -11,7 +9,7 @@ import java.util.Iterator;
  * Time: 12.12
  */
 public class DataDisplayManager {
-    private Collection<CellsRow> rows;
+    private ArrayList<CellsRow> rows;
 
 
     public static DataDisplayManager getNewInstance(){
@@ -25,7 +23,6 @@ public class DataDisplayManager {
         return this;
     }
 
-
     public CellsRow getOrCreateARow(int rowIndex){
         return (this.existRow(rowIndex))? this.returnRow(rowIndex): this.createARow(rowIndex);
     }
@@ -36,16 +33,8 @@ public class DataDisplayManager {
     }
 
     private CellsRow returnRow(int rowIndex) {
-        CellsRow row = null, retValue = null;
-        Iterator<CellsRow> iterator = this.rows.iterator();
-        while (iterator.hasNext()){
-            row = iterator.next();
-            if(row.getyPos() == rowIndex){
-                retValue = row;
-                break;
-            }
-        }
-        return retValue;
+        int indexInCollection = this.rows.indexOf(CellsRow.getEmptyInstance().setyPos(rowIndex));
+        return this.rows.get(indexInCollection);
     }
 
     private boolean existRow(int rowIndex) {
@@ -58,8 +47,19 @@ public class DataDisplayManager {
 
 
     private DataDisplayManager(){
-        this.rows = new HashSet<CellsRow>();
+        this.rows = new ArrayList<CellsRow>();
+    }
+    public void AddOrUpdateCellInMatrix(Cell dataParsed) {
+        int rowIndex = dataParsed.getyPos();
+        CellsRow row = this.getOrCreateARow(rowIndex);
+        row.addOrUpdateACell(dataParsed);
     }
 
+    public ArrayList<CellsRow> getRows() {
+        return rows;
+    }
 
+    public void setRows(ArrayList<CellsRow> rows) {
+        this.rows = rows;
+    }
 }

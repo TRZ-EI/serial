@@ -37,6 +37,11 @@
 
     <dependencies>
         <dependency>
+            <groupId>com.opencsv</groupId>
+            <artifactId>opencsv</artifactId>
+            <version>3.8</version>
+        </dependency>
+        <dependency>
             <groupId>jacksum</groupId>
             <artifactId>jacksum</artifactId>
             <version>1.7.0</version>

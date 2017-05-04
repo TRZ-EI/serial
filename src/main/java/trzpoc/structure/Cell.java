@@ -10,6 +10,8 @@ import javafx.scene.text.Font;
  * Time: 15.29
  */
 public abstract class Cell implements CellInterface {
+    private int id;
+
     private Color color;
     private Font font;
     private String value;
@@ -77,15 +79,24 @@ public abstract class Cell implements CellInterface {
         this.yPos = yPos;
         return this;
     }
+    public int getId() {
+        return id;
+    }
+
+    public Cell setId(int id) {
+        this.id = id;
+        return this;
+    }
 
 
     @Override
     public boolean equals(Object o) {
-        boolean  result = false;
+        boolean result = false;
         if (o instanceof Cell){
             Cell other = (Cell)o;
             result = this.xPos == other.getxPos();
             result &= this.yPos == other.getyPos();
+            result &= this.id == other.getId();
         }
         return result;
     }
