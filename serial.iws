@@ -4,28 +4,12 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="Created TRZ simulation with gauges">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/inputExamples.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/SerialDataFacadeTest.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/InputExamplesForTest.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.iml" afterPath="$PROJECT_DIR$/serial.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.ipr" afterPath="$PROJECT_DIR$/serial.ipr" />
+    <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/resources/InputExamplesForTestOneRow.csv" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.iws" afterPath="$PROJECT_DIR$/serial.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/Main.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainWithProgressBar.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainWithProgressBar.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/dataProvider/Variable.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/dataProvider/Variable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Cell.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Cell.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/CellsRow.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/CellsRow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/DataDisplayManager.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/DataDisplayManager.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Text.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Text.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Variable.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Variable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/VariableConfiguratorSerialDataParser.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/VariableConfiguratorSerialDataParser.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/structure/CellsRowTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/structure/CellsRowTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/structure/DataDisplayManagerTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/structure/DataDisplayManagerTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/structure/VariableTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/structure/VariableTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/VariableConfiguratorSerialDataParserTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/VariableConfiguratorSerialDataParserTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/VariableValueSerialDataParserTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/VariableValueSerialDataParserTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/SerialDataFacadeTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/SerialDataFacadeTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/resources/InputExamplesForTest.csv" afterPath="$PROJECT_DIR$/src/test/resources/InputExamplesForTest.csv" />
     </list>
     <list id="b4e93cff-d048-4a6f-92cd-4a82a397bf5b" name="New changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,27 +29,9 @@
       <file leaf-file-name="Cell.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Cell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="118">
-              <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-              <folding>
-                <element signature="e#1598#1599#0" expanded="true" />
-                <element signature="e#1623#1624#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CellsRow.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/CellsRow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
-              <caret line="22" column="43" lean-forward="false" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
-              <folding>
-                <element signature="e#433#434#0" expanded="true" />
-                <element signature="e#483#484#0" expanded="true" />
-                <element signature="e#1255#1256#0" expanded="true" />
-                <element signature="e#1318#1319#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="198">
+              <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -73,45 +39,85 @@
       <file leaf-file-name="VariableConfiguratorSerialDataParser.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/VariableConfiguratorSerialDataParser.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
+            <state relative-caret-position="25">
               <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DataDisplayManagerTest.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/test/java/trzpoc/structure/DataDisplayManagerTest.java">
+      <file leaf-file-name="SerialDataFacade.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="550">
-              <caret line="111" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+            <state relative-caret-position="1698">
+              <caret line="105" column="39" lean-forward="false" selection-start-line="105" selection-start-column="39" selection-end-line="105" selection-end-column="39" />
               <folding>
-                <element signature="e#3258#3268#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#628#629#0" expanded="true" />
+                <element signature="e#673#674#0" expanded="true" />
+                <element signature="e#705#706#0" expanded="true" />
+                <element signature="e#778#779#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SerialDataFacade.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java">
+      <file leaf-file-name="SerialDataReader.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="36">
-              <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+            <state relative-caret-position="170">
+              <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SerialDataFacadeTest.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="TextSerialDataParser.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/TextSerialDataParser.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+              <folding>
+                <element signature="e#792#793#0" expanded="true" />
+                <element signature="e#819#820#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SerialDataFacadeTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/SerialDataFacadeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="440">
-              <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+            <state relative-caret-position="-140">
+              <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#546#547#0" expanded="true" />
-                <element signature="e#609#610#0" expanded="true" />
-                <element signature="e#1544#1554#0" expanded="true" />
+                <element signature="e#574#575#0" expanded="true" />
+                <element signature="e#637#638#0" expanded="true" />
+                <element signature="e#3329#3339#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="InputExamplesForTestOneRow.csv" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/InputExamplesForTestOneRow.csv">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="6" column="16" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="CellsRow.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/CellsRow.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="53" column="57" lean-forward="true" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
+              <folding>
+                <element signature="e#433#434#0" expanded="true" />
+                <element signature="e#483#484#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -120,9 +126,15 @@
       <file leaf-file-name="DataDisplayManager.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/DataDisplayManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="51" column="25" lean-forward="false" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
-              <folding />
+            <state relative-caret-position="140">
+              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+              <folding>
+                <element signature="e#270#271#0" expanded="true" />
+                <element signature="e#317#318#0" expanded="true" />
+                <element signature="e#404#405#0" expanded="true" />
+                <element signature="e#1175#1176#0" expanded="true" />
+                <element signature="e#1263#1264#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -131,27 +143,7 @@
         <entry file="file://$PROJECT_DIR$/src/test/resources/InputExamplesForTest.csv">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="100">
-              <caret line="5" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="15" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="inputExamples.csv" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/inputExamples.csv">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="20">
-              <caret line="1" column="10" lean-forward="false" selection-start-line="1" selection-start-column="10" selection-end-line="1" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/pom.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="43" column="20" lean-forward="false" selection-start-line="43" selection-start-column="20" selection-end-line="43" selection-end-column="20" />
+              <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
               <folding />
             </state>
           </provider>
@@ -244,15 +236,17 @@
         <option value="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/VariableValueSerialDataParserTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/Variable.java" />
         <option value="$PROJECT_DIR$/src/test/java/trzpoc/structure/VariableTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/DataDisplayManager.java" />
         <option value="$PROJECT_DIR$/src/test/java/trzpoc/structure/CellsRowTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/CellsRow.java" />
         <option value="$PROJECT_DIR$/src/test/java/trzpoc/structure/DataDisplayManagerTest.java" />
         <option value="$PROJECT_DIR$/src/main/resources/inputExamples.csv" />
         <option value="$PROJECT_DIR$/pom.xml" />
-        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java" />
         <option value="$PROJECT_DIR$/src/test/resources/inputExamplesForTest.csv" />
+        <option value="$PROJECT_DIR$/src/test/resources/InputExamplesForTest.csv" />
+        <option value="$PROJECT_DIR$/src/test/resources/InputExamplesForTestOneRow.csv" />
+        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/DataDisplayManager.java" />
         <option value="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/SerialDataFacadeTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java" />
       </list>
     </option>
   </component>
@@ -1008,46 +1002,62 @@
       <option name="project" value="LOCAL" />
       <updated>1489676890016</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="WIP for final step (data printed on Raspberry display)">
+      <created>1493910168991</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1493910168992</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="DataDisplayManagerTest - 2017.05.04 at 14h 33m 45s.xml">
-      <configuration name="DataDisplayManagerTest" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="DataDisplayManagerTest - 2017.05.04 at 14h 36m 01s.xml">
-      <configuration name="DataDisplayManagerTest" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="DataDisplayManagerTest - 2017.05.04 at 14h 36m 33s.xml">
-      <configuration name="DataDisplayManagerTest" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="DataDisplayManagerTest - 2017.05.04 at 14h 38m 44s.xml">
-      <configuration name="DataDisplayManagerTest" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="DataDisplayManagerTest - 2017.05.04 at 14h 39m 56s.xml">
-      <configuration name="DataDisplayManagerTest" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="DataDisplayManagerTest - 2017.05.04 at 14h 43m 09s.xml">
-      <configuration name="DataDisplayManagerTest" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="DataDisplayManagerTest_testAddCellInMatrix - 2017.05.04 at 14h 34m 16s.xml">
-      <configuration name="DataDisplayManagerTest.testAddCellInMatrix" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="DataDisplayManagerTest_testAddCellInMatrix - 2017.05.04 at 14h 34m 42s.xml">
-      <configuration name="DataDisplayManagerTest.testAddCellInMatrix" configurationId="TestNG" />
-    </history-entry>
-    <history-entry file="SerialDataFacadeTest - 2017.05.04 at 16h 57m 14s.xml">
+    <history-entry file="SerialDataFacadeTest - 2017.05.05 at 15h 09m 10s.xml">
       <configuration name="SerialDataFacadeTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="_home_luigi__IdeaIC2017_1_system_temp-testng-customsuite_xml - 2017.05.04 at 14h 34m 58s.xml">
-      <configuration name="/home/luigi/.IdeaIC2017.1/system/temp-testng-customsuite.xml" configurationId="TestNG" />
+    <history-entry file="SerialDataFacadeTest - 2017.05.05 at 15h 18m 01s.xml">
+      <configuration name="SerialDataFacadeTest" configurationId="TestNG" />
     </history-entry>
+    <history-entry file="SerialDataFacadeTest - 2017.05.05 at 15h 20m 04s.xml">
+      <configuration name="SerialDataFacadeTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SerialDataFacadeTest - 2017.05.05 at 15h 25m 09s.xml">
+      <configuration name="SerialDataFacadeTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SerialDataFacadeTest - 2017.05.05 at 15h 29m 30s.xml">
+      <configuration name="SerialDataFacadeTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SerialDataFacadeTest - 2017.05.05 at 15h 30m 42s.xml">
+      <configuration name="SerialDataFacadeTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SerialDataFacadeTest - 2017.05.05 at 15h 35m 07s.xml">
+      <configuration name="SerialDataFacadeTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SerialDataFacadeTest - 2017.05.05 at 15h 36m 01s.xml">
+      <configuration name="SerialDataFacadeTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SerialDataFacadeTest - 2017.05.05 at 15h 36m 32s.xml">
+      <configuration name="SerialDataFacadeTest" configurationId="TestNG" />
+    </history-entry>
+    <history-entry file="SerialDataFacadeTest - 2017.05.05 at 15h 53m 13s.xml">
+      <configuration name="SerialDataFacadeTest" configurationId="TestNG" />
+    </history-entry>
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="58" y="-11" width="1309" height="780" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32198143" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Enso" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -1057,13 +1067,13 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.55572754" sideWeight="0.49722442" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.70743036" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3893735" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.34972245" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32817337" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="SonarQube" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980174" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3637771" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35448918" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1073,34 +1083,6 @@
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Enso" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28482974" sideWeight="0.50277555" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="SonarQube" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980174" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3637771" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32198143" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.55572754" sideWeight="0.49722442" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.70743036" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3893735" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32817337" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -1108,7 +1090,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="added gauges examples" />
     <MESSAGE value="Created TRZ simulation with gauges" />
-    <option name="LAST_COMMIT_MESSAGE" value="Created TRZ simulation with gauges" />
+    <MESSAGE value="WIP for final step (data printed on Raspberry display)" />
+    <option name="LAST_COMMIT_MESSAGE" value="WIP for final step (data printed on Raspberry display)" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1167,8 +1150,14 @@
           <properties />
           <option name="timeStamp" value="63" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/SerialDataFacadeTest.java</url>
+          <line>51</line>
+          <properties />
+          <option name="timeStamp" value="69" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="64" />
+      <option name="time" value="70" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1181,13 +1170,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/utils/RandomGeneratorInRange.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="324">
-          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/applications/jvm64/jdk1.8.0_122/javafx-src.zip!/javafx/animation/AnimationTimer.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/utils/Chronometer.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1293,27 +1275,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="220">
           <caret line="17" column="36" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="17" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="205">
-          <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="24" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/TextSerialDataParser.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="125">
-          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1437,16 +1398,8 @@
         <state relative-caret-position="256">
           <caret line="124" column="28" lean-forward="false" selection-start-line="124" selection-start-column="28" selection-end-line="124" selection-end-column="28" />
           <folding>
-            <element signature="e#8526#8532#0" expanded="true" />
+            <element signature="e#8526#8532#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/testng/testng/6.8.5/testng-6.8.5.jar!/org/testng/internal/Invoker.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
-          <caret line="477" column="0" lean-forward="false" selection-start-line="477" selection-start-column="0" selection-end-line="477" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1455,36 +1408,12 @@
         <state relative-caret-position="118">
           <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
           <folding>
-            <element signature="e#691#692#0" expanded="true" />
-            <element signature="e#743#744#0" expanded="true" />
-            <element signature="e#2685#2686#0" expanded="true" />
-            <element signature="e#2721#2722#0" expanded="true" />
-            <element signature="e#2758#2759#0" expanded="true" />
-            <element signature="e#2794#2795#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Cell.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="118">
-          <caret line="86" column="0" lean-forward="false" selection-start-line="86" selection-start-column="0" selection-end-line="86" selection-end-column="0" />
-          <folding>
-            <element signature="e#1598#1599#0" expanded="true" />
-            <element signature="e#1623#1624#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/CellsRow.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
-          <caret line="22" column="43" lean-forward="false" selection-start-line="22" selection-start-column="43" selection-end-line="22" selection-end-column="43" />
-          <folding>
-            <element signature="e#433#434#0" expanded="true" />
-            <element signature="e#483#484#0" expanded="true" />
-            <element signature="e#1255#1256#0" expanded="true" />
-            <element signature="e#1318#1319#0" expanded="true" />
+            <element signature="e#691#692#0" expanded="false" />
+            <element signature="e#743#744#0" expanded="false" />
+            <element signature="e#2685#2686#0" expanded="false" />
+            <element signature="e#2721#2722#0" expanded="false" />
+            <element signature="e#2758#2759#0" expanded="false" />
+            <element signature="e#2794#2795#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -1505,57 +1434,131 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/resources/InputExamplesForTest.csv">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="100">
-          <caret line="5" column="15" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="5" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/trzpoc/structure/DataDisplayManagerTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="550">
-          <caret line="111" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="111" selection-end-column="0" />
+        <state relative-caret-position="1300">
+          <caret line="100" column="42" lean-forward="true" selection-start-line="100" selection-start-column="42" selection-end-line="100" selection-end-column="42" />
           <folding>
             <element signature="e#3258#3268#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="36">
-          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        <state relative-caret-position="221">
+          <caret line="21" column="24" lean-forward="false" selection-start-line="21" selection-start-column="20" selection-end-line="21" selection-end-column="24" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataReader.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="12" column="17" lean-forward="false" selection-start-line="12" selection-start-column="17" selection-end-line="12" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/TextSerialDataParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding>
+            <element signature="e#792#793#0" expanded="true" />
+            <element signature="e#819#820#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/VariableConfiguratorSerialDataParser.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
+        <state relative-caret-position="25">
           <caret line="89" column="0" lean-forward="false" selection-start-line="89" selection-start-column="0" selection-end-line="89" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/org/testng/testng/6.8.5/testng-6.8.5.jar!/org/testng/internal/Invoker.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="328">
+          <caret line="477" column="0" lean-forward="false" selection-start-line="477" selection-start-column="0" selection-end-line="477" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/InputExamplesForTest.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Cell.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="198">
+          <caret line="79" column="0" lean-forward="false" selection-start-line="79" selection-start-column="0" selection-end-line="79" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/CellsRow.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="53" column="57" lean-forward="true" selection-start-line="53" selection-start-column="57" selection-end-line="53" selection-end-column="57" />
+          <folding>
+            <element signature="e#433#434#0" expanded="true" />
+            <element signature="e#483#484#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/InputExamplesForTestOneRow.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="6" column="16" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="6" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/DataDisplayManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="51" column="25" lean-forward="false" selection-start-line="51" selection-start-column="25" selection-end-line="51" selection-end-column="25" />
-          <folding />
+        <state relative-caret-position="140">
+          <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+          <folding>
+            <element signature="e#270#271#0" expanded="true" />
+            <element signature="e#317#318#0" expanded="true" />
+            <element signature="e#404#405#0" expanded="true" />
+            <element signature="e#1175#1176#0" expanded="true" />
+            <element signature="e#1263#1264#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/SerialDataFacadeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="440">
-          <caret line="44" column="0" lean-forward="true" selection-start-line="44" selection-start-column="0" selection-end-line="44" selection-end-column="0" />
+        <state relative-caret-position="-140">
+          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#546#547#0" expanded="true" />
-            <element signature="e#609#610#0" expanded="true" />
-            <element signature="e#1544#1554#0" expanded="true" />
+            <element signature="e#574#575#0" expanded="true" />
+            <element signature="e#637#638#0" expanded="true" />
+            <element signature="e#3329#3339#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1698">
+          <caret line="105" column="39" lean-forward="false" selection-start-line="105" selection-start-column="39" selection-end-line="105" selection-end-column="39" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#628#629#0" expanded="true" />
+            <element signature="e#673#674#0" expanded="true" />
+            <element signature="e#705#706#0" expanded="true" />
+            <element signature="e#778#779#0" expanded="true" />
           </folding>
         </state>
       </provider>

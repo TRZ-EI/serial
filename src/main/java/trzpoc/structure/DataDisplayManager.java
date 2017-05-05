@@ -15,6 +15,9 @@ public class DataDisplayManager {
     public static DataDisplayManager getNewInstance(){
         return new DataDisplayManager();
     }
+    private DataDisplayManager(){
+        this.rows = new ArrayList<CellsRow>();
+    }
 
     public DataDisplayManager prepareDisplayMap(int rows){
         for (int i = 0; i < rows; i ++){
@@ -46,9 +49,6 @@ public class DataDisplayManager {
     }
 
 
-    private DataDisplayManager(){
-        this.rows = new ArrayList<CellsRow>();
-    }
     public void AddOrUpdateCellInMatrix(Cell dataParsed) {
         int rowIndex = dataParsed.getyPos();
         CellsRow row = this.getOrCreateARow(rowIndex);
