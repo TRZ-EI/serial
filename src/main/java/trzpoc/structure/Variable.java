@@ -12,7 +12,6 @@ import javafx.scene.text.Font;
 public class Variable extends Cell {
 
     private long value;
-    private int id;
     private int integerLenght;
     private int decimalLenght;
 
@@ -68,6 +67,8 @@ public class Variable extends Cell {
             String integerPart = initialValue.substring(0, initialValue.length() - this.decimalLenght);
             String decimalPart = initialValue.substring(initialValue.length() - this.decimalLenght);
             initialValue = integerPart + "." + decimalPart;
+        }else if (this.integerLenght == 0){
+            initialValue = "." + initialValue;
         }
         return initialValue;
     }

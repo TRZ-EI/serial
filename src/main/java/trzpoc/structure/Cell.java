@@ -10,8 +10,8 @@ import javafx.scene.text.Font;
  * Time: 15.29
  */
 public abstract class Cell implements CellInterface {
-    private int id;
 
+    private int id;
     private Color color;
     private Font font;
     private String value;

@@ -11,15 +11,35 @@ import javafx.scene.text.Font;
  */
 public class Text extends Cell{
 
-    protected Text(Font font, Color color) {
-        super(font, color);
+
+    public static Text getNewInstance(){
+        return new Text();
+    }
+    private Text(){
+        super();
+        this.calculateId();
     }
 
+    private void calculateId() {
+        this.setId(0);
+        // TODO: define better id creation
+    }
+
+    public static Text getNewInstanceByFontAndColor(Font font, Color color){
+        return new Text(font, color);
+    }
+    private Text(Font font, Color color) {
+        super(font, color);
+    }
     @Override
     public String getValue() {
         return super.getValue();
     }
 
-    public void updateData(Text dataParsed) {
+    public Text updateData(Text dataParsed) {
+        if (this.equals(dataParsed)) {
+            this.setValue(dataParsed.getValue());
+        }
+        return this;
     }
 }

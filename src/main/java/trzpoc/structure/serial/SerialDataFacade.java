@@ -4,6 +4,7 @@ import com.opencsv.CSVReader;
 import trzpoc.structure.Cell;
 import trzpoc.structure.DataDisplayManager;
 import trzpoc.structure.Variable;
+import trzpoc.utils.SerialDataMock;
 
 import java.io.FileReader;
 import java.io.IOException;
@@ -27,6 +28,7 @@ public class SerialDataFacade {
     }
     private SerialDataFacade(){
         this.displayManager = DataDisplayManager.getNewInstance();
+        this.displayManager.prepareDisplayMap(20);
     }
 
     public void onSerialDataInput(byte[] data) throws UnsupportedEncodingException {
@@ -52,7 +54,7 @@ public class SerialDataFacade {
             // TODO
 
         }
-        this.displayManager.AddOrUpdateCellInMatrix(dataParsed);
+        this.displayManager.addOrUpdateCellInMatrix(dataParsed);
 
 
 
@@ -67,23 +69,25 @@ public class SerialDataFacade {
         CSVReader reader = new CSVReader(new FileReader(dataFileName));
         String[] line;
         while ((line = reader.readNext()) != null) {
-            this.displayManager.AddOrUpdateCellInMatrix(this.fillCell(line));
+            if (!line[0].startsWith("#")) {
+                this.displayManager.addOrUpdateCellInMatrix(this.fillCell(line));
+            }
         }
         return this.displayManager;
 
     }
 
-    private Cell fillCell(String[] line) {
+    private Cell fillCell(String[] line) throws UnsupportedEncodingException {
         Cell toFill = null;
         String command = line[1];
-        String id = line[2];
-        String fontColor = line[3];
-        String integerLenght = line[4];
-        String decimalLenght = line[5];
-        String row = line[6];
-        String column = line[7];
 
         if (command.equals("V")){
+            String id = line[2];
+            String fontColor = line[3];
+            String integerLenght = line[4];
+            String decimalLenght = line[5];
+            String row = line[6];
+            String column = line[7];
             toFill = VariableConfiguratorSerialDataParser.getNewInstance().createVariable(fontColor.charAt(0));
             toFill.setId(Integer.valueOf(id).intValue());
             toFill.setyPos(Integer.valueOf(row).intValue());
@@ -92,12 +96,18 @@ public class SerialDataFacade {
             ((Variable)toFill).setDecimalLenght(Integer.valueOf(decimalLenght).intValue());
         }
         else if (command.equals("v")){
+            String id = line[2];
+            String value = line[3];
             toFill = Variable.getInstance();
-            toFill.setId(Integer.valueOf(id).intValue());
+            toFill.setId(Integer.valueOf(id).intValue()).setValue(value);
             // TODO: complete with value
         }
         else if(command.equals("t")){
-            // TODO: complete with text
+            TextSerialDataParser sdp = TextSerialDataParser.getNewInstance();
+            SerialDataMock serialDataMock = new SerialDataMock();
+
+            byte[] data = serialDataMock.prepareDataToTransmitAText(line[2].charAt(0), line[3], line[4], line[5]);
+            toFill = sdp.readByteArray(data);
         }
         else if(command.equals("C")){
             // TODO: complete with clear display

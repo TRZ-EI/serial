@@ -77,6 +77,33 @@ public class SerialDataMock {
         }
         return this.addCRCValueAndEndOfRow(buffer);
     }
+    public byte[] prepareDataToTransmitAText(char fontColor, String row, String column, String text){
+        List<Byte> buffer = new ArrayList<Byte>();
+        buffer.add(Byte.valueOf("5E", 16));
+        buffer.add(Byte.valueOf((byte)'t'));
+
+        /*fontColor*/ buffer.add(new Byte((byte)fontColor));
+
+        /*row*/
+        row = this.prependWithAsciiZeroIfNecessary(row);
+        for (int i = 0; i < row.length(); i ++) {
+            buffer.add(Byte.valueOf(this.convertADigitCharToHex(row.charAt(i))));
+        }
+        /*colum*/
+        column = this.prependWithAsciiZeroIfNecessary(column);
+        for (int i = 0; i < column.length(); i ++) {
+            buffer.add(Byte.valueOf(this.convertADigitCharToHex(column.charAt(i))));
+        }
+        this.addTextToByteBuffer(buffer, text);
+        return this.addCRCValueAndEndOfRow(buffer);
+    }
+
+    private void addTextToByteBuffer(List<Byte> buffer, String text) {
+        char[] charArray = text.toCharArray();
+        for (int i = 0; i < charArray.length; i ++){
+            buffer.add(this.convertADigitCharToHex(charArray[i]));
+        }
+    }
 
     private byte[] addCRCValueAndEndOfRow(List<Byte> buffer) {
         byte[] crc = this.calculateCRC(this.prepareByteArray(buffer));

@@ -68,7 +68,7 @@ public class DataDisplayManagerTest {
         int columnIndex = 0;
         long newValue = 180438L;
         Cell existingCell = Variable.getInstanceByFontAndColor(font, color).setIntegerLenght(2).setDecimalLenght(2).setValue(Long.toString(180438)).setxPos(columnIndex).setyPos(rowIndex).setId(0);
-        this.sut.AddOrUpdateCellInMatrix(existingCell);
+        this.sut.addOrUpdateCellInMatrix(existingCell);
         Cell expectedValue = this.sut.getOrCreateARow(rowIndex).getCellByColumnIndex(columnIndex);
         assertEquals(expectedValue, existingCell);
         assertTrue(newValue == Long.valueOf(expectedValue.getValue()));
@@ -83,7 +83,7 @@ public class DataDisplayManagerTest {
         int rowIndex = 0;
         int columnIndex = 25;
         Cell newCell = Variable.getInstanceByFontAndColor(font, color).setIntegerLenght(2).setDecimalLenght(2).setValue(Long.toString(180438)).setxPos(columnIndex).setyPos(rowIndex).setId(0);
-        this.sut.AddOrUpdateCellInMatrix(newCell);
+        this.sut.addOrUpdateCellInMatrix(newCell);
         Cell expectedValue = this.sut.getOrCreateARow(rowIndex).addOrUpdateACell(newCell);
         assertEquals(expectedValue, newCell);
     }
@@ -102,10 +102,11 @@ public class DataDisplayManagerTest {
     }
 
     private CellsRow createDataForTest(int rowIndex) {
-        CellsRow retValue = CellsRow.getEmptyInstance();
+        CellsRow retValue = CellsRow.getEmptyInstance().setyPos(rowIndex);
+        int baseId = rowIndex * 10;
         int baseValue = 1000;
         for (int x = 0; x < 10; x ++){
-            retValue.addOrUpdateACell(Variable.getInstanceByFontAndColor(font, color).setIntegerLenght(2).setDecimalLenght(2).setValue(Long.toString(baseValue + x)).setxPos(x).setyPos(rowIndex).setId(x));
+            retValue.addOrUpdateACell(Variable.getInstanceByFontAndColor(font, color).setIntegerLenght(2).setDecimalLenght(2).setValue(Long.toString(baseValue + x)).setxPos(x).setyPos(rowIndex).setId(x + baseId));
         }
         return retValue;
     }

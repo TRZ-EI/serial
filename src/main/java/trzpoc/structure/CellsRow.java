@@ -33,13 +33,14 @@ public class CellsRow {
     }
     // TO DO: TEST AND VERIFY
     public int getMaxHeight(){
+        int defaultHeight = 20; // pixels
         List<Integer> heights = new ArrayList<>();
         Iterator<Cell> iterator = this.cells.iterator();
         while(iterator.hasNext()){
             heights.add(iterator.next().getHeight());
         }
         Collections.sort(heights);
-        return heights.get(heights.size() - 1);
+        return (heights.size() > 0)? heights.get(heights.size() - 1):defaultHeight;
     }
 
     public Cell addOrUpdateACell(Cell cell){

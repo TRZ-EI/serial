@@ -1,11 +1,9 @@
 package trzpoc.structure.serial;
 
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import trzpoc.structure.Cell;
 import trzpoc.structure.Variable;
 import trzpoc.utils.DataTypesConverter;
+import trzpoc.utils.FontAndColorSelector;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
@@ -45,17 +43,6 @@ public class VariableConfiguratorSerialDataParser implements SerialDataReader {
     private final int eolLenght = 1;
 
 
-    private final char NERO_PICCOLO = 'P';     //0x31
-    private final char ROSSO_PICCOLO = 'Q';
-    private final char VERDE_PICCOLO = 'R';
-    private final char BLU_PICCOLO = 'S';
-
-
-    private final char NERO_GRANDE = '9';  //0x39
-    private final char ROSSO_GRANDE = 'A';
-    private final char VERDE_GRANDE = 'P';
-    private final char BLU_GRANDE = 'C';
-
     private DataTypesConverter converter;
 
     public static VariableConfiguratorSerialDataParser getNewInstance() {
@@ -93,36 +80,8 @@ public class VariableConfiguratorSerialDataParser implements SerialDataReader {
     }
 
     public Variable createVariable(char fc) {
-        Font bigFont = Font.font("Arial", FontWeight.NORMAL, 20);
-        Font smallFont = Font.font("Arial", FontWeight.NORMAL, 16);
-
-        Variable retValue = null;
-        if (fc == NERO_PICCOLO){
-            retValue = Variable.getInstanceByFontAndColor(smallFont, Color.BLACK);
-        }
-        else if (fc == ROSSO_PICCOLO){
-            retValue = Variable.getInstanceByFontAndColor(smallFont, Color.RED);
-        }
-        else if (fc == VERDE_PICCOLO){
-            retValue = Variable.getInstanceByFontAndColor(smallFont, Color.GREEN);
-        }
-        else if (fc == BLU_PICCOLO){
-            retValue = Variable.getInstanceByFontAndColor(smallFont, Color.BLUE);
-        }
-        if (fc == NERO_GRANDE){
-            retValue = Variable.getInstanceByFontAndColor(bigFont, Color.BLACK);
-        }
-        else if (fc == ROSSO_GRANDE){
-            retValue = Variable.getInstanceByFontAndColor(bigFont, Color.RED);
-        }
-        else if (fc == VERDE_GRANDE){
-            retValue = Variable.getInstanceByFontAndColor(bigFont, Color.GREEN);
-        }
-        else if (fc == BLU_GRANDE){
-            retValue = Variable.getInstanceByFontAndColor(bigFont, Color.BLUE);
-        }
-        return retValue;
-
+        FontAndColorSelector fcs = FontAndColorSelector.getNewInstance();
+        return Variable.getInstanceByFontAndColor(fcs.selectFont(fc), fcs.selectColor(fc));
     }
 
     private VariableConfiguratorSerialDataParser(){

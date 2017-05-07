@@ -71,7 +71,7 @@ public class SerialDataFacadeTest {
             VariableConfiguratorSerialDataParser dp = VariableConfiguratorSerialDataParser.getNewInstance();
             v = dp.createVariable('C');
             v.setxPos(column).setyPos(rowIndex).setId(column);
-            retValue.AddOrUpdateCellInMatrix(v);
+            retValue.addOrUpdateCellInMatrix(v);
         }
         
         return retValue;

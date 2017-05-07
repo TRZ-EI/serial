@@ -49,10 +49,49 @@ public class DataDisplayManager {
     }
 
 
-    public void AddOrUpdateCellInMatrix(Cell dataParsed) {
-        int rowIndex = dataParsed.getyPos();
-        CellsRow row = this.getOrCreateARow(rowIndex);
-        row.addOrUpdateACell(dataParsed);
+    public void addOrUpdateCellInMatrix(Cell dataParsed) {
+        Cell c = null;
+        if (dataParsed instanceof Variable){
+            c = this.findCellById(dataParsed.getId());
+        }else{
+            c = this.findCellByPosition(dataParsed);
+        }
+        if (c != null){
+            c.setValue(dataParsed.getValue());
+        }else{
+            int rowIndex = dataParsed.getyPos();
+            CellsRow row = this.getOrCreateARow(rowIndex);
+            row.addOrUpdateACell(dataParsed);
+        }
+    }
+    private Cell findCellByPosition(Cell toFind) {
+        Cell retValue = null, tempValue = null;
+        for (int rowIndex = 0; rowIndex < this.getNumberOfRows(); rowIndex ++){
+            CellsRow aRow = this.returnRow(rowIndex);
+            for (int columnIndex = 0; columnIndex < aRow.getCellsCount(); columnIndex ++){
+                tempValue = aRow.getCellByColumnIndex(columnIndex);
+                if (toFind.equals(tempValue)){
+                    retValue = tempValue;
+                    break;
+                }
+            }
+        }
+        return retValue;
+    }
+
+    private Cell findCellById(int id) {
+        Cell retValue = null, tempValue = null;
+        for (int rowIndex = 0; rowIndex < this.getNumberOfRows(); rowIndex ++){
+            CellsRow aRow = this.returnRow(rowIndex);
+            for (int columnIndex = 0; columnIndex < aRow.getCellsCount(); columnIndex ++){
+                tempValue = aRow.getCellByColumnIndex(columnIndex);
+                if (tempValue.getId() == id){
+                    retValue = tempValue;
+                    break;
+                }
+            }
+        }
+        return retValue;
     }
 
     public ArrayList<CellsRow> getRows() {

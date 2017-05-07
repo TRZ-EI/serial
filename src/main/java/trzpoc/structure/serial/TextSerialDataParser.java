@@ -1,6 +1,12 @@
 package trzpoc.structure.serial;
 
 import trzpoc.structure.Cell;
+import trzpoc.structure.Text;
+import trzpoc.utils.DataTypesConverter;
+import trzpoc.utils.FontAndColorSelector;
+
+import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 
 /**
  * Created with IntelliJ IDEA.
@@ -31,7 +37,42 @@ public class TextSerialDataParser implements SerialDataReader{
 
     private final int eolLenght = 1;
 
-    public Cell readByteArray(byte[] data) {
-        return null;
+    private DataTypesConverter converter;
+
+    public static TextSerialDataParser getNewInstance(){
+        return new TextSerialDataParser();
+    }
+    private TextSerialDataParser(){
+        this.converter = DataTypesConverter.getNewInstance();
+    }
+
+
+    public Cell readByteArray(byte[] data) throws UnsupportedEncodingException {
+        byte newLine = 0x0A;
+
+
+        byte fc = Arrays.copyOfRange(data, this.fontColorPos, this.fontColorPos + this.fontColorLenght)[0];
+        char selectorForFontAndColor = this.converter.byteToChar(fc);
+
+        byte[] rowInBytes = Arrays.copyOfRange(data, this.rowPos, this.rowPos + this.rowLenght);
+        int rowIndex = this.converter.bytesToInt(rowInBytes);
+
+        byte[] columnInBytes = Arrays.copyOfRange(data, this.colPos, this.colPos + this.colLenght);
+        int columnIndex = this.converter.bytesToInt(columnInBytes);
+
+        int newLineIndex = data.length - 1;
+        int lastTextCharIndex = newLineIndex - 4;
+        int firstTextCharIndex = 7;
+
+        byte[] textInBytes = Arrays.copyOfRange(data, firstTextCharIndex, lastTextCharIndex);
+
+        String text = this.converter.bytesToString(textInBytes);
+        FontAndColorSelector fcs = FontAndColorSelector.getNewInstance();
+        Text textCell = Text.getNewInstanceByFontAndColor(fcs.selectFont(selectorForFontAndColor), fcs.selectColor(selectorForFontAndColor));
+        textCell.setValue(text);
+        textCell.setxPos(columnIndex);
+        textCell.setyPos(rowIndex);
+
+        return textCell;
     }
 }
