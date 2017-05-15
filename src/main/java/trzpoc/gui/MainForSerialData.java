@@ -20,6 +20,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
@@ -154,7 +155,6 @@ public class MainForSerialData extends Application {
 
                     for (int row = 0; row < dm.getNumberOfRows(); row ++){
                         CellsRow cellsRow = dm.getOrCreateARow(row);
-                        maxHeight += cellsRow.getMaxHeight();
                         int maxWidth = 0;
                         for(int cellIndex = 0; cellIndex < cellsRow.getCellsCount(); cellIndex ++){
                             Cell c = cellsRow.getCellByColumnIndex(cellIndex);
@@ -166,9 +166,20 @@ public class MainForSerialData extends Application {
                             }else{
                                 textToFill = c.getValue();
                             }
-                            gc.fillText(textToFill, c.getxPos() + maxWidth, c.getyPos() + maxHeight);
-                            maxWidth += c.getWidth();
+                            if (textToFill.length() > 0) {
+                                gc.fillText(textToFill, c.getxPos() + maxWidth, c.getyPos() + maxHeight);
+                                
+
+                                gc.setStroke(Color.BLACK);
+                                gc.setLineWidth(1);
+                                gc.strokeRect(c.getxPos()+ maxWidth, c.getyPos() + (maxHeight - c.getHeight()), c.getWidth(), c.getHeight());
+                            }
+
+
+                            maxWidth += c.getWidth() + c.getxPos();
                         }
+                        maxHeight += cellsRow.getMaxHeight();
+
                     }
 
 

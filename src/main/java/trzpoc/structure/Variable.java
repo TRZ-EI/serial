@@ -36,6 +36,11 @@ public class Variable extends Cell {
         return Long.toString(this.value, 10);
     }
 
+    public int getWidth() {
+
+        return TextMetricCalculator.getInstance().calculateWidth(this.printFormattedValue(), this.getFont());
+    }
+
     public String printFormattedValue() {
         String retValue = null;
 
