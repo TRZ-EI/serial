@@ -41,14 +41,23 @@ import java.util.Date;
 
 public class MainForSerialData extends Application {
 
+    protected Group root;
+    protected Stage primaryStage;
+    private String debug;
 
     @Override
     public void start(Stage primaryStage) {
-        primaryStage.setTitle("JavaFX Graphics Text for TRZ");
+        Parameters params = this.getParameters();
+        this.debug = (String)params.getRaw().get(0);
 
-        Group root = new Group();
+
+
+        this.primaryStage = primaryStage;
+        this.primaryStage.setTitle("JavaFX Graphics Text for TRZ");
+
+        this.root = new Group();
         Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
+        this.primaryStage.setScene(scene);
 
         //this.setVisualBounds(primaryStage);
         this.addCombinationKeyAcceleratorToExit(primaryStage);
@@ -75,7 +84,7 @@ public class MainForSerialData extends Application {
         this.addTouchEventToStart(canvas);
         this.addMouseEventToStart(canvas);
         this.calculateRows(canvas);
-        primaryStage.show();
+        this.primaryStage.show();
     }
     private int calculateTextWidthByFont(String text, Font font){
         Text t = new Text(text);
@@ -169,14 +178,15 @@ public class MainForSerialData extends Application {
                             if (textToFill.length() > 0) {
                                 gc.fillText(textToFill, c.getxPos() + maxWidth, c.getyPos() + maxHeight);
                                 
-
-                                gc.setStroke(Color.BLACK);
-                                gc.setLineWidth(1);
-                                gc.strokeRect(c.getxPos()+ maxWidth, c.getyPos() + (maxHeight - c.getHeight()), c.getWidth(), c.getHeight());
+                                if (debug.equalsIgnoreCase("debug")) {
+                                    gc.setStroke(Color.BLACK);
+                                    gc.setLineWidth(1);
+                                    gc.strokeRect(c.getxPos() + maxWidth, c.getyPos() + (maxHeight - c.getHeight()), c.getWidth(), c.getHeight());
+                                }
                             }
 
 
-                            maxWidth += c.getWidth() + c.getxPos();
+                            maxWidth += c.getWidth();
                         }
                         maxHeight += cellsRow.getMaxHeight();
 
@@ -266,6 +276,7 @@ public class MainForSerialData extends Application {
     }
 
     public static void main(String[] args) {
+        args = new String[]{"PROD"};
         launch(args);
     }
 }

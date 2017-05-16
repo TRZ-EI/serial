@@ -4,10 +4,9 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="">
+    <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="Merge branch 'master' of https://github.com/TRZ-EI/serial&#10;&#10;Conflicts:&#10;&#9;src/main/java/trzpoc/structure/DataDisplayManager.java&#10;&#9;src/test/java/trzpoc/structure/serial/SerialDataFacadeTest.java">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.iws" afterPath="$PROJECT_DIR$/serial.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Variable.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Variable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/inputExamples.csv" afterPath="$PROJECT_DIR$/src/main/resources/inputExamples.csv" />
     </list>
     <list id="b4e93cff-d048-4a6f-92cd-4a82a397bf5b" name="New changelist" comment="" />
@@ -28,8 +27,8 @@
       <file leaf-file-name="inputExamples.csv" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/resources/inputExamples.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+            <state relative-caret-position="163">
+              <caret line="35" column="3" lean-forward="true" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
               <folding />
             </state>
           </provider>
@@ -50,7 +49,7 @@
       <file leaf-file-name="Variable.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Variable.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="160">
+            <state relative-caret-position="580">
               <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
               <folding />
             </state>
@@ -60,8 +59,8 @@
       <file leaf-file-name="Cell.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Cell.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="168">
-              <caret line="62" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+            <state relative-caret-position="1100">
+              <caret line="62" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
               <folding>
                 <element signature="e#1598#1599#0" expanded="true" />
                 <element signature="e#1623#1624#0" expanded="true" />
@@ -73,9 +72,13 @@
       <file leaf-file-name="SerialDataFacadeTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/SerialDataFacadeTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="640">
+            <state relative-caret-position="600">
               <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-              <folding />
+              <folding>
+                <element signature="imports" expanded="false" />
+                <element signature="e#574#575#0" expanded="false" />
+                <element signature="e#637#638#0" expanded="false" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -86,6 +89,7 @@
             <state relative-caret-position="400">
               <caret line="27" column="40" lean-forward="false" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
               <folding>
+                <element signature="imports" expanded="false" />
                 <element signature="e#1002#1003#0" expanded="false" />
                 <element signature="e#1051#1052#0" expanded="false" />
                 <element signature="e#1094#1095#0" expanded="false" />
@@ -98,7 +102,7 @@
       <file leaf-file-name="SerialDataFacade.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="78">
+            <state relative-caret-position="1200">
               <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -112,42 +116,7 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="1720">
               <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-              <folding>
-                <element signature="e#270#271#0" expanded="false" />
-                <element signature="e#317#318#0" expanded="false" />
-                <element signature="e#351#352#0" expanded="false" />
-                <element signature="e#404#405#0" expanded="false" />
-                <element signature="e#1298#1299#0" expanded="false" />
-                <element signature="e#1337#1338#0" expanded="false" />
-                <element signature="e#3050#3051#0" expanded="false" />
-                <element signature="e#3077#3078#0" expanded="false" />
-                <element signature="e#3130#3131#0" expanded="false" />
-                <element signature="e#3162#3163#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="CellsRow.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/CellsRow.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="780">
-              <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-              <folding>
-                <element signature="imports" expanded="false" />
-                <element signature="e#371#372#0" expanded="false" />
-                <element signature="e#408#409#0" expanded="false" />
-                <element signature="e#433#434#0" expanded="false" />
-                <element signature="e#483#484#0" expanded="false" />
-                <element signature="e#1333#1334#0" expanded="false" />
-                <element signature="e#1396#1397#0" expanded="false" />
-                <element signature="e#2417#2418#0" expanded="false" />
-                <element signature="e#2457#2458#0" expanded="false" />
-                <element signature="e#2484#2485#0" expanded="false" />
-                <element signature="e#2511#2512#0" expanded="false" />
-                <element signature="e#2639#2640#0" expanded="false" />
-                <element signature="e#2667#2668#0" expanded="false" />
-              </folding>
+              <folding />
             </state>
           </provider>
         </entry>
@@ -155,8 +124,8 @@
       <file leaf-file-name="MainForSerialData.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="589">
-              <caret line="178" column="66" lean-forward="false" selection-start-line="178" selection-start-column="66" selection-end-line="178" selection-end-column="66" />
+            <state relative-caret-position="377">
+              <caret line="278" column="33" lean-forward="false" selection-start-line="278" selection-start-column="33" selection-end-line="278" selection-end-column="33" />
               <folding />
             </state>
           </provider>
@@ -190,9 +159,9 @@
       <find>//</find>
       <find>smallFontsChars</find>
       <find>+++++++++++++</find>
-      <find>#^</find>
-      <find>maxHeight</find>
       <find>^</find>
+      <find>maxHeight</find>
+      <find>#^</find>
     </findStrings>
     <replaceStrings>
       <replace>},</replace>
@@ -202,8 +171,8 @@
       <replace>, //</replace>
       <replace>retValue</replace>
       <replace />
-      <replace>^</replace>
       <replace>#^</replace>
+      <replace>^</replace>
     </replaceStrings>
   </component>
   <component name="Git.Settings">
@@ -267,8 +236,8 @@
         <option value="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/SerialDataFacadeTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/DataDisplayManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/Variable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java" />
         <option value="$PROJECT_DIR$/src/main/resources/inputExamples.csv" />
+        <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java" />
       </list>
     </option>
   </component>
@@ -324,7 +293,7 @@
   <component name="ProjectFrameBounds">
     <option name="x" value="59" />
     <option name="y" value="24" />
-    <option name="width" value="1305" />
+    <option name="width" value="1303" />
     <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -344,6 +313,7 @@
     </navigator>
     <panes>
       <pane id="Scratches" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -728,7 +698,6 @@
           </PATH>
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -1145,7 +1114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1494829527415</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Merge branch 'master' of https://github.com/TRZ-EI/serial&#10;&#10;Conflicts:&#10;&#9;src/main/java/trzpoc/structure/DataDisplayManager.java&#10;&#9;src/test/java/trzpoc/structure/serial/SerialDataFacadeTest.java">
+      <created>1494829738793</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1494829738793</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1190,25 +1166,25 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="59" y="24" width="1305" height="744" extended-state="4" />
+    <frame x="59" y="24" width="1303" height="744" extended-state="4" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32198143" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Enso" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30265212" sideWeight="0.50574714" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.30265212" sideWeight="0.50574714" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30265212" sideWeight="0.49425286" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.30265212" sideWeight="0.49425286" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.70743036" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.26743296" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.267076" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="SonarQube" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980174" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5275081" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5273011" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1219,34 +1195,6 @@
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32817337" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
-    <layout-to-restore>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Enso" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.28482974" sideWeight="0.50277555" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298969" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980174" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Inspection Results" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="SonarQube" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980174" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.5275081" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Code Iris" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32198143" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.31391585" sideWeight="0.49722442" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.70743036" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.27720413" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32817337" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="true" content_ui="tabs" />
-    </layout-to-restore>
   </component>
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
@@ -1320,12 +1268,24 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java</url>
-          <line>153</line>
+          <line>162</line>
           <properties />
           <option name="timeStamp" value="85" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java</url>
+          <line>180</line>
+          <properties />
+          <option name="timeStamp" value="86" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java</url>
+          <line>49</line>
+          <properties />
+          <option name="timeStamp" value="87" />
+        </line-breakpoint>
       </breakpoints>
-      <option name="time" value="86" />
+      <option name="time" value="88" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1338,13 +1298,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/example.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="840">
-          <caret line="68" column="0" lean-forward="false" selection-start-line="51" selection-start-column="0" selection-end-line="68" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/readme.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="18">
@@ -1560,7 +1513,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-24">
           <caret line="45" column="47" lean-forward="true" selection-start-line="45" selection-start-column="4" selection-end-line="45" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1599,9 +1551,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1300">
           <caret line="75" column="0" lean-forward="false" selection-start-line="75" selection-start-column="0" selection-end-line="75" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1609,21 +1558,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="780">
           <caret line="46" column="0" lean-forward="false" selection-start-line="46" selection-start-column="0" selection-end-line="46" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#371#372#0" expanded="false" />
-            <element signature="e#408#409#0" expanded="false" />
-            <element signature="e#433#434#0" expanded="false" />
-            <element signature="e#483#484#0" expanded="false" />
-            <element signature="e#1333#1334#0" expanded="false" />
-            <element signature="e#1396#1397#0" expanded="false" />
-            <element signature="e#2417#2418#0" expanded="false" />
-            <element signature="e#2457#2458#0" expanded="false" />
-            <element signature="e#2484#2485#0" expanded="false" />
-            <element signature="e#2511#2512#0" expanded="false" />
-            <element signature="e#2639#2640#0" expanded="false" />
-            <element signature="e#2667#2668#0" expanded="false" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1632,6 +1567,7 @@
         <state relative-caret-position="400">
           <caret line="27" column="40" lean-forward="false" selection-start-line="27" selection-start-column="40" selection-end-line="27" selection-end-column="40" />
           <folding>
+            <element signature="imports" expanded="false" />
             <element signature="e#1002#1003#0" expanded="false" />
             <element signature="e#1051#1052#0" expanded="false" />
             <element signature="e#1094#1095#0" expanded="false" />
@@ -1650,30 +1586,15 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/DataDisplayManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1720">
-          <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
-          <folding>
-            <element signature="e#270#271#0" expanded="false" />
-            <element signature="e#317#318#0" expanded="false" />
-            <element signature="e#351#352#0" expanded="false" />
-            <element signature="e#404#405#0" expanded="false" />
-            <element signature="e#1298#1299#0" expanded="false" />
-            <element signature="e#1337#1338#0" expanded="false" />
-            <element signature="e#3050#3051#0" expanded="false" />
-            <element signature="e#3077#3078#0" expanded="false" />
-            <element signature="e#3130#3131#0" expanded="false" />
-            <element signature="e#3162#3163#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/SerialDataFacadeTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="640">
+        <state relative-caret-position="600">
           <caret line="42" column="0" lean-forward="false" selection-start-line="42" selection-start-column="0" selection-end-line="42" selection-end-column="0" />
-          <folding />
+          <folding>
+            <element signature="imports" expanded="false" />
+            <element signature="e#574#575#0" expanded="false" />
+            <element signature="e#637#638#0" expanded="false" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1681,14 +1602,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="100">
           <caret line="5" column="13" lean-forward="true" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Cell.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="168">
-          <caret line="62" column="0" lean-forward="true" selection-start-line="58" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
+        <state relative-caret-position="1100">
+          <caret line="62" column="0" lean-forward="false" selection-start-line="58" selection-start-column="0" selection-end-line="62" selection-end-column="0" />
           <folding>
             <element signature="e#1598#1599#0" expanded="true" />
             <element signature="e#1623#1624#0" expanded="true" />
@@ -1698,7 +1618,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Variable.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="160">
+        <state relative-caret-position="580">
           <caret line="38" column="0" lean-forward="false" selection-start-line="38" selection-start-column="0" selection-end-line="38" selection-end-column="0" />
           <folding />
         </state>
@@ -1706,7 +1626,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
+        <state relative-caret-position="1200">
           <caret line="72" column="0" lean-forward="false" selection-start-line="72" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1714,18 +1634,34 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/DataDisplayManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1720">
+          <caret line="94" column="0" lean-forward="false" selection-start-line="94" selection-start-column="0" selection-end-line="94" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/inputExamples.csv">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="31" column="8" lean-forward="false" selection-start-line="31" selection-start-column="8" selection-end-line="31" selection-end-column="8" />
+        <state relative-caret-position="163">
+          <caret line="35" column="3" lean-forward="true" selection-start-line="35" selection-start-column="3" selection-end-line="35" selection-end-column="3" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/applications/jvm64/jdk1.8.0_122/javafx-src.zip!/javafx/application/Application.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="864">
+          <caret line="222" column="23" lean-forward="false" selection-start-line="222" selection-start-column="23" selection-end-line="222" selection-end-column="23" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="589">
-          <caret line="178" column="66" lean-forward="false" selection-start-line="178" selection-start-column="66" selection-end-line="178" selection-end-column="66" />
+        <state relative-caret-position="377">
+          <caret line="278" column="33" lean-forward="false" selection-start-line="278" selection-start-column="33" selection-end-line="278" selection-end-column="33" />
           <folding />
         </state>
       </provider>
