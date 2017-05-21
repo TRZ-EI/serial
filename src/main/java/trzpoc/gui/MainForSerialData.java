@@ -7,10 +7,15 @@ package trzpoc.gui;
  * Time: 16.03
  */
 
+import eu.hansolo.medusa.Gauge;
+import eu.hansolo.medusa.GaugeBuilder;
+import eu.hansolo.medusa.Section;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.geometry.Bounds;
+import javafx.geometry.Orientation;
+import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -20,6 +25,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
@@ -64,7 +70,7 @@ public class MainForSerialData extends Application {
 
 
 
-        Canvas canvas = new Canvas(800, 480);
+        Canvas canvas = new Canvas(800, 240);
 
 
         // TO DO: CREATE A PRIVATE METHOD
@@ -191,6 +197,28 @@ public class MainForSerialData extends Application {
                         maxHeight += cellsRow.getMaxHeight();
 
                     }
+/* *********************************************************************/
+                    Gauge gauge21 = GaugeBuilder.create()
+                            .skinType(Gauge.SkinType.LINEAR)
+                            .title("Linear")
+                            .orientation(Orientation.HORIZONTAL)
+                            .sectionsVisible(true)
+                            .foregroundBaseColor(Color.GRAY)
+                            .barColor(Color.LIGHTSKYBLUE)
+                            .sections(new Section(0, 20, Color.BLUE),
+                                    new Section(80, 100, Color.RED))
+                            .build();
+                            VBox controls = new VBox();
+                            
+                            controls.setSpacing(5);
+                            controls.setAlignment(Pos.CENTER);
+                            controls.getChildren().addAll(canvas, gauge21);
+                            root.getChildren().add(controls);
+                            primaryStage.show();
+
+
+
+/*******/
 
 
                 } catch (IOException e) {
