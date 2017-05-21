@@ -3,11 +3,11 @@ package trzpoc.utils;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import trzpoc.structure.TextMetricCalculator;
 
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,6 +16,8 @@ import java.util.Set;
  * Time: 11.06
  */
 public class FontAndColorSelector {
+
+    private final String RESOURCE = "fonts.properties";
 
     private final char NERO_PICCOLO = 'P';     //0x31
     private final char ROSSO_PICCOLO = 'Q';
@@ -28,13 +30,17 @@ public class FontAndColorSelector {
     private final char VERDE_GRANDE = 'G';
     private final char BLU_GRANDE = 'C';
 
-    private Font bigFont = Font.font("Arial", FontWeight.NORMAL, 20);
-    private Font smallFont = Font.font("Arial", FontWeight.NORMAL, 16);
-    
+    private final char CHAR_FOR_METRIC = 'W'; // char to measure tipical dimensions
+
+
+    private Font bigFont,smallFont;
+
     private Set<Character> smallFontsChars;
-    private Map<Character, Color> colorMap; 
+    private Map<Character, Color> colorMap;
+    private Properties properties;
 
     public static FontAndColorSelector getNewInstance(){
+
         return new FontAndColorSelector();
     }
     public Font selectFont(char selector){
@@ -45,8 +51,18 @@ public class FontAndColorSelector {
         return (c!= null)? c: Color.BEIGE;
     }
     private FontAndColorSelector(){
-        this.smallFontsChars = this.fillDataForFonts();
-        this.colorMap = this.fillDataForColors();
+        try {
+            this.smallFontsChars = this.fillDataForFonts();
+            this.colorMap = this.fillDataForColors();
+            InputStream is = this.getClass().getClassLoader().getResourceAsStream(RESOURCE);
+            this.properties = new Properties();
+            this.properties.load(is);
+            is.close();
+            this.smallFont = this.loadSmallFont();
+            this.bigFont = this.loadBigFont();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     private Map<Character,Color> fillDataForColors() {
@@ -72,6 +88,38 @@ public class FontAndColorSelector {
         retValue.add(VERDE_PICCOLO);
         retValue.add(BLU_PICCOLO);
         return retValue;
+    }
+    private Font loadSmallFont(){
+        String font = this.properties.getProperty(FontProperties.SMALL_FONT.name());
+        String size = this.properties.getProperty(FontProperties.SMALL_SIZE.name());
+        String weight = this.properties.getProperty(FontProperties.SMALL_FONT_WEIGHT.name());
+        return Font.font(font, FontWeight.findByName(weight), Integer.parseInt(size));
+    }
+    private Font loadBigFont(){
+        String font = this.properties.getProperty(FontProperties.BIG_FONT.name());
+        String size = this.properties.getProperty(FontProperties.BIG_SIZE.name());
+        String weight = this.properties.getProperty(FontProperties.BIG_FONT_WEIGHT.name());
+        return Font.font(font, FontWeight.findByName(weight), Integer.parseInt(size));
+    }
+
+    public int getWidthForSmallFont(String w) {
+        return TextMetricCalculator.getInstance().calculateWidth(w, this.smallFont);
+   }
+
+    public int getWidthForBigFont(String w) {
+        return TextMetricCalculator.getInstance().calculateWidth(w, this.bigFont);
+    }
+
+    public int getHeightForSmallFont(String w) {
+        return TextMetricCalculator.getInstance().calculateHeight(w, this.smallFont);
+    }
+
+    public int getHeightForBigFont(String w) {
+        return TextMetricCalculator.getInstance().calculateHeight(w, this.bigFont);
+    }
+
+    private enum FontProperties{
+        SMALL_FONT,SMALL_FONT_WEIGHT,SMALL_SIZE,BIG_FONT,BIG_FONT_WEIGHT,BIG_SIZE;
     }
 
 

@@ -3,9 +3,15 @@ package trzpoc.utils;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import trzpoc.structure.TextMetricCalculator;
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
@@ -36,6 +42,8 @@ public class FontAndColorSelectorTest {
     private Font bigFont;
     private Font smallFont;
 
+    private Properties p;
+
     @DataProvider
     private Object[][] dataToTestForColor(){
         return new Object[][]{
@@ -62,33 +70,74 @@ public class FontAndColorSelectorTest {
             {VERDE_GRANDE, this.bigFont},
         };
     }
-    @BeforeTest
-    private void createNewInstance(){
-        this.sut = FontAndColorSelector.getNewInstance();
+    @BeforeClass
+    private void prepareFontsForTest(){
+        try {
+            p = new Properties();
+            InputStream is = this.getClass().getClassLoader().getResourceAsStream("fonts.properties");
+            p.load(is);
+            is.close();
+            this.smallFont = this.loadSmallFont();
+            this.bigFont = this.loadBigFont();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private Font loadBigFont() {
+        String font = this.p.getProperty(FontProperties.BIG_FONT.name());
+        String weight = this.p.getProperty(FontProperties.BIG_FONT_WEIGHT.name());
+        String size = this.p.getProperty(FontProperties.BIG_SIZE.name());
+        return Font.font(font, FontWeight.findByName(weight), Integer.parseInt(size));
+    }
+    private Font loadSmallFont() {
+        String font = this.p.getProperty(FontProperties.SMALL_FONT.name());
+        String weight = this.p.getProperty(FontProperties.SMALL_FONT_WEIGHT.name());
+        String size = this.p.getProperty(FontProperties.SMALL_SIZE.name());
+        return Font.font(font, FontWeight.findByName(weight), Integer.parseInt(size));
     }
 
     @BeforeTest
-    private void seutp(){
-        bigFont = Font.font("Arial", FontWeight.NORMAL, 20);
-        smallFont = Font.font("Arial", FontWeight.NORMAL, 16);
-
+    private void createNewInstance(){
+        this.sut = FontAndColorSelector.getNewInstance();
     }
 
     @Test
     public void testGetNewInstance() throws Exception {
         assertNotNull(this.sut);
     }
-
     @Test(dataProvider = "dataToTestForFont")
     public void testSelectFont(Character selector, Font expectedValue) throws Exception {
         Font actualValue = this.sut.selectFont(selector);
         assertEquals(actualValue, expectedValue);
     }
-
     @Test(dataProvider = "dataToTestForColor")
     public void testSelectColor(Character selector, Color expectedValue) throws Exception {
         Color actualValue = this.sut.selectColor(selector);
         assertEquals(actualValue, expectedValue);
+    }
+    @Test
+    public void testGetWidthForSmallFont(){
+        int width = TextMetricCalculator.getInstance().calculateWidth("W", this.smallFont);
+        assertEquals(width, this.sut.getWidthForSmallFont("W"));
+    }
+    @Test
+    public void testGetWidthForBigFont(){
+        int width = TextMetricCalculator.getInstance().calculateWidth("W", this.bigFont);
+        assertEquals(width, this.sut.getWidthForBigFont("W"));
+    }
+    @Test
+    public void testGetHeightForSmallFont(){
+        int width = TextMetricCalculator.getInstance().calculateHeight("W", this.smallFont);
+        assertEquals(width, this.sut.getHeightForSmallFont("W"));
+    }
+    @Test
+    public void testGetHeightForBigFont(){
+        int width = TextMetricCalculator.getInstance().calculateHeight("W", this.bigFont);
+        assertEquals(width, this.sut.getHeightForBigFont("W"));
+    }
+    private enum FontProperties{
+        SMALL_FONT,SMALL_FONT_WEIGHT,SMALL_SIZE,BIG_FONT,BIG_FONT_WEIGHT,BIG_SIZE;
     }
 
 }
