@@ -15,6 +15,9 @@ public class CellsRow {
     private List<Cell> cells;
     private int maxWidth;
     private int yPos;
+    
+
+
     public static CellsRow getEmptyInstance() {
         return new CellsRow();
     }

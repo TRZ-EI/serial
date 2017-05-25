@@ -74,28 +74,6 @@ public class BCDManager {
 
         return sb.toString();
     }
-/*
-    public static void main(String[] args) {
-        System.out.println("Testing DecimalToBCD:");
-        BCD.testForValue(1L,        "00000001");
-        BCD.testForValue(11L,       "00010001");
-        BCD.testForValue(111L,      "0000000100010001");
-        BCD.testForValue(1111L,     "0001000100010001");
-        BCD.testForValue(11111L,    "000000010001000100010001");
-        BCD.testForValue(42,        "01000010");
-        BCD.testForValue(112233L,   "000100010010001000110011");
-        BCD.testForValue(12345L,    "000000010010001101000101");
-
-        System.out.println("\nTesting two way conversion using DecimalToBCD and back using BCDToDecimal:");
-        BCD.testForValue(1L);
-        BCD.testForValue(11L);
-        BCD.testForValue(111L);
-        BCD.testForValue(1111L);
-        BCD.testForValue(11111L);
-        BCD.testForValue(12983283L);
-        BCD.testForValue(9832098349L);
-    }
-*/
     private void testForValue(long val, String expected) {
         String binaryString = this.byteArrayToBinaryString(this.DecimalToBCD(val));
         System.out.print(String.format("Testing: %10d -> %30s %4s\n", val, binaryString, binaryString.equals(expected) ? "[OK]" : "[FAIL]"));

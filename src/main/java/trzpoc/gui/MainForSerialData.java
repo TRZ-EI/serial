@@ -7,15 +7,9 @@ package trzpoc.gui;
  * Time: 16.03
  */
 
-import eu.hansolo.medusa.Gauge;
-import eu.hansolo.medusa.GaugeBuilder;
-import eu.hansolo.medusa.Section;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
-import javafx.geometry.Bounds;
-import javafx.geometry.Orientation;
-import javafx.geometry.Pos;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -25,11 +19,7 @@ import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
-import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
-import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import trzpoc.gui.dataProvider.Label;
@@ -39,6 +29,7 @@ import trzpoc.structure.CellsRow;
 import trzpoc.structure.DataDisplayManager;
 import trzpoc.structure.Variable;
 import trzpoc.structure.serial.SerialDataFacade;
+import trzpoc.utils.FontAndColorSelector;
 
 import java.io.IOException;
 import java.util.Date;
@@ -64,16 +55,11 @@ public class MainForSerialData extends Application {
         this.root = new Group();
         Scene scene = new Scene(root);
         this.primaryStage.setScene(scene);
-
-        //this.setVisualBounds(primaryStage);
         this.addCombinationKeyAcceleratorToExit(primaryStage);
+        Canvas canvas = new Canvas(800, 480);
 
 
-
-        Canvas canvas = new Canvas(800, 240);
-
-
-        // TO DO: CREATE A PRIVATE METHOD
+        // TODO: CREATE A PRIVATE METHOD
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setContent(canvas);
         scrollPane.setPrefSize(800, 480);
@@ -85,36 +71,12 @@ public class MainForSerialData extends Application {
                                    
 
 
-        //root.getChildren().add(canvas);
         root.getChildren().add(scrollPane);
         this.addTouchEventToStart(canvas);
         this.addMouseEventToStart(canvas);
-        this.calculateRows(canvas);
         this.primaryStage.show();
     }
-    private int calculateTextWidthByFont(String text, Font font){
-        Text t = new Text(text);
-        t.setFont(font);
-        return Double.valueOf(t.getLayoutBounds().getWidth()).intValue();
-    }
 
-    private int calculateRows(Canvas canvas) {
-        Text text = new Text("PROVA N 1                  Prova.         172.9 sec");
-        //Font font = Font.font("Arial", FontWeight.BOLD, 72);
-        Font font = Font.font("Arial", FontWeight.BOLD, 36);
-        text.setFont(font);
-
-        Bounds b = text.getLayoutBounds();
-
-        Double h = b.getHeight();
-        double rows = canvas.getHeight() / h;
-        System.out.println("canvas height: " + Double.valueOf(canvas.getHeight()).intValue());
-        System.out.println("text height: " + Double.valueOf(b.getHeight()).intValue());
-        System.out.println("text width: " + Double.valueOf(b.getWidth()).intValue());
-        System.out.println("rows: " + Double.valueOf(canvas.getHeight()).intValue() / Double.valueOf(b.getHeight()).intValue());
-        return Double.valueOf(canvas.getHeight()).intValue() / Double.valueOf(b.getHeight()).intValue();
-
-    }
 
     private void addTouchEventToExit(Canvas canvas) {
         canvas.setOnTouchPressed(new EventHandler<TouchEvent>() {
@@ -167,7 +129,7 @@ public class MainForSerialData extends Application {
                     DataDisplayManager dm = sd.fillMatrixWithData(realFileName);
                     GraphicsContext gc = canvas.getGraphicsContext2D();
                     int maxHeight = 0;
-
+                    int width = 0;
                     for (int row = 0; row < dm.getNumberOfRows(); row ++){
                         CellsRow cellsRow = dm.getOrCreateARow(row);
                         int maxWidth = 0;
@@ -182,13 +144,9 @@ public class MainForSerialData extends Application {
                                 textToFill = c.getValue();
                             }
                             if (textToFill.length() > 0) {
-                                gc.fillText(textToFill, c.getxPos() + maxWidth, c.getyPos() + maxHeight);
-                                
-                                if (debug.equalsIgnoreCase("debug")) {
-                                    gc.setStroke(Color.BLACK);
-                                    gc.setLineWidth(1);
-                                    gc.strokeRect(c.getxPos() + maxWidth, c.getyPos() + (maxHeight - c.getHeight()), c.getWidth(), c.getHeight());
-                                }
+                                FontAndColorSelector fcs = FontAndColorSelector.getNewInstance();
+                                width = fcs.getWidthForFont(c.getFont(), "W");
+                                gc.fillText(textToFill, c.getxPos() * width, c.getyPos() + maxHeight);
                             }
 
 
@@ -197,7 +155,16 @@ public class MainForSerialData extends Application {
                         maxHeight += cellsRow.getMaxHeight();
 
                     }
-/* *********************************************************************/
+                    if (debug.equalsIgnoreCase("debug")) {
+                        int yMax = 480;
+                        gc.setStroke(Color.BLUE);
+                        gc.setLineWidth(0.1d);
+                        int rows = 800 / width;
+                        for (int row = 0; row < rows; row++) {
+                            gc.strokeLine(row * width, 0, row * width, yMax);
+                        }
+                    }
+/* *********************************************************************
                     Gauge gauge21 = GaugeBuilder.create()
                             .skinType(Gauge.SkinType.LINEAR)
                             .title("Linear")
@@ -218,56 +185,12 @@ public class MainForSerialData extends Application {
 
 
 
-/*******/
+/****** */
 
 
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-
-/*
-                System.out.println("HI");
-                int y = 0;
-                Font font = Font.font("Arial", FontWeight.NORMAL, 20);
-                int fontSize = Double.valueOf(font.getSize()).intValue();
-                int height = Double.valueOf(canvas.getHeight()).intValue();
-                int rows = height / fontSize;
-                GraphicsContext gc = canvas.getGraphicsContext2D();
-                gc.setFont(font);
-                gc.setFill(Color.RED);
-                String label = "PROVA N 1                  Prova.                       ";
-                gc.setFill(Color.BLACK);
-                gc.fillText(label, 0, y=fontSize);
-                // Variable #1
-                int xPos = calculateTextWidthByFont(label, font);
-                gc.fillText("172.9 sec", xPos, y=fontSize);
-
-                Font small = Font.font("Arial", FontWeight.NORMAL, 16);
-                gc.setFont(small);
-                gc.fillText("Press. P1 ", 0, fontSize * 3);
-                gc.setFill(Color.BLUE);
-                // Variable #1
-                xPos = calculateTextWidthByFont("Press. P1 ", small);
-                gc.fillText("VAR #2 ", xPos, fontSize * 3);
-                gc.setFill(Color.BLACK);
-                xPos += calculateTextWidthByFont("VAR #2 ", small);
-                gc.fillText("BAR", xPos, fontSize * 3);
-*/
-
-
-
-
-                /*
-                SerialReceiverMock sm = SerialReceiverMock.getNewInstance();
-                while(sm.hasMoreMessages()){
-                    Label cb = (Label) sm.getReceivedString();
-                    GraphicsContext gc = canvas.getGraphicsContext2D();
-                    gc.setFill(cb.getColor());
-                    gc.setFont(cb.getFont());
-                    gc.fillText(cb.printFormattedValue(), cb.getX(), cb.getY());
-                }
-                */
                 me.consume();
                 this.writeRows(canvas);
             }
@@ -304,7 +227,7 @@ public class MainForSerialData extends Application {
     }
 
     public static void main(String[] args) {
-        args = new String[]{"PROD"};
+        args = new String[]{"DEBUG"};
         launch(args);
     }
 }

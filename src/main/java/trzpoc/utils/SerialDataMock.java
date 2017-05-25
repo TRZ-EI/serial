@@ -122,11 +122,7 @@ public class SerialDataMock {
     }
 
     private byte[] convertIntToByteArray(int crc) {
-        byte[] bytes = ByteBuffer.allocate(Integer.BYTES).putInt(crc).array();
-        for (byte b : bytes) {
-            System.out.format("0x%x ", b);
-        }
-        return bytes;
+        return ByteBuffer.allocate(Integer.BYTES).putInt(crc).array();
 /*
             return new byte[] {
                     (byte)(crc >>> 24),
@@ -192,11 +188,6 @@ public class SerialDataMock {
 
         byte[] varValue = Arrays.copyOfRange(setVariableInfo, 4, 12);
         long converted = sdm.bytesToLong(varValue);
-
-
-        System.out.println("");
-
-
     }
 
 }

@@ -120,21 +120,36 @@ public class FontAndColorSelectorTest {
     public void testGetWidthForSmallFont(){
         int width = TextMetricCalculator.getInstance().calculateWidth("W", this.smallFont);
         assertEquals(width, this.sut.getWidthForSmallFont("W"));
+        System.out.println("WIDTH FOR SMALL FONT = " + this.sut.getWidthForSmallFont("W"));
     }
     @Test
     public void testGetWidthForBigFont(){
         int width = TextMetricCalculator.getInstance().calculateWidth("W", this.bigFont);
         assertEquals(width, this.sut.getWidthForBigFont("W"));
+        System.out.println("WIDTH FOR BIG FONT = " + this.sut.getWidthForBigFont("W"));
     }
     @Test
     public void testGetHeightForSmallFont(){
         int width = TextMetricCalculator.getInstance().calculateHeight("W", this.smallFont);
         assertEquals(width, this.sut.getHeightForSmallFont("W"));
+        System.out.println("HEIGHT FOR SMALL FONT = " + this.sut.getHeightForSmallFont("W"));
     }
     @Test
     public void testGetHeightForBigFont(){
         int width = TextMetricCalculator.getInstance().calculateHeight("W", this.bigFont);
         assertEquals(width, this.sut.getHeightForBigFont("W"));
+        System.out.println("HEIGHT FOR BIG FONT = " + this.sut.getHeightForBigFont("W"));
+    }
+    @Test
+    public void testForGetWidthForFont(){
+        int expectedValue = TextMetricCalculator.getInstance().calculateWidth("W", this.bigFont);
+        assertEquals(expectedValue, this.sut.getWidthForFont(this.bigFont, "W"));
+
+    }
+    @Test
+    public void testGetHeightForFont(){
+        int expectedValue = TextMetricCalculator.getInstance().calculateHeight("W", this.bigFont);
+        assertEquals(expectedValue, this.sut.getHeightForFont(this.bigFont,"W"));
     }
     private enum FontProperties{
         SMALL_FONT,SMALL_FONT_WEIGHT,SMALL_SIZE,BIG_FONT,BIG_FONT_WEIGHT,BIG_SIZE;
