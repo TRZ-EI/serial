@@ -7,15 +7,18 @@ package trzpoc.gui;
  * Time: 16.03
  */
 
+import eu.hansolo.medusa.Gauge;
+import eu.hansolo.medusa.GaugeBuilder;
+import eu.hansolo.medusa.Section;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
+import javafx.geometry.Orientation;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
@@ -60,7 +63,8 @@ public class MainForSerialData extends Application {
         Canvas canvas = new Canvas(800, 480);
 
 
-        // TODO: CREATE A PRIVATE METHOD
+        // TODO: REMOVED SCROLLBAR TO MANAGE BARS
+        /*
         ScrollPane scrollPane = new ScrollPane();
         scrollPane.setContent(canvas);
         scrollPane.setPrefSize(800, 480);
@@ -68,11 +72,11 @@ public class MainForSerialData extends Application {
         scrollPane.setFitToHeight(false);
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-
+        */
                                    
 
 
-        root.getChildren().add(scrollPane);
+        root.getChildren().add(canvas);
         this.addTouchEventToStart(canvas);
         this.addMouseEventToStart(canvas);
         this.primaryStage.show();
@@ -171,56 +175,21 @@ public class MainForSerialData extends Application {
 
 
                         }
-                        /*
-                        maxHeight += cellsRow.getMaxHeight();
-                       //maxWidth += c.getWidth();
-                        FontAndColorSelector fcs = FontAndColorSelector.getNewInstance();
-                        width = fcs.getWidthForFont(gc.getFont(), "W");
-
-                        int rows = 800 / width;
-                        for (int arow = 0; arow < rows; arow++) {
-                            
-                            int y1 = cellsRow.getyPos() > 0 ? cellsRow.getPixelScreenYPos() - cellsRow.getMaxHeight(): 0;
-                            int y2 = cellsRow.getyPos() > 0 ? cellsRow.getPixelScreenYPos(): cellsRow.getMaxHeight();
-                            int x1 = arow * width;
-                            gc.setStroke(Color.BLUE);
-                            gc.setLineWidth(0.1d);
-                            gc.strokeLine(x1, y1, x1, y2);
-                        } */
 
                     }
-                    /*
-                    if (debug.equalsIgnoreCase("debug")) {
-                        int yMax = 480;
-                        gc.setStroke(Color.BLUE);
-                        gc.setLineWidth(0.1d);
-                        int rows = 800 / width;
-                        for (int row = 0; row < rows; row++) {
-                            gc.strokeLine(row * width, 0, row * width, yMax);
-                        }
-                    } */
-/* *********************************************************************
-                    Gauge gauge21 = GaugeBuilder.create()
-                            .skinType(Gauge.SkinType.LINEAR)
-                            .title("Linear")
-                            .orientation(Orientation.HORIZONTAL)
-                            .sectionsVisible(true)
-                            .foregroundBaseColor(Color.GRAY)
-                            .barColor(Color.LIGHTSKYBLUE)
-                            .sections(new Section(0, 20, Color.BLUE),
-                                    new Section(80, 100, Color.RED))
-                            .build();
-                            VBox controls = new VBox();
-                            
-                            controls.setSpacing(5);
-                            controls.setAlignment(Pos.CENTER);
-                            controls.getChildren().addAll(canvas, gauge21);
-                            root.getChildren().add(controls);
-                            primaryStage.show();
+                    // TODO: EXPERIMENTS WITH BARS
+                    Gauge bar1 = this.createHorizontalBar();
+                    bar1.setPrefSize(700d, 100d);
+                    bar1.setLayoutX(30);
+                    bar1.setLayoutY(198);
+                    Gauge bar2 = this.createHorizontalBar();
+                    bar2.setPrefSize(700d, 100d);
+                    bar2.setLayoutX(30);
+                    bar2.setLayoutY(391);
+                    root.getChildren().add(bar1);
+                    root.getChildren().add(bar2);
 
 
-
-/****** */
 
 
                 } catch (IOException e) {
@@ -228,6 +197,22 @@ public class MainForSerialData extends Application {
                 }
                 me.consume();
                 this.writeRows(canvas);
+            }
+
+            private Gauge createHorizontalBar() {
+                return GaugeBuilder.create()
+                        .skinType(Gauge.SkinType.LINEAR)
+                        //.title("Linear")
+                        .orientation(Orientation.HORIZONTAL)
+                        .sectionsVisible(true)
+                        .valueVisible(false)
+                        .foregroundBaseColor(Color.BLUE)
+                        .barColor(Color.GREEN)
+                        .sections(new Section(0, 50, Color.GREEN),
+                                new Section(50, 80, Color.ORANGE),
+                                new Section(80, 100, Color.RED)
+                        )
+                        .build();
             }
 
             private void drawHorizontalRows(CellsRow cellsRow, GraphicsContext gc, String debug) {
