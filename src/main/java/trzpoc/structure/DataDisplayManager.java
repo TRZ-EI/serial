@@ -1,5 +1,7 @@
 package trzpoc.structure;
 
+import trzpoc.utils.FontAndColorSelector;
+
 import java.util.ArrayList;
 
 /**
@@ -10,18 +12,21 @@ import java.util.ArrayList;
  */
 public class DataDisplayManager {
     private ArrayList<CellsRow> rows;
-
+    private int defaultHeight;
 
     public static DataDisplayManager getNewInstance(){
         return new DataDisplayManager();
     }
     private DataDisplayManager(){
+
         this.rows = new ArrayList<CellsRow>();
+        this.defaultHeight = FontAndColorSelector.getNewInstance().getHeightForSmallFont("W");
+
     }
 
     public DataDisplayManager prepareDisplayMap(int rows){
         for (int i = 0; i < rows; i ++){
-            this.rows.add(CellsRow.getEmptyInstance().setyPos(i));
+            this.getOrCreateARow(i);
         }
         return this;
     }
@@ -31,13 +36,30 @@ public class DataDisplayManager {
     }
 
     private CellsRow createARow(int rowIndex) {
-        this.rows.add(CellsRow.getEmptyInstance().setyPos(rowIndex));
+        this.rows.add(CellsRow.getEmptyInstance().setyPos(rowIndex).setDefaultHeight(this.defaultHeight));
+        this.calculatePixelYPos();
         return this.returnRow(rowIndex);
     }
 
+    public void calculatePixelYPos() {
+        int pixelYPos = 0;
+        for (int i = 0; i < this.rows.size(); i ++){
+            if (i == 0){
+                pixelYPos = this.rows.get(i).getMaxHeight();
+                this.rows.get(i).setPixelScreenYPos(pixelYPos);
+            }else{
+                pixelYPos = this.rows.get(i - 1).getPixelScreenYPos() + this.rows.get(i).getMaxHeight();
+                this.rows.get(i).setPixelScreenYPos(pixelYPos);
+            }
+        }
+    }
+
     private CellsRow returnRow(int rowIndex) {
+        CellsRow retValue = null;
         int indexInCollection = this.rows.indexOf(CellsRow.getEmptyInstance().setyPos(rowIndex));
-        return this.rows.get(indexInCollection);
+        retValue = this.rows.get(indexInCollection);
+        this.calculatePixelYPos();
+        return retValue;
     }
 
     private boolean existRow(int rowIndex) {

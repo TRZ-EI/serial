@@ -106,6 +106,21 @@ public class FontAndColorSelectorTest {
     public void testGetNewInstance() throws Exception {
         assertNotNull(this.sut);
     }
+    @Test
+    public void testGetBigFont(){
+        double actualValue = this.sut.getBigFont().getSize();
+        // See value in properties file <fonts.properties>
+        double expectedValue = Double.parseDouble(p.getProperty(FontProperties.BIG_SIZE.name()));
+        assertEquals(expectedValue, actualValue);
+    }
+    @Test
+    public void testGetSmallFont(){
+        double actualValue = this.sut.getSmallFont().getSize();
+        // See value in properties file <fonts.properties>
+        double expectedValue = Double.parseDouble(p.getProperty(FontProperties.SMALL_SIZE.name()));
+        assertEquals(expectedValue, actualValue);
+    }
+
     @Test(dataProvider = "dataToTestForFont")
     public void testSelectFont(Character selector, Font expectedValue) throws Exception {
         Font actualValue = this.sut.selectFont(selector);

@@ -125,6 +125,14 @@ public class FontAndColorSelector {
         return TextMetricCalculator.getInstance().calculateHeight(w, font);
     }
 
+    public Font getBigFont() {
+        return this.bigFont;
+    }
+
+    public Font getSmallFont() {
+        return smallFont;
+    }
+
     private enum FontProperties{
         SMALL_FONT,SMALL_FONT_WEIGHT,SMALL_SIZE,BIG_FONT,BIG_FONT_WEIGHT,BIG_SIZE;
     }

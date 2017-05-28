@@ -6,6 +6,7 @@ import javafx.scene.text.FontWeight;
 import org.junit.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import trzpoc.utils.FontAndColorSelector;
 
 import java.util.ArrayList;
 
@@ -41,6 +42,19 @@ public class DataDisplayManagerTest {
     @Test
     public void testGetNewInstance() throws Exception {
         assertNotNull(this.sut);
+    }
+
+    @Test
+    public void testCalculationOfPixelYPos() throws Exception {
+        this.sut.prepareDisplayMap(5);
+        FontAndColorSelector fontAndColorSelector = FontAndColorSelector.getNewInstance();
+        int heightForForthRow = fontAndColorSelector.getNewInstance().getHeightForBigFont("W");
+        this.sut.getOrCreateARow(4).addOrUpdateACell(Text.getNewInstance().setyPos(4).setFont(fontAndColorSelector.getBigFont()));
+        int pixelYposForThird = FontAndColorSelector.getNewInstance().getHeightForSmallFont("W") * 4;
+        int expectedValue = pixelYposForThird + heightForForthRow;
+        CellsRow aRow = this.sut.getOrCreateARow(4);
+        int actualValue = aRow.getPixelScreenYPos();
+        assertEquals(expectedValue, actualValue);
     }
 
     @Test

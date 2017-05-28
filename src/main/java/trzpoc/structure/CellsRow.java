@@ -14,7 +14,9 @@ import java.util.List;
 public class CellsRow {
     private List<Cell> cells;
     private int maxWidth;
+    private int pixelScreenYPos;
     private int yPos;
+    private int defaultHeight; // pixels
     
 
 
@@ -36,7 +38,7 @@ public class CellsRow {
     }
     // TO DO: TEST AND VERIFY
     public int getMaxHeight(){
-        int defaultHeight = 20; // pixels
+
         List<Integer> heights = new ArrayList<>();
         Iterator<Cell> iterator = this.cells.iterator();
         while(iterator.hasNext()){
@@ -108,5 +110,21 @@ public class CellsRow {
     }
 
 
+    public int getPixelScreenYPos() {
+        return pixelScreenYPos;
+    }
 
+    public CellsRow setPixelScreenYPos(int pixelScreenYPos) {
+        this.pixelScreenYPos = pixelScreenYPos;
+        return this;
+    }
+
+    public int getDefaultHeight() {
+        return defaultHeight;
+    }
+
+    public CellsRow setDefaultHeight(int defaultHeight) {
+        this.defaultHeight = defaultHeight;
+        return this;
+    }
 }

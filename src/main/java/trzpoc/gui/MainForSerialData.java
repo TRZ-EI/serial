@@ -20,6 +20,7 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import trzpoc.gui.dataProvider.Label;
@@ -127,14 +128,29 @@ public class MainForSerialData extends Application {
                 try {
                     String realFileName = this.getClass().getClassLoader().getResource("inputExamples.csv").getFile();
                     DataDisplayManager dm = sd.fillMatrixWithData(realFileName);
+
                     GraphicsContext gc = canvas.getGraphicsContext2D();
                     int maxHeight = 0;
                     int width = 0;
+                    int height = 0;
                     for (int row = 0; row < dm.getNumberOfRows(); row ++){
                         CellsRow cellsRow = dm.getOrCreateARow(row);
-                        int maxWidth = 0;
+                        // DRAW ROWS
+                        this.drawHorizontalRows(cellsRow, gc, debug);
+                        boolean isAlreaadyPlotted = false;
                         for(int cellIndex = 0; cellIndex < cellsRow.getCellsCount(); cellIndex ++){
+
+
                             Cell c = cellsRow.getCellByColumnIndex(cellIndex);
+                            // DRAW VERTICAL DIVS FOR ROW
+                            if (!isAlreaadyPlotted){
+                                this.drawVerticalDivsForRow(cellsRow, c, gc);
+                                isAlreaadyPlotted = true;
+                            }
+
+
+
+                            // ************************************
                             gc.setFont(c.getFont());
                             gc.setFill(c.getColor());
                             String textToFill = null;
@@ -146,15 +162,34 @@ public class MainForSerialData extends Application {
                             if (textToFill.length() > 0) {
                                 FontAndColorSelector fcs = FontAndColorSelector.getNewInstance();
                                 width = fcs.getWidthForFont(c.getFont(), "W");
-                                gc.fillText(textToFill, c.getxPos() * width, c.getyPos() + maxHeight);
+
+                                gc.fillText(textToFill, c.getxPos() * width, cellsRow.getPixelScreenYPos());
+
                             }
 
 
-                            maxWidth += c.getWidth();
+
+
                         }
+                        /*
                         maxHeight += cellsRow.getMaxHeight();
+                       //maxWidth += c.getWidth();
+                        FontAndColorSelector fcs = FontAndColorSelector.getNewInstance();
+                        width = fcs.getWidthForFont(gc.getFont(), "W");
+
+                        int rows = 800 / width;
+                        for (int arow = 0; arow < rows; arow++) {
+                            
+                            int y1 = cellsRow.getyPos() > 0 ? cellsRow.getPixelScreenYPos() - cellsRow.getMaxHeight(): 0;
+                            int y2 = cellsRow.getyPos() > 0 ? cellsRow.getPixelScreenYPos(): cellsRow.getMaxHeight();
+                            int x1 = arow * width;
+                            gc.setStroke(Color.BLUE);
+                            gc.setLineWidth(0.1d);
+                            gc.strokeLine(x1, y1, x1, y2);
+                        } */
 
                     }
+                    /*
                     if (debug.equalsIgnoreCase("debug")) {
                         int yMax = 480;
                         gc.setStroke(Color.BLUE);
@@ -163,7 +198,7 @@ public class MainForSerialData extends Application {
                         for (int row = 0; row < rows; row++) {
                             gc.strokeLine(row * width, 0, row * width, yMax);
                         }
-                    }
+                    } */
 /* *********************************************************************
                     Gauge gauge21 = GaugeBuilder.create()
                             .skinType(Gauge.SkinType.LINEAR)
@@ -193,6 +228,30 @@ public class MainForSerialData extends Application {
                 }
                 me.consume();
                 this.writeRows(canvas);
+            }
+
+            private void drawHorizontalRows(CellsRow cellsRow, GraphicsContext gc, String debug) {
+                if (debug.equalsIgnoreCase("debug")) {
+                    gc.setStroke(Color.RED);
+                    gc.setLineWidth(0.1d);
+                    gc.strokeLine(0, cellsRow.getPixelScreenYPos(), 800, cellsRow.getPixelScreenYPos());
+                }
+            }
+
+            private void drawVerticalDivsForRow(CellsRow cellsRow, Cell c, GraphicsContext gc) {
+                int maxHeight = 800;
+
+                Font f = c.getFont();
+                int width = FontAndColorSelector.getNewInstance().getWidthForFont(f, "W");
+                int x1 = width;
+                int y1 = cellsRow.getPixelScreenYPos() - cellsRow.getMaxHeight();
+                int y2 = cellsRow.getPixelScreenYPos();
+                gc.setStroke(Color.BLUE);
+                gc.setLineWidth(0.1d);
+                while( x1 <= maxHeight){
+                    gc.strokeLine(x1, y1, x1, y2);
+                    x1 += width;
+                }
             }
 
             private void writeRows(Canvas canvas) {
