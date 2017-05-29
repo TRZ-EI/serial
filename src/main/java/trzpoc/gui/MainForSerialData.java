@@ -14,7 +14,6 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.event.EventHandler;
 import javafx.geometry.Orientation;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -24,21 +23,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.stage.Screen;
 import javafx.stage.Stage;
 import trzpoc.gui.dataProvider.Label;
 import trzpoc.gui.dataProvider.SerialReceiverMock;
-import trzpoc.structure.Cell;
-import trzpoc.structure.CellsRow;
-import trzpoc.structure.DataDisplayManager;
-import trzpoc.structure.Variable;
+import trzpoc.structure.*;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.FontAndColorSelector;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.Date;
-
-// Font height: big = 36, small = 20
+import java.util.Properties;
 
 public class MainForSerialData extends Application {
 
@@ -46,13 +41,25 @@ public class MainForSerialData extends Application {
     protected Stage primaryStage;
     private String debug;
 
+    private String readDebugValue(){
+        final String resourceFileName = "application.properties";
+        String retValue = "PRODUCTION"; // default value
+        try {
+            Properties properties = new Properties();
+            InputStream s = this.getClass().getClassLoader().getResourceAsStream(resourceFileName);
+            properties.load(s);
+            s.close();
+            retValue = properties.getProperty("DEBUG");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return retValue;
+    }
+
+
     @Override
     public void start(Stage primaryStage) {
-        Parameters params = this.getParameters();
-        this.debug = (String)params.getRaw().get(0);
-
-
-
+        this.debug = this.readDebugValue();
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("JavaFX Graphics Text for TRZ");
 
@@ -73,9 +80,6 @@ public class MainForSerialData extends Application {
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         */
-                                   
-
-
         root.getChildren().add(canvas);
         this.addTouchEventToStart(canvas);
         this.addMouseEventToStart(canvas);
@@ -134,72 +138,53 @@ public class MainForSerialData extends Application {
                     DataDisplayManager dm = sd.fillMatrixWithData(realFileName);
 
                     GraphicsContext gc = canvas.getGraphicsContext2D();
-                    int maxHeight = 0;
                     int width = 0;
-                    int height = 0;
                     for (int row = 0; row < dm.getNumberOfRows(); row ++){
                         CellsRow cellsRow = dm.getOrCreateARow(row);
                         // DRAW ROWS
-                        this.drawHorizontalRows(cellsRow, gc, debug);
+                        this.drawHorizontalRows(cellsRow, gc);
                         boolean isAlreaadyPlotted = false;
                         for(int cellIndex = 0; cellIndex < cellsRow.getCellsCount(); cellIndex ++){
-
-
                             Cell c = cellsRow.getCellByColumnIndex(cellIndex);
                             // DRAW VERTICAL DIVS FOR ROW
                             if (!isAlreaadyPlotted){
                                 this.drawVerticalDivsForRow(cellsRow, c, gc);
                                 isAlreaadyPlotted = true;
                             }
-
-
-
-                            // ************************************
                             gc.setFont(c.getFont());
                             gc.setFill(c.getColor());
                             String textToFill = null;
                             if (c instanceof Variable){
                                 textToFill = ((Variable)c).printFormattedValue();
-                            }else{
+                            }else if (c instanceof Text){
                                 textToFill = c.getValue();
+                            }else if (c instanceof Bar){
+                                this.configureBar(c, cellsRow.getPixelScreenYPos());
                             }
-                            if (textToFill.length() > 0) {
+                            if (textToFill != null && textToFill.length() > 0) {
                                 FontAndColorSelector fcs = FontAndColorSelector.getNewInstance();
                                 width = fcs.getWidthForFont(c.getFont(), "W");
-
                                 gc.fillText(textToFill, c.getxPos() * width, cellsRow.getPixelScreenYPos());
-
                             }
-
-
-
-
                         }
-
                     }
-                    // TODO: EXPERIMENTS WITH BARS
-                    Gauge bar1 = this.createHorizontalBar();
-                    bar1.setPrefSize(700d, 100d);
-                    bar1.setLayoutX(30);
-                    bar1.setLayoutY(198);
-                    Gauge bar2 = this.createHorizontalBar();
-                    bar2.setPrefSize(700d, 100d);
-                    bar2.setLayoutX(30);
-                    bar2.setLayoutY(391);
-                    root.getChildren().add(bar1);
-                    root.getChildren().add(bar2);
-
-
-
-
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
                 me.consume();
-                this.writeRows(canvas);
             }
 
-            private Gauge createHorizontalBar() {
+            private void configureBar(Cell c, int pixelScreenYPos) {
+                // TODO: EXPERIMENTS WITH BARS
+                Bar cellBar = (Bar)c;
+                Gauge bar = this.createHorizontalBar(cellBar.getMinValue(), cellBar.getMaxValue());
+                bar.setPrefSize(700d, 100d);
+                bar.setLayoutX(30);
+                bar.setLayoutY(pixelScreenYPos - 60);
+                root.getChildren().add(bar);
+            }
+            private Gauge createHorizontalBar(long minValue, long maxValue) {
+                long delta = maxValue - minValue;
                 return GaugeBuilder.create()
                         .skinType(Gauge.SkinType.LINEAR)
                         //.title("Linear")
@@ -208,45 +193,37 @@ public class MainForSerialData extends Application {
                         .valueVisible(false)
                         .foregroundBaseColor(Color.BLUE)
                         .barColor(Color.GREEN)
-                        .sections(new Section(0, 50, Color.GREEN),
-                                new Section(50, 80, Color.ORANGE),
-                                new Section(80, 100, Color.RED)
+                        .sections(new Section(minValue, minValue + (delta /3) , Color.GREEN),
+                                new Section(minValue + (delta /3), minValue + (delta /2), Color.ORANGE),
+                                new Section(minValue + (delta /2), maxValue, Color.RED)
                         )
                         .build();
             }
-
-            private void drawHorizontalRows(CellsRow cellsRow, GraphicsContext gc, String debug) {
+            private void drawHorizontalRows(CellsRow cellsRow, GraphicsContext gc) {
                 if (debug.equalsIgnoreCase("debug")) {
                     gc.setStroke(Color.RED);
                     gc.setLineWidth(0.1d);
                     gc.strokeLine(0, cellsRow.getPixelScreenYPos(), 800, cellsRow.getPixelScreenYPos());
                 }
             }
-
             private void drawVerticalDivsForRow(CellsRow cellsRow, Cell c, GraphicsContext gc) {
-                int maxHeight = 800;
-
-                Font f = c.getFont();
-                int width = FontAndColorSelector.getNewInstance().getWidthForFont(f, "W");
-                int x1 = width;
-                int y1 = cellsRow.getPixelScreenYPos() - cellsRow.getMaxHeight();
-                int y2 = cellsRow.getPixelScreenYPos();
-                gc.setStroke(Color.BLUE);
-                gc.setLineWidth(0.1d);
-                while( x1 <= maxHeight){
-                    gc.strokeLine(x1, y1, x1, y2);
-                    x1 += width;
+                if (debug.equalsIgnoreCase("debug")){
+                    int maxHeight = 800;
+                    Font f = c.getFont();
+                    int width = FontAndColorSelector.getNewInstance().getWidthForFont(f, "W");
+                    int x1 = width;
+                    int y1 = cellsRow.getPixelScreenYPos() - cellsRow.getMaxHeight();
+                    int y2 = cellsRow.getPixelScreenYPos();
+                    gc.setStroke(Color.BLUE);
+                    gc.setLineWidth(0.1d);
+                    while( x1 <= maxHeight){
+                        gc.strokeLine(x1, y1, x1, y2);
+                        x1 += width;
+                    }
                 }
-            }
-
-            private void writeRows(Canvas canvas) {
-
-
-
             }
         });
     }
-
     private void addCombinationKeyAcceleratorToExit(Stage primaryStage) {
         primaryStage.getScene().getAccelerators().put(
                 KeyCombination.keyCombination("CTRL+C"),
@@ -257,21 +234,7 @@ public class MainForSerialData extends Application {
                 }
         );
     }
-
-    private void setVisualBounds(Stage primaryStage) {
-        Rectangle2D primaryScreenBounds = Screen.getPrimary().getVisualBounds();
-
-        //set Stage boundaries to visible bounds of the main screen
-        primaryStage.setX(primaryScreenBounds.getMinX());
-        primaryStage.setY(primaryScreenBounds.getMinY());
-        primaryStage.setWidth(primaryScreenBounds.getWidth());
-        primaryStage.setHeight(primaryScreenBounds.getHeight());
-
-        //stage.show();
-    }
-
     public static void main(String[] args) {
-        args = new String[]{"DEBUG"};
-        launch(args);
+        Application.launch(args);
     }
 }

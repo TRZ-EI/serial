@@ -113,6 +113,10 @@ public class SerialDataFacade {
             // TODO: complete with clear display
         }
         else if(command.equals("B")){
+             BarSerialDataParser barSerialDataParser = BarSerialDataParser.getNewInstance();
+             SerialDataMock serialDataMock = new SerialDataMock();
+             byte[] data = serialDataMock.prepareDataToTransmitABar(line[2], Long.parseLong(line[3]), Long.parseLong(line[4]), line[5]);
+             toFill = barSerialDataParser.readByteArray(data);
             // TODO: complete with bar display
         }
         return toFill;

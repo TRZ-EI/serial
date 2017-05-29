@@ -38,7 +38,6 @@ public class CellsRow {
     }
     // TO DO: TEST AND VERIFY
     public int getMaxHeight(){
-
         List<Integer> heights = new ArrayList<>();
         Iterator<Cell> iterator = this.cells.iterator();
         while(iterator.hasNext()){

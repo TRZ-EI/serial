@@ -23,14 +23,10 @@ public class SerialDataMock {
     private final DataTypesConverter dataTypesConverter = DataTypesConverter.getNewInstance();
 
     public byte[] prepareDataToConfigureAVariable(String varNumber, char font_colore1, char num_caratteri1, char decimali1, String riga1, String colonna1){
-        
-
         List<Byte> buffer = new ArrayList<Byte>();
         buffer.add(Byte.valueOf("5E", 16));
         buffer.add(new Byte((byte)'V'));
         /*varNumber*/
-
-
         varNumber = this.prependWithAsciiZeroIfNecessary(varNumber);
         for (int i = 0; i < varNumber.length(); i ++) {
             buffer.add(Byte.valueOf(this.convertADigitCharToHex(varNumber.charAt(i))));
@@ -97,7 +93,32 @@ public class SerialDataMock {
         this.addTextToByteBuffer(buffer, text);
         return this.addCRCValueAndEndOfRow(buffer);
     }
-
+    public byte[] prepareDataToTransmitABar(String variableId, long minValue, long maxValue, String row){
+        List<Byte> buffer = new ArrayList<Byte>();
+        buffer.add(Byte.valueOf("5E", 16));
+        buffer.add(Byte.valueOf((byte)'B'));
+        /*variableId*/
+        variableId = (variableId.length() == 1)? "0" + variableId: variableId;
+        for (int i = 0; i < variableId.length(); i ++) {
+            buffer.add(Byte.valueOf(this.convertADigitCharToHex(variableId.charAt(i))));
+        }
+        /* minValue */
+        byte[] convertedMinValue = this.convertLongToByteArray(minValue);
+        for (int i = 0; i < convertedMinValue.length; i ++) {
+            buffer.add(Byte.valueOf(convertedMinValue[i]));
+        }
+        /* maxValue */
+        byte[] convertedMaxValue = this.convertLongToByteArray(maxValue);
+        for (int i = 0; i < convertedMaxValue.length; i ++) {
+            buffer.add(Byte.valueOf(convertedMaxValue[i]));
+        }
+        /* row */
+        row = this.prependWithAsciiZeroIfNecessary(row);
+        for (int i = 0; i < row.length(); i ++) {
+            buffer.add(Byte.valueOf(this.convertADigitCharToHex(row.charAt(i))));
+        }
+        return this.addCRCValueAndEndOfRow(buffer);
+    }
     private void addTextToByteBuffer(List<Byte> buffer, String text) {
         char[] charArray = text.toCharArray();
         for (int i = 0; i < charArray.length; i ++){
