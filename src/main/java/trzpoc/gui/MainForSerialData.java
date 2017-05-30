@@ -26,6 +26,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import trzpoc.gui.dataProvider.Label;
 import trzpoc.gui.dataProvider.SerialReceiverMock;
+import trzpoc.gui.hansolo.skins.TRZLinearSkin;
 import trzpoc.structure.*;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.FontAndColorSelector;
@@ -176,28 +177,35 @@ public class MainForSerialData extends Application {
 
             private void configureBar(Cell c, int pixelScreenYPos) {
                 // TODO: EXPERIMENTS WITH BARS
+                double prefHeight = 200d;
+                double prefWidth = 700d;
+
                 Bar cellBar = (Bar)c;
                 Gauge bar = this.createHorizontalBar(cellBar.getMinValue(), cellBar.getMaxValue());
-                bar.setPrefSize(700d, 100d);
+                bar.setPrefSize(prefWidth, prefHeight);
                 bar.setLayoutX(30);
-                bar.setLayoutY(pixelScreenYPos - 60);
+                bar.setLayoutY(pixelScreenYPos - prefHeight / 2);
                 root.getChildren().add(bar);
             }
-            private Gauge createHorizontalBar(long minValue, long maxValue) {
+             private Gauge createHorizontalBar(long minValue, long maxValue) {
                 long delta = maxValue - minValue;
-                return GaugeBuilder.create()
+                Gauge gauge = GaugeBuilder.create()
+                        .minValue(minValue)
+                        .maxValue(maxValue)
                         .skinType(Gauge.SkinType.LINEAR)
-                        //.title("Linear")
                         .orientation(Orientation.HORIZONTAL)
                         .sectionsVisible(true)
                         .valueVisible(false)
                         .foregroundBaseColor(Color.BLUE)
                         .barColor(Color.GREEN)
-                        .sections(new Section(minValue, minValue + (delta /3) , Color.GREEN),
-                                new Section(minValue + (delta /3), minValue + (delta /2), Color.ORANGE),
-                                new Section(minValue + (delta /2), maxValue, Color.RED)
+                        .sections(new Section(minValue, 0 , Color.GREEN),
+                                new Section(0, maxValue, Color.BLUE)
                         )
                         .build();
+                gauge.setSkin(new TRZLinearSkin(gauge));
+                return gauge;
+
+
             }
             private void drawHorizontalRows(CellsRow cellsRow, GraphicsContext gc) {
                 if (debug.equalsIgnoreCase("debug")) {
