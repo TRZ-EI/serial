@@ -16,10 +16,8 @@
 
 package trzpoc.gui;
 
-import eu.hansolo.medusa.Gauge;
+import eu.hansolo.medusa.*;
 import eu.hansolo.medusa.Gauge.SkinType;
-import eu.hansolo.medusa.GaugeBuilder;
-import eu.hansolo.medusa.Section;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Orientation;
@@ -27,6 +25,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import trzpoc.gui.hansolo.skins.TRZLinearSkin;
 
 import java.util.Random;
 
@@ -43,22 +42,57 @@ public class BarDemo extends Application {
 
     @Override public void init() {
         // TODO: isolate this
+
+
+
         gauge21 = GaugeBuilder.create()
-                              .skinType(SkinType.LINEAR)
+                              //.skinType(SkinType.LINEAR)
                               //.title("Linear")
-                              .tickLabelsVisible(false)
+// Related to Tick Labels
+                .tickLabelDecimals(0)
+                .minValue(0)
+                .maxValue(1)
+                .areasVisible(false)
+                // Number of decimals for tick labels
+                .onlyFirstAndLastTickLabelVisible(false)                                         // Should only the first and last tick label be visible
+                .tickLabelSectionsVisible(false)                                                 // Should sections for tick labels be visible
+                // Related to Tick Marks
+                .tickMarkSectionsVisible(false)                                                  // Should sections for tick marks be visible
+                // Related to Major Tick Marks
+                .majorTickMarksVisible(false)                                                     // Should major tick marks be visible
+                //.majorTickMarkType(TickMarkType.LINE)                                            // Tick mark type for major tick marks (LINE, DOT, TRIANGLE, TICK_LABEL)
+                //.majorTickMarkColor(Color.BLACK)                                                 // Color for major tick marks (overriden by tick mark sections)
+                // Related to Medium Tick Marks
+                .mediumTickMarksVisible(false)                                                    // Should medium tick marks be visible
+                //.mediumTickMarkType(TickMarkType.LINE)                                           // Tick mark type for medium tick marks (LINE, DOT, TRIANGLE)
+                //.mediumTickMarkColor(Color.BLACK)                                                // Color for medium tick marks (overriden by tick mark sections)
+                // Related to Minor Tick Marks
+                .minorTickMarksVisible(false)                                                     // Should minor tick marks be visible
+                //.minorTickMarkType(TickMarkType.LINE)                                            // Tick mark type for minor tick marks (LINE, DOT, TRIANGLE)
+                //.minorTickMarkColor(Color.BLACK)
+
+
+
+
+                .tickLabelsVisible(false)
                               .tickLabelSectionsVisible(false)
                               .tickMarkSectionsVisible(false)
                               .orientation(Orientation.HORIZONTAL)
-                              .sectionsVisible(true)
+                              .sectionsVisible(false)
                               .valueVisible(false)
                               .foregroundBaseColor(Color.BLUE)
                               .barColor(Color.GREEN)
+                              .barEffectEnabled(true)
+                              .barBorderColor(Color.CHOCOLATE)
+
+                /*
                               .sections(new Section(0, 20, Color.BLUE),
                                         new Section(80, 100, Color.RED),
                                         new Section(50, 80, Color.ORANGE)
                                       )
+*/
                               .build();
+        gauge21.setSkin(new TRZLinearSkin(gauge21));
 
         lastTimerCall = System.nanoTime();
         timer = new AnimationTimer() {
