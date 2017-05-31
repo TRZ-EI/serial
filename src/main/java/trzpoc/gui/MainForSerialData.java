@@ -188,7 +188,6 @@ public class MainForSerialData extends Application {
                 root.getChildren().add(bar);
             }
              private Gauge createHorizontalBar(long minValue, long maxValue) {
-                long delta = maxValue - minValue;
                 Gauge gauge = GaugeBuilder.create()
                         .minValue(minValue)
                         .maxValue(maxValue)
