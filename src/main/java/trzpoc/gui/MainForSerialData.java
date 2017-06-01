@@ -41,6 +41,7 @@ public class MainForSerialData extends Application {
     protected Group root;
     protected Stage primaryStage;
     private String debug;
+    private Canvas canvas;
 
     private String readDebugValue(){
         final String resourceFileName = "application.properties";
@@ -68,7 +69,7 @@ public class MainForSerialData extends Application {
         Scene scene = new Scene(root);
         this.primaryStage.setScene(scene);
         this.addCombinationKeyAcceleratorToExit(primaryStage);
-        Canvas canvas = new Canvas(800, 480);
+        this.canvas = new Canvas(800, 480);
 
 
         // TODO: REMOVED SCROLLBAR TO MANAGE BARS
@@ -81,9 +82,9 @@ public class MainForSerialData extends Application {
         scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.AS_NEEDED);
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         */
-        root.getChildren().add(canvas);
-        this.addTouchEventToStart(canvas);
-        this.addMouseEventToStart(canvas);
+        root.getChildren().add(this.canvas);
+        this.addTouchEventToStart(this.canvas);
+        this.addMouseEventToStart(this.canvas);
         this.primaryStage.show();
     }
 
@@ -129,106 +130,112 @@ public class MainForSerialData extends Application {
 
         });
     }
+    private void manageGraphics(){
+        SerialDataFacade sd = SerialDataFacade.createNewInstance();
+        try {
+            String realFileName = this.getClass().getClassLoader().getResource("inputExamples.csv").getFile();
+            DataDisplayManager dm = sd.fillMatrixWithData(realFileName);
+
+            GraphicsContext gc = canvas.getGraphicsContext2D();
+            int width = 0;
+            for (int row = 0; row < dm.getNumberOfRows(); row ++){
+                CellsRow cellsRow = dm.getOrCreateARow(row);
+                // DRAW ROWS
+                this.drawHorizontalRows(cellsRow, gc);
+                boolean isAlreaadyPlotted = false;
+                for(int cellIndex = 0; cellIndex < cellsRow.getCellsCount(); cellIndex ++){
+                    Cell c = cellsRow.getCellByColumnIndex(cellIndex);
+                    // DRAW VERTICAL DIVS FOR ROW
+                    if (!isAlreaadyPlotted){
+                        this.drawVerticalDivsForRow(cellsRow, c, gc);
+                        isAlreaadyPlotted = true;
+                    }
+                    gc.setFont(c.getFont());
+                    gc.setFill(c.getColor());
+                    String textToFill = null;
+                    if (c instanceof Variable){
+                        textToFill = ((Variable)c).printFormattedValue();
+                    }else if (c instanceof Text){
+                        textToFill = c.getValue();
+                    }else if (c instanceof Bar){
+                        this.configureBar(c, cellsRow.getPixelScreenYPos());
+                    }
+                    if (textToFill != null && textToFill.length() > 0) {
+                        FontAndColorSelector fcs = FontAndColorSelector.getNewInstance();
+                        width = fcs.getWidthForFont(c.getFont(), "W");
+                        gc.fillText(textToFill, c.getxPos() * width, cellsRow.getPixelScreenYPos());
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    private void configureBar(Cell c, int pixelScreenYPos) {
+        // TODO: EXPERIMENTS WITH BARS
+        double prefHeight = 200d;
+        double prefWidth = 700d;
+
+        Bar cellBar = (Bar)c;
+        Gauge bar = this.createHorizontalBar(cellBar.getMinValue(), cellBar.getMaxValue());
+        bar.setPrefSize(prefWidth, prefHeight);
+        bar.setLayoutX(30);
+        bar.setLayoutY(pixelScreenYPos - prefHeight / 2);
+        root.getChildren().add(bar);
+    }
+    private Gauge createHorizontalBar(long minValue, long maxValue) {
+        Gauge gauge = GaugeBuilder.create()
+                .minValue(minValue)
+                .maxValue(maxValue)
+                .skinType(Gauge.SkinType.LINEAR)
+                .orientation(Orientation.HORIZONTAL)
+                .sectionsVisible(true)
+                .valueVisible(false)
+                .foregroundBaseColor(Color.BLUE)
+                .barColor(Color.GREEN)
+                .sections(new Section(minValue, 0 , Color.GREEN),
+                        new Section(0, maxValue, Color.BLUE)
+                )
+                .build();
+        gauge.setSkin(new TRZLinearSkin(gauge));
+        return gauge;
+
+
+    }
+    private void drawHorizontalRows(CellsRow cellsRow, GraphicsContext gc) {
+        if (debug.equalsIgnoreCase("debug")) {
+            gc.setStroke(Color.RED);
+            gc.setLineWidth(0.1d);
+            gc.strokeLine(0, cellsRow.getPixelScreenYPos(), 800, cellsRow.getPixelScreenYPos());
+        }
+    }
+    private void drawVerticalDivsForRow(CellsRow cellsRow, Cell c, GraphicsContext gc) {
+        if (debug.equalsIgnoreCase("debug")){
+            int maxHeight = 800;
+            Font f = c.getFont();
+            int width = FontAndColorSelector.getNewInstance().getWidthForFont(f, "W");
+            int x1 = width;
+            int y1 = cellsRow.getPixelScreenYPos() - cellsRow.getMaxHeight();
+            int y2 = cellsRow.getPixelScreenYPos();
+            gc.setStroke(Color.BLUE);
+            gc.setLineWidth(0.1d);
+            while( x1 <= maxHeight){
+                gc.strokeLine(x1, y1, x1, y2);
+                x1 += width;
+            }
+        }
+    }
+
+
 
     private void addMouseEventToStart(final Canvas canvas){
         canvas.setOnMouseClicked(new EventHandler<MouseEvent>() {
             public void handle(MouseEvent me) {
-                SerialDataFacade sd = SerialDataFacade.createNewInstance();
-                try {
-                    String realFileName = this.getClass().getClassLoader().getResource("inputExamples.csv").getFile();
-                    DataDisplayManager dm = sd.fillMatrixWithData(realFileName);
-
-                    GraphicsContext gc = canvas.getGraphicsContext2D();
-                    int width = 0;
-                    for (int row = 0; row < dm.getNumberOfRows(); row ++){
-                        CellsRow cellsRow = dm.getOrCreateARow(row);
-                        // DRAW ROWS
-                        this.drawHorizontalRows(cellsRow, gc);
-                        boolean isAlreaadyPlotted = false;
-                        for(int cellIndex = 0; cellIndex < cellsRow.getCellsCount(); cellIndex ++){
-                            Cell c = cellsRow.getCellByColumnIndex(cellIndex);
-                            // DRAW VERTICAL DIVS FOR ROW
-                            if (!isAlreaadyPlotted){
-                                this.drawVerticalDivsForRow(cellsRow, c, gc);
-                                isAlreaadyPlotted = true;
-                            }
-                            gc.setFont(c.getFont());
-                            gc.setFill(c.getColor());
-                            String textToFill = null;
-                            if (c instanceof Variable){
-                                textToFill = ((Variable)c).printFormattedValue();
-                            }else if (c instanceof Text){
-                                textToFill = c.getValue();
-                            }else if (c instanceof Bar){
-                                this.configureBar(c, cellsRow.getPixelScreenYPos());
-                            }
-                            if (textToFill != null && textToFill.length() > 0) {
-                                FontAndColorSelector fcs = FontAndColorSelector.getNewInstance();
-                                width = fcs.getWidthForFont(c.getFont(), "W");
-                                gc.fillText(textToFill, c.getxPos() * width, cellsRow.getPixelScreenYPos());
-                            }
-                        }
-                    }
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                manageGraphics();
                 me.consume();
             }
 
-            private void configureBar(Cell c, int pixelScreenYPos) {
-                // TODO: EXPERIMENTS WITH BARS
-                double prefHeight = 200d;
-                double prefWidth = 700d;
-
-                Bar cellBar = (Bar)c;
-                Gauge bar = this.createHorizontalBar(cellBar.getMinValue(), cellBar.getMaxValue());
-                bar.setPrefSize(prefWidth, prefHeight);
-                bar.setLayoutX(30);
-                bar.setLayoutY(pixelScreenYPos - prefHeight / 2);
-                root.getChildren().add(bar);
-            }
-             private Gauge createHorizontalBar(long minValue, long maxValue) {
-                Gauge gauge = GaugeBuilder.create()
-                        .minValue(minValue)
-                        .maxValue(maxValue)
-                        .skinType(Gauge.SkinType.LINEAR)
-                        .orientation(Orientation.HORIZONTAL)
-                        .sectionsVisible(true)
-                        .valueVisible(false)
-                        .foregroundBaseColor(Color.BLUE)
-                        .barColor(Color.GREEN)
-                        .sections(new Section(minValue, 0 , Color.GREEN),
-                                new Section(0, maxValue, Color.BLUE)
-                        )
-                        .build();
-                gauge.setSkin(new TRZLinearSkin(gauge));
-                return gauge;
-
-
-            }
-            private void drawHorizontalRows(CellsRow cellsRow, GraphicsContext gc) {
-                if (debug.equalsIgnoreCase("debug")) {
-                    gc.setStroke(Color.RED);
-                    gc.setLineWidth(0.1d);
-                    gc.strokeLine(0, cellsRow.getPixelScreenYPos(), 800, cellsRow.getPixelScreenYPos());
-                }
-            }
-            private void drawVerticalDivsForRow(CellsRow cellsRow, Cell c, GraphicsContext gc) {
-                if (debug.equalsIgnoreCase("debug")){
-                    int maxHeight = 800;
-                    Font f = c.getFont();
-                    int width = FontAndColorSelector.getNewInstance().getWidthForFont(f, "W");
-                    int x1 = width;
-                    int y1 = cellsRow.getPixelScreenYPos() - cellsRow.getMaxHeight();
-                    int y2 = cellsRow.getPixelScreenYPos();
-                    gc.setStroke(Color.BLUE);
-                    gc.setLineWidth(0.1d);
-                    while( x1 <= maxHeight){
-                        gc.strokeLine(x1, y1, x1, y2);
-                        x1 += width;
-                    }
-                }
-            }
         });
     }
     private void addCombinationKeyAcceleratorToExit(Stage primaryStage) {
