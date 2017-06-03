@@ -87,7 +87,7 @@ public class VariableConfiguratorSerialDataParserTest {
         byte[] rawData = sdm.prepareDataToConfigureAVariable(String.valueOf(varNumber), fontColor, String.valueOf(chars).charAt(0), String.valueOf(decimals).charAt(0),String.valueOf(row), String.valueOf(column));
         Variable expectedValue = this.sut.createVariable(fontColor);
 
-        expectedValue.setIntegerLenght(chars).setDecimalLenght(decimals).setxPos(row).setyPos(column).setId(varNumber);
+        expectedValue.setIntegerLenght(chars).setDecimalLenght(decimals).setxPos(column).setyPos(row).setId(varNumber);
         Variable actualValue = (Variable) this.sut.readByteArray(rawData);
         assertTrue(actualValue.equals(expectedValue));
     }
