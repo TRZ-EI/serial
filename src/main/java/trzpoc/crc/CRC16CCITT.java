@@ -13,6 +13,8 @@ package trzpoc.crc;
  *
  *  1 + x + x^5 + x^12 + x^16 is irreducible polynomial.
  *
+ *  polynomial of CRC_CCITT (X16 + X12 + X5 + 1) to generate CRC code.
+ *
  *  CRC16-CCITT 123456789
  *  CRC16-CCITT = 29b1
  *

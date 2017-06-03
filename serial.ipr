@@ -232,15 +232,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/commons-logging/commons-logging/1.1.1/commons-logging-1.1.1-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: eu.hansolo:Medusa:7.6">
+    <library name="Maven: eu.hansolo:Medusa:7.9">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/eu/hansolo/Medusa/7.6/Medusa-7.6.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/eu/hansolo/Medusa/7.9/Medusa-7.9.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/eu/hansolo/Medusa/7.6/Medusa-7.6-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/eu/hansolo/Medusa/7.9/Medusa-7.9-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/eu/hansolo/Medusa/7.6/Medusa-7.6-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/eu/hansolo/Medusa/7.9/Medusa-7.9-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: jacksum:jacksum:1.7.0">

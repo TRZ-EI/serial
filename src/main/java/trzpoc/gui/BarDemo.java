@@ -16,10 +16,8 @@
 
 package trzpoc.gui;
 
-import eu.hansolo.medusa.Gauge;
+import eu.hansolo.medusa.*;
 import eu.hansolo.medusa.Gauge.SkinType;
-import eu.hansolo.medusa.GaugeBuilder;
-import eu.hansolo.medusa.Section;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Orientation;
@@ -27,6 +25,7 @@ import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import trzpoc.gui.hansolo.skins.TRZLinearSkin;
 
 import java.util.Random;
 
@@ -43,22 +42,29 @@ public class BarDemo extends Application {
 
     @Override public void init() {
         // TODO: isolate this
+
+
+
         gauge21 = GaugeBuilder.create()
-                              .skinType(SkinType.LINEAR)
+                              //.skinType(SkinType.LINEAR)
                               //.title("Linear")
-                              .tickLabelsVisible(false)
-                              .tickLabelSectionsVisible(false)
-                              .tickMarkSectionsVisible(false)
-                              .orientation(Orientation.HORIZONTAL)
-                              .sectionsVisible(true)
-                              .valueVisible(false)
-                              .foregroundBaseColor(Color.BLUE)
-                              .barColor(Color.GREEN)
-                              .sections(new Section(0, 20, Color.BLUE),
-                                        new Section(80, 100, Color.RED),
-                                        new Section(50, 80, Color.ORANGE)
-                                      )
-                              .build();
+            .tickLabelDecimals(0)
+            .minValue(-2)
+            .maxValue(1)
+            .areasVisible(true)
+            .orientation(Orientation.HORIZONTAL)
+            .sectionsVisible(true)
+            .valueVisible(false)
+            .foregroundBaseColor(Color.BLUE)
+            .barColor(Color.GREEN)
+            .barEffectEnabled(true)
+            .barBorderColor(Color.CHOCOLATE)
+
+            .sections(new Section(-2, 0, Color.GREEN),
+                    new Section(0, 1, Color.BLUE)
+                  )
+            .build();
+        gauge21.setSkin(new TRZLinearSkin(gauge21));
 
         lastTimerCall = System.nanoTime();
         timer = new AnimationTimer() {
@@ -85,7 +91,7 @@ public class BarDemo extends Application {
         stage.setWidth(800d);
         stage.setHeight(480d);
         Group root = new Group();
-        gauge21.setPrefSize(700d, 100d);
+        gauge21.setPrefSize(700d, 200d);
         gauge21.setLayoutX(10);
         gauge21.setLayoutY(300);
         root.getChildren().add(gauge21);
