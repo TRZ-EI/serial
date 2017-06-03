@@ -3,12 +3,13 @@ package trzpoc.structure.serial;
 import com.opencsv.CSVReader;
 import trzpoc.structure.Cell;
 import trzpoc.structure.DataDisplayManager;
-import trzpoc.structure.Variable;
+import trzpoc.utils.DataTypesConverter;
 import trzpoc.utils.SerialDataMock;
 
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.Arrays;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,6 +23,7 @@ import java.io.UnsupportedEncodingException;
 public class SerialDataFacade {
 
     private DataDisplayManager displayManager;
+    private DataTypesConverter dataTypesConverter;
 
     public static SerialDataFacade createNewInstance(){
         return new SerialDataFacade();
@@ -29,9 +31,10 @@ public class SerialDataFacade {
     private SerialDataFacade(){
         this.displayManager = DataDisplayManager.getNewInstance();
         this.displayManager.prepareDisplayMap(20);
+        this.dataTypesConverter = DataTypesConverter.getNewInstance();
     }
 
-    public void onSerialDataInput(byte[] data) throws UnsupportedEncodingException {
+    public Cell onSerialDataInput(byte[] data) throws UnsupportedEncodingException {
 
         // first step: what type of action?
         char command = this.readCommandFromData(data);
@@ -40,28 +43,22 @@ public class SerialDataFacade {
         // second step: On command received, parse data
         if (command == 'V'){ // Configure variable
             dataParsed = VariableConfiguratorSerialDataParser.getNewInstance().readByteArray(data);
-
         }else if (command == 'v'){ // Valorize variable
             dataParsed = VariableValueSerialDataParser.getInstance().readByteArray(data);
-
         }else if (command == 't'){ // Print text
-            // TODO
-
+            dataParsed = TextSerialDataParser.getNewInstance().readByteArray(data);
         }else if (command == 'C'){ // Clear display
             // TODO
-
         }else if (command == 'B'){ // Bar configuration
-            // TODO
-
+            dataParsed = BarSerialDataParser.getNewInstance().readByteArray(data);
         }
-        this.displayManager.addOrUpdateCellInMatrix(dataParsed);
-
-
-
+        return dataParsed;
     }
-
     private char readCommandFromData(byte[] data) {
-        return ' ';
+        final int commandPos = 1;
+        final int commandLenght = 1;
+        byte byteCommand = Arrays.copyOfRange(data, commandPos, commandPos + commandLenght)[0];
+        return this.dataTypesConverter.byteToChar(byteCommand);
     }
 
     public DataDisplayManager fillMatrixWithData(String dataFileName) throws IOException {
@@ -70,54 +67,49 @@ public class SerialDataFacade {
         String[] line;
         while ((line = reader.readNext()) != null) {
             if (!line[0].startsWith("#")) {
-                this.displayManager.addOrUpdateCellInMatrix(this.fillCell(line));
+                this.displayManager.addOrUpdateCellInMatrix(this.simulateSerialInput(line));
+                // TODO: REMOVE METHOD simulateSerialInput FOR PRODUCTION
+                // WHEN A SERIAL DATA RECEIVER RECEIVES A BYTE[], CALL METHOD onSerialDataInput, which is goal is
+                // to parse raw data
             }
         }
         return this.displayManager;
 
     }
 
-    private Cell fillCell(String[] line) throws UnsupportedEncodingException {
+    private Cell simulateSerialInput(String[] line) throws UnsupportedEncodingException {
         Cell toFill = null;
         String command = line[1];
+        SerialDataMock serialDataMock = new SerialDataMock();
+
 
         if (command.equals("V")){
             String id = line[2];
-            String fontColor = line[3];
-            String integerLenght = line[4];
-            String decimalLenght = line[5];
+            char fontColor = line[3].charAt(0);
+            char integerLenght = line[4].charAt(0);
+            char decimalLenght = line[5].charAt(0);
             String row = line[6];
             String column = line[7];
-            toFill = VariableConfiguratorSerialDataParser.getNewInstance().createVariable(fontColor.charAt(0));
-            toFill.setId(Integer.valueOf(id).intValue());
-            toFill.setyPos(Integer.valueOf(row).intValue());
-            toFill.setxPos(Integer.valueOf(column).intValue());
-            ((Variable)toFill).setIntegerLenght(Integer.valueOf(integerLenght).intValue());
-            ((Variable)toFill).setDecimalLenght(Integer.valueOf(decimalLenght).intValue());
+            byte[] data = serialDataMock.prepareDataToConfigureAVariable(id, fontColor, integerLenght, decimalLenght, row, column);
+            toFill = this.onSerialDataInput(data);
         }
         else if (command.equals("v")){
             String id = line[2];
             String value = line[3];
-            toFill = Variable.getInstance();
-            toFill.setId(Integer.valueOf(id).intValue()).setValue(value);
-            // TODO: complete with value
+            byte[] data = serialDataMock.prepareDataToTransmitAVariable(id, Long.parseLong(value));
+            toFill = this.onSerialDataInput(data);
         }
         else if(command.equals("t")){
-            TextSerialDataParser sdp = TextSerialDataParser.getNewInstance();
-            SerialDataMock serialDataMock = new SerialDataMock();
-
+            //TextSerialDataParser sdp = TextSerialDataParser.getNewInstance();
             byte[] data = serialDataMock.prepareDataToTransmitAText(line[2].charAt(0), line[3], line[4], line[5]);
-            toFill = sdp.readByteArray(data);
+            toFill = this.onSerialDataInput(data);
         }
         else if(command.equals("C")){
             // TODO: complete with clear display
         }
         else if(command.equals("B")){
-             BarSerialDataParser barSerialDataParser = BarSerialDataParser.getNewInstance();
-             SerialDataMock serialDataMock = new SerialDataMock();
              byte[] data = serialDataMock.prepareDataToTransmitABar(line[2], Long.parseLong(line[3]), Long.parseLong(line[4]), line[5]);
-             toFill = barSerialDataParser.readByteArray(data);
-            // TODO: complete with bar display
+             toFill = this.onSerialDataInput(data);
         }
         return toFill;
     }

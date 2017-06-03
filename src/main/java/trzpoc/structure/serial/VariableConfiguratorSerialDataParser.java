@@ -57,11 +57,11 @@ public class VariableConfiguratorSerialDataParser implements SerialDataReader {
         byte fontColor = Arrays.copyOfRange(data, fontColorPos, fontColorPos + fontColorLenght)[0];
         char fc = this.converter.byteToChar(fontColor);
 
-        byte intPos = Arrays.copyOfRange(data, integerPartPos, integerPartPos + integerPartLenght)[0];
-        char integerDigits = this.converter.byteToChar(intPos);
+        byte[] intPos = Arrays.copyOfRange(data, integerPartPos, integerPartPos + integerPartLenght);
+        int integerDigits = this.converter.bytesToInt(intPos);
 
-        byte dec = Arrays.copyOfRange(data, decimalPartPos, decimalPartPos + decimalPartLenght)[0];
-        char decimalDigits = this.converter.byteToChar(dec);
+        byte[] dec = Arrays.copyOfRange(data, decimalPartPos, decimalPartPos + decimalPartLenght);
+        int decimalDigits = this.converter.bytesToInt(dec);
 
         byte[] r = Arrays.copyOfRange(data, rowPos, rowPos + rowLenght);
         int row = this.converter.bytesToInt(r);
@@ -73,7 +73,8 @@ public class VariableConfiguratorSerialDataParser implements SerialDataReader {
         int crcValue = this.converter.notAsciiBytesToInt(crc);
 
         Variable retValue = this.createVariable(fc);
-        retValue.setIntegerLenght(integerDigits).setDecimalLenght(decimalDigits).setxPos(row).setyPos(column).setId(id);
+
+        retValue.setIntegerLenght(integerDigits).setDecimalLenght(decimalDigits).setxPos(column).setyPos(row).setId(id);
         return retValue;
 
 
