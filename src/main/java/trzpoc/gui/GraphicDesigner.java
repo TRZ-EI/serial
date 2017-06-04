@@ -11,15 +11,13 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import trzpoc.gui.hansolo.skins.TRZLinearSkin;
 import trzpoc.structure.*;
-import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.FontAndColorSelector;
-
-import java.io.IOException;
 
 public class GraphicDesigner {
     private  String debug;
     private Canvas canvas;
     private Group group;
+    private DataDisplayManager dataDisplayManager;
 
 
     public static GraphicDesigner createNewInstanceByGroupAndCanvasAndDebugParam(Group group, Canvas canvas, String debug){
@@ -32,17 +30,18 @@ public class GraphicDesigner {
         this.canvas = canvas;
         this.debug = debug;
     }
+    public void drawOnCanvas(DataDisplayManager dm) {
+        this.dataDisplayManager = dm;
+        this.drawOnCanvas();
+    }
 
-    public void drawOnCanvas() {
-        SerialDataFacade sd = SerialDataFacade.createNewInstance();
-        try {
-            String realFileName = this.getClass().getClassLoader().getResource("inputExamples.csv").getFile();
-            DataDisplayManager dm = sd.fillMatrixWithData(realFileName);
-
+    private void drawOnCanvas() {
             GraphicsContext gc = this.canvas.getGraphicsContext2D();
+            this.clearCanvas(this.canvas);
+
             int width = 0;
-            for (int row = 0; row < dm.getNumberOfRows(); row++) {
-                CellsRow cellsRow = dm.getOrCreateARow(row);
+            for (int row = 0; row < this.dataDisplayManager.getNumberOfRows(); row++) {
+                CellsRow cellsRow = this.dataDisplayManager.getOrCreateARow(row);
                 // DRAW ROWS
                 this.drawHorizontalRows(cellsRow, gc);
                 boolean isAlreaadyPlotted = false;
@@ -70,9 +69,12 @@ public class GraphicDesigner {
                     }
                 }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    }
+
+    private void clearCanvas(Canvas canvas) {
+        double width = canvas.getWidth();
+        double height = canvas.getHeight();
+        canvas.getGraphicsContext2D().clearRect(0,0,width, height);
 
     }
 
@@ -133,4 +135,5 @@ public class GraphicDesigner {
             }
         }
     }
+
 }

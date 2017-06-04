@@ -1,6 +1,7 @@
 package trzpoc.structure.serial;
 
 import com.opencsv.CSVReader;
+import trzpoc.gui.MainForSerialData;
 import trzpoc.structure.Cell;
 import trzpoc.structure.DataDisplayManager;
 import trzpoc.utils.DataTypesConverter;
@@ -24,14 +25,22 @@ public class SerialDataFacade {
 
     private DataDisplayManager displayManager;
     private DataTypesConverter dataTypesConverter;
+    private MainForSerialData mainForSerialData;
 
     public static SerialDataFacade createNewInstance(){
         return new SerialDataFacade();
+    }
+    public static SerialDataFacade createNewInstanceByListener(MainForSerialData mainForSerialData) {
+        return new SerialDataFacade(mainForSerialData);
     }
     private SerialDataFacade(){
         this.displayManager = DataDisplayManager.getNewInstance();
         this.displayManager.prepareDisplayMap(20);
         this.dataTypesConverter = DataTypesConverter.getNewInstance();
+    }
+    private SerialDataFacade(MainForSerialData mainForSerialData){
+        this();
+        this.mainForSerialData = mainForSerialData;
     }
 
     public Cell onSerialDataInput(byte[] data) throws UnsupportedEncodingException {
@@ -52,6 +61,8 @@ public class SerialDataFacade {
         }else if (command == 'B'){ // Bar configuration
             dataParsed = BarSerialDataParser.getNewInstance().readByteArray(data);
         }
+        this.displayManager.addOrUpdateCellInMatrix(dataParsed);
+        this.mainForSerialData.redrawOnCanvas(this.displayManager);
         return dataParsed;
     }
     private char readCommandFromData(byte[] data) {

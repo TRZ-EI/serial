@@ -17,6 +17,9 @@ import javafx.scene.input.KeyCombination;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
 import javafx.stage.Stage;
+import trzpoc.structure.DataDisplayManager;
+import trzpoc.structure.serial.SerialDataFacade;
+import trzpoc.utils.SerialDataMock;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -30,6 +33,8 @@ public class MainForSerialData extends Application {
     protected Stage primaryStage;
     private String debug;
     private Canvas canvas;
+    private SerialDataFacade serialDataFacade;
+    private DataDisplayManager dataDisplayManager;
 
     private String readDebugValue(){
         final String resourceFileName = "application.properties";
@@ -60,6 +65,7 @@ public class MainForSerialData extends Application {
         this.canvas = new Canvas(800, 480);
 
 
+
         // TODO: REMOVED SCROLLBAR TO MANAGE BARS
         /*
         ScrollPane scrollPane = new ScrollPane();
@@ -75,7 +81,26 @@ public class MainForSerialData extends Application {
         this.addMouseEventToStart(this.canvas);
         this.primaryStage.show();
         this.graphicDesigner = GraphicDesigner.createNewInstanceByGroupAndCanvasAndDebugParam(root, this.canvas, this.debug);
+        this.serialDataFacade = SerialDataFacade.createNewInstanceByListener(this);
     }
+    public void redrawOnCanvas(DataDisplayManager dm){
+        this.dataDisplayManager = dm;
+        this.graphicDesigner.drawOnCanvas(dm);
+
+    }
+    private DataDisplayManager simulateDataInput(){
+        DataDisplayManager retValue = null;
+        SerialDataFacade sd = SerialDataFacade.createNewInstance();
+        String realFileName = this.getClass().getClassLoader().getResource("inputExamples.csv").getFile();
+        try {
+            retValue = sd.fillMatrixWithData(realFileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return retValue;
+
+    }
+
 
 
     private void addTouchEventToExit(Canvas canvas) {
@@ -102,7 +127,8 @@ public class MainForSerialData extends Application {
     private void addTouchEventToStart(final Canvas canvas) {
         canvas.setOnTouchPressed(new EventHandler<TouchEvent>() {
             public void handle(TouchEvent event) {
-                graphicDesigner.drawOnCanvas();
+                //DataDisplayManager dm = simulateDataInput();
+                SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).readData();
                 event.consume();
             }
 
@@ -112,7 +138,8 @@ public class MainForSerialData extends Application {
         canvas.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             public void handle(MouseEvent me) {
-                graphicDesigner.drawOnCanvas();
+                //DataDisplayManager dm = simulateDataInput();
+                SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).readData();
                 me.consume();
             }
         });

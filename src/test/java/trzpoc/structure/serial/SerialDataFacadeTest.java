@@ -7,8 +7,6 @@ import trzpoc.structure.CellsRow;
 import trzpoc.structure.DataDisplayManager;
 import trzpoc.structure.Variable;
 
-import java.util.ArrayList;
-
 import static org.testng.Assert.assertNotNull;
 import static org.testng.Assert.assertTrue;
 
@@ -65,9 +63,12 @@ public class SerialDataFacadeTest {
 */
     private DataDisplayManager createMatrixForTestOneRow() {
         DataDisplayManager retValue = DataDisplayManager.getNewInstance();
+        retValue.prepareDisplayMap(20);
         int rowIndex = 0;
         Variable v = null;
         for (int column = 0; column < 6; column ++){
+
+
             VariableConfiguratorSerialDataParser dp = VariableConfiguratorSerialDataParser.getNewInstance();
             v = dp.createVariable('C');
             v.setxPos(column).setyPos(rowIndex).setId(column);
@@ -102,24 +103,22 @@ public class SerialDataFacadeTest {
     */
     private DataDisplayManager createMatrixForTest(){
         DataDisplayManager retValue = DataDisplayManager.getNewInstance();
-        ArrayList<CellsRow> rows = new ArrayList<CellsRow>();
+        retValue.prepareDisplayMap(20);
         for (int y = 0; y < 6; y ++){
-            rows.add(this.createDataForTest(y, 1));
+            retValue.addOrUpdateCellInMatrix(this.createCellForTest(y, 1));
         }
-        retValue.setRows(rows);
         return retValue;
 
     }
 
-    private CellsRow createDataForTest(int rowIndex, int column) {
-
+    private Cell createCellForTest(int row, int column){
         VariableConfiguratorSerialDataParser dp = VariableConfiguratorSerialDataParser.getNewInstance();
         Variable v = dp.createVariable('C');
-        v.setxPos(column).setyPos(rowIndex).setId(rowIndex);
-        CellsRow retValue = CellsRow.getEmptyInstance().setyPos(rowIndex);
-        retValue.addOrUpdateACell(v);
-        return retValue;
+        v.setxPos(column).setyPos(row).setId(row);
+        return v;
+
     }
+
     private boolean compareRows(CellsRow one, CellsRow otherOne) {
         boolean retValue = one.equals(otherOne);
         if (retValue){
