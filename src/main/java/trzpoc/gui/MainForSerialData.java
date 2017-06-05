@@ -33,6 +33,7 @@ public class MainForSerialData extends Application {
     protected Stage primaryStage;
     private String debug;
     private Canvas canvas;
+    private Canvas canvasForGrid;
     private SerialDataFacade serialDataFacade;
     private DataDisplayManager dataDisplayManager;
 
@@ -63,6 +64,7 @@ public class MainForSerialData extends Application {
         this.primaryStage.setScene(scene);
         this.addCombinationKeyAcceleratorToExit(primaryStage);
         this.canvas = new Canvas(800, 480);
+        this.canvasForGrid = new Canvas(800, 480);
 
 
 
@@ -77,10 +79,13 @@ public class MainForSerialData extends Application {
         scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
         */
         root.getChildren().add(this.canvas);
+        root.getChildren().add(this.canvasForGrid);
+        this.canvas.toFront();
         this.addTouchEventToStart(this.canvas);
         this.addMouseEventToStart(this.canvas);
         this.primaryStage.show();
         this.graphicDesigner = GraphicDesigner.createNewInstanceByGroupAndCanvasAndDebugParam(root, this.canvas, this.debug);
+        this.graphicDesigner.setCanvasForGrid(this.canvasForGrid);
         this.serialDataFacade = SerialDataFacade.createNewInstanceByListener(this);
     }
     public void redrawOnCanvas(DataDisplayManager dm){
