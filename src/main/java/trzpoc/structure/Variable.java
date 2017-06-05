@@ -79,7 +79,11 @@ public class Variable extends Cell {
     }
 
     public Variable setValue(String value) {
-        this.value = Long.valueOf(value, 10);
+        if (value != null){
+            long tempValue = Long.valueOf(value, 10);
+            this.setChanged(this.value != tempValue);
+            this.value = tempValue;
+        }
         return this;
     }
 

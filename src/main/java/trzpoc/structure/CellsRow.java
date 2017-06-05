@@ -55,6 +55,7 @@ public class CellsRow {
     }
 
     private Cell addCell(Cell cell) {
+        cell.setPixelScreenYPos(this.pixelScreenYPos);
         this.cells.add(cell);
         int indexInCollection = this.cells.indexOf(cell);
         return this.cells.get(indexInCollection);
@@ -75,8 +76,9 @@ public class CellsRow {
             v.setDecimalLenght(c.getDecimalLenght());
             v.setIntegerLenght(c.getIntegerLenght());
         }
-
         cellToUpdate.setValue(cell.getValue());
+        cellToUpdate.setPixelScreenYPos(this.pixelScreenYPos);
+
         this.cells.add(indexInCollection, cellToUpdate);
         return this.cells.get(indexInCollection);
     }

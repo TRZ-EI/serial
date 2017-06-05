@@ -21,8 +21,8 @@ public class Text extends Cell{
     }
 
     private void calculateId() {
-        this.setId(0);
-        // TODO: define better id creation
+        int id = this.getValue() != null? this.getValue().hashCode(): this.hashCode();
+        this.setId(id);
     }
 
     public static Text getNewInstanceByFontAndColor(Font font, Color color){
@@ -31,6 +31,14 @@ public class Text extends Cell{
     private Text(Font font, Color color) {
         super(font, color);
     }
+
+    @Override
+    public Cell setValue(String value){
+        super.setValue(value);
+        this.calculateId();
+        return this;
+    }
+
     @Override
     public String getValue() {
         return super.getValue();

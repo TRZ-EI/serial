@@ -15,16 +15,19 @@ public abstract class Cell implements CellInterface {
     private Color color;
     private Font font;
     private String value;
-    private int width;
-    private int height;
     private int xPos;
     private int yPos;
+    private int pixelScreenYPos;
+    private boolean isChanged;
+    
 
     protected Cell(Font font, Color color) {
+        this();
         this.color = color;
         this.font = font;
     }
     protected Cell() {
+        this.isChanged = false;
     }
 
 
@@ -52,10 +55,18 @@ public abstract class Cell implements CellInterface {
     }
 
     public Cell setValue(String value) {
-        this.value = value;
+        if (value != null) {
+                this.isChanged = !value.equals(this.value);
+                this.value = value;
+        }
         return this;
     }
-
+    public int getPixelScreenXPos(){
+        return this.xPos * TextMetricCalculator.getInstance().calculateWidth("W", this.font);
+    }
+    public int getPixelScreenYPosUpper(){
+        return this.pixelScreenYPos - this.getHeight();
+    }
     public int getWidth() {
 
         return TextMetricCalculator.getInstance().calculateWidth(this.getValue(), this.font);
@@ -101,4 +112,20 @@ public abstract class Cell implements CellInterface {
         return result;
     }
 
+    public int getPixelScreenYPos() {
+        return pixelScreenYPos;
+    }
+
+    public Cell setPixelScreenYPos(int pixelScreenYPos) {
+        this.pixelScreenYPos = pixelScreenYPos;
+        return this;
+    }
+
+    public boolean isChanged() {
+        return isChanged;
+    }
+
+    public void setChanged(boolean changed) {
+        isChanged = changed;
+    }
 }
