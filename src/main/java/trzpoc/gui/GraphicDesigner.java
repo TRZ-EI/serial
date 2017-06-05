@@ -18,6 +18,7 @@ public class GraphicDesigner {
     private Canvas canvas;
     private Group group;
     private DataDisplayManager dataDisplayManager;
+    private Canvas canvasForGrid;
 
 
     public static GraphicDesigner createNewInstanceByGroupAndCanvasAndDebugParam(Group group, Canvas canvas, String debug){
@@ -32,8 +33,24 @@ public class GraphicDesigner {
     }
     public void drawOnCanvas(DataDisplayManager dm) {
         this.dataDisplayManager = dm;
+        this.drawGrid();
         this.drawOnCanvas();
     }
+
+    private void drawGrid(){
+        this.canvasForGrid.getGraphicsContext2D().clearRect(0,0, canvasForGrid.getWidth(),canvasForGrid.getHeight());
+
+        for (int row = 0; row < this.dataDisplayManager.getNumberOfRows(); row++) {
+            CellsRow cellsRow = this.dataDisplayManager.getOrCreateARow(row);
+            // DRAW ROW
+            this.drawHorizontalRows(cellsRow);
+            // DRAW VERTICAL DIVS FOR ROW
+            this.drawVerticalDivsForRow(cellsRow);
+
+        }
+
+    }
+
 
     private void drawOnCanvas() {
             GraphicsContext gc = this.canvas.getGraphicsContext2D();
@@ -42,31 +59,26 @@ public class GraphicDesigner {
             int width = 0;
             for (int row = 0; row < this.dataDisplayManager.getNumberOfRows(); row++) {
                 CellsRow cellsRow = this.dataDisplayManager.getOrCreateARow(row);
-                // DRAW ROWS
-                this.drawHorizontalRows(cellsRow, gc);
-                boolean isAlreaadyPlotted = false;
                 for (int cellIndex = 0; cellIndex < cellsRow.getCellsCount(); cellIndex++) {
                     Cell c = cellsRow.getCellByColumnIndex(cellIndex);
-                    // DRAW VERTICAL DIVS FOR ROW
-                    if (!isAlreaadyPlotted) {
-                        this.drawVerticalDivsForRow(cellsRow, c, gc);
-                        isAlreaadyPlotted = true;
-                    }
-                    gc.setFont(c.getFont());
-                    gc.setFill(c.getColor());
-                    String textToFill = null;
-                    if (c instanceof Variable) {
-                        textToFill = ((Variable) c).printFormattedValue();
-                    } else if (c instanceof Text) {
-                        textToFill = c.getValue();
-                    } else if (c instanceof Bar) {
-                        this.configureBar(c, cellsRow.getPixelScreenYPos());
-                    }
-                    if (textToFill != null && textToFill.length() > 0) {
-                        FontAndColorSelector fcs = FontAndColorSelector.getNewInstance();
-                        width = fcs.getWidthForFont(c.getFont(), "W");
-                        gc.fillText(textToFill, c.getxPos() * width, cellsRow.getPixelScreenYPos());
-                    }
+                    //if (c.isChanged()) {
+                        gc.setFont(c.getFont());
+                        gc.setFill(c.getColor());
+                        String textToFill = null;
+                        if (c instanceof Variable) {
+                            textToFill = ((Variable) c).printFormattedValue();
+                        } else if (c instanceof Text) {
+                            textToFill = c.getValue();
+                        } else if (c instanceof Bar) {
+                            this.configureBar(c, cellsRow.getPixelScreenYPos());
+                        }
+                        if (textToFill != null && textToFill.length() > 0) {
+                            FontAndColorSelector fcs = FontAndColorSelector.getNewInstance();
+                            width = fcs.getWidthForFont(c.getFont(), "W");
+                            //gc.clearRect(c.getxPos() * width, c.getPixelScreenYPosUpper(), c.getWidth(), c.getHeight());
+                            gc.fillText(textToFill, c.getxPos() * width, cellsRow.getPixelScreenYPos());
+                        }
+                    //}
                 }
             }
     }
@@ -111,19 +123,25 @@ public class GraphicDesigner {
 
     }
 
-    private void drawHorizontalRows(CellsRow cellsRow, GraphicsContext gc) {
+    private void drawHorizontalRows(CellsRow cellsRow) {
         if (this.debug.equalsIgnoreCase("debug")) {
+            GraphicsContext gc = this.canvasForGrid.getGraphicsContext2D();
             gc.setStroke(Color.RED);
             gc.setLineWidth(0.1d);
             gc.strokeLine(0, cellsRow.getPixelScreenYPos(), 800, cellsRow.getPixelScreenYPos());
         }
     }
 
-    private void drawVerticalDivsForRow(CellsRow cellsRow, Cell c, GraphicsContext gc) {
-        if (this.debug.equalsIgnoreCase("debug")) {
+    private void drawVerticalDivsForRow(CellsRow cellsRow) {
+        Font font = null;
+        if (cellsRow.getCellsCount() > 0){
+          font = cellsRow.getCellByColumnIndex(0).getFont();
+        }
+
+        if (this.debug.equalsIgnoreCase("debug") && font != null) {
+            GraphicsContext gc = this.canvasForGrid.getGraphicsContext2D();
             int maxHeight = 800;
-            Font f = c.getFont();
-            int width = FontAndColorSelector.getNewInstance().getWidthForFont(f, "W");
+            int width = FontAndColorSelector.getNewInstance().getWidthForFont(font, "W");
             int x1 = width;
             int y1 = cellsRow.getPixelScreenYPos() - cellsRow.getMaxHeight();
             int y2 = cellsRow.getPixelScreenYPos();
@@ -136,4 +154,7 @@ public class GraphicDesigner {
         }
     }
 
+    public void setCanvasForGrid(Canvas canvasForGrid) {
+        this.canvasForGrid = canvasForGrid;
+    }
 }
