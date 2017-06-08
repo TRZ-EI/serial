@@ -40,6 +40,7 @@ public class SerialDataMock {
 
     public void readData() {
         String realFileName = this.getClass().getClassLoader().getResource("inputExamples.csv").getFile();
+
         CSVReader reader = null;
         try {
             reader = new CSVReader(new FileReader(realFileName));
@@ -51,6 +52,24 @@ public class SerialDataMock {
                 }
             }
         } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void simulateSerialReception(){
+        String other = this.getClass().getClassLoader().getResource("inputExamples-variable11.csv").getFile();
+        CSVReader reader = null;
+        try {
+            reader = new CSVReader(new FileReader(other));
+            String[] line = null;
+            while ((line = reader.readNext()) != null) {
+
+                if (!line[0].startsWith("#")) {
+                    byte[] dataReceived = this.simulateSerialInput(line);
+                    this.serialDataFacade.onSerialDataInput(dataReceived);
+                }
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

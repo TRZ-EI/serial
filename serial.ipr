@@ -419,6 +419,17 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/rxtx/rxtx/2.1.7/rxtx-2.1.7-sources.jar!/" />
       </SOURCES>
     </library>
+    <library name="Maven: org.scream3r:jssc:2.8.0">
+      <CLASSES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scream3r/jssc/2.8.0/jssc-2.8.0.jar!/" />
+      </CLASSES>
+      <JAVADOC>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scream3r/jssc/2.8.0/jssc-2.8.0-javadoc.jar!/" />
+      </JAVADOC>
+      <SOURCES>
+        <root url="jar://$MAVEN_REPOSITORY$/org/scream3r/jssc/2.8.0/jssc-2.8.0-sources.jar!/" />
+      </SOURCES>
+    </library>
     <library name="Maven: org.testng:testng:6.8.5">
       <CLASSES>
         <root url="jar://$MAVEN_REPOSITORY$/org/testng/testng/6.8.5/testng-6.8.5.jar!/" />

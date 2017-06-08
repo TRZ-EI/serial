@@ -13,12 +13,15 @@ import trzpoc.gui.hansolo.skins.TRZLinearSkin;
 import trzpoc.structure.*;
 import trzpoc.utils.FontAndColorSelector;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class GraphicDesigner {
     private  String debug;
-    private Canvas canvas;
+    private Canvas canvas, canvasForGrid;
     private Group group;
     private DataDisplayManager dataDisplayManager;
-    private Canvas canvasForGrid;
+    private Map<Integer, Gauge> bars;
 
 
     public static GraphicDesigner createNewInstanceByGroupAndCanvasAndDebugParam(Group group, Canvas canvas, String debug){
@@ -30,6 +33,7 @@ public class GraphicDesigner {
         this.group = group;
         this.canvas = canvas;
         this.debug = debug;
+        this.bars = new HashMap<>();
     }
     public void drawOnCanvas(DataDisplayManager dm) {
         this.dataDisplayManager = dm;
@@ -53,6 +57,7 @@ public class GraphicDesigner {
 
 
     private void drawOnCanvas() {
+            this.canvas.toFront();
             GraphicsContext gc = this.canvas.getGraphicsContext2D();
             this.clearCanvas(this.canvas);
 
@@ -70,7 +75,12 @@ public class GraphicDesigner {
                         } else if (c instanceof Text) {
                             textToFill = c.getValue();
                         } else if (c instanceof Bar) {
-                            this.configureBar(c, cellsRow.getPixelScreenYPos());
+                            if (this.bars.get(c.getId()) != null){
+                                double value = (c.getValue() != null)? Double.parseDouble(c.getValue()): ((Bar)c).getMinValue();
+                                this.bars.get(c.getId()).setValue(value);
+                            }else {
+                                this.configureBar(c, cellsRow.getPixelScreenYPos());
+                            }
                         }
                         if (textToFill != null && textToFill.length() > 0) {
                             FontAndColorSelector fcs = FontAndColorSelector.getNewInstance();
@@ -101,10 +111,12 @@ public class GraphicDesigner {
         bar.setLayoutX(30);
         bar.setLayoutY(pixelScreenYPos - prefHeight / 2);
         this.group.getChildren().add(bar);
+        this.bars.put(c.getId(), bar);
     }
 
     private Gauge createOrUpdateHorizontalBar(long minValue, long maxValue) {
         Gauge gauge = GaugeBuilder.create()
+                .value(minValue)
                 .minValue(minValue)
                 .maxValue(maxValue)
                 .skinType(Gauge.SkinType.LINEAR)

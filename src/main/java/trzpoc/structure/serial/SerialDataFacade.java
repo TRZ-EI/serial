@@ -1,7 +1,8 @@
 package trzpoc.structure.serial;
 
 import com.opencsv.CSVReader;
-import trzpoc.gui.MainForSerialData;
+import javafx.beans.property.BooleanProperty;
+import javafx.beans.property.SimpleBooleanProperty;
 import trzpoc.structure.Cell;
 import trzpoc.structure.DataDisplayManager;
 import trzpoc.utils.DataTypesConverter;
@@ -23,28 +24,21 @@ import java.util.Arrays;
  */
 public class SerialDataFacade {
 
+    private final BooleanProperty isDataChanged = new SimpleBooleanProperty(false);
+
+
     private DataDisplayManager displayManager;
     private DataTypesConverter dataTypesConverter;
-    private MainForSerialData mainForSerialData;
 
     public static SerialDataFacade createNewInstance(){
         return new SerialDataFacade();
     }
-    public static SerialDataFacade createNewInstanceByListener(MainForSerialData mainForSerialData) {
-        return new SerialDataFacade(mainForSerialData);
-    }
     private SerialDataFacade(){
-        this.displayManager = DataDisplayManager.getNewInstance();
-        this.displayManager.prepareDisplayMap(20);
+        this.displayManager = DataDisplayManager.getNewInstance().prepareDisplayMap(20);
         this.dataTypesConverter = DataTypesConverter.getNewInstance();
-    }
-    private SerialDataFacade(MainForSerialData mainForSerialData){
-        this();
-        this.mainForSerialData = mainForSerialData;
     }
 
     public Cell onSerialDataInput(byte[] data) throws UnsupportedEncodingException {
-
         // first step: what type of action?
         char command = this.readCommandFromData(data);
         Cell dataParsed = null;
@@ -62,7 +56,7 @@ public class SerialDataFacade {
             dataParsed = BarSerialDataParser.getNewInstance().readByteArray(data);
         }
         this.displayManager.addOrUpdateCellInMatrix(dataParsed);
-        this.mainForSerialData.redrawOnCanvas(this.displayManager);
+        this.isDataChanged.set(true);
         return dataParsed;
     }
     private char readCommandFromData(byte[] data) {
@@ -126,4 +120,11 @@ public class SerialDataFacade {
     }
 
 
+    public DataDisplayManager getDisplayManager() {
+        return this.displayManager;
+    }
+
+    public BooleanProperty getIsDataChanged(){
+        return this.isDataChanged;
+    }
 }

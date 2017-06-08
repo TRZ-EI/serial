@@ -56,8 +56,8 @@ public abstract class Cell implements CellInterface {
 
     public Cell setValue(String value) {
         if (value != null) {
-                this.isChanged = !value.equals(this.value);
-                this.value = value;
+            this.isChanged = !value.equals(this.value);
+            this.value = value;
         }
         return this;
     }
