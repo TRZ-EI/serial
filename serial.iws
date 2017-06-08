@@ -5,20 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/comunication/jssc/Serial.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/inputExamples-backup.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/inputExamples-variable11.csv" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/structure/TextTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.iml" afterPath="$PROJECT_DIR$/serial.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.ipr" afterPath="$PROJECT_DIR$/serial.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.iws" afterPath="$PROJECT_DIR$/serial.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Cell.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Cell.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/utils/SerialDataMock.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/utils/SerialDataMock.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/application.properties" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" />
     </list>
     <list id="b4e93cff-d048-4a6f-92cd-4a82a397bf5b" name="New changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -33,6 +20,9 @@
     <option name="PATCH_PATH" value="" />
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
+  <component name="FavoritesManager">
+    <favorites_list name="CodeIris Favorites" />
+  </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="GraphicDesigner.java" pinned="false" current-in-tab="false">
@@ -1196,7 +1186,14 @@
       <option name="project" value="LOCAL" />
       <updated>1496668258029</updated>
     </task>
-    <option name="localTasksCounter" value="21" />
+    <task id="LOCAL-00021" summary="Added JavaFx bean properties binding">
+      <created>1496922679374</created>
+      <option name="number" value="00021" />
+      <option name="presentableId" value="LOCAL-00021" />
+      <option name="project" value="LOCAL" />
+      <updated>1496922679374</updated>
+    </task>
+    <option name="localTasksCounter" value="22" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1322,7 +1319,8 @@
     <MESSAGE value="Refactoring to add to Cell position for including rectangle" />
     <MESSAGE value="Added canvas to draw grid" />
     <MESSAGE value="Added method to draw grid - refactored main method" />
-    <option name="LAST_COMMIT_MESSAGE" value="Added method to draw grid - refactored main method" />
+    <MESSAGE value="Added JavaFx bean properties binding" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added JavaFx bean properties binding" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1525,6 +1523,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
           <caret line="0" column="11" lean-forward="false" selection-start-line="0" selection-start-column="11" selection-end-line="0" selection-end-column="11" />
+          <folding />
         </state>
       </provider>
     </entry>
