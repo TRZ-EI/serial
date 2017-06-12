@@ -20,13 +20,23 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
 import javafx.stage.Stage;
+import jssc.SerialPort;
+import jssc.SerialPortEvent;
+import jssc.SerialPortException;
+import trzpoc.comunication.jssc.JavaFxJssc;
 import trzpoc.structure.serial.SerialDataFacade;
+import trzpoc.utils.DataTypesConverter;
 import trzpoc.utils.SerialDataMock;
 
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
+import static jssc.SerialPort.MASK_RXCHAR;
 
 public class MainForSerialData extends Application{
 
@@ -37,6 +47,9 @@ public class MainForSerialData extends Application{
     private Canvas canvas;
     private Canvas canvasForGrid;
     private SerialDataFacade serialDataFacade;
+
+    private SerialPort serialPort = null;
+
 
 
     private String readDebugValue(){
@@ -90,6 +103,10 @@ public class MainForSerialData extends Application{
         this.graphicDesigner.setCanvasForGrid(this.canvasForGrid);
         this.serialDataFacade = SerialDataFacade.createNewInstance();
         this.addListenerForDataChanged();
+        boolean isConnected = this.connectToSerialPort("/dev/ttyACM0");
+        if (isConnected){
+            System.out.println("Connected to /dev/ttyACM0");
+        }
 
 
     }
@@ -145,7 +162,13 @@ public class MainForSerialData extends Application{
             public void handle(MouseEvent me) {
                 if (me.getButton() == MouseButton.PRIMARY){
                     try {
-                        SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).readData();
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).readData();
+                            }
+                        });
+
                         me.consume();
                     } catch (Exception e) {
                         e.printStackTrace();
@@ -153,10 +176,10 @@ public class MainForSerialData extends Application{
 
                 }
                 else if (me.getButton() == MouseButton.SECONDARY) {
-                    SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).simulateSerialReception();
+                    Platform.runLater(() ->{
+                        SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).simulateSerialReception("2");
+                    });
                     me.consume();
-                    //DataDisplayManager dm = simulateDataInput();
-                    //SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).readData();
                 }
 
             }
@@ -189,6 +212,86 @@ public class MainForSerialData extends Application{
     public SerialDataFacade getSerialDataFacade(){
         return this.serialDataFacade;
     }
+
+    public boolean connectToSerialPort(String port){
+
+        System.out.println("connectToSerialPort");
+
+        boolean success = false;
+        this.serialPort = new SerialPort(port);
+        try {
+            serialPort.openPort();
+            serialPort.setParams(
+                    SerialPort.BAUDRATE_115200,
+                    SerialPort.DATABITS_8,
+                    SerialPort.STOPBITS_1,
+                    SerialPort.PARITY_NONE);
+            serialPort.setEventsMask(MASK_RXCHAR);
+            serialPort.addEventListener((SerialPortEvent serialPortEvent) -> {
+                if(serialPortEvent.isRXCHAR()){
+                    try {
+
+                        byte[] b = serialPort.readBytes();
+
+                        DataTypesConverter converter = DataTypesConverter.getNewInstance();
+                        // TODO: CRC control implementation and send response
+
+
+                        
+                        String st = converter.bytesToString(b);
+                        String result = (st.indexOf('\r') > 0)? st.substring(0, st.indexOf('\r')): st;
+                        Platform.runLater(() ->{
+                            System.out.println(result);
+                            SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).simulateSerialReception(result);
+                        });
+
+                    } catch (SerialPortException ex) {
+                        Logger.getLogger(JavaFxJssc.class.getName())
+                                .log(Level.SEVERE, null, ex);
+                    } catch (UnsupportedEncodingException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            });
+            success = true;
+        } catch (SerialPortException ex) {
+            Logger.getLogger(JavaFxJssc.class.getName())
+                    .log(Level.SEVERE, null, ex);
+            System.out.println("SerialPortException: " + ex.toString());
+        }
+
+
+        return success;
+    }
+
+    public void disconnectFromSerialPort(){
+
+        System.out.println("disconnectFromSerialPort()");
+        if(this.serialPort != null){
+            try {
+                this.serialPort.removeEventListener();
+
+                if(this.serialPort.isOpened()){
+                    this.serialPort.closePort();
+                }
+
+                this.serialPort = null;
+            } catch (SerialPortException ex) {
+                Logger.getLogger(JavaFxJssc.class.getName())
+                        .log(Level.SEVERE, null, ex);
+            }
+        }
+    }
+
+    @Override
+    public void stop() throws Exception {
+        this.disconnectFromSerialPort();
+        super.stop();
+    }
+
+
+
     public static void main(String[] args) {
         Application.launch(args);
     }

@@ -8,6 +8,7 @@ import trzpoc.structure.serial.VariableConfiguratorSerialDataParser;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.net.URL;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -25,7 +26,7 @@ public class SerialDataMock {
     private final Byte fineStringa = Byte.valueOf("0A", 16).byteValue();
     private final DataTypesConverter dataTypesConverter = DataTypesConverter.getNewInstance();
 
-    private SerialDataFacade serialDataFacade;
+    public SerialDataFacade serialDataFacade;
 
     public SerialDataMock(SerialDataFacade serialDataFacade) {
         this.serialDataFacade = serialDataFacade;
@@ -39,6 +40,8 @@ public class SerialDataMock {
     }
 
     public void readData() {
+
+
         String realFileName = this.getClass().getClassLoader().getResource("inputExamples.csv").getFile();
 
         CSVReader reader = null;
@@ -56,26 +59,30 @@ public class SerialDataMock {
         }
 
     }
-    public void simulateSerialReception(){
-        String other = this.getClass().getClassLoader().getResource("inputExamples-variable11.csv").getFile();
-        CSVReader reader = null;
-        try {
-            reader = new CSVReader(new FileReader(other));
-            String[] line = null;
-            while ((line = reader.readNext()) != null) {
+    public void simulateSerialReception(String fileId) {
+        String fileNamePrefix = "serialInputs/inputExamples-";
+        String fileName = fileNamePrefix + fileId + ".csv";
+        URL url = this.getClass().getClassLoader().getResource(fileName);
+        if (url != null){
+            String other = url.getFile();
+            CSVReader reader = null;
+            try {
+                reader = new CSVReader(new FileReader(other));
+                String[] line = null;
+                while ((line = reader.readNext()) != null) {
 
-                if (!line[0].startsWith("#")) {
-                    byte[] dataReceived = this.simulateSerialInput(line);
-                    this.serialDataFacade.onSerialDataInput(dataReceived);
+                    if (!line[0].startsWith("#")) {
+                        byte[] dataReceived = this.simulateSerialInput(line);
+                        this.serialDataFacade.onSerialDataInput(dataReceived);
+                    }
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
-        } catch (Exception e) {
-            e.printStackTrace();
         }
-
     }
 
-    private byte[] simulateSerialInput(String[] line) throws UnsupportedEncodingException {
+    public byte[] simulateSerialInput(String[] line) throws UnsupportedEncodingException {
         String command = line[1];
         byte[] retValue = null;
 

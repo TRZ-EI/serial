@@ -76,8 +76,7 @@ public class GraphicDesigner {
                             textToFill = c.getValue();
                         } else if (c instanceof Bar) {
                             if (this.bars.get(c.getId()) != null){
-                                double value = (c.getValue() != null)? Double.parseDouble(c.getValue()): ((Bar)c).getMinValue();
-                                this.bars.get(c.getId()).setValue(value);
+                                this.updateBarValuesAndColor(c);
                             }else {
                                 this.configureBar(c, cellsRow.getPixelScreenYPos());
                             }
@@ -91,6 +90,16 @@ public class GraphicDesigner {
                     //}
                 }
             }
+    }
+
+    private void updateBarValuesAndColor(Cell c) {
+        Bar b = (Bar)c;
+        double value = (c.getValue() != null)? Double.parseDouble(c.getValue()): ((Bar)c).getMinValue();
+        double delta = b.getMaxValue() - b.getMinValue();
+        double blueReference = b.getMinValue() + 0.8 * delta;
+        Color barColor = (value >= blueReference)? Color.BLUE: Color.GREEN;
+        this.bars.get(c.getId()).barColorProperty().set(barColor);
+        this.bars.get(c.getId()).setValue(value);
     }
 
     private void clearCanvas(Canvas canvas) {

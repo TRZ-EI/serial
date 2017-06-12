@@ -204,6 +204,42 @@ void tx_valore_variabile1(char num_var1, long val_var1){
 
 }
 **********************************************************************************
+// $CRC16             0a7fee ./Debug/MD_COLORE_1.map
+// $CRC16             0a9062  ./Debug_M16C_E8_SYSTEM/MD_COLORE_1.map
+
+/*------------------------------------------------------
+         CRC input register file 
+ ------------------------------------------------------*/
+union byte_def crcin_addr;
+#define         crcin                   crcin_addr.byte
+
+/*------------------------------------------------------
+         CRC data register 16 bit
+------------------------------------------------------*/
+#define         crcd            crcd_addr.word
+#define         crcdl           crcd_addr.byte.low              /* CRC data register low  8 bit */
+#define         crcdh           crcd_addr.byte.high             /* CRC data register high 8 bit */
+
+
+
+
+
+// VERSIONE TROVATA NEL FILE ./display_colore.c
+int calcola_crc(void){
+	int l,i, crc;
+	char app;
+	l=strlen(vett_config);				// calcola la lunghezza del vettore
+//	crc=CRC16(&vett_config[0],l);
+	crcd=0;
+	for (i=0; i<l; i++){
+		app=vett_config[i];
+		crcin=app;
+	}
+	crc=crcd;
+	return(crc);
+}
+
+
 
 
 // calcola il CRC della stringa residente nel vettore di configurazione usando M16
