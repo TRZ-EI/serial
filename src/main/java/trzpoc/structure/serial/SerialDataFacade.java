@@ -39,6 +39,7 @@ public class SerialDataFacade {
     }
 
     public Cell onSerialDataInput(byte[] data) throws UnsupportedEncodingException {
+        this.isDataChanged.set(false);
         // first step: what type of action?
         char command = this.readCommandFromData(data);
         Cell dataParsed = null;
