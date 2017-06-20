@@ -44,7 +44,7 @@ public class VariableValueSerialDataParser implements SerialDataReader{
         byte[] crcValue = Arrays.copyOfRange(data, crcPos, crcPos + crcLenght);
         int crc = this.converter.notAsciiBytesToInt(crcValue);
 
-        return Variable.getInstance().setId(id).setValue(Long.toString(value));
+        return Variable.getInstance().setAConfiguration(false).setId(id).setValue(Long.toString(value));
     }
 
     public static VariableValueSerialDataParser getInstance() {

@@ -11,6 +11,7 @@ import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ListChangeListener;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -23,6 +24,7 @@ import javafx.stage.Stage;
 import jssc.SerialPort;
 import jssc.SerialPortEvent;
 import jssc.SerialPortException;
+import socketserverfx.FXMLSocketController;
 import trzpoc.comunication.jssc.JavaFxJssc;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.DataTypesConverter;
@@ -47,6 +49,8 @@ public class MainForSerialData extends Application{
     private Canvas canvas;
     private Canvas canvasForGrid;
     private SerialDataFacade serialDataFacade;
+
+    private FXMLSocketController socketController;
 
     private SerialPort serialPort = null;
 
@@ -102,11 +106,20 @@ public class MainForSerialData extends Application{
         this.graphicDesigner = GraphicDesigner.createNewInstanceByGroupAndCanvasAndDebugParam(root, this.canvas, this.debug);
         this.graphicDesigner.setCanvasForGrid(this.canvasForGrid);
         this.serialDataFacade = SerialDataFacade.createNewInstance();
+
+
+        this.socketController = new FXMLSocketController();
+        this.socketController.initialize(null, null);
+        this.socketController.activateConnection();
+
+        this.addListenerForSocketDataChanged();
         this.addListenerForDataChanged();
+        /*
         boolean isConnected = this.connectToSerialPort("/dev/ttyACM0");
         if (isConnected){
             System.out.println("Connected to /dev/ttyACM0");
         }
+        */
 
 
     }
@@ -126,6 +139,28 @@ public class MainForSerialData extends Application{
             }
         });
     }
+    private void addListenerForSocketDataChanged(){
+        this.socketController.getReceivedMsgData().addListener(new ListChangeListener<Byte>() {
+            @Override
+            public void onChanged(Change<? extends Byte> c) {
+                Byte[] data = new Byte[socketController.getReceivedMsgData().size()];
+
+                socketController.getReceivedMsgData().toArray(data);
+                socketController.getReceivedMsgData().clear();
+                byte[] inputData = new byte[data.length];
+                for (int i = 0; i < data.length; i ++){
+                    inputData[i] = data[i].byteValue();
+                }
+                try {
+                    serialDataFacade.onSerialDataInput(inputData);
+                } catch (UnsupportedEncodingException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+    }
+
     private void addTouchEventToExit(Canvas canvas) {
         canvas.setOnTouchPressed(new EventHandler<TouchEvent>() {
             private int touches;
@@ -256,8 +291,7 @@ public class MainForSerialData extends Application{
             });
             success = true;
         } catch (SerialPortException ex) {
-            Logger.getLogger(JavaFxJssc.class.getName())
-                    .log(Level.SEVERE, null, ex);
+            //Logger.getLogger(JavaFxJssc.class.getName()).log(Level.SEVERE, null, ex);
             System.out.println("SerialPortException: " + ex.toString());
         }
 
@@ -287,6 +321,7 @@ public class MainForSerialData extends Application{
     @Override
     public void stop() throws Exception {
         this.disconnectFromSerialPort();
+        this.socketController.disconnect();
         super.stop();
     }
 

@@ -82,7 +82,7 @@ public class VariableConfiguratorSerialDataParser implements SerialDataReader {
 
     public Variable createVariable(char fc) {
         FontAndColorSelector fcs = FontAndColorSelector.getNewInstance();
-        return Variable.getInstanceByFontAndColor(fcs.selectFont(fc), fcs.selectColor(fc));
+        return Variable.getInstanceByFontAndColor(fcs.selectFont(fc), fcs.selectColor(fc)).setAConfiguration(true);
     }
 
     private VariableConfiguratorSerialDataParser(){

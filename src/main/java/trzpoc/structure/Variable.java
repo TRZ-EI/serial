@@ -15,8 +15,12 @@ public class Variable extends Cell {
     private int integerLenght;
     private int decimalLenght;
 
+    private boolean isAConfiguration = false;
+
     public static Variable getInstance(){
-        return new Variable();
+        Variable retValue = new Variable();
+        retValue.setxPos(-1).setyPos(-1);
+        return retValue;
     }
 
 
@@ -109,5 +113,14 @@ public class Variable extends Cell {
 
     public int getDecimalLenght() {
         return decimalLenght;
+    }
+
+    public boolean isAConfiguration() {
+        return isAConfiguration;
+    }
+
+    public Variable setAConfiguration(boolean AConfiguration) {
+        isAConfiguration = AConfiguration;
+        return this;
     }
 }

@@ -35,6 +35,42 @@ public class DataTypesConverterTest {
                 {new byte[]{49, 0x39}, 19} // MIXED ASCII/HEX VALUES (19)
         };
     }
+    @DataProvider
+    private Object[][] dataToTestBytesToLong(){
+        return new Object[][]{
+                {new byte[]{0x33, 0x34, 0x35, 0x36, 0x37, 0x38}, 345678L}, // HEX values
+                {new byte[]{57}, 9L}, // ASCII VALUES (09)
+                {new byte[]{56}, 8L}, // ASCII VALUES (08)
+                {new byte[]{55}, 7L}, // ASCII VALUES (07)
+                {new byte[]{54}, 6L}, // ASCII VALUES (06)
+                {new byte[]{53}, 5L}, // ASCII VALUES (05)
+                {new byte[]{52}, 4L}, // ASCII VALUES (04)
+                {new byte[]{51}, 3L}, // ASCII VALUES (03)
+                {new byte[]{50}, 2L}, // ASCII VALUES (02)
+                {new byte[]{49}, 1L}, // ASCII VALUES (01)
+                {new byte[]{0x30,48,0x30,48,49,0x37,0x32,57}, 1729L}, // MIXED ASCII/HEX VALUES (00001729)
+                {new byte[]{49, 0x39}, 19L} // MIXED ASCII/HEX VALUES (19)
+        };
+    }
+    @DataProvider
+    private Object[][] dataToTestLongToAsciiChars(){
+        return new Object[][]{
+                {new byte[]{0x33, 0x34, 0x35, 0x36, 0x37, 0x38}, 345678L}, // HEX values
+                {new byte[]{57}, 9L}, // ASCII VALUES (09)
+                {new byte[]{56}, 8L}, // ASCII VALUES (08)
+                {new byte[]{55}, 7L}, // ASCII VALUES (07)
+                {new byte[]{54}, 6L}, // ASCII VALUES (06)
+                {new byte[]{53}, 5L}, // ASCII VALUES (05)
+                {new byte[]{52}, 4L}, // ASCII VALUES (04)
+                {new byte[]{51}, 3L}, // ASCII VALUES (03)
+                {new byte[]{50}, 2L}, // ASCII VALUES (02)
+                {new byte[]{49}, 1L}, // ASCII VALUES (01)
+                {new byte[]{49,0x37,0x32,57}, 1729L}, // MIXED ASCII/HEX VALUES (1729)
+                {new byte[]{49, 0x39}, 19L}, // MIXED ASCII/HEX VALUES (19)
+                {new byte[]{0x2D,49, 0x39}, -19L}, // MIXED ASCII/HEX VALUES (-19)
+                {new byte[]{0x2D,49,0x37,0x32,57}, -1729L} // MIXED ASCII/HEX VALUES (-1729)
+        };
+    }
 
     @BeforeMethod
     public void setUp() throws Exception {
@@ -44,6 +80,8 @@ public class DataTypesConverterTest {
     public void testNewInstance(){
         assertNotNull(DataTypesConverter.getNewInstance());
     }
+
+
     @Test
     public void testLongToBytes() throws Exception {
         long testValue = 1000l;
@@ -51,10 +89,16 @@ public class DataTypesConverterTest {
         byte[] actualValue = this.sut.longToBytes(testValue);
         assertEquals(actualValue, expectedValue);
     }
-    @Test
-    public void testBytesToLong() throws Exception {
-        long expectedValue = 10003L;
-        byte[] testValue = ByteBuffer.allocate(8).putLong(expectedValue).array();
+    @Test(dataProvider = "dataToTestLongToAsciiChars")
+    public void testLongToAsciiChars(byte[] expectedValue, long testValue) throws Exception {
+        byte[] actualValue = this.sut.longToAsciiChars(testValue);
+        assertEquals(actualValue, expectedValue);
+    }
+
+
+
+    @Test(dataProvider = "dataToTestBytesToLong")
+    public void testBytesToLong(byte[] testValue, long expectedValue) throws Exception {
         assertEquals(this.sut.bytesToLong(testValue), expectedValue);
     }
 
