@@ -13,11 +13,18 @@ public class DataTypesConverter {
         return buffer.array();
     }
 
-    public long bytesToLong(byte[] bytes) {
+    public long bytesToLong(byte[] bytes) throws UnsupportedEncodingException {
+        String toTransform = this.bytesToString(bytes);
+        return Long.parseLong(toTransform, 10);
+
+
+
+        /*
         ByteBuffer buffer = ByteBuffer.allocate(Long.BYTES);
         buffer.put(bytes);
         buffer.flip();//need flip
         return buffer.getLong();
+        */
     }
 
     public byte[] intToBytes(int x) {
@@ -56,5 +63,9 @@ public class DataTypesConverter {
 
     public static DataTypesConverter getNewInstance() {
         return new DataTypesConverter();
+    }
+
+    public byte[] longToAsciiChars(long testValue) {
+        return Long.toString(testValue).getBytes();
     }
 }
