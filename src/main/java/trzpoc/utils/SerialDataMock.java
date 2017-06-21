@@ -250,7 +250,22 @@ public class SerialDataMock {
     }
 
     private byte[] convertLongToByteArray(long value) {
-        return dataTypesConverter.longToBytes(value);
+        StringBuilder builder = new StringBuilder();
+        boolean isNegative = value < 0;
+        if (isNegative){
+            builder.append('-');
+            value = value * -1;
+        }
+
+        byte[] convertedValue = dataTypesConverter.longToAsciiChars(value);
+        int zerosToPrepend = 8 - convertedValue.length;
+        int index = (isNegative)? 1: 0;
+        for (int i = index; i < zerosToPrepend; i ++){
+            builder.append('0');
+        }
+
+        builder.append(value);
+        return builder.toString().getBytes();
     }
 
     private byte[] prepareByteArray(List<Byte> buffer) {
@@ -285,7 +300,13 @@ public class SerialDataMock {
     }
 
     public long bytesToLong(byte[] bytes) {
-        return dataTypesConverter.bytesToLong(bytes);
+        long retValue = 0;
+        try {
+            retValue = dataTypesConverter.bytesToLong(bytes);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+        return retValue;
     }
 
     public byte[] intToBytes(int x) {
