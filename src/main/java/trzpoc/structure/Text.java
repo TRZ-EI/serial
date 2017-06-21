@@ -17,12 +17,6 @@ public class Text extends Cell{
     }
     private Text(){
         super();
-        this.calculateId();
-    }
-
-    private void calculateId() {
-        int id = this.getValue() != null? this.getValue().hashCode(): this.hashCode();
-        this.setId(id);
     }
 
     public static Text getNewInstanceByFontAndColor(Font font, Color color){
@@ -35,7 +29,6 @@ public class Text extends Cell{
     @Override
     public Cell setValue(String value){
         super.setValue(value);
-        this.calculateId();
         return this;
     }
 
@@ -49,5 +42,16 @@ public class Text extends Cell{
             this.setValue(dataParsed.getValue());
         }
         return this;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        boolean result = false;
+        if (o instanceof Text){
+            Text other = (Text) o;
+            result = this.getxPos() == other.getxPos();
+            result &= this.getyPos() == other.getyPos();
+        }
+        return result;
     }
 }
