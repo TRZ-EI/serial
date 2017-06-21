@@ -58,8 +58,8 @@ public class GraphicDesigner {
 
     private void drawOnCanvas() {
             this.canvas.toFront();
-            GraphicsContext gc = this.canvas.getGraphicsContext2D();
             this.clearCanvas(this.canvas);
+            GraphicsContext gc = this.canvas.getGraphicsContext2D();
 
             int width = 0;
             for (int row = 0; row < this.dataDisplayManager.getNumberOfRows(); row++) {
