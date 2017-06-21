@@ -53,10 +53,10 @@ public class TextTest {
     }
     @Test
     public void testEquals() throws Exception {
-        String aNewTest = "A new Test";
-        Text textForUpdate = Text.getNewInstanceByFontAndColor(testFont, testColor);
-        textForUpdate.setValue(aNewTest);
-        this.sut.setValue(aNewTest);
+        int x = 10, y = 10;
+        Text textForUpdate = Text.getNewInstance();
+        textForUpdate.setxPos(x).setyPos(y).setValue(TEST_STRING);
+        this.sut.setxPos(x).setyPos(y);
         assertTrue(this.sut.equals(textForUpdate));
     }
     @Test
