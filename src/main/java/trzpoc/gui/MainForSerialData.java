@@ -320,7 +320,7 @@ public class MainForSerialData extends Application{
 
     @Override
     public void stop() throws Exception {
-        this.disconnectFromSerialPort();
+        //this.disconnectFromSerialPort();
         this.socketController.disconnect();
         super.stop();
     }

@@ -101,10 +101,13 @@ public class FXMLSocketController implements Initializable {
         @Override
         public void onMessage(String line) {
             if (line != null && !line.equals("")) {
-                Byte[] bytes = new Byte[line.length()];
+                Byte[] bytes = new Byte[line.length() + 1];
+                
                 for (int i = 0; i < line.length(); i ++){
                     bytes[i] = Byte.valueOf(line.getBytes()[i]);
                 }
+                byte newLine = 0x0A;
+                bytes[line.length()] = Byte.valueOf(newLine);
                 receivedMsgData.addAll(bytes);
                 System.out.println(line);
                 // Not directly Call SerialDataFacade but use a listener on ObservableList<Byte> receivedMsgData.
