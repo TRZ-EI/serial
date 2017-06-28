@@ -27,7 +27,6 @@ import jssc.SerialPortException;
 import socketserverfx.FXMLSocketController;
 import trzpoc.comunication.jssc.JavaFxJssc;
 import trzpoc.structure.serial.SerialDataFacade;
-import trzpoc.utils.DataTypesConverter;
 import trzpoc.utils.SerialDataMock;
 
 import java.io.IOException;
@@ -108,18 +107,16 @@ public class MainForSerialData extends Application{
         this.serialDataFacade = SerialDataFacade.createNewInstance();
 
 
-        this.socketController = new FXMLSocketController();
-        this.socketController.initialize(null, null);
-        this.socketController.activateConnection();
+        //this.socketController = new FXMLSocketController();
+        //this.socketController.initialize(null, null);
+        //this.socketController.activateConnection();
 
-        this.addListenerForSocketDataChanged();
+        //this.addListenerForSocketDataChanged();
         this.addListenerForDataChanged();
-        /*
         boolean isConnected = this.connectToSerialPort("/dev/ttyACM0");
         if (isConnected){
             System.out.println("Connected to /dev/ttyACM0");
         }
-        */
 
 
     }
@@ -254,6 +251,7 @@ public class MainForSerialData extends Application{
 
         boolean success = false;
         this.serialPort = new SerialPort(port);
+        StringBuilder message = new StringBuilder();
         try {
             serialPort.openPort();
             serialPort.setParams(
@@ -264,29 +262,73 @@ public class MainForSerialData extends Application{
             serialPort.setEventsMask(MASK_RXCHAR);
             serialPort.addEventListener((SerialPortEvent serialPortEvent) -> {
                 if(serialPortEvent.isRXCHAR()){
+
+                    boolean receivingMessage = false;
                     try {
+                        //Thread.sleep(30);
+                        byte[] buffer = serialPort.readBytes();
+                        for (byte b: buffer) {
+                            if (b == '^') {
+                                receivingMessage = true;
 
-                        byte[] b = serialPort.readBytes();
+                                message.setLength(0);
+                                message.append((char)b);
+                            }
+                            else if (receivingMessage == true) {
+                                if (b == '\r') {
+                                    receivingMessage = false;
+                                    message.append('\n');
+                                    String toProcess = message.toString();
+                                    Platform.runLater(new Runnable() {
+                                        @Override public void run() {
+                                            try {
+                                                serialDataFacade.onSerialDataInput(toProcess.getBytes());
+                                            } catch (UnsupportedEncodingException e) {
+                                                e.printStackTrace();
+                                            }
+                                        }
+                                    });
+                                }
+                                else {
+                                    message.append((char)b);
+                                }
+                            }
+                        }
 
-                        DataTypesConverter converter = DataTypesConverter.getNewInstance();
+
+
+
+                        //DataTypesConverter converter = DataTypesConverter.getNewInstance();
                         // TODO: CRC control implementation and send response
 
 
                         
-                        String st = converter.bytesToString(b);
-                        String result = (st.indexOf('\r') > 0)? st.substring(0, st.indexOf('\r')): st;
+                        //String st = converter.bytesToString(b);
+                        //String st = serialPort.readString();
+                        //String[] results = st.split("\r\n");
+
+
+                        //String result = (st.indexOf("\r\n") > 0)? st.substring(0, st.indexOf('\r')): st;
+                        /*
                         Platform.runLater(() ->{
-                            System.out.println(result);
-                            SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).simulateSerialReception(result);
+                            for (String result: results) {
+                                result += '\n';
+                                System.out.println(result);
+                                try {
+                                    serialDataFacade.onSerialDataInput(result.getBytes());
+                                } catch (UnsupportedEncodingException e) {
+                                    e.printStackTrace();
+                                }
+                                //SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).simulateSerialReception(result);
+                            }
+
                         });
+                        */
 
                     } catch (SerialPortException ex) {
                         Logger.getLogger(JavaFxJssc.class.getName())
                                 .log(Level.SEVERE, null, ex);
-                    } catch (UnsupportedEncodingException e) {
-                        e.printStackTrace();
                     }
-
                 }
             });
             success = true;
