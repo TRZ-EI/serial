@@ -7,11 +7,14 @@ package trzpoc.gui;
  * Time: 16.03
  */
 
+import gnu.io.NoSuchPortException;
+import gnu.io.PortInUseException;
+import gnu.io.SerialPort;
+import gnu.io.SerialPortEvent;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.collections.ListChangeListener;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -21,23 +24,16 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
 import javafx.stage.Stage;
-import jssc.SerialPort;
-import jssc.SerialPortEvent;
-import jssc.SerialPortException;
-import socketserverfx.FXMLSocketController;
-import trzpoc.comunication.jssc.JavaFxJssc;
+import trzpoc.comunication.SerialCommunicator;
 import trzpoc.structure.serial.SerialDataFacade;
-import trzpoc.utils.SerialDataMock;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
-import java.util.logging.Level;
-import java.util.logging.Logger;
+import java.util.TooManyListenersException;
 
-import static jssc.SerialPort.MASK_RXCHAR;
 
 public class MainForSerialData extends Application{
 
@@ -49,7 +45,9 @@ public class MainForSerialData extends Application{
     private Canvas canvasForGrid;
     private SerialDataFacade serialDataFacade;
 
-    private FXMLSocketController socketController;
+    private SerialCommunicator serialCommunicator;
+    private final int NEW_LINE_ASCII = 10;
+
 
     private SerialPort serialPort = null;
 
@@ -72,7 +70,7 @@ public class MainForSerialData extends Application{
 
 
     @Override
-    public void start(Stage primaryStage) {
+    public void start(Stage primaryStage) throws IOException, NoSuchPortException, PortInUseException {
         this.debug = this.readDebugValue();
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("JavaFX Graphics Text for TRZ");
@@ -107,15 +105,12 @@ public class MainForSerialData extends Application{
         this.serialDataFacade = SerialDataFacade.createNewInstance();
 
 
-        //this.socketController = new FXMLSocketController();
-        //this.socketController.initialize(null, null);
-        //this.socketController.activateConnection();
 
         //this.addListenerForSocketDataChanged();
         this.addListenerForDataChanged();
-        boolean isConnected = this.connectToSerialPort("/dev/ttyACM0");
+        boolean isConnected = this.connectToSerialPort();
         if (isConnected){
-            System.out.println("Connected to /dev/ttyACM0");
+            System.out.println("Connected to " + this.serialPort.getName());
         }
 
 
@@ -136,6 +131,7 @@ public class MainForSerialData extends Application{
             }
         });
     }
+    /*
     private void addListenerForSocketDataChanged(){
         this.socketController.getReceivedMsgData().addListener(new ListChangeListener<Byte>() {
             @Override
@@ -157,6 +153,7 @@ public class MainForSerialData extends Application{
             }
         });
     }
+    */
 
     private void addTouchEventToExit(Canvas canvas) {
         canvas.setOnTouchPressed(new EventHandler<TouchEvent>() {
@@ -182,7 +179,8 @@ public class MainForSerialData extends Application{
     private void addTouchEventToStart(final Canvas canvas) {
         canvas.setOnTouchPressed(new EventHandler<TouchEvent>() {
             public void handle(TouchEvent event) {
-                SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).readData();
+                // TODO: start process on screen touch
+                //SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).readData();
                 event.consume();
             }
 
@@ -197,7 +195,7 @@ public class MainForSerialData extends Application{
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
-                                SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).readData();
+                                // TODO: start process on mouse action
                             }
                         });
 
@@ -209,7 +207,7 @@ public class MainForSerialData extends Application{
                 }
                 else if (me.getButton() == MouseButton.SECONDARY) {
                     Platform.runLater(() ->{
-                        SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).simulateSerialReception("2");
+                        // TODO: start process on mouse action
                     });
                     me.consume();
                 }
@@ -227,40 +225,71 @@ public class MainForSerialData extends Application{
                 }
         );
     }
-/*
-    public Canvas getCanvas() {
-        return canvas;
-    }
-
-    public Group getRoot() {
-        return root;
-    }
-
-    public String getDebug() {
-        return debug;
-    }
-
-*/
     public SerialDataFacade getSerialDataFacade(){
         return this.serialDataFacade;
     }
 
-    public boolean connectToSerialPort(String port){
+    public boolean connectToSerialPort() throws IOException, NoSuchPortException, PortInUseException {
+        this.serialCommunicator = new SerialCommunicator();
+        this.serialPort = this.serialCommunicator.connectToSerialPort();
 
-        System.out.println("connectToSerialPort");
 
         boolean success = false;
-        this.serialPort = new SerialPort(port);
+        
         StringBuilder message = new StringBuilder();
         try {
-            serialPort.openPort();
-            serialPort.setParams(
-                    SerialPort.BAUDRATE_115200,
-                    SerialPort.DATABITS_8,
-                    SerialPort.STOPBITS_1,
-                    SerialPort.PARITY_NONE);
-            serialPort.setEventsMask(MASK_RXCHAR);
             serialPort.addEventListener((SerialPortEvent serialPortEvent) -> {
+                if (serialPortEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
+                    try {
+                        Thread.sleep(400);
+                        int value = serialPort.getInputStream().available();
+                        byte[] data = new byte[value];
+                        int read = serialPort.getInputStream().read(data);
+                        for (byte b: data){
+                            message.append((char)b);
+                        }
+
+                        
+                        String toSplit = message.toString();
+                        String[] messages = toSplit.split("\n");
+                        Platform.runLater(new Runnable() {
+                            @Override
+                            public void run() {
+                                try {
+                                    message.setLength(0);
+                                    for(String s: messages){
+                                        s = s.trim();
+                                        if (s.length() > 0 && s.indexOf('^') == 0){
+                                            s += '\n';
+                                            serialDataFacade.onSerialDataInput(s.getBytes());
+                                        }
+                                    }
+                                } catch (UnsupportedEncodingException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                        });
+                        // TODO: CRC control implementation and send response
+                    } catch (Exception e) {
+                        System.out.println("Failed to read data. (" + e.toString() + ")");
+                    }
+                }
+
+            });
+            serialPort.notifyOnDataAvailable(true);
+        } catch (TooManyListenersException e) {
+            e.printStackTrace();
+        }
+        return success;
+        }
+
+
+
+
+
+
+/*
+
                 if(serialPortEvent.isRXCHAR()){
 
                     boolean receivingMessage = false;
@@ -299,7 +328,7 @@ public class MainForSerialData extends Application{
 
 
                         //DataTypesConverter converter = DataTypesConverter.getNewInstance();
-                        // TODO: CRC control implementation and send response
+
 
 
                         
@@ -323,7 +352,6 @@ public class MainForSerialData extends Application{
                             }
 
                         });
-                        */
 
                     } catch (SerialPortException ex) {
                         Logger.getLogger(JavaFxJssc.class.getName())
@@ -339,31 +367,19 @@ public class MainForSerialData extends Application{
 
 
         return success;
-    }
+        */
 
     public void disconnectFromSerialPort(){
 
         System.out.println("disconnectFromSerialPort()");
         if(this.serialPort != null){
-            try {
-                this.serialPort.removeEventListener();
-
-                if(this.serialPort.isOpened()){
-                    this.serialPort.closePort();
-                }
-
-                this.serialPort = null;
-            } catch (SerialPortException ex) {
-                Logger.getLogger(JavaFxJssc.class.getName())
-                        .log(Level.SEVERE, null, ex);
-            }
+                this.serialCommunicator.disconnect();
         }
     }
 
     @Override
     public void stop() throws Exception {
-        //this.disconnectFromSerialPort();
-        this.socketController.disconnect();
+        this.disconnectFromSerialPort();
         super.stop();
     }
 
