@@ -71,17 +71,14 @@ public class SerialCommunicator{
 
     }
 
-    public void connect() {
+    public SerialPort connect() {
         String selectedPort = this.properties.getProperty(Keys.PORT.toString());
 
         try {
-            selectedPortIdentifier = CommPortIdentifier.getPortIdentifier(selectedPort);
-            //the method below returns an object of type CommPort
-            this.serialPort = (SerialPort) selectedPortIdentifier.open("TRZ-poc", TIMEOUT);
-            this.serialPort.disableReceiveTimeout();
+            this.serialPort = this.connectToSerialPort();
+
             //this.serialPort.setLowLatency();
 
-            this.setSerialPortParameters();
             this.initIOStream();
             this.initListener();
             //logging
@@ -100,7 +97,20 @@ public class SerialCommunicator{
             logText = "Failed to open " + selectedPort + "(" + e.toString() + ")";
             System.out.println(logText);
         }
+        return this.serialPort;
     }
+
+    public SerialPort connectToSerialPort() throws NoSuchPortException, PortInUseException, IOException {
+        String selectedPort = this.properties.getProperty(Keys.PORT.toString());
+
+        selectedPortIdentifier = CommPortIdentifier.getPortIdentifier(selectedPort);
+        //the method below returns an object of type CommPort
+        this.serialPort = (SerialPort) selectedPortIdentifier.open("TRZ-poc", TIMEOUT);
+        this.serialPort.disableReceiveTimeout();
+        this.setSerialPortParameters();
+        return this.serialPort;
+    }
+
     //open the input and output streams
     //pre: an open port
     //post: initialized intput and output streams for use to communicate data
