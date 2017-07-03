@@ -25,6 +25,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
 import javafx.stage.Stage;
 import trzpoc.comunication.SerialCommunicator;
+import trzpoc.crc.CRC16CCITT;
 import trzpoc.structure.serial.SerialDataFacade;
 
 import java.io.IOException;
@@ -240,30 +241,37 @@ public class MainForSerialData extends Application{
         try {
             serialPort.addEventListener((SerialPortEvent serialPortEvent) -> {
                 if (serialPortEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
+                    
                     try {
-                        Thread.sleep(400);
                         int value = serialPort.getInputStream().available();
                         byte[] data = new byte[value];
                         int read = serialPort.getInputStream().read(data);
+                        message.setLength(0);
                         for (byte b: data){
                             message.append((char)b);
                         }
 
                         
-                        String toSplit = message.toString();
-                        String[] messages = toSplit.split("\n");
+                        final String messageSent = message.toString().trim();
+
+
+                        // ONLY ONE MESSAGE
+
+                        boolean isValid = this.calculateCRC(messageSent);
+                        if (isValid) {
+                            this.serialPort.getOutputStream().write(new byte[]{'O', 'K', '\n'});
+                            this.serialPort.getOutputStream().flush();
+                        }
                         Platform.runLater(new Runnable() {
                             @Override
                             public void run() {
                                 try {
-                                    message.setLength(0);
-                                    for(String s: messages){
-                                        s = s.trim();
-                                        if (s.length() > 0 && s.indexOf('^') == 0){
-                                            s += '\n';
-                                            serialDataFacade.onSerialDataInput(s.getBytes());
+                                    
+                                        if (messageSent.length() > 0 && messageSent.indexOf('^') == 0 && isValid){
+                                            String tempValue = messageSent + '\n';
+                                            System.out.println(messageSent);
+                                            serialDataFacade.onSerialDataInput(tempValue.getBytes());
                                         }
-                                    }
                                 } catch (UnsupportedEncodingException e) {
                                     e.printStackTrace();
                                 }
@@ -271,7 +279,9 @@ public class MainForSerialData extends Application{
                         });
                         // TODO: CRC control implementation and send response
                     } catch (Exception e) {
+                        String error = message.toString();
                         System.out.println("Failed to read data. (" + e.toString() + ")");
+
                     }
                 }
 
@@ -282,6 +292,24 @@ public class MainForSerialData extends Application{
         }
         return success;
         }
+
+    private boolean calculateCRC(String message) {
+        boolean retValue = false;
+        int crcDigits = 4; // 4 hex digits
+        int size = message.length();
+        if (size > crcDigits){
+            String hexCrc = message.substring(size - crcDigits);
+            String messageToCalculate = message.substring(0, size - crcDigits);
+            int crc = CRC16CCITT.getNewInstance().calculateCRCForStringMessage(messageToCalculate);
+            String crcHex = Integer.toHexString(crc);
+            if (crcHex.length() < crcDigits){
+                crcHex = "0" + crcHex;
+            }
+            retValue = hexCrc.equalsIgnoreCase(crcHex);
+        }
+        return retValue;
+
+    }
 
 
 
@@ -371,9 +399,16 @@ public class MainForSerialData extends Application{
 
     public void disconnectFromSerialPort(){
 
-        System.out.println("disconnectFromSerialPort()");
         if(this.serialPort != null){
-                this.serialCommunicator.disconnect();
+            System.out.println("disconnectFromSerialPort()");
+            this.serialPort.removeEventListener();
+            try {
+                this.serialPort.getOutputStream().close();
+                this.serialPort.getInputStream().close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            this.serialPort.close();
         }
     }
 

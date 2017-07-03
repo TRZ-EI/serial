@@ -19,6 +19,7 @@
     <orderEntry type="library" name="Maven: commons-collections:commons-collections:3.2.1" level="project" />
     <orderEntry type="library" name="Maven: jacksum:jacksum:1.7.0" level="project" />
     <orderEntry type="library" name="Maven: eu.hansolo:Medusa:7.9" level="project" />
+    <orderEntry type="library" name="Maven: org.rxtx:rxtxcomm:2.2pre2" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-api-mockito:1.5.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.mockito:mockito-all:1.9.5" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-api-support:1.5.5" level="project" />
@@ -35,7 +36,5 @@
     <orderEntry type="library" scope="TEST" name="Maven: com.beust:jcommander:1.27" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.yaml:snakeyaml:1.6" level="project" />
     <orderEntry type="library" scope="TEST" name="Maven: org.powermock:powermock-module-testng-common:1.5.1" level="project" />
-    <orderEntry type="library" name="Maven: org.rxtx:rxtx:2.1.7" level="project" />
-    <orderEntry type="library" name="Maven: org.scream3r:jssc:2.8.0" level="project" />
   </component>
 </module>

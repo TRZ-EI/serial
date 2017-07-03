@@ -42,7 +42,14 @@ public class CRC16CCITT {
                 if (c15 ^ bit) crc ^= this.polynomial;
             }
         }
+        
         return crc &= 0xffff;
+    }
+    public static void main(String[] args){
+        CRC16CCITT calculator = CRC16CCITT.getNewInstance();
+        String message = "^V07S310146";
+        String referenceValue = Integer.toHexString(calculator.calculateCRCForStringMessage(message));
+        System.out.println(referenceValue);
     }
 
 
