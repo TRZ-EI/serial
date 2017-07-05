@@ -27,7 +27,7 @@ public class SerialCommunicator{
 
 
     private Properties properties;
-    final private String propertiesName = "config.properties";
+    final private String propertiesName = "application.properties";
 
     //input and output streams for sending and receiving data
     private InputStream input;

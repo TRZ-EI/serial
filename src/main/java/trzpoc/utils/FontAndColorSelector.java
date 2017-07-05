@@ -17,7 +17,7 @@ import java.util.*;
  */
 public class FontAndColorSelector {
 
-    private final String RESOURCE = "fonts.properties";
+    private final String RESOURCE = "application.properties";
 
     private final char NERO_PICCOLO = 'P';     //0x31
     private final char ROSSO_PICCOLO = 'Q';

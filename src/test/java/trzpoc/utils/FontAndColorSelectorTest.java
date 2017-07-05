@@ -74,7 +74,7 @@ public class FontAndColorSelectorTest {
     private void prepareFontsForTest(){
         try {
             p = new Properties();
-            InputStream is = this.getClass().getClassLoader().getResourceAsStream("fonts.properties");
+            InputStream is = this.getClass().getClassLoader().getResourceAsStream("application.properties");
             p.load(is);
             is.close();
             this.smallFont = this.loadSmallFont();

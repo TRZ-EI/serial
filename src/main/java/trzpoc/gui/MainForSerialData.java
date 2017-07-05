@@ -31,6 +31,8 @@ import trzpoc.structure.serial.SerialDataFacade;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
+import java.net.URL;
 import java.util.Date;
 import java.util.Properties;
 import java.util.TooManyListenersException;
@@ -68,10 +70,27 @@ public class MainForSerialData extends Application{
         }
         return retValue;
     }
+    private void setJavaLibraryPath(){
+        URL root = getClass().getProtectionDomain().getCodeSource().getLocation();
+        System.out.println("ROOT: " + root.getFile());
+        System.setProperty( "java.library.path", root.getFile() + "!/serialLib");
+        Field fieldSysPath = null;
+        try {
+            fieldSysPath = ClassLoader.class.getDeclaredField( "sys_paths" );
+            fieldSysPath.setAccessible( true );
+            fieldSysPath.set( null, null );
+        } catch (NoSuchFieldException e) {
+            e.printStackTrace();
+        }catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+    }
 
 
     @Override
     public void start(Stage primaryStage) throws IOException, NoSuchPortException, PortInUseException {
+        //this.setJavaLibraryPath();
         this.debug = this.readDebugValue();
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("JavaFX Graphics Text for TRZ");
@@ -132,30 +151,6 @@ public class MainForSerialData extends Application{
             }
         });
     }
-    /*
-    private void addListenerForSocketDataChanged(){
-        this.socketController.getReceivedMsgData().addListener(new ListChangeListener<Byte>() {
-            @Override
-            public void onChanged(Change<? extends Byte> c) {
-                Byte[] data = new Byte[socketController.getReceivedMsgData().size()];
-
-                socketController.getReceivedMsgData().toArray(data);
-                socketController.getReceivedMsgData().clear();
-                byte[] inputData = new byte[data.length];
-                for (int i = 0; i < data.length; i ++){
-                    inputData[i] = data[i].byteValue();
-                }
-                try {
-                    serialDataFacade.onSerialDataInput(inputData);
-                } catch (UnsupportedEncodingException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        });
-    }
-    */
-
     private void addTouchEventToExit(Canvas canvas) {
         canvas.setOnTouchPressed(new EventHandler<TouchEvent>() {
             private int touches;
@@ -233,15 +228,12 @@ public class MainForSerialData extends Application{
     public boolean connectToSerialPort() throws IOException, NoSuchPortException, PortInUseException {
         this.serialCommunicator = new SerialCommunicator();
         this.serialPort = this.serialCommunicator.connectToSerialPort();
-
-
         boolean success = false;
         
         StringBuilder message = new StringBuilder();
         try {
             serialPort.addEventListener((SerialPortEvent serialPortEvent) -> {
                 if (serialPortEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
-                    
                     try {
                         int value = serialPort.getInputStream().available();
                         byte[] data = new byte[value];
@@ -250,13 +242,9 @@ public class MainForSerialData extends Application{
                         for (byte b: data){
                             message.append((char)b);
                         }
-
-                        
                         final String messageSent = message.toString().trim();
 
-
                         // ONLY ONE MESSAGE
-
                         boolean isValid = this.calculateCRC(messageSent);
                         if (isValid) {
                             this.serialPort.getOutputStream().write(new byte[]{'O', 'K', '\n'});
@@ -266,10 +254,8 @@ public class MainForSerialData extends Application{
                             @Override
                             public void run() {
                                 try {
-                                    
                                         if (messageSent.length() > 0 && messageSent.indexOf('^') == 0 && isValid){
                                             String tempValue = messageSent + '\n';
-                                            System.out.println(messageSent);
                                             serialDataFacade.onSerialDataInput(tempValue.getBytes());
                                         }
                                 } catch (UnsupportedEncodingException e) {
@@ -277,14 +263,11 @@ public class MainForSerialData extends Application{
                                 }
                             }
                         });
-                        // TODO: CRC control implementation and send response
                     } catch (Exception e) {
                         String error = message.toString();
                         System.out.println("Failed to read data. (" + e.toString() + ")");
-
                     }
                 }
-
             });
             serialPort.notifyOnDataAvailable(true);
         } catch (TooManyListenersException e) {
@@ -292,7 +275,6 @@ public class MainForSerialData extends Application{
         }
         return success;
         }
-
     private boolean calculateCRC(String message) {
         boolean retValue = false;
         int crcDigits = 4; // 4 hex digits
@@ -308,97 +290,8 @@ public class MainForSerialData extends Application{
             retValue = hexCrc.equalsIgnoreCase(crcHex);
         }
         return retValue;
-
     }
-
-
-
-
-
-
-/*
-
-                if(serialPortEvent.isRXCHAR()){
-
-                    boolean receivingMessage = false;
-                    try {
-                        //Thread.sleep(30);
-                        byte[] buffer = serialPort.readBytes();
-                        for (byte b: buffer) {
-                            if (b == '^') {
-                                receivingMessage = true;
-
-                                message.setLength(0);
-                                message.append((char)b);
-                            }
-                            else if (receivingMessage == true) {
-                                if (b == '\r') {
-                                    receivingMessage = false;
-                                    message.append('\n');
-                                    String toProcess = message.toString();
-                                    Platform.runLater(new Runnable() {
-                                        @Override public void run() {
-                                            try {
-                                                serialDataFacade.onSerialDataInput(toProcess.getBytes());
-                                            } catch (UnsupportedEncodingException e) {
-                                                e.printStackTrace();
-                                            }
-                                        }
-                                    });
-                                }
-                                else {
-                                    message.append((char)b);
-                                }
-                            }
-                        }
-
-
-
-
-                        //DataTypesConverter converter = DataTypesConverter.getNewInstance();
-
-
-
-                        
-                        //String st = converter.bytesToString(b);
-                        //String st = serialPort.readString();
-                        //String[] results = st.split("\r\n");
-
-
-                        //String result = (st.indexOf("\r\n") > 0)? st.substring(0, st.indexOf('\r')): st;
-                        /*
-                        Platform.runLater(() ->{
-                            for (String result: results) {
-                                result += '\n';
-                                System.out.println(result);
-                                try {
-                                    serialDataFacade.onSerialDataInput(result.getBytes());
-                                } catch (UnsupportedEncodingException e) {
-                                    e.printStackTrace();
-                                }
-                                //SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).simulateSerialReception(result);
-                            }
-
-                        });
-
-                    } catch (SerialPortException ex) {
-                        Logger.getLogger(JavaFxJssc.class.getName())
-                                .log(Level.SEVERE, null, ex);
-                    }
-                }
-            });
-            success = true;
-        } catch (SerialPortException ex) {
-            //Logger.getLogger(JavaFxJssc.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println("SerialPortException: " + ex.toString());
-        }
-
-
-        return success;
-        */
-
     public void disconnectFromSerialPort(){
-
         if(this.serialPort != null){
             System.out.println("disconnectFromSerialPort()");
             this.serialPort.removeEventListener();
@@ -411,7 +304,6 @@ public class MainForSerialData extends Application{
             this.serialPort.close();
         }
     }
-
     @Override
     public void stop() throws Exception {
         this.disconnectFromSerialPort();
@@ -419,8 +311,7 @@ public class MainForSerialData extends Application{
     }
 
 
-
-    public static void main(String[] args) {
+    public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
         Application.launch(args);
     }
 }
