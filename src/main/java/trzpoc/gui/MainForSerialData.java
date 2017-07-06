@@ -31,8 +31,6 @@ import trzpoc.structure.serial.SerialDataFacade;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
-import java.lang.reflect.Field;
-import java.net.URL;
 import java.util.Date;
 import java.util.Properties;
 import java.util.TooManyListenersException;
@@ -70,27 +68,10 @@ public class MainForSerialData extends Application{
         }
         return retValue;
     }
-    private void setJavaLibraryPath(){
-        URL root = getClass().getProtectionDomain().getCodeSource().getLocation();
-        System.out.println("ROOT: " + root.getFile());
-        System.setProperty( "java.library.path", root.getFile() + "!/serialLib");
-        Field fieldSysPath = null;
-        try {
-            fieldSysPath = ClassLoader.class.getDeclaredField( "sys_paths" );
-            fieldSysPath.setAccessible( true );
-            fieldSysPath.set( null, null );
-        } catch (NoSuchFieldException e) {
-            e.printStackTrace();
-        }catch (IllegalAccessException e) {
-            e.printStackTrace();
-        }
-
-    }
 
 
     @Override
     public void start(Stage primaryStage) throws IOException, NoSuchPortException, PortInUseException {
-        //this.setJavaLibraryPath();
         this.debug = this.readDebugValue();
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("JavaFX Graphics Text for TRZ");
