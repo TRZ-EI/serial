@@ -17,6 +17,7 @@ public class CellsRow {
     private int pixelScreenYPos;
     private int yPos;
     private int defaultHeight; // pixels
+    private boolean redraw;
     
 
 
@@ -25,10 +26,9 @@ public class CellsRow {
     }
 
     private CellsRow(){
+        this.redraw = false;
         this.cells = new ArrayList<Cell>();
     }
-
-
     public int getWidthByCells(){
         int retValue = 0;
         for (Iterator<Cell> it = this.cells.iterator(); it.hasNext(); ) {
@@ -58,6 +58,7 @@ public class CellsRow {
         cell.setPixelScreenYPos(this.pixelScreenYPos);
         this.cells.add(cell);
         int indexInCollection = this.cells.indexOf(cell);
+        this.redraw = true;
         return this.cells.get(indexInCollection);
     }
 
@@ -80,6 +81,7 @@ public class CellsRow {
         cellToUpdate.setPixelScreenYPos(this.pixelScreenYPos);
 
         this.cells.add(indexInCollection, cellToUpdate);
+        this.redraw = true;
         return this.cells.get(indexInCollection);
     }
 
@@ -126,6 +128,13 @@ public class CellsRow {
 
     public CellsRow setDefaultHeight(int defaultHeight) {
         this.defaultHeight = defaultHeight;
+        return this;
+    }
+    public boolean isNecessaryToRedraw(){
+        return this.redraw;
+    }
+    public CellsRow switchOffRedrawFlag(){
+        this.redraw = false;
         return this;
     }
 }

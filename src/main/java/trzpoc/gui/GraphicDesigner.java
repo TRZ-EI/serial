@@ -64,9 +64,10 @@ public class GraphicDesigner {
             int width = 0;
             for (int row = 0; row < this.dataDisplayManager.getNumberOfRows(); row++) {
                 CellsRow cellsRow = this.dataDisplayManager.getOrCreateARow(row);
-                for (int cellIndex = 0; cellIndex < cellsRow.getCellsCount(); cellIndex++) {
-                    Cell c = cellsRow.getCellByColumnIndex(cellIndex);
-                    //if (c.isChanged()) {
+                if (cellsRow.isNecessaryToRedraw()) {
+                    for (int cellIndex = 0; cellIndex < cellsRow.getCellsCount(); cellIndex++) {
+                        Cell c = cellsRow.getCellByColumnIndex(cellIndex);
+                        //if (c.isChanged()) {
                         gc.setFont(c.getFont());
                         gc.setFill(c.getColor());
                         String textToFill = null;
@@ -75,9 +76,9 @@ public class GraphicDesigner {
                         } else if (c instanceof Text) {
                             textToFill = c.getValue();
                         } else if (c instanceof Bar) {
-                            if (this.bars.get(c.getId()) != null){
+                            if (this.bars.get(c.getId()) != null) {
                                 this.updateBarValuesAndColor(c);
-                            }else {
+                            } else {
                                 this.configureBar(c, cellsRow.getPixelScreenYPos());
                             }
                         }
@@ -87,7 +88,9 @@ public class GraphicDesigner {
                             //gc.clearRect(c.getxPos() * width, c.getPixelScreenYPosUpper(), c.getWidth(), c.getHeight());
                             gc.fillText(textToFill, c.getxPos() * width, cellsRow.getPixelScreenYPos());
                         }
-                    //}
+                        //}
+                    }
+                    cellsRow.switchOffRedrawFlag();
                 }
             }
     }

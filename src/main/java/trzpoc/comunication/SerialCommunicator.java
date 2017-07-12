@@ -2,6 +2,7 @@ package trzpoc.comunication;
 
 
 import gnu.io.*;
+import trzpoc.crc.CRC16CCITT;
 import trzpoc.crc.CRC32Calculator;
 
 import java.io.FileInputStream;
@@ -159,12 +160,36 @@ public class SerialCommunicator{
 
     public void manageDataReceivedFromSerialPort(String s) throws IOException {
         long startNanoseconds = System.nanoTime();
-        this.output.write(new byte[]{'O','K','\n'});
-        this.output.flush();
-        long endNanoSeconds = System.nanoTime();
+        if (this.calculateCRC(s)) {
+            byte[] b = "OK\n".getBytes();
+            this.output.write("OK\n".getBytes());
+            this.output.flush();
+            long endNanoSeconds = System.nanoTime();
 
-        System.out.println("Latency time(micros): " + (endNanoSeconds - startNanoseconds)/1000);
+            System.out.println("Latency time(micros): " + (endNanoSeconds - startNanoseconds) / 1000);
+        }
     }
+
+    private boolean calculateCRC(String message) {
+        boolean retValue = false;
+        int crcDigits = 4; // 4 hex digits
+        int size = message.length();
+        if (size > crcDigits){
+            String hexCrc = message.substring(size - crcDigits);
+            String messageToCalculate = message.substring(0, size - crcDigits);
+            int crc = CRC16CCITT.getNewInstance().calculateCRCForStringMessage(messageToCalculate);
+            String crcHex = Integer.toHexString(crc);
+            if (crcHex.length() < crcDigits){
+                crcHex = "0" + crcHex;
+            }
+            retValue = hexCrc.equalsIgnoreCase(crcHex);
+        }
+        return retValue;
+    }
+
+
+
+
 
     private void calculateChecksumAndSendResponse(String s) throws IOException {
         String receveid = s.replace('\r', ' ').trim();

@@ -7,3 +7,9 @@ java -jar trzpoc-gui-rxtx.jar ./config.properties
 
 
 -Djava.library.path=./serialLib/
+
+
+ java -Djava.library.path=/home/luigi/svil/domain.luigi/raspberry/TRZMaster/serial/target/trzpoc-gui/serialLib -jar trzpoc-gui-jar-with-dependencies.jar application.properties
+
+
+java -Djava.library.path=/usr/lib/jni -jar trzpoc-gui-jar-with-dependencies.jar ./application.properties

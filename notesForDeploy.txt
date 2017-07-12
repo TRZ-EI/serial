@@ -1,0 +1,15 @@
+1) Per testare l'interfaccia grafica, occorre caricare lo scketch Arduino
+TRZ-send-analog-data-toJFX e lanciare il seguente comando:
+
+TODO: java -Djava.library.path=./serialLib -jar trzpoc-gui-jar-with-dependencies.jar
+java -Djava.library.path=TBD -jar trzpoc-gui-jar-with-dependencies.jar ./config.properties
+
+2) Per testare la velocità di risposta della comunicazione seriale, caricare lo scketch Arduino
+TRZ-send-commands-serial-receive-response-event-infinity e lanciare il seguente comando:
+
+java -Djava.library.path=TBD -jar trzpoc-TBD-rxtx.jar ./config.properties
+
+Per RASPBERRY: -Djava.library.path=/usr/lib/jni
+java -Djava.library.path=/usr/lib/jni -jar trzpoc-gui-jar-with-dependencies.jar ./application.properties
+
+ATTENZIONE: Preparare i processi Linux affinchè siano schedulati REAL TIME

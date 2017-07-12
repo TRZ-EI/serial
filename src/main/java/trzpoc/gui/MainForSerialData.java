@@ -28,9 +28,7 @@ import trzpoc.comunication.SerialCommunicator;
 import trzpoc.crc.CRC16CCITT;
 import trzpoc.structure.serial.SerialDataFacade;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.UnsupportedEncodingException;
+import java.io.*;
 import java.util.Date;
 import java.util.Properties;
 import java.util.TooManyListenersException;
@@ -49,24 +47,37 @@ public class MainForSerialData extends Application{
     private SerialCommunicator serialCommunicator;
     private final int NEW_LINE_ASCII = 10;
 
+    private final String DEFAULT_RESOURCE_FILE_NAME = "application.properties";
+    private final String DEFAULT_RESOURCE_KEY = "DEBUG";
 
     private SerialPort serialPort = null;
 
 
 
-    private String readDebugValue(){
-        final String resourceFileName = "application.properties";
+    private String readDebugValue() throws FileNotFoundException {
+        Properties properties = new Properties();
         String retValue = "PRODUCTION"; // default value
+        String resourceFile = (!this.getParameters().getRaw().isEmpty())? this.getParameters().getRaw().get(0): null;
         try {
-            Properties properties = new Properties();
-            InputStream s = this.getClass().getClassLoader().getResourceAsStream(resourceFileName);
+            InputStream s = this.getInputStream(resourceFile);
             properties.load(s);
             s.close();
-            retValue = properties.getProperty("DEBUG");
+            retValue = properties.getProperty(DEFAULT_RESOURCE_KEY);
         } catch (IOException e) {
             e.printStackTrace();
         }
         return retValue;
+    }
+
+    private InputStream getInputStream(String resourceFile) throws FileNotFoundException {
+        InputStream s;
+        if (resourceFile != null && resourceFile.length() > 0){
+            File aFile = new File(resourceFile);
+            s = new FileInputStream(aFile);
+        }else{
+            s = this.getClass().getClassLoader().getResourceAsStream(DEFAULT_RESOURCE_FILE_NAME);
+        }
+        return s;
     }
 
 
@@ -293,6 +304,8 @@ public class MainForSerialData extends Application{
 
 
     public static void main(String[] args) throws NoSuchFieldException, IllegalAccessException {
+        //String[] myArgs = {"./application.properties"};
+        //Application.launch(myArgs);
         Application.launch(args);
     }
 }
