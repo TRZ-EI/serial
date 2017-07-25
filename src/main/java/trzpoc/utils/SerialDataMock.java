@@ -59,9 +59,10 @@ public class SerialDataMock {
         }
 
     }
-    public void simulateSerialReception(String fileId) {
-        String fileNamePrefix = "serialInputs/inputExamples-";
-        String fileName = fileNamePrefix + fileId + ".csv";
+    public void simulateSerialReception() {
+        //String fileNamePrefix = "serialInputs/inputExamples-";
+        //String fileName = fileNamePrefix + fileId + ".csv";
+        String fileName = "serialInputs/global.csv";
         URL url = this.getClass().getClassLoader().getResource(fileName);
         if (url != null){
             String other = url.getFile();

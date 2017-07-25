@@ -57,14 +57,22 @@ public class GraphicDesigner {
 
 
     private void drawOnCanvas() {
-            this.canvas.toFront();
-            this.clearCanvas(this.canvas);
-            GraphicsContext gc = this.canvas.getGraphicsContext2D();
+            //this.canvas.toFront();
+            //this.clearCanvas(this.canvas);
+            //GraphicsContext gc = this.canvas.getGraphicsContext2D();
 
             int width = 0;
             for (int row = 0; row < this.dataDisplayManager.getNumberOfRows(); row++) {
                 CellsRow cellsRow = this.dataDisplayManager.getOrCreateARow(row);
+
                 if (cellsRow.isNecessaryToRedraw()) {
+                    Canvas canvasForRow = cellsRow.getCanvas();
+                    if (!this.group.getChildren().contains(canvasForRow)) {
+                        this.group.getChildren().add(canvasForRow);
+                    }
+                    this.clearCanvas(canvasForRow);
+                    canvasForRow.toFront();
+                    GraphicsContext gc = canvasForRow.getGraphicsContext2D();
                     for (int cellIndex = 0; cellIndex < cellsRow.getCellsCount(); cellIndex++) {
                         Cell c = cellsRow.getCellByColumnIndex(cellIndex);
                         //if (c.isChanged()) {
@@ -88,6 +96,7 @@ public class GraphicDesigner {
                             //gc.clearRect(c.getxPos() * width, c.getPixelScreenYPosUpper(), c.getWidth(), c.getHeight());
                             gc.fillText(textToFill, c.getxPos() * width, cellsRow.getPixelScreenYPos());
                         }
+
                         //}
                     }
                     cellsRow.switchOffRedrawFlag();

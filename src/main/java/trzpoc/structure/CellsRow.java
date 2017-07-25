@@ -1,5 +1,7 @@
 package trzpoc.structure;
 
+import javafx.scene.canvas.Canvas;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Iterator;
@@ -18,6 +20,7 @@ public class CellsRow {
     private int yPos;
     private int defaultHeight; // pixels
     private boolean redraw;
+    private Canvas canvas;
     
 
 
@@ -136,5 +139,16 @@ public class CellsRow {
     public CellsRow switchOffRedrawFlag(){
         this.redraw = false;
         return this;
+    }
+
+    public Canvas getCanvas() {
+        if (this.canvas == null){
+            this.canvas = new Canvas(800, 400);
+        }
+        return canvas;
+    }
+
+    public void setCanvas(Canvas canvas) {
+        this.canvas = canvas;
     }
 }
