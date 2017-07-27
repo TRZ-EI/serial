@@ -178,6 +178,7 @@ public class MainForSerialDataToTestCanvas extends Application{
                             @Override
                             public void run() {
                                 SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).simulateSerialReception();
+                                canvas.toFront();
 
                                 // TODO: start process on mouse action
                             }
@@ -190,8 +191,17 @@ public class MainForSerialDataToTestCanvas extends Application{
 
                 }
                 else if (me.getButton() == MouseButton.SECONDARY) {
-                    Platform.runLater(() ->{
-                        // TODO: start process on mouse action
+                    Platform.runLater(new Runnable() {
+                        @Override
+                        public void run() {
+                            try {
+                                SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).sendRandomValuesForVariable();
+                            } catch (UnsupportedEncodingException e) {
+                                e.printStackTrace();
+                            }
+
+
+                        }
                     });
                     me.consume();
                 }

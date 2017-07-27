@@ -230,31 +230,38 @@ public class MainForSerialData extends Application{
                         int value = serialPort.getInputStream().available();
                         byte[] data = new byte[value];
                         int read = serialPort.getInputStream().read(data);
-                        message.setLength(0);
+
                         for (byte b: data){
                             message.append((char)b);
                         }
-                        final String messageSent = message.toString().trim();
+                        if (message.toString().indexOf(NEW_LINE_ASCII) > 0) {
+                            final String messageSent = message.toString().trim();
+                            message.setLength(0);
+                            // ONLY ONE MESSAGE
+                            boolean isValid = this.calculateCRC(messageSent);
+                            if (isValid) {
+                                this.serialPort.getOutputStream().write(new byte[]{'O', 'K', '\n'});
+                                this.serialPort.getOutputStream().flush();
+                            }
+                            else{
+                                this.serialPort.getOutputStream().write(new byte[]{'K', 'O', '\n'});
+                                this.serialPort.getOutputStream().flush();
 
-                        // ONLY ONE MESSAGE
-                        boolean isValid = this.calculateCRC(messageSent);
-                        if (isValid) {
-                            this.serialPort.getOutputStream().write(new byte[]{'O', 'K', '\n'});
-                            this.serialPort.getOutputStream().flush();
-                        }
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                        if (messageSent.length() > 0 && messageSent.indexOf('^') == 0 && isValid){
+                            }
+                            Platform.runLater(new Runnable() {
+                                @Override
+                                public void run() {
+                                    try {
+                                        if (messageSent.length() > 0 && messageSent.indexOf('^') == 0 && isValid) {
                                             String tempValue = messageSent + '\n';
                                             serialDataFacade.onSerialDataInput(tempValue.getBytes());
                                         }
-                                } catch (UnsupportedEncodingException e) {
-                                    e.printStackTrace();
+                                    } catch (UnsupportedEncodingException e) {
+                                        e.printStackTrace();
+                                    }
                                 }
-                            }
-                        });
+                            });
+                        }
                     } catch (Exception e) {
                         String error = message.toString();
                         System.out.println("Failed to read data. (" + e.toString() + ")");

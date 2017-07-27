@@ -82,6 +82,11 @@ public class SerialDataMock {
             }
         }
     }
+    public void sendRandomValuesForVariable() throws UnsupportedEncodingException {
+        String[] message  = {"^","v","7","1729"};
+        byte[] dataToSend = this.simulateSerialInput(message);
+        this.serialDataFacade.onSerialDataInput(dataToSend);
+    }
 
     public byte[] simulateSerialInput(String[] line) throws UnsupportedEncodingException {
         String command = line[1];

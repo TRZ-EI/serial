@@ -125,6 +125,9 @@ public class DataDisplayManager {
             }else{
                 c.setValue(dataParsed.getValue());
             }
+            int rowIndex = c.getyPos();
+            CellsRow row = this.getOrCreateARow(rowIndex);
+            row.addOrUpdateACell(c);
     }
 
     private void setPossibleValueForText(Cell c, Cell dataParsed) {
