@@ -52,12 +52,14 @@ public class MainForSerialData extends Application{
 
     private SerialPort serialPort = null;
 
+    private String resourceFile = null;
+
 
 
     private String readDebugValue() throws FileNotFoundException {
         Properties properties = new Properties();
         String retValue = "PRODUCTION"; // default value
-        String resourceFile = (!this.getParameters().getRaw().isEmpty())? this.getParameters().getRaw().get(0): null;
+        this.resourceFile = (!this.getParameters().getRaw().isEmpty())? this.getParameters().getRaw().get(0): null;
         try {
             InputStream s = this.getInputStream(resourceFile);
             properties.load(s);
@@ -218,7 +220,11 @@ public class MainForSerialData extends Application{
     }
 
     public boolean connectToSerialPort() throws IOException, NoSuchPortException, PortInUseException {
-        this.serialCommunicator = new SerialCommunicator();
+        if (this.resourceFile != null){
+            this.serialCommunicator = new SerialCommunicator(this.resourceFile);
+        }else{
+            this.serialCommunicator = new SerialCommunicator();
+        }
         this.serialPort = this.serialCommunicator.connectToSerialPort();
         boolean success = false;
         
