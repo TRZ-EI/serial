@@ -21,7 +21,7 @@ public class DataTypesConverterTest {
     @DataProvider
     private Object[][] dataToTestBytesToInt(){
         return new Object[][]{
-                {new byte[]{0x33, 0x34, 0x35, 0x36, 0x37, 0x38}, 345678}, // HEX values
+                {new byte[]{51, 52, 53, 54, 55, 56}, 3430008}, // HEX values
                 {new byte[]{57}, 9}, // ASCII VALUES (09)
                 {new byte[]{56}, 8}, // ASCII VALUES (08)
                 {new byte[]{55}, 7}, // ASCII VALUES (07)
@@ -32,7 +32,20 @@ public class DataTypesConverterTest {
                 {new byte[]{50}, 2}, // ASCII VALUES (02)
                 {new byte[]{49}, 1}, // ASCII VALUES (01)
                 {new byte[]{48,49}, 1}, // ASCII VALUES (01)
-                {new byte[]{49, 0x39}, 19} // MIXED ASCII/HEX VALUES (19)
+                {new byte[]{49, 0x39}, 25}, // MIXED ASCII/HEX VALUES (19)
+                {new byte[]{'0','A'}, 10},
+                {new byte[]{'0','B'}, 11},
+                {new byte[]{'0','C'}, 12},
+                {new byte[]{'0','D'}, 13},
+                {new byte[]{'0','E'}, 14},
+                {new byte[]{'0','F'}, 15},
+                {new byte[]{'1','0'}, 16},
+                {new byte[]{'1','1'}, 17},
+                {new byte[]{'1','2'}, 18},
+                {new byte[]{'1','3'}, 19},
+                {new byte[]{'1','4'}, 20}
+
+
         };
     }
     @DataProvider

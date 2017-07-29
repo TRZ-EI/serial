@@ -52,7 +52,7 @@ public class DataTypesConverter {
     public int bytesToInt(byte[] bytes) throws UnsupportedEncodingException {
         String toTransform = this.bytesToString(bytes);
         Integer i = Integer.parseInt("1");
-        return Integer.parseInt(toTransform, 10);
+        return Integer.parseInt(toTransform, 16);
     }
     public int notAsciiBytesToInt(byte[] bytes) throws UnsupportedEncodingException {
         ByteBuffer buffer = ByteBuffer.allocate(Integer.BYTES);
