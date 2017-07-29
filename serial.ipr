@@ -408,26 +408,15 @@
         <root url="jar://$MAVEN_REPOSITORY$/org/powermock/powermock-reflect/1.5.5/powermock-reflect-1.5.5-sources.jar!/" />
       </SOURCES>
     </library>
-    <library name="Maven: org.rxtx:rxtx:2.1.7">
+    <library name="Maven: org.rxtx:rxtxcomm:2.2pre2">
       <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/rxtx/rxtx/2.1.7/rxtx-2.1.7.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/rxtx/rxtxcomm/2.2pre2/rxtxcomm-2.2pre2.jar!/" />
       </CLASSES>
       <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/rxtx/rxtx/2.1.7/rxtx-2.1.7-javadoc.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/rxtx/rxtxcomm/2.2pre2/rxtxcomm-2.2pre2-javadoc.jar!/" />
       </JAVADOC>
       <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/rxtx/rxtx/2.1.7/rxtx-2.1.7-sources.jar!/" />
-      </SOURCES>
-    </library>
-    <library name="Maven: org.scream3r:jssc:2.8.0">
-      <CLASSES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scream3r/jssc/2.8.0/jssc-2.8.0.jar!/" />
-      </CLASSES>
-      <JAVADOC>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scream3r/jssc/2.8.0/jssc-2.8.0-javadoc.jar!/" />
-      </JAVADOC>
-      <SOURCES>
-        <root url="jar://$MAVEN_REPOSITORY$/org/scream3r/jssc/2.8.0/jssc-2.8.0-sources.jar!/" />
+        <root url="jar://$MAVEN_REPOSITORY$/org/rxtx/rxtxcomm/2.2pre2/rxtxcomm-2.2pre2-sources.jar!/" />
       </SOURCES>
     </library>
     <library name="Maven: org.testng:testng:6.8.5">
