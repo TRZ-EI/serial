@@ -26,6 +26,9 @@
   <component name="Encoding">
     <file url="PROJECT" charset="UTF-8" />
   </component>
+  <component name="GroovyCompilerProjectConfiguration">
+    <option name="invokeDynamic" value="true" />
+  </component>
   <component name="InspectionProjectProfileManager">
     <profile version="1.0">
       <option name="myName" value="Project Default" />

@@ -56,9 +56,16 @@ public class DataDisplayManager {
 
     private CellsRow returnRow(int rowIndex) {
         CellsRow retValue = null;
-        int indexInCollection = this.rows.indexOf(CellsRow.getEmptyInstance().setyPos(rowIndex));
-        retValue = this.rows.get(indexInCollection);
-        this.calculatePixelYPos();
+        int indexInCollection = 0;
+        try {
+            indexInCollection = this.rows.indexOf(CellsRow.getEmptyInstance().setyPos(rowIndex));
+            if (indexInCollection >= 0) {
+                retValue = this.rows.get(indexInCollection);
+                this.calculatePixelYPos();
+            }
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
         return retValue;
     }
 
@@ -162,11 +169,13 @@ public class DataDisplayManager {
         Cell retValue = null, tempValue = null;
         for (int rowIndex = 0; rowIndex < this.getNumberOfRows(); rowIndex ++){
             CellsRow aRow = this.returnRow(rowIndex);
-            for (int columnIndex = 0; columnIndex < aRow.getCellsCount(); columnIndex ++){
-                tempValue = aRow.getCellByColumnIndex(columnIndex);
-                if (tempValue.getId() == id){
-                    retValue = tempValue;
-                    break;
+            if (aRow != null) {
+                for (int columnIndex = 0; columnIndex < aRow.getCellsCount(); columnIndex++) {
+                    tempValue = aRow.getCellByColumnIndex(columnIndex);
+                    if (tempValue.getId() == id) {
+                        retValue = tempValue;
+                        break;
+                    }
                 }
             }
         }

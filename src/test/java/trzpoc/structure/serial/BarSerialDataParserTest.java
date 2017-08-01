@@ -31,7 +31,8 @@ public class BarSerialDataParserTest {
     @Test
     public void testReadByteArray() throws Exception {
         SerialDataMock s = new SerialDataMock();
-        byte[] data = s.prepareDataToTransmitABar("10", 0, 100, "20");
+        // WARNING: HEX VALUES - A = 10, 14 = 20
+        byte[] data = s.prepareDataToTransmitABar("A", 0, 100, "14");
         Bar actualValue = (Bar) this.sut.readByteArray(data);
         assertNotNull(actualValue);
         assertEquals(actualValue.getId(), 10);
