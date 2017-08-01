@@ -4,7 +4,6 @@ import com.opencsv.CSVReader;
 import trzpoc.crc.CRC16CCITT;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.structure.serial.VariableConfiguratorSerialDataParser;
-
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
@@ -21,8 +20,6 @@ import java.util.List;
  * Time: 11.38
  */
 public class SerialDataMock {
-
-
     private final Byte fineStringa = Byte.valueOf("0A", 16).byteValue();
     private final DataTypesConverter dataTypesConverter = DataTypesConverter.getNewInstance();
 
@@ -40,10 +37,7 @@ public class SerialDataMock {
     }
 
     public void readData() {
-
-
         String realFileName = this.getClass().getClassLoader().getResource("inputExamples.csv").getFile();
-
         CSVReader reader = null;
         try {
             reader = new CSVReader(new FileReader(realFileName));
@@ -57,8 +51,8 @@ public class SerialDataMock {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
     }
+
     public void simulateSerialReception() {
         //String fileNamePrefix = "serialInputs/inputExamples-";
         //String fileName = fileNamePrefix + fileId + ".csv";
@@ -82,6 +76,7 @@ public class SerialDataMock {
             }
         }
     }
+
     public void sendRandomValuesForVariable() throws UnsupportedEncodingException {
         String[] message  = {"^","v","7","1729"};
         byte[] dataToSend = this.simulateSerialInput(message);
@@ -91,8 +86,6 @@ public class SerialDataMock {
     public byte[] simulateSerialInput(String[] line) throws UnsupportedEncodingException {
         String command = line[1];
         byte[] retValue = null;
-
-
         if (command.equals("V")) {
             String id = line[2];
             char fontColor = line[3].charAt(0);
@@ -116,35 +109,32 @@ public class SerialDataMock {
         return retValue;
     }
 
-
     public byte[] prepareDataToConfigureAVariable(String varNumber, char font_colore1, char num_caratteri1, char decimali1, String riga1, String colonna1) {
         List<Byte> buffer = new ArrayList<Byte>();
         buffer.add(Byte.valueOf("5E", 16));
         buffer.add(new Byte((byte) 'V'));
-        /*varNumber*/
+        /* varNumber */
         varNumber = this.prependWithAsciiZeroIfNecessary(varNumber);
         for (int i = 0; i < varNumber.length(); i++) {
             buffer.add(Byte.valueOf(this.convertADigitCharToHex(varNumber.charAt(i))));
         }
-        /*font_colore*/
+        /* font_colore */
         buffer.add(new Byte((byte) font_colore1));
-        /*num_caratteri1*/
+        /* num_caratteri1 */
         buffer.add(this.convertADigitCharToHex(num_caratteri1));
-        /*decimali1*/
+        /* decimali1 */
         buffer.add(this.convertADigitCharToHex(decimali1));
-        /*riga1*/
+        /* riga1 */
         riga1 = this.prependWithAsciiZeroIfNecessary(riga1);
         for (int i = 0; i < riga1.length(); i++) {
             buffer.add(Byte.valueOf(this.convertADigitCharToHex(riga1.charAt(i))));
         }
-        /*colonna1*/
+        /* colonna1 */
         colonna1 = this.prependWithAsciiZeroIfNecessary(colonna1);
         for (int i = 0; i < colonna1.length(); i++) {
             buffer.add(Byte.valueOf(this.convertADigitCharToHex(colonna1.charAt(i))));
         }
         return this.addCRCValueAndEndOfRow(buffer);
-
-
     }
 
     private String prependWithAsciiZeroIfNecessary(String value) {
@@ -155,15 +145,13 @@ public class SerialDataMock {
         List<Byte> buffer = new ArrayList<Byte>();
         buffer.add(Byte.valueOf("5E", 16));
         buffer.add(Byte.valueOf((byte) 'v'));
-
+        String hexValue = Integer.toHexString(Integer.parseInt(variableId));
 
         /*variableId*/
-        variableId = (variableId.length() == 1) ? "0" + variableId : variableId;
-        for (int i = 0; i < variableId.length(); i++) {
-            buffer.add(Byte.valueOf(this.convertADigitCharToHex(variableId.charAt(i))));
+        hexValue = (hexValue.length() == 1) ? "0" + hexValue : hexValue;
+        for (int i = 0; i < hexValue.length(); i++) {
+            buffer.add(Byte.valueOf(this.convertADigitCharToHex(hexValue.charAt(i))));
         }
-
-
         /*variableValue*/
         byte[] convertedValue = this.convertLongToByteArray(variableValue);
         for (int i = 0; i < convertedValue.length; i++) {
@@ -185,6 +173,7 @@ public class SerialDataMock {
         for (int i = 0; i < row.length(); i++) {
             buffer.add(Byte.valueOf(this.convertADigitCharToHex(row.charAt(i))));
         }
+
         /*colum*/
         column = this.prependWithAsciiZeroIfNecessary(column);
         for (int i = 0; i < column.length(); i++) {
@@ -198,21 +187,25 @@ public class SerialDataMock {
         List<Byte> buffer = new ArrayList<Byte>();
         buffer.add(Byte.valueOf("5E", 16));
         buffer.add(Byte.valueOf((byte) 'B'));
+
         /*variableId*/
         variableId = (variableId.length() == 1) ? "0" + variableId : variableId;
         for (int i = 0; i < variableId.length(); i++) {
             buffer.add(Byte.valueOf(this.convertADigitCharToHex(variableId.charAt(i))));
         }
+
         /* minValue */
         byte[] convertedMinValue = this.convertLongToByteArray(minValue);
         for (int i = 0; i < convertedMinValue.length; i++) {
             buffer.add(Byte.valueOf(convertedMinValue[i]));
         }
+
         /* maxValue */
         byte[] convertedMaxValue = this.convertLongToByteArray(maxValue);
         for (int i = 0; i < convertedMaxValue.length; i++) {
             buffer.add(Byte.valueOf(convertedMaxValue[i]));
         }
+
         /* row */
         row = this.prependWithAsciiZeroIfNecessary(row);
         for (int i = 0; i < row.length(); i++) {
@@ -240,7 +233,6 @@ public class SerialDataMock {
     private byte[] calculateCRC(byte[] bytes) {
         int crc = CRC16CCITT.getNewInstance().calculateCRCforByteArrayMessage(bytes);
         byte[] convertedCrc = this.convertIntToByteArray(crc);
-
         return convertedCrc;
     }
 
@@ -286,7 +278,6 @@ public class SerialDataMock {
     private byte convertADigitToAscii(char digit) {
         return (byte) digit;
     }
-
 
     private byte convertADigitCharToHex(char digit) {
         return this.convertADigitToAscii(digit);
@@ -336,5 +327,4 @@ public class SerialDataMock {
         byte[] varValue = Arrays.copyOfRange(setVariableInfo, 4, 12);
         long converted = sdm.bytesToLong(varValue);
     }
-
 }

@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list id="b4e93cff-d048-4a6f-92cd-4a82a397bf5b" name="New changelist" comment="" />
     <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/utils/ConfigurationHolder.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scripts/build.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.iws" afterPath="$PROJECT_DIR$/serial.iws" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/utils/SerialDataMock.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/utils/SerialDataMock.java" />
     </list>
@@ -1003,7 +1001,14 @@
       <option name="project" value="LOCAL" />
       <updated>1501596114592</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Added to manage configuration everywhere">
+      <created>1501596182900</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1501596182900</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1128,7 +1133,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added gauges examples" />
     <MESSAGE value="Created TRZ simulation with gauges" />
     <MESSAGE value="WIP for final step (data printed on Raspberry display)" />
     <MESSAGE value="Structure package for config and value variable terminated" />
@@ -1153,7 +1157,8 @@
     <MESSAGE value="Added new class for CRC16 CCITT kermit" />
     <MESSAGE value="Fixed bug for hex to int conversion" />
     <MESSAGE value="Bug fixing" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug fixing" />
+    <MESSAGE value="Added to manage configuration everywhere" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added to manage configuration everywhere" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
