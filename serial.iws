@@ -8,14 +8,8 @@
     <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="">
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/utils/ConfigurationHolder.java" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/scripts/build.groovy" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/utils/ConfigurationHolderTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.iml" afterPath="$PROJECT_DIR$/serial.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.ipr" afterPath="$PROJECT_DIR$/serial.ipr" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.iws" afterPath="$PROJECT_DIR$/serial.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/DataDisplayManager.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/DataDisplayManager.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/utils/SerialDataMock.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/utils/SerialDataMock.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/BarSerialDataParserTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/BarSerialDataParserTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/VariableConfiguratorSerialDataParserTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/VariableConfiguratorSerialDataParserTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -1002,7 +996,14 @@
       <option name="project" value="LOCAL" />
       <updated>1501332883369</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="Bug fixing">
+      <created>1501596114592</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1501596114592</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1151,7 +1152,8 @@
     <MESSAGE value="new font size, tested with TRZ" />
     <MESSAGE value="Added new class for CRC16 CCITT kermit" />
     <MESSAGE value="Fixed bug for hex to int conversion" />
-    <option name="LAST_COMMIT_MESSAGE" value="Fixed bug for hex to int conversion" />
+    <MESSAGE value="Bug fixing" />
+    <option name="LAST_COMMIT_MESSAGE" value="Bug fixing" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
