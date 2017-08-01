@@ -19,7 +19,7 @@
                 </property>
             </activation>
             <properties>
-                <main-class>trzpoc.gui.MainForSerialData</main-class>
+                <main-class>trzpoc.gui.MainForSerialDataToTestCanvas</main-class>
                 <file-name>trzpoc-gui</file-name>
             </properties>
         </profile>

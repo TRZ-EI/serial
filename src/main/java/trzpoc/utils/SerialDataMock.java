@@ -4,10 +4,8 @@ import com.opencsv.CSVReader;
 import trzpoc.crc.CRC16CCITT;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.structure.serial.VariableConfiguratorSerialDataParser;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.UnsupportedEncodingException;
-import java.net.URL;
+
+import java.io.*;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,15 +55,13 @@ public class SerialDataMock {
         //String fileNamePrefix = "serialInputs/inputExamples-";
         //String fileName = fileNamePrefix + fileId + ".csv";
         String fileName = "serialInputs/global.csv";
-        URL url = this.getClass().getClassLoader().getResource(fileName);
-        if (url != null){
-            String other = url.getFile();
+        InputStream s = this.getClass().getClassLoader().getResourceAsStream(fileName);
+        if (s != null){
             CSVReader reader = null;
             try {
-                reader = new CSVReader(new FileReader(other));
+                reader = new CSVReader(new InputStreamReader(s));
                 String[] line = null;
                 while ((line = reader.readNext()) != null) {
-
                     if (!line[0].startsWith("#")) {
                         byte[] dataReceived = this.simulateSerialInput(line);
                         this.serialDataFacade.onSerialDataInput(dataReceived);
