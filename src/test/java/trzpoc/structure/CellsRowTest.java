@@ -7,6 +7,8 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import trzpoc.utils.ConfigurationHolder;
+import trzpoc.utils.FontAndColorSelector;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -36,6 +38,8 @@ public class CellsRowTest {
     }
     @BeforeMethod
     public void setUp() throws Exception {
+        String configFile = this.getClass().getClassLoader().getResource("application.properties").getFile();
+        ConfigurationHolder.createSingleInstanceByConfigUri(configFile);
         this.sut = CellsRow.getEmptyInstance();
     }
     @DataProvider
@@ -114,8 +118,8 @@ public class CellsRowTest {
     public void testGetMaxHeight(){
         TextMetricCalculator mc = TextMetricCalculator.getInstance();
         String testValue = "1000";
-        Font highFont = Font.font("Arial", FontWeight.BOLD, 30);
-        int expectedValue = mc.calculateHeight(testValue, highFont);
+        Font font = FontAndColorSelector.getNewInstance().getSmallFont();
+        int expectedValue = mc.calculateHeight(testValue, font);
         List<Cell> dataForThisTest = this.createRowWithDifferentCellHeights(testValue);
         assertEquals(this.sut.setCells(dataForThisTest).getMaxHeight(), expectedValue);
     }

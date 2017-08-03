@@ -1,9 +1,9 @@
 package trzpoc.structure;
 
 import javafx.scene.canvas.Canvas;
+import trzpoc.utils.FontAndColorSelector;
 
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
@@ -41,13 +41,7 @@ public class CellsRow {
     }
     // TO DO: TEST AND VERIFY
     public int getMaxHeight(){
-        List<Integer> heights = new ArrayList<>();
-        Iterator<Cell> iterator = this.cells.iterator();
-        while(iterator.hasNext()){
-            heights.add(iterator.next().getHeight());
-        }
-        Collections.sort(heights);
-        return (heights.size() > 0)? heights.get(heights.size() - 1):defaultHeight;
+        return FontAndColorSelector.getNewInstance().getHeightForSmallFont("W");
     }
 
     public Cell addOrUpdateACell(Cell cell){
