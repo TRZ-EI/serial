@@ -8,19 +8,8 @@
     <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="">
       <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/scripts/build.groovy" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.iws" afterPath="$PROJECT_DIR$/serial.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicator.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicator.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialDataToTestCanvas.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialDataToTestCanvas.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/utils/ConfigurationHolder.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/utils/ConfigurationHolder.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/utils/FontAndColorSelector.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/utils/FontAndColorSelector.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/readme.txt" afterPath="$PROJECT_DIR$/src/main/resources/readme.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/serialInputs/global.csv" afterPath="$PROJECT_DIR$/src/main/resources/serialInputs/global.csv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/structure/TextTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/structure/TextTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/TextSerialDataParserTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/TextSerialDataParserTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/VariableConfiguratorSerialDataParserTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/VariableConfiguratorSerialDataParserTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/VariableValueSerialDataParserTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/VariableValueSerialDataParserTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/utils/ConfigurationHolderTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/utils/ConfigurationHolderTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/utils/FontAndColorSelectorTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/utils/FontAndColorSelectorTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -974,7 +963,14 @@
       <option name="project" value="LOCAL" />
       <updated>1501598390315</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="Read external configuration file WIP">
+      <created>1501746459226</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1501746459226</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1099,7 +1095,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Structure package for config and value variable terminated" />
     <MESSAGE value="WIP - now it's possible to print to Raspberry screen" />
     <MESSAGE value="experiments with graphics environment" />
     <MESSAGE value="Merge branch 'master' of https://github.com/TRZ-EI/serial&#10;&#10;Conflicts:&#10;&#9;src/main/java/trzpoc/structure/DataDisplayManager.java&#10;&#9;src/test/java/trzpoc/structure/serial/SerialDataFacadeTest.java" />
@@ -1124,7 +1119,8 @@
     <MESSAGE value="Added to manage configuration everywhere" />
     <MESSAGE value="fixing" />
     <MESSAGE value="Bug fix on reading csv file" />
-    <option name="LAST_COMMIT_MESSAGE" value="Bug fix on reading csv file" />
+    <MESSAGE value="Read external configuration file WIP" />
+    <option name="LAST_COMMIT_MESSAGE" value="Read external configuration file WIP" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

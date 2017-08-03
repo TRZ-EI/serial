@@ -29,6 +29,10 @@ trzpoc-console-jar-with-dependencies.jar
 trzpoc-gui-jar-with-dependencies.jar
 
 
+To find hosts on network
+****************************************************
+nmap -sn 192.168.188.0/24
+
 
 
 
