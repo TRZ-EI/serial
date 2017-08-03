@@ -31,19 +31,22 @@ public class ConfigurationHolder {
 
 
 
-    private String configurationUri;
+    private static String configurationUri;
 
     private Properties properties;
     private static ConfigurationHolder singleInstance;
 
     private ConfigurationHolder(String uri){
+        configurationUri = uri;
         this.createProperties(uri);
     }
     private void createProperties(String resourceFile) {
         try {
             if (resourceFile != null && resourceFile.length() > 0) {
-                File aFile = new File(resourceFile);
-                InputStream s = new FileInputStream(aFile);
+                String path = new File(resourceFile).getAbsolutePath();
+
+
+                InputStream s = new FileInputStream(path);
                 this.properties = new Properties();
                 this.properties.load(s);
                 s.close();
@@ -57,11 +60,16 @@ public class ConfigurationHolder {
 
 
     public static ConfigurationHolder createSingleInstanceByConfigUri(String uri){
-        singleInstance = new ConfigurationHolder(uri);
+        if (singleInstance == null) {
+            singleInstance = new ConfigurationHolder(uri);
+        }
         return singleInstance;
     }
 
     public static ConfigurationHolder getInstance(){
+        if (singleInstance == null){
+            singleInstance = ConfigurationHolder.createSingleInstanceByConfigUri(configurationUri);
+        }
         return singleInstance;
     }
 

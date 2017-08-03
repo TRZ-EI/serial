@@ -6,9 +6,7 @@ import org.testng.annotations.Test;
 import trzpoc.structure.Variable;
 import trzpoc.utils.SerialDataMock;
 
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertFalse;
-import static org.testng.Assert.assertNotNull;
+import static org.testng.Assert.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -22,6 +20,7 @@ public class VariableValueSerialDataParserTest {
 
     @BeforeMethod
     public void setUp() throws Exception {
+        //ConfigurationHolder.createSingleInstanceByConfigUri("application.properties");
         this.sut = VariableValueSerialDataParser.getInstance();
     }
     @DataProvider

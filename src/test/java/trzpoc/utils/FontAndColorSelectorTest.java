@@ -3,15 +3,11 @@ package trzpoc.utils;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
-import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import trzpoc.structure.TextMetricCalculator;
-
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
 
 import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
@@ -42,7 +38,6 @@ public class FontAndColorSelectorTest {
     private Font bigFont;
     private Font smallFont;
 
-    private Properties p;
 
     @DataProvider
     private Object[][] dataToTestForColor(){
@@ -70,34 +65,34 @@ public class FontAndColorSelectorTest {
             {VERDE_GRANDE, this.bigFont},
         };
     }
-    @BeforeClass
+    @BeforeTest
     private void prepareFontsForTest(){
         try {
-            p = new Properties();
-            InputStream is = this.getClass().getClassLoader().getResourceAsStream("application.properties");
-            p.load(is);
-            is.close();
+            this.loadProperties();
             this.smallFont = this.loadSmallFont();
             this.bigFont = this.loadBigFont();
-        } catch (IOException e) {
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+    private void loadProperties(){
+        ConfigurationHolder.createSingleInstanceByConfigUri(this.getClass().getClassLoader().getResource("application.properties").getFile()).getProperties();
+    }
 
     private Font loadBigFont() {
-        String font = this.p.getProperty(FontProperties.BIG_FONT.name());
-        String weight = this.p.getProperty(FontProperties.BIG_FONT_WEIGHT.name());
-        String size = this.p.getProperty(FontProperties.BIG_SIZE.name());
+        String font = ConfigurationHolder.getInstance().getProperties().getProperty(FontProperties.BIG_FONT.name());
+        String weight = ConfigurationHolder.getInstance().getProperties().getProperty(FontProperties.BIG_FONT_WEIGHT.name());
+        String size = ConfigurationHolder.getInstance().getProperties().getProperty(FontProperties.BIG_SIZE.name());
         return Font.font(font, FontWeight.findByName(weight), Integer.parseInt(size));
     }
     private Font loadSmallFont() {
-        String font = this.p.getProperty(FontProperties.SMALL_FONT.name());
-        String weight = this.p.getProperty(FontProperties.SMALL_FONT_WEIGHT.name());
-        String size = this.p.getProperty(FontProperties.SMALL_SIZE.name());
+        String font = ConfigurationHolder.getInstance().getProperties().getProperty(FontProperties.SMALL_FONT.name());
+        String weight = ConfigurationHolder.getInstance().getProperties().getProperty(FontProperties.SMALL_FONT_WEIGHT.name());
+        String size = ConfigurationHolder.getInstance().getProperties().getProperty(FontProperties.SMALL_SIZE.name());
         return Font.font(font, FontWeight.findByName(weight), Integer.parseInt(size));
     }
 
-    @BeforeTest
+    @BeforeMethod
     private void createNewInstance(){
         this.sut = FontAndColorSelector.getNewInstance();
     }
@@ -110,14 +105,16 @@ public class FontAndColorSelectorTest {
     public void testGetBigFont(){
         double actualValue = this.sut.getBigFont().getSize();
         // See value in properties file <fonts.properties>
-        double expectedValue = Double.parseDouble(p.getProperty(FontProperties.BIG_SIZE.name()));
+        String bigSize = ConfigurationHolder.getInstance().getProperties().getProperty(FontProperties.BIG_SIZE.name());
+        double expectedValue = Double.parseDouble(bigSize);
         assertEquals(expectedValue, actualValue);
     }
     @Test
     public void testGetSmallFont(){
         double actualValue = this.sut.getSmallFont().getSize();
         // See value in properties file <fonts.properties>
-        double expectedValue = Double.parseDouble(p.getProperty(FontProperties.SMALL_SIZE.name()));
+        String smallSize = ConfigurationHolder.getInstance().getProperties().getProperty(FontProperties.SMALL_SIZE.name());
+        double expectedValue = Double.parseDouble(smallSize);
         assertEquals(expectedValue, actualValue);
     }
 

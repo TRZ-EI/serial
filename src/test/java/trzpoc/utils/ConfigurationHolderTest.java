@@ -14,32 +14,26 @@ import static org.testng.Assert.assertNotNull;
 public class ConfigurationHolderTest {
     private String configurationUri = "application.properties";
     private String realPathConfigurationUri;
-    private ConfigurationHolder sut;
 
     @BeforeClass
     private void setup(){
         this.realPathConfigurationUri = this.getClass().getClassLoader().getResource(configurationUri).getFile();
+        ConfigurationHolder.createSingleInstanceByConfigUri(this.realPathConfigurationUri);
     }
     @Test
     public void testCreateSingleInstanceByConfigUri() throws Exception {
-        this.sut = ConfigurationHolder.createSingleInstanceByConfigUri(this.realPathConfigurationUri);
-        assertNotNull(this.sut);
-    }
-    @Test
-    public void testGetInstance() throws Exception {
         assertNotNull(ConfigurationHolder.getInstance());
     }
     @Test
     public void testGetProperties() throws Exception {
-        this.sut = ConfigurationHolder.createSingleInstanceByConfigUri(this.realPathConfigurationUri);
-        assertNotNull(this.sut.getProperties().getProperty(ConfigurationHolder.BAUD_RATE));
-        assertNotNull(this.sut.getProperties().getProperty(ConfigurationHolder.PORT));
-        assertNotNull(this.sut.getProperties().getProperty(ConfigurationHolder.BIG_FONT));
-        assertNotNull(this.sut.getProperties().getProperty(ConfigurationHolder.BIG_FONT_WEIGHT));
-        assertNotNull(this.sut.getProperties().getProperty(ConfigurationHolder.BIG_SIZE));
-        assertNotNull(this.sut.getProperties().getProperty(ConfigurationHolder.SMALL_FONT));
-        assertNotNull(this.sut.getProperties().getProperty(ConfigurationHolder.SMALL_FONT_WEIGHT));
-        assertNotNull(this.sut.getProperties().getProperty(ConfigurationHolder.SMALL_SIZE));
-        assertNotNull(this.sut.getProperties().getProperty(ConfigurationHolder.DEBUG));
+        assertNotNull(ConfigurationHolder.getInstance().getProperties().getProperty(ConfigurationHolder.BAUD_RATE));
+        assertNotNull(ConfigurationHolder.getInstance().getProperties().getProperty(ConfigurationHolder.PORT));
+        assertNotNull(ConfigurationHolder.getInstance().getProperties().getProperty(ConfigurationHolder.BIG_FONT));
+        assertNotNull(ConfigurationHolder.getInstance().getProperties().getProperty(ConfigurationHolder.BIG_FONT_WEIGHT));
+        assertNotNull(ConfigurationHolder.getInstance().getProperties().getProperty(ConfigurationHolder.BIG_SIZE));
+        assertNotNull(ConfigurationHolder.getInstance().getProperties().getProperty(ConfigurationHolder.SMALL_FONT));
+        assertNotNull(ConfigurationHolder.getInstance().getProperties().getProperty(ConfigurationHolder.SMALL_FONT_WEIGHT));
+        assertNotNull(ConfigurationHolder.getInstance().getProperties().getProperty(ConfigurationHolder.SMALL_SIZE));
+        assertNotNull(ConfigurationHolder.getInstance().getProperties().getProperty(ConfigurationHolder.DEBUG));
     }
 }

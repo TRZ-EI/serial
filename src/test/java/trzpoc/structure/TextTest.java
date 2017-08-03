@@ -4,6 +4,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+import trzpoc.utils.ConfigurationHolder;
 import trzpoc.utils.FontAndColorSelector;
 
 import static org.testng.Assert.*;
@@ -16,12 +17,14 @@ import static org.testng.Assert.*;
  */
 public class TextTest {
     private Text sut;
-    private Font testFont = FontAndColorSelector.getNewInstance().getBigFont();
+    private Font testFont;
     private Color testColor = Color.BLACK;
     private final String TEST_STRING = "TEST_STRING";
 
     @BeforeMethod
     public void init(){
+        ConfigurationHolder.createSingleInstanceByConfigUri(this.getClass().getClassLoader().getResource("application.properties").getFile());
+        testFont = FontAndColorSelector.getNewInstance().getBigFont();
         this.sut = Text.getNewInstanceByFontAndColor(testFont, testColor);
         this.sut.setValue(TEST_STRING);
     }

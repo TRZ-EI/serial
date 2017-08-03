@@ -3,6 +3,7 @@ package trzpoc.structure.serial;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import trzpoc.structure.Cell;
+import trzpoc.utils.ConfigurationHolder;
 import trzpoc.utils.SerialDataMock;
 
 import static org.testng.Assert.assertEquals;
@@ -20,14 +21,13 @@ public class TextSerialDataParserTest {
 
     @BeforeTest
     private void setup(){
+        ConfigurationHolder.createSingleInstanceByConfigUri(this.getClass().getClassLoader().getResource("application.properties").getFile());
         this.sut = TextSerialDataParser.getNewInstance();
     }
-
     @Test
     public void testGetNewInstance() throws Exception {
         assertNotNull(this.sut);
     }
-
     @Test
     public void testReadByteArray() throws Exception {
         String expectedText = "This is a text fo test";

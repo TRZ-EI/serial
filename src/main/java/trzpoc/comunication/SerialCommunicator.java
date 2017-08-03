@@ -4,8 +4,8 @@ package trzpoc.comunication;
 import gnu.io.*;
 import trzpoc.crc.CRC16CCITT;
 import trzpoc.crc.CRC32Calculator;
+import trzpoc.utils.ConfigurationHolder;
 
-import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,7 +28,6 @@ public class SerialCommunicator{
 
 
     private Properties properties;
-    final private String propertiesName = "application.properties";
 
     //input and output streams for sending and receiving data
     private InputStream input;
@@ -55,21 +54,11 @@ public class SerialCommunicator{
 
 
     public SerialCommunicator() throws IOException {
-        InputStream stream = this.getClass().getClassLoader().getResourceAsStream(this.propertiesName);
-        this.init(stream);
+        this.init();
     }
-    public SerialCommunicator(String arg) throws IOException {
-        InputStream stream = new FileInputStream(arg);
-        this.init(stream);
-    }
-
-
-    private void init(InputStream propertiesStream) throws IOException {
-        this.properties = new Properties();
-        this.properties.load(propertiesStream);
-        propertiesStream.close();
+    private void init() throws IOException {
+        this.properties = ConfigurationHolder.getInstance().getProperties();
         this.buffer = new StringBuffer();
-
     }
 
     public SerialPort connect() {
@@ -247,13 +236,11 @@ public class SerialCommunicator{
         }
     }
     public static void main(String[] args) throws IOException {
-        SerialCommunicator sc = null;
+        ConfigurationHolder.createSingleInstanceByConfigUri(args[0]);
 
-        if (args.length > 0 && args[0] != null) {
-            sc = new SerialCommunicator(args[0]);
-        }else{
-            sc = new SerialCommunicator();
-        }
+
+
+        SerialCommunicator sc = new SerialCommunicator();
         sc.connect();
         java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
         String input = "run";

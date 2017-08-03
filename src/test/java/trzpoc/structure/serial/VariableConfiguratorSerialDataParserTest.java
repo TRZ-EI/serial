@@ -4,6 +4,7 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import trzpoc.structure.Variable;
+import trzpoc.utils.ConfigurationHolder;
 import trzpoc.utils.DataTypesConverter;
 import trzpoc.utils.SerialDataMock;
 
@@ -76,6 +77,7 @@ public class VariableConfiguratorSerialDataParserTest {
 
     @BeforeMethod
     public void setUp() throws Exception {
+        ConfigurationHolder.createSingleInstanceByConfigUri(this.getClass().getClassLoader().getResource("application.properties").getFile());
         this.sut = VariableConfiguratorSerialDataParser.getNewInstance();
     }
     @Test

@@ -27,6 +27,7 @@ import javafx.stage.Stage;
 import trzpoc.comunication.SerialCommunicator;
 import trzpoc.crc.CRC16CCITT;
 import trzpoc.structure.serial.SerialDataFacade;
+import trzpoc.utils.ConfigurationHolder;
 
 import java.io.*;
 import java.util.Date;
@@ -59,13 +60,13 @@ public class MainForSerialData extends Application{
     private String readDebugValue() throws FileNotFoundException {
         Properties properties = new Properties();
         String retValue = "PRODUCTION"; // default value
-        this.resourceFile = (!this.getParameters().getRaw().isEmpty())? this.getParameters().getRaw().get(0): null;
+        this.resourceFile = (!this.getParameters().getRaw().isEmpty())? this.getParameters().getRaw().get(0): DEFAULT_RESOURCE_FILE_NAME;
         try {
-            InputStream s = this.getInputStream(resourceFile);
-            properties.load(s);
-            s.close();
-            retValue = properties.getProperty(DEFAULT_RESOURCE_KEY);
-        } catch (IOException e) {
+            ConfigurationHolder.createSingleInstanceByConfigUri(this.resourceFile);
+            if (ConfigurationHolder.getInstance() != null) {
+                retValue = ConfigurationHolder.getInstance().getProperties().getProperty(DEFAULT_RESOURCE_KEY);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return retValue;
@@ -220,11 +221,13 @@ public class MainForSerialData extends Application{
     }
 
     public boolean connectToSerialPort() throws IOException, NoSuchPortException, PortInUseException {
+        /*
         if (this.resourceFile != null){
             this.serialCommunicator = new SerialCommunicator(this.resourceFile);
         }else{
-            this.serialCommunicator = new SerialCommunicator();
         }
+        */
+        this.serialCommunicator = new SerialCommunicator();
         this.serialPort = this.serialCommunicator.connectToSerialPort();
         boolean success = false;
         

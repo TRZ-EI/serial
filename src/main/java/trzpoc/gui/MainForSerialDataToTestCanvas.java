@@ -25,6 +25,7 @@ import javafx.scene.input.TouchEvent;
 import javafx.stage.Stage;
 import trzpoc.comunication.SerialCommunicator;
 import trzpoc.structure.serial.SerialDataFacade;
+import trzpoc.utils.ConfigurationHolder;
 import trzpoc.utils.SerialDataMock;
 
 import java.io.*;
@@ -55,29 +56,17 @@ public class MainForSerialDataToTestCanvas extends Application{
     private String readDebugValue() throws FileNotFoundException {
         Properties properties = new Properties();
         String retValue = "PRODUCTION"; // default value
-        String resourceFile = (!this.getParameters().getRaw().isEmpty())? this.getParameters().getRaw().get(0): null;
+        String resourceFile = (!this.getParameters().getRaw().isEmpty())? this.getParameters().getRaw().get(0): DEFAULT_RESOURCE_FILE_NAME;
         try {
-            InputStream s = this.getInputStream(resourceFile);
-            properties.load(s);
-            s.close();
-            retValue = properties.getProperty(DEFAULT_RESOURCE_KEY);
-        } catch (IOException e) {
+            ConfigurationHolder.createSingleInstanceByConfigUri(resourceFile);
+            if (ConfigurationHolder.getInstance() != null) {
+                retValue = ConfigurationHolder.getInstance().getProperties().getProperty(DEFAULT_RESOURCE_KEY);
+            }
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return retValue;
     }
-
-    private InputStream getInputStream(String resourceFile) throws FileNotFoundException {
-        InputStream s;
-        if (resourceFile != null && resourceFile.length() > 0){
-            File aFile = new File(resourceFile);
-            s = new FileInputStream(aFile);
-        }else{
-            s = this.getClass().getClassLoader().getResourceAsStream(DEFAULT_RESOURCE_FILE_NAME);
-        }
-        return s;
-    }
-
 
     @Override
     public void start(Stage primaryStage) throws IOException, NoSuchPortException, PortInUseException {

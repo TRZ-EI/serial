@@ -5,8 +5,6 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import trzpoc.structure.TextMetricCalculator;
 
-import java.io.IOException;
-import java.io.InputStream;
 import java.util.*;
 
 /**
@@ -16,8 +14,6 @@ import java.util.*;
  * Time: 11.06
  */
 public class FontAndColorSelector {
-
-    private final String RESOURCE = "application.properties";
 
     private final char NERO_PICCOLO = 'P';     //0x31
     private final char ROSSO_PICCOLO = 'Q';
@@ -54,13 +50,10 @@ public class FontAndColorSelector {
         try {
             this.smallFontsChars = this.fillDataForFonts();
             this.colorMap = this.fillDataForColors();
-            InputStream is = this.getClass().getClassLoader().getResourceAsStream(RESOURCE);
-            this.properties = new Properties();
-            this.properties.load(is);
-            is.close();
+            this.properties = ConfigurationHolder.getInstance().getProperties();
             this.smallFont = this.loadSmallFont();
             this.bigFont = this.loadBigFont();
-        }catch (IOException e){
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
