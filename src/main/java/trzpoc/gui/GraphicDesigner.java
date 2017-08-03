@@ -92,7 +92,8 @@ public class GraphicDesigner {
                         }
                         if (textToFill != null && textToFill.length() > 0) {
                             FontAndColorSelector fcs = FontAndColorSelector.getNewInstance();
-                            width = fcs.getWidthForFont(c.getFont(), "W");
+                            Font smallFont = fcs.getSmallFont();
+                            width = fcs.getWidthForFont(smallFont, "W");
                             //gc.clearRect(c.getxPos() * width, c.getPixelScreenYPosUpper(), c.getWidth(), c.getHeight());
                             gc.fillText(textToFill, c.getxPos() * width, cellsRow.getPixelScreenYPos());
                         }
@@ -166,15 +167,17 @@ public class GraphicDesigner {
     }
 
     private void drawVerticalDivsForRow(CellsRow cellsRow) {
-        Font font = null;
+        FontAndColorSelector fontAndColorSelector = FontAndColorSelector.getNewInstance();
+        Font font = fontAndColorSelector.getSmallFont();
+        /*
         if (cellsRow.getCellsCount() > 0){
           font = cellsRow.getCellByColumnIndex(0).getFont();
         }
-
+        */
         if (this.debug.equalsIgnoreCase("debug") && font != null) {
             GraphicsContext gc = this.canvasForGrid.getGraphicsContext2D();
             int maxHeight = 800;
-            int width = FontAndColorSelector.getNewInstance().getWidthForFont(font, "W");
+            int width = fontAndColorSelector.getWidthForFont(font, "W");
             int x1 = width;
             int y1 = cellsRow.getPixelScreenYPos() - cellsRow.getMaxHeight();
             int y2 = cellsRow.getPixelScreenYPos();
