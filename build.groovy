@@ -1,13 +1,14 @@
-/* RASPBERRY PARAMS
+/* RASPBERRY PARAMS */
 def host = "192.168.188.48"
 def user = "pi"
 def pwd = "raspberry"
-*/
 
+/*
 // MAC PARAMS (TO TEST)
 def host = "192.168.1.101"
 def user = "talamona"
 def pwd = "glamdring"
+*/
 
 println "Create console JAR"
 def proc = "mvn clean compile assembly:single".execute()
