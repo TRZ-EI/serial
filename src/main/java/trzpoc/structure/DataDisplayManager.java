@@ -3,6 +3,7 @@ package trzpoc.structure;
 import trzpoc.utils.FontAndColorSelector;
 
 import java.util.ArrayList;
+import java.util.function.Predicate;
 
 /**
  * Created with IntelliJ IDEA.
@@ -19,7 +20,7 @@ public class DataDisplayManager {
     }
     private DataDisplayManager(){
 
-        this.rows = new ArrayList<CellsRow>();
+        this.rows = new ArrayList<>();
         this.defaultHeight = FontAndColorSelector.getNewInstance().getHeightForSmallFont("W");
 
     }
@@ -41,8 +42,8 @@ public class DataDisplayManager {
         return this.returnRow(rowIndex);
     }
 
-    public void calculatePixelYPos() {
-        int pixelYPos = 0;
+    private void calculatePixelYPos() {
+        int pixelYPos;
         for (int i = 0; i < this.rows.size(); i ++){
             if (i == 0){
                 pixelYPos = this.rows.get(i).getMaxHeight();
@@ -56,7 +57,7 @@ public class DataDisplayManager {
 
     private CellsRow returnRow(int rowIndex) {
         CellsRow retValue = null;
-        int indexInCollection = 0;
+        int indexInCollection;
         try {
             indexInCollection = this.rows.indexOf(CellsRow.getEmptyInstance().setyPos(rowIndex));
             if (indexInCollection >= 0) {
@@ -151,13 +152,13 @@ public class DataDisplayManager {
     }
 
     private Cell findCellByPosition(Cell toFind) {
-        Cell retValue = null, tempValue = null;
+        Cell retValue = null;
         for (int rowIndex = 0; rowIndex < this.getNumberOfRows(); rowIndex ++){
             CellsRow aRow = this.returnRow(rowIndex);
-            for (int columnIndex = 0; columnIndex < aRow.getCellsCount(); columnIndex ++){
-                tempValue = aRow.getCellByColumnIndex(columnIndex);
-                if (toFind.equals(tempValue)){
-                    retValue = tempValue;
+            if (aRow != null) {
+                int index = aRow.getCells().indexOf(toFind);
+                if (index >= 0) {
+                    retValue = aRow.getCells().get(index);
                     break;
                 }
             }
@@ -166,16 +167,14 @@ public class DataDisplayManager {
     }
 
     private Cell findCellById(int id) {
-        Cell retValue = null, tempValue = null;
+        Cell retValue = null;
         for (int rowIndex = 0; rowIndex < this.getNumberOfRows(); rowIndex ++){
             CellsRow aRow = this.returnRow(rowIndex);
             if (aRow != null) {
-                for (int columnIndex = 0; columnIndex < aRow.getCellsCount(); columnIndex++) {
-                    tempValue = aRow.getCellByColumnIndex(columnIndex);
-                    if (tempValue.getId() == id) {
-                        retValue = tempValue;
-                        break;
-                    }
+                Predicate<Cell> predicate = c-> c.getId() == id;
+                retValue = aRow.getCells().stream().filter(predicate).findFirst().orElse(null);
+                if (retValue != null){
+                    break;
                 }
             }
         }
@@ -186,7 +185,7 @@ public class DataDisplayManager {
         return rows;
     }
 
-    public void setRows(ArrayList<CellsRow> rows) {
+    protected void setRows(ArrayList<CellsRow> rows) {
         this.rows = rows;
     }
 }
