@@ -26,6 +26,7 @@ import javafx.scene.input.TouchEvent;
 import javafx.stage.Stage;
 import trzpoc.comunication.SerialCommunicator;
 import trzpoc.crc.CRC16CCITT;
+import trzpoc.structure.CellsRow;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
 
@@ -244,10 +245,10 @@ public class MainForSerialData extends Application{
                             message.append((char)b);
                         }
                         if (message.toString().indexOf(NEW_LINE_ASCII) > 0) {
-                            final String messageSent = message.toString().trim();
+                            final String[] messagesSent = message.toString().trim().split("\n");
                             message.setLength(0);
                             // ONLY ONE MESSAGE
-                            boolean isValid = this.calculateCRC(messageSent);
+                            boolean isValid = this.calculateCRC(messagesSent);
                             if (isValid) {
                                 this.serialPort.getOutputStream().write(new byte[]{'O', 'K', '\n'});
                                 this.serialPort.getOutputStream().flush();
@@ -261,9 +262,13 @@ public class MainForSerialData extends Application{
                                 @Override
                                 public void run() {
                                     try {
-                                        if (messageSent.length() > 0 && messageSent.indexOf('^') == 0 && isValid) {
-                                            String tempValue = messageSent + '\n';
-                                            serialDataFacade.onSerialDataInput(tempValue.getBytes());
+                                        if (messagesSent.length > 0 && isValid) {
+                                            for (String tempValue: messagesSent){
+                                                tempValue += '\n';
+                                                CellsRow aRow = serialDataFacade.onSerialDataInput(tempValue.getBytes());
+                                                graphicDesigner.setDataDisplayManager(serialDataFacade.getDisplayManager());
+                                                graphicDesigner.drawASingleRowOnCanvas(aRow);
+                                            }
                                         }
                                     } catch (UnsupportedEncodingException e) {
                                         e.printStackTrace();
@@ -283,21 +288,23 @@ public class MainForSerialData extends Application{
         }
         return success;
         }
-    private boolean calculateCRC(String message) {
-        boolean retValue = false;
+    private boolean calculateCRC(String[] messages) {
+        int score = 0;
         int crcDigits = 4; // 4 hex digits
-        int size = message.length();
-        if (size > crcDigits){
-            String hexCrc = message.substring(size - crcDigits);
-            String messageToCalculate = message.substring(0, size - crcDigits);
-            int crc = CRC16CCITT.getNewInstance().calculateCRCForStringMessage(messageToCalculate);
-            String crcHex = Integer.toHexString(crc);
-            if (crcHex.length() < crcDigits){
-                crcHex = "0" + crcHex;
+        for (String message: messages){
+            int size = message.length();
+            if (size > crcDigits){
+                String hexCrc = message.substring(size - crcDigits);
+                String messageToCalculate = message.substring(0, size - crcDigits);
+                int crc = CRC16CCITT.getNewInstance().calculateCRCForStringMessage(messageToCalculate);
+                String crcHex = Integer.toHexString(crc);
+                if (crcHex.length() < crcDigits){
+                    crcHex = "0" + crcHex;
+                }
+                score += (hexCrc.equalsIgnoreCase(crcHex))? 1: 0;
             }
-            retValue = hexCrc.equalsIgnoreCase(crcHex);
         }
-        return retValue;
+        return (score == messages.length);
     }
     public void disconnectFromSerialPort(){
         if(this.serialPort != null){
