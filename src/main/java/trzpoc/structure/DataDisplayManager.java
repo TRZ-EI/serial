@@ -79,52 +79,61 @@ public class DataDisplayManager {
     }
 
 
-    public void addOrUpdateCellInMatrix(Cell dataParsed) {
+    public CellsRow addOrUpdateCellInMatrix(Cell dataParsed) {
+        CellsRow retValue = null;
         if (dataParsed instanceof Variable){
-           this.manageVariable(dataParsed);
+           retValue = this.manageVariable(dataParsed);
 
         }else if(dataParsed instanceof Text){
-            this.manageText(dataParsed);
+            retValue = this.manageText(dataParsed);
 
         }else if(dataParsed instanceof Bar){
-            this.manageBar(dataParsed);
+            retValue = this.manageBar(dataParsed);
         }
         this.calculatePixelYPos();
+        return retValue;
     }
 
-    private void manageVariable(Cell dataParsed) {
+    private CellsRow manageVariable(Cell dataParsed) {
+        CellsRow retValue = null;
         Variable v = (Variable)dataParsed;
         Cell existentCell = this.findCellById(v.getId());
         if (existentCell != null){
-            this.setPossibleValueForVariable(existentCell, v);
+            retValue = this.setPossibleValueForVariable(existentCell, v);
         }else if (v.isAConfiguration()){
-            this.insertNewCell(v);
+            retValue = this.insertNewCell(v);
         }
+        return retValue;
     }
-    private void manageText(Cell dataParsed) {
+    private CellsRow manageText(Cell dataParsed) {
+        CellsRow retValue = null;
         Text t = (Text)dataParsed;
         Cell existentCell = this.findCellByPosition(t);
         if (existentCell != null) {
-            this.setPossibleValueForText(existentCell, t);
+            retValue = this.setPossibleValueForText(existentCell, t);
         }else{
-            this.insertNewCell(t);
+            retValue = this.insertNewCell(t);
         }
+        return retValue;
     }
-    private void manageBar(Cell dataParsed) {
+    private CellsRow manageBar(Cell dataParsed) {
+        CellsRow retValue = null;
         Bar b = (Bar)dataParsed;
         Cell existentCell = this.findCellById(b.getId());
         if (existentCell != null){
-            this.setPossibleValuesForBar(existentCell, b);
+            retValue = this.setPossibleValuesForBar(existentCell, b);
         }else{
-            this.insertNewCell(b);
+            retValue = this.insertNewCell(b);
         }
+        return retValue;
     }
-    private void insertNewCell(Cell dataParsed) {
+    private CellsRow insertNewCell(Cell dataParsed) {
         int rowIndex = dataParsed.getyPos();
         CellsRow row = this.getOrCreateARow(rowIndex);
         row.addOrUpdateACell(dataParsed);
+        return row;
     }
-    private void setPossibleValueForVariable(Cell c, Cell dataParsed) {
+    private CellsRow setPossibleValueForVariable(Cell c, Cell dataParsed) {
 
             if (((Variable) dataParsed).isAConfiguration()) {
                 c.setFont(dataParsed.getFont());
@@ -136,19 +145,25 @@ public class DataDisplayManager {
             int rowIndex = c.getyPos();
             CellsRow row = this.getOrCreateARow(rowIndex);
             row.addOrUpdateACell(c);
+            return row;
     }
 
-    private void setPossibleValueForText(Cell c, Cell dataParsed) {
+    private CellsRow setPossibleValueForText(Cell c, Cell dataParsed) {
             c.setValue(dataParsed.getValue());
             c.setxPos(dataParsed.getxPos());
             c.setyPos(dataParsed.getyPos());
+            return this.getOrCreateARow(c.getyPos());
     }
 
-    private void setPossibleValuesForBar(Cell c, Cell dataParsed) {
+    private CellsRow setPossibleValuesForBar(Cell c, Cell dataParsed) {
+        CellsRow retValue = null;
         if (c instanceof Bar && dataParsed instanceof Bar){
             ((Bar) c).setMaxValue(((Bar) dataParsed).getMaxValue());
             ((Bar) c).setMinValue(((Bar) dataParsed).getMinValue());
+            retValue = this.getOrCreateARow(c.getyPos());
         }
+        return retValue;
+
     }
 
     private Cell findCellByPosition(Cell toFind) {
