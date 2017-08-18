@@ -1,2 +1,4 @@
 target/
-*.iws
+serial.iws
+serial.ipr
+serial.iml
