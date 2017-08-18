@@ -1188,7 +1188,14 @@
       <option name="project" value="LOCAL" />
       <updated>1503065774793</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Emproved project">
+      <created>1503065809625</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1503065809625</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1313,7 +1320,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Refactoring" />
     <MESSAGE value="Refactoring to separate serial input from graphic controls" />
     <MESSAGE value="Refactoring to add to Cell position for including rectangle" />
     <MESSAGE value="Added canvas to draw grid" />
@@ -1338,7 +1344,8 @@
     <MESSAGE value="WIP for multiple serial commands" />
     <MESSAGE value="deleted" />
     <MESSAGE value="Implemented interface" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented interface" />
+    <MESSAGE value="Emproved project" />
+    <option name="LAST_COMMIT_MESSAGE" value="Emproved project" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
