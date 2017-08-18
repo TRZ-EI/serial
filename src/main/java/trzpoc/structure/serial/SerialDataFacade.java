@@ -1,15 +1,12 @@
 package trzpoc.structure.serial;
 
-import com.opencsv.CSVReader;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import trzpoc.structure.Cell;
+import trzpoc.structure.CellsRow;
 import trzpoc.structure.DataDisplayManager;
 import trzpoc.utils.DataTypesConverter;
-import trzpoc.utils.SerialDataMock;
 
-import java.io.FileReader;
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
 
@@ -38,8 +35,8 @@ public class SerialDataFacade {
         this.dataTypesConverter = DataTypesConverter.getNewInstance();
     }
 
-    public Cell onSerialDataInput(byte[] data) throws UnsupportedEncodingException {
-        this.isDataChanged.set(false);
+    public CellsRow onSerialDataInput(byte[] data) throws UnsupportedEncodingException {
+        //this.isDataChanged.set(false);
         // first step: what type of action?
         char command = this.readCommandFromData(data);
         Cell dataParsed = null;
@@ -56,9 +53,9 @@ public class SerialDataFacade {
         }else if (command == 'B'){ // Bar configuration
             dataParsed = BarSerialDataParser.getNewInstance().readByteArray(data);
         }
-        this.displayManager.addOrUpdateCellInMatrix(dataParsed);
-        this.isDataChanged.set(true);
-        return dataParsed;
+
+        //this.isDataChanged.set(true);
+        return this.displayManager.addOrUpdateCellInMatrix(dataParsed);
     }
     private char readCommandFromData(byte[] data) {
         final int commandPos = 1;
@@ -66,7 +63,7 @@ public class SerialDataFacade {
         byte byteCommand = Arrays.copyOfRange(data, commandPos, commandPos + commandLenght)[0];
         return this.dataTypesConverter.byteToChar(byteCommand);
     }
-
+/*
     public DataDisplayManager fillMatrixWithData(String dataFileName) throws IOException {
 
         CSVReader reader = new CSVReader(new FileReader(dataFileName));
@@ -82,7 +79,8 @@ public class SerialDataFacade {
         return this.displayManager;
 
     }
-
+*/
+/*
     private Cell simulateSerialInput(String[] line) throws UnsupportedEncodingException {
         Cell toFill = null;
         String command = line[1];
@@ -119,7 +117,7 @@ public class SerialDataFacade {
         }
         return toFill;
     }
-
+*/
 
     public DataDisplayManager getDisplayManager() {
         return this.displayManager;
