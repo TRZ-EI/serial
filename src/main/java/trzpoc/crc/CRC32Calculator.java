@@ -7,6 +7,7 @@ package trzpoc.crc;
  * Time: 17.26
  */
 
+        import java.util.Arrays;
         import java.util.zip.Checksum;
         import java.util.zip.CRC32;
 
@@ -30,7 +31,16 @@ public class CRC32Calculator implements CRCCalculator {
         return instance;
     }
     public long calculateCRC(String message) {
-        return this.calculateCRC32(message);
+        return this.calculateCRCForStringMessage(message);
+    }
+    @Override
+    public int calculateCRCForStringMessage(String message) {
+        return (int)this.calculateCRC32(message);
+    }
+    @Override
+    public int calculateCRCforByteArrayMessage(byte[] message) {
+        String m = Arrays.toString(message);
+        return this.calculateCRCForStringMessage(m);
     }
     private long calculateCRC32(String message){
         byte bytes[] = message.getBytes();
@@ -38,5 +48,4 @@ public class CRC32Calculator implements CRCCalculator {
         checksum.update(bytes, 0, bytes.length);
         return checksum.getValue();
     }
-
 }
