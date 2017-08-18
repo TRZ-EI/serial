@@ -20,7 +20,7 @@ package trzpoc.crc;
  *
  ******************************************************************************/
 
-public class CRC16CCITT {
+public class CRC16CCITT implements CRCCalculator{
 
     private final int polynomial = 0x1021; // 0001 0000 0010 0001  (0, 5, 12)
 

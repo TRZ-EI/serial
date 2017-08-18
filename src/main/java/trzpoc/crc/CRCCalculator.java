@@ -1,7 +1,5 @@
 package trzpoc.crc;
 
-import java.security.NoSuchAlgorithmException;
-
 /**
  * Created with IntelliJ IDEA.
  * User: luigi
@@ -9,5 +7,6 @@ import java.security.NoSuchAlgorithmException;
  * Time: 10.07
  */
 public interface CRCCalculator {
-    public long calculateCRC(String message) throws NoSuchAlgorithmException;
+    public int calculateCRCForStringMessage(String message);
+    public int calculateCRCforByteArrayMessage(byte[] message);
 }
