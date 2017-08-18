@@ -26,12 +26,16 @@ import javafx.scene.input.TouchEvent;
 import javafx.stage.Stage;
 import trzpoc.comunication.SerialCommunicator;
 import trzpoc.crc.CRC16CCITT;
+import trzpoc.crc.CRCCalculator;
+import trzpoc.crc.Crc16CcittKermit;
 import trzpoc.structure.CellsRow;
+import trzpoc.structure.serial.MultipleCommandSplitter;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
 
 import java.io.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import java.util.TooManyListenersException;
 
@@ -45,6 +49,7 @@ public class MainForSerialData extends Application{
     private Canvas canvas;
     private Canvas canvasForGrid;
     private SerialDataFacade serialDataFacade;
+    private MultipleCommandSplitter multipleCommandSplitter;
 
     private SerialCommunicator serialCommunicator;
     private final int NEW_LINE_ASCII = 10;
@@ -119,6 +124,7 @@ public class MainForSerialData extends Application{
         this.graphicDesigner = GraphicDesigner.createNewInstanceByGroupAndCanvasAndDebugParam(root, this.canvas, this.debug);
         this.graphicDesigner.setCanvasForGrid(this.canvasForGrid);
         this.serialDataFacade = SerialDataFacade.createNewInstance();
+        this.multipleCommandSplitter = MultipleCommandSplitter.getNewInstance();
 
 
 
@@ -264,10 +270,15 @@ public class MainForSerialData extends Application{
                                     try {
                                         if (messagesSent.length > 0 && isValid) {
                                             for (String tempValue: messagesSent){
-                                                tempValue += '\n';
-                                                CellsRow aRow = serialDataFacade.onSerialDataInput(tempValue.getBytes());
-                                                graphicDesigner.setDataDisplayManager(serialDataFacade.getDisplayManager());
-                                                graphicDesigner.drawASingleRowOnCanvas(aRow);
+                                                //tempValue += '\n';
+                                                // TO MANAGE MULTIPLE COMMANDS IN A SINGLE ROW
+                                                List<String> commands = multipleCommandSplitter.splitMultipleCommand(tempValue);
+                                                for(String command: commands) {
+                                                    command += '\n';
+                                                    CellsRow aRow = serialDataFacade.onSerialDataInput(command.getBytes());
+                                                    graphicDesigner.setDataDisplayManager(serialDataFacade.getDisplayManager());
+                                                    graphicDesigner.drawASingleRowOnCanvas(aRow);
+                                                }
                                             }
                                         }
                                     } catch (UnsupportedEncodingException e) {
@@ -296,7 +307,8 @@ public class MainForSerialData extends Application{
             if (size > crcDigits){
                 String hexCrc = message.substring(size - crcDigits);
                 String messageToCalculate = message.substring(0, size - crcDigits);
-                int crc = CRC16CCITT.getNewInstance().calculateCRCForStringMessage(messageToCalculate);
+                CRCCalculator calculator = this.selectCalculator();
+                int crc = calculator.calculateCRCForStringMessage(messageToCalculate);
                 String crcHex = Integer.toHexString(crc);
                 if (crcHex.length() < crcDigits){
                     crcHex = "0" + crcHex;
@@ -306,6 +318,12 @@ public class MainForSerialData extends Application{
         }
         return (score == messages.length);
     }
+
+    private CRCCalculator selectCalculator() {
+        String crc = ConfigurationHolder.getInstance().getProperties().getProperty(ConfigurationHolder.CRC);
+        return (crc.equalsIgnoreCase("kermit"))? Crc16CcittKermit.getNewInstance(): CRC16CCITT.getNewInstance();
+    }
+
     public void disconnectFromSerialPort(){
         if(this.serialPort != null){
             System.out.println("disconnectFromSerialPort()");
