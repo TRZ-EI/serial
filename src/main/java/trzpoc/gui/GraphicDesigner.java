@@ -13,8 +13,7 @@ import trzpoc.gui.hansolo.skins.TRZLinearSkin;
 import trzpoc.structure.*;
 import trzpoc.utils.FontAndColorSelector;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
 public class GraphicDesigner {
     private  String debug;
@@ -22,6 +21,8 @@ public class GraphicDesigner {
     private Group group;
     private DataDisplayManager dataDisplayManager;
     private Map<Integer, Gauge> bars;
+    private Queue<Gauge> preFetchedBars = new LinkedList<>();
+    private FontAndColorSelector fcs;
 
 
     public static GraphicDesigner createNewInstanceByGroupAndCanvasAndDebugParam(Group group, Canvas canvas, String debug){
@@ -34,11 +35,18 @@ public class GraphicDesigner {
         this.canvas = canvas;
         this.debug = debug;
         this.bars = new HashMap<>();
+        this.preFetchedBars.add(this.createOrUpdateHorizontalBar(0,0));
+        this.preFetchedBars.add(this.createOrUpdateHorizontalBar(0,0));
+        this.fcs = FontAndColorSelector.getNewInstance();
     }
     public void drawOnCanvas(DataDisplayManager dm) {
         this.dataDisplayManager = dm;
         this.drawGrid();
         this.drawOnCanvas();
+    }
+    public void drawASingleRowOnCanvas(CellsRow cellsRow) {
+        this.drawGrid();
+        this.drawRowOnCanvas(cellsRow);
     }
 
     private void drawGrid(){
@@ -55,23 +63,81 @@ public class GraphicDesigner {
 
     }
 
-
-    private void drawOnCanvas() {
-            //this.canvas.toFront();
-            //this.clearCanvas(this.canvas);
-            //GraphicsContext gc = this.canvas.getGraphicsContext2D();
-
+    private void drawRowOnCanvas(CellsRow cellsRow) {
+            List<Canvas> filledCanvases = new ArrayList<Canvas>();
             int width = 0;
-            for (int row = 0; row < this.dataDisplayManager.getNumberOfRows(); row++) {
-                CellsRow cellsRow = this.dataDisplayManager.getOrCreateARow(row);
-
-                if (cellsRow.isNecessaryToRedraw()) {
-                    Canvas canvasForRow = cellsRow.getCanvas();
+            if (cellsRow.isNecessaryToRedraw()) {
+                long start = System.nanoTime();
+                Canvas canvasForRow = cellsRow.getCanvas();
+                    /*
                     if (!this.group.getChildren().contains(canvasForRow)) {
                         this.group.getChildren().add(canvasForRow);
                     }
+                    */
+                this.clearCanvas(canvasForRow);
+                //Canvas canvasForRow = new Canvas(800, 400);
+                //canvasForRow.toFront();
+                GraphicsContext gc = canvasForRow.getGraphicsContext2D();
+                for (int cellIndex = 0; cellIndex < cellsRow.getCellsCount(); cellIndex++) {
+                    Cell c = cellsRow.getCellByColumnIndex(cellIndex);
+                    //if (c.isChanged()) {
+                    gc.setFont(c.getFont());
+                    gc.setFill(c.getColor());
+                    String textToFill = null;
+                    if (c instanceof Variable) {
+                        textToFill = ((Variable) c).printFormattedValue();
+                    } else if (c instanceof Text) {
+                        textToFill = c.getValue();
+                    } else if (c instanceof Bar) {
+                        if (this.bars.get(c.getId()) != null) {
+                            this.updateBarValuesAndColor(c);
+                        } else {
+                            this.configureBar(c, cellsRow.getPixelScreenYPos());
+                        }
+                    }
+                    if (textToFill != null && textToFill.length() > 0) {
+                        Font smallFont = this.fcs.getSmallFont();
+                        width = this.fcs.getWidthForFont(smallFont, "W");
+                        //gc.clearRect(c.getxPos() * width, c.getPixelScreenYPosUpper(), c.getWidth(), c.getHeight());
+                        gc.fillText(textToFill, c.getxPos() * width, cellsRow.getPixelScreenYPos());
+                    }
+
+                    //}
+                }
+                filledCanvases.add(canvasForRow);
+
+                cellsRow.switchOffRedrawFlag();
+                if (debug.equalsIgnoreCase("debug")) {
+                    long elapsed = (System.nanoTime() - start) / 1000;
+                    System.out.println("Time to draw the row " + cellsRow.getyPos() + " (micros): " + elapsed);
+                }
+
+            }
+        this.addOrReplaceCanvasesToGroup(filledCanvases);
+        //TODO: REMOVE AFTER TEST
+
+    }
+
+    private void drawOnCanvas() {
+        List<Canvas> filledCanvases = new ArrayList<Canvas>();
+
+            //TODO: REMOVE AFTER TEST
+
+            int width = 0;
+            for (int row = 0; row < this.dataDisplayManager.getNumberOfRows(); row++) {
+                long before =System.nanoTime();
+                CellsRow cellsRow = this.dataDisplayManager.getOrCreateARow(row);
+                if (cellsRow.isNecessaryToRedraw()) {
+                    long start = System.nanoTime();
+                    Canvas canvasForRow = cellsRow.getCanvas();
+                    /*
+                    if (!this.group.getChildren().contains(canvasForRow)) {
+                        this.group.getChildren().add(canvasForRow);
+                    }
+                    */
                     this.clearCanvas(canvasForRow);
-                    canvasForRow.toFront();
+                    //Canvas canvasForRow = new Canvas(800, 400);
+                    //canvasForRow.toFront();
                     GraphicsContext gc = canvasForRow.getGraphicsContext2D();
                     for (int cellIndex = 0; cellIndex < cellsRow.getCellsCount(); cellIndex++) {
                         Cell c = cellsRow.getCellByColumnIndex(cellIndex);
@@ -91,18 +157,36 @@ public class GraphicDesigner {
                             }
                         }
                         if (textToFill != null && textToFill.length() > 0) {
-                            FontAndColorSelector fcs = FontAndColorSelector.getNewInstance();
-                            Font smallFont = fcs.getSmallFont();
-                            width = fcs.getWidthForFont(smallFont, "W");
+                            Font smallFont = this.fcs.getSmallFont();
+                            width = this.fcs.getWidthForFont(smallFont, "W");
                             //gc.clearRect(c.getxPos() * width, c.getPixelScreenYPosUpper(), c.getWidth(), c.getHeight());
                             gc.fillText(textToFill, c.getxPos() * width, cellsRow.getPixelScreenYPos());
                         }
 
                         //}
                     }
+                    filledCanvases.add(canvasForRow);
+
                     cellsRow.switchOffRedrawFlag();
+                    long elapsed = (System.nanoTime() - start) / 1000;
+                    System.out.println("Time to draw a row (micros): " + elapsed);
+
                 }
             }
+            this.addOrReplaceCanvasesToGroup(filledCanvases);
+    //TODO: REMOVE AFTER TEST
+
+    }
+
+    private void addOrReplaceCanvasesToGroup(List<Canvas> filledCanvases) {
+        for (Canvas canvas: filledCanvases){
+            if (this.group.getChildren().contains(canvas)){
+                this.group.getChildren().remove(canvas);
+                this.group.getChildren().add(canvas);
+            }else{
+                this.group.getChildren().add(canvas);
+            }
+        }
     }
 
     private void updateBarValuesAndColor(Cell c) {
@@ -128,7 +212,22 @@ public class GraphicDesigner {
         double prefWidth = 700d;
 
         Bar cellBar = (Bar) c;
-        Gauge bar = this.createOrUpdateHorizontalBar(cellBar.getMinValue(), cellBar.getMaxValue());
+        Gauge bar = null;
+        if (!this.preFetchedBars.isEmpty()){
+            bar = this.preFetchedBars.remove();
+        }else{
+            bar = this.createOrUpdateHorizontalBar(cellBar.getMinValue(), cellBar.getMaxValue());
+        }
+
+        //Gauge
+
+        bar.addSection(new Section(cellBar.getMinValue(), 0, Color.GREEN));
+        bar.addSection(new Section(0, cellBar.getMaxValue(), Color.BLUE));
+
+        bar.setValue(cellBar.getMinValue());
+        bar.setMinValue(cellBar.getMinValue());
+        bar.setMaxValue(cellBar.getMaxValue());
+
         bar.setPrefSize(prefWidth, prefHeight);
         bar.setLayoutX(30);
         bar.setLayoutY(pixelScreenYPos - prefHeight / 2);
@@ -147,9 +246,11 @@ public class GraphicDesigner {
                 .valueVisible(false)
                 .foregroundBaseColor(Color.BLUE)
                 .barColor(Color.GREEN)
+                /*
                 .sections(new Section(minValue, 0, Color.GREEN),
                         new Section(0, maxValue, Color.BLUE)
                 )
+                */
                 .build();
         gauge.setSkin(new TRZLinearSkin(gauge));
         return gauge;
@@ -192,5 +293,9 @@ public class GraphicDesigner {
 
     public void setCanvasForGrid(Canvas canvasForGrid) {
         this.canvasForGrid = canvasForGrid;
+    }
+
+    public void setDataDisplayManager(DataDisplayManager dataDisplayManager) {
+        this.dataDisplayManager = dataDisplayManager;
     }
 }
