@@ -114,6 +114,7 @@ public class GraphicDesigner {
 
             }
         this.addOrReplaceCanvasesToGroup(filledCanvases);
+        this.canvas.toFront();
         //TODO: REMOVE AFTER TEST
 
     }
