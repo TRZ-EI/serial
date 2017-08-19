@@ -119,6 +119,8 @@ public class MainForSerialData extends Application{
         root.getChildren().add(this.canvasForGrid);
         this.canvas.toFront();
         this.addTouchEventToStart(this.canvas);
+        this.addTouchEventToExit(this.canvasForGrid);
+        this.addTouchEventToExit(this.canvas);
         this.addMouseEventToStart(this.canvas);
         this.primaryStage.show();
         this.graphicDesigner = GraphicDesigner.createNewInstanceByGroupAndCanvasAndDebugParam(root, this.canvas, this.debug);
@@ -126,9 +128,6 @@ public class MainForSerialData extends Application{
         this.serialDataFacade = SerialDataFacade.createNewInstance();
         this.multipleCommandSplitter = MultipleCommandSplitter.getNewInstance();
 
-
-
-        //this.addListenerForSocketDataChanged();
         this.addListenerForDataChanged();
         boolean isConnected = this.connectToSerialPort();
         if (isConnected){
