@@ -144,7 +144,7 @@ public class MainForSerialData extends Application{
                     @Override
                     public void run() {
                         if (newValue){
-                            graphicDesigner.drawOnCanvas(serialDataFacade.getDisplayManager());
+                            graphicDesigner.clearScreen(serialDataFacade.getDisplayManager());
                         }
 
                     }
@@ -275,8 +275,10 @@ public class MainForSerialData extends Application{
                                                 for(String command: commands) {
                                                     command += '\n';
                                                     CellsRow aRow = serialDataFacade.onSerialDataInput(command.getBytes());
-                                                    graphicDesigner.setDataDisplayManager(serialDataFacade.getDisplayManager());
-                                                    graphicDesigner.drawASingleRowOnCanvas(aRow);
+                                                    if (aRow != null) {
+                                                        graphicDesigner.setDataDisplayManager(serialDataFacade.getDisplayManager());
+                                                        graphicDesigner.drawASingleRowOnCanvas(aRow);
+                                                    }
                                                 }
                                             }
                                         }
