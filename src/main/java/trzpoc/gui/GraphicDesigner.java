@@ -44,6 +44,17 @@ public class GraphicDesigner {
         this.drawGrid();
         this.drawOnCanvas();
     }
+    public void clearScreen(DataDisplayManager dataDisplayManager){
+        for (int row = 0; row < dataDisplayManager.getNumberOfRows(); row++) {
+            CellsRow cellsRow = dataDisplayManager.getOrCreateARow(row);
+
+            Canvas canvasForRow = cellsRow.getCanvas();
+            if (canvasForRow != null) {
+                this.clearCanvas(canvasForRow);
+            }
+        }
+    }
+
     public void drawASingleRowOnCanvas(CellsRow cellsRow) {
         this.drawGrid();
         this.drawRowOnCanvas(cellsRow);
