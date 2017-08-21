@@ -33,6 +33,9 @@ To find hosts on network
 ****************************************************
 nmap -sn 192.168.188.0/24
 
+-agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005
+
+java -agentlib:jdwp=transport=dt_socket,server=y,suspend=n,address=5005 -Djava.library.path=/usr/lib/jni/ -jar trzpoc-gui-jar-with-dependencies.jar ./application.properties
 
 
 
