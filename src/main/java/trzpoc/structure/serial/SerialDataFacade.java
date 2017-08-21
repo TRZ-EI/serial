@@ -36,7 +36,8 @@ public class SerialDataFacade {
     }
 
     public CellsRow onSerialDataInput(byte[] data) throws UnsupportedEncodingException {
-        //this.isDataChanged.set(false);
+        this.isDataChanged.set(false);
+
         // first step: what type of action?
         char command = this.readCommandFromData(data);
         Cell dataParsed = null;
@@ -49,12 +50,10 @@ public class SerialDataFacade {
         }else if (command == 't'){ // Print text
             dataParsed = TextSerialDataParser.getNewInstance().readByteArray(data);
         }else if (command == 'C'){ // Clear display
-            // TODO
+            this.isDataChanged.set(true);
         }else if (command == 'B'){ // Bar configuration
             dataParsed = BarSerialDataParser.getNewInstance().readByteArray(data);
         }
-
-        //this.isDataChanged.set(true);
         return this.displayManager.addOrUpdateCellInMatrix(dataParsed);
     }
     private char readCommandFromData(byte[] data) {
