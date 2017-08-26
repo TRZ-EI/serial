@@ -6,12 +6,7 @@
   <component name="ChangeListManager">
     <list id="b4e93cff-d048-4a6f-92cd-4a82a397bf5b" name="New changelist" comment="" />
     <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.groovy" afterPath="$PROJECT_DIR$/build.groovy" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notesForDeploy.txt" afterPath="$PROJECT_DIR$/notesForDeploy.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.iws" afterPath="$PROJECT_DIR$/serial.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/utils/DataTypesConverter.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/utils/DataTypesConverter.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/BarSerialDataParserTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/BarSerialDataParserTest.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/utils/DataTypesConverterTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/utils/DataTypesConverterTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -902,20 +897,6 @@
       <option name="presentableId" value="Default" />
       <updated>1489661415561</updated>
     </task>
-    <task id="LOCAL-00003" summary="WIP for final step (data printed on Raspberry display)">
-      <created>1493910168991</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1493910168992</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Structure package for config and value variable terminated">
-      <created>1493992694606</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1493992694606</updated>
-    </task>
     <task id="LOCAL-00005" summary="Structure package for config and value variable terminated">
       <created>1493992764407</created>
       <option name="number" value="00005" />
@@ -1245,7 +1226,21 @@
       <option name="project" value="LOCAL" />
       <updated>1503325242419</updated>
     </task>
-    <option name="localTasksCounter" value="52" />
+    <task id="LOCAL-00052" summary="fixed bug on conversion">
+      <created>1503737484073</created>
+      <option name="number" value="00052" />
+      <option name="presentableId" value="LOCAL-00052" />
+      <option name="project" value="LOCAL" />
+      <updated>1503737484075</updated>
+    </task>
+    <task id="LOCAL-00053" summary="Problems with test implementation: review it later">
+      <created>1503737533777</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1503737533777</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1299,11 +1294,11 @@
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35439137" sideWeight="0.5091053" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293745" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33898306" sideWeight="0.4908947" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33898306" sideWeight="0.4908947" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266564" sideWeight="0.49586776" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47457626" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33280632" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33280632" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="SonarQube" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24980174" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
@@ -1372,8 +1367,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implement serial communication and integration tests" />
-    <MESSAGE value="new font size, tested with TRZ" />
     <MESSAGE value="Added new class for CRC16 CCITT kermit" />
     <MESSAGE value="Fixed bug for hex to int conversion" />
     <MESSAGE value="Bug fixing" />
@@ -1397,7 +1390,9 @@
     <MESSAGE value="Removed examples for gauges" />
     <MESSAGE value="Emproved deploy scripts" />
     <MESSAGE value="Removed because not necessary" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed because not necessary" />
+    <MESSAGE value="fixed bug on conversion" />
+    <MESSAGE value="Problems with test implementation: review it later" />
+    <option name="LAST_COMMIT_MESSAGE" value="Problems with test implementation: review it later" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
