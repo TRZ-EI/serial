@@ -15,7 +15,7 @@ public class DataTypesConverter {
 
     public long bytesToLong(byte[] bytes) throws UnsupportedEncodingException {
         String toTransform = this.bytesToString(bytes);
-        return Long.parseLong(toTransform, 10);
+        return Long.parseLong(toTransform, 16);
 
 
 
@@ -66,6 +66,7 @@ public class DataTypesConverter {
     }
 
     public byte[] longToAsciiChars(long testValue) {
-        return Long.toString(testValue).getBytes();
+        String value = Long.toHexString(testValue);
+        return value.getBytes();
     }
 }
