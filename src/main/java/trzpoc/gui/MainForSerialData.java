@@ -24,7 +24,6 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
 import javafx.stage.Stage;
 import trzpoc.comunication.SerialDataManager;
-import trzpoc.structure.CellsRow;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
 
@@ -43,6 +42,8 @@ public class MainForSerialData extends Application{
     private Canvas canvasForGrid;
     private SerialDataFacade serialDataFacade;
     private SerialDataManager serialDataManager;
+    private GraphicDesignerRunnable runnable;
+
 
 
     private final String DEFAULT_RESOURCE_FILE_NAME = "application.properties";
@@ -51,7 +52,6 @@ public class MainForSerialData extends Application{
     private SerialPort serialPort = null;
 
     private String resourceFile = null;
-
 
 
     private String readDebugValue() throws FileNotFoundException {
@@ -118,6 +118,8 @@ public class MainForSerialData extends Application{
         this.graphicDesigner.setCanvasForGrid(this.canvasForGrid);
         this.serialDataFacade = SerialDataFacade.createNewInstance();
         this.serialDataManager = SerialDataManager.createNewInstance();
+        this.runnable = GraphicDesignerRunnable.createNewInstanceBySerialDataFacadeAndGraphicDesigner(serialDataFacade, graphicDesigner);
+
         this.addListenerForDataChanged();
         this.addListenerForDataReceived();
         boolean isConnected = this.connectToSerialPort();
@@ -152,29 +154,13 @@ public class MainForSerialData extends Application{
                         String[] y = serialDataManager.getSerialBuffer().toArray(new String[0]);
                         serialDataManager.getSerialBuffer().clear();
                         System.out.println("MESSAGES READ: " + y.length);
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                try {
-                                    for (String m: y) {
-                                        CellsRow aRow = serialDataFacade.onSerialDataInput(m.getBytes());
-                                        if (aRow != null) {
-                                            graphicDesigner.setDataDisplayManager(serialDataFacade.getDisplayManager());
-                                            graphicDesigner.drawASingleRowOnCanvas(aRow);
-                                        }
-                                    }
-                                    serialDataManager.setIsDataAvalaible(false);
-                                } catch (UnsupportedEncodingException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        });
+                        runnable.setMessages(y);
+                        Platform.runLater(runnable);
+                        serialDataManager.setIsDataAvalaible(false);
                     }
                 }
-
             }
         });
-
     }
 
 

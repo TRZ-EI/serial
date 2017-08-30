@@ -6,7 +6,10 @@
   <component name="ChangeListManager">
     <list id="b4e93cff-d048-4a6f-92cd-4a82a397bf5b" name="New changelist" comment="" />
     <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesignerRunnable.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.iws" afterPath="$PROJECT_DIR$/serial.iws" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -24,18 +27,36 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="MainForSerialData.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="MainForSerialData.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="216">
-              <caret line="154" column="47" lean-forward="false" selection-start-line="154" selection-start-column="47" selection-end-line="154" selection-end-column="47" />
+            <state relative-caret-position="903">
+              <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
               <folding>
-                <element signature="method#addTouchEventToExit#0;class#MainForSerialData#0" expanded="false" />
-                <element signature="method#addTouchEventToStart#0;class#MainForSerialData#0" expanded="false" />
-                <element signature="method#addMouseEventToStart#0;class#MainForSerialData#0" expanded="false" />
-                <element signature="method#addCombinationKeyAcceleratorToExit#0;class#MainForSerialData#0" expanded="false" />
-                <element signature="e#9821#9822#0" expanded="true" />
-                <element signature="e#9886#9887#0" expanded="true" />
+                <element signature="e#9140#9141#0" expanded="true" />
+                <element signature="e#9205#9206#0" expanded="true" />
+                <marker date="1504081754969" expanded="false" signature="6257:7088" ph="{...}" />
+                <marker date="1504081754969" expanded="false" signature="7148:7483" ph="{...}" />
+                <marker date="1504081754969" expanded="false" signature="7542:8472" ph="{...}" />
+                <marker date="1504081754969" expanded="false" signature="8545:8829" ph="{...}" />
+                <marker date="1504081754969" expanded="false" signature="8729:8756" ph=" { " />
+                <marker date="1504081754969" expanded="false" signature="8772:8794" ph=" }" />
+                <marker date="1504081754969" expanded="false" signature="8879:8889" ph=" { " />
+                <marker date="1504081754969" expanded="false" signature="8918:8924" ph=" }" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GraphicDesignerRunnable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesignerRunnable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="279">
+              <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1496#1497#0" expanded="true" />
+                <element signature="e#1536#1537#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -88,28 +109,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="SerialDataMock.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/utils/SerialDataMock.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2016">
-              <caret line="189" column="58" lean-forward="false" selection-start-line="189" selection-start-column="58" selection-end-line="189" selection-end-column="58" />
-              <folding>
-                <element signature="method#prepareDataToConfigureAVariable#0;class#SerialDataMock#0" expanded="false" />
-                <element signature="method#prepareDataToTransmitAVariable#0;class#SerialDataMock#0" expanded="false" />
-                <element signature="method#prepareDataToTransmitAText#0;class#SerialDataMock#0" expanded="false" />
-                <element signature="method#addTextToByteBuffer#0;class#SerialDataMock#0" expanded="false" />
-                <element signature="method#addCRCValueAndEndOfRow#0;class#SerialDataMock#0" expanded="false" />
-                <element signature="method#calculateCRC#0;class#SerialDataMock#0" expanded="false" />
-                <element signature="method#convertIntToByteArray#0;class#SerialDataMock#0" expanded="false" />
-                <element signature="method#convertLongToByteArray#0;class#SerialDataMock#0" expanded="false" />
-                <element signature="method#prepareByteArray#0;class#SerialDataMock#0" expanded="false" />
-                <element signature="method#bytesToLong#0;class#SerialDataMock#0" expanded="false" />
-                <element signature="method#bytesToInt#0;class#SerialDataMock#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="SerialCommunicator.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicator.java">
           <provider selected="true" editor-type-id="text-editor">
@@ -123,21 +122,28 @@
       <file leaf-file-name="SerialDataFacade.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2034">
-              <caret line="125" column="20" lean-forward="false" selection-start-line="125" selection-start-column="20" selection-end-line="125" selection-end-column="20" />
-              <folding>
-                <element signature="e#4893#4894#0" expanded="true" />
-                <element signature="e#4934#4935#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="184">
+              <caret line="56" column="49" lean-forward="true" selection-start-line="56" selection-start-column="49" selection-end-line="56" selection-end-column="49" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GraphicDesigner.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="DataDisplayManager.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/DataDisplayManager.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2178">
+              <caret line="130" column="0" lean-forward="false" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GraphicDesigner.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="134">
-              <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
+            <state relative-caret-position="296">
+              <caret line="113" column="104" lean-forward="false" selection-start-line="113" selection-start-column="104" selection-end-line="113" selection-end-column="104" />
               <folding />
             </state>
           </provider>
@@ -235,7 +241,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/serialInputs/inputExamples-4.csv" />
         <option value="$PROJECT_DIR$/src/main/resources/serialInputs/inputExamples-2.csv" />
         <option value="$PROJECT_DIR$/src/main/resources/serialInputs/inputExamples-1.csv" />
         <option value="$PROJECT_DIR$/src/main/resources/serialInputs/inputExamples-3.csv" />
@@ -274,7 +279,6 @@
         <option value="$APPLICATION_CONFIG_DIR$/scratches/scratch_1.txt" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java" />
         <option value="$PROJECT_DIR$/src/main/resources/readme.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java" />
         <option value="$PROJECT_DIR$/notesForDeploy.txt" />
         <option value="$PROJECT_DIR$/src/main/java/pippo.txt" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/utils/DataTypesConverter.java" />
@@ -285,7 +289,9 @@
         <option value="$PROJECT_DIR$/src/test/java/trzpoc/comunication/SerialListenerForTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/trzpoc/comunication/SerialDataManagerTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialDataManager.java" />
+        <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesignerRunnable.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java" />
+        <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java" />
       </list>
     </option>
   </component>
@@ -325,7 +331,7 @@
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1">
+    <navigator currentView="PackagesPane" proportions="" version="1">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -860,13 +866,6 @@
       <option name="presentableId" value="Default" />
       <updated>1489661415561</updated>
     </task>
-    <task id="LOCAL-00008" summary="Merge branch 'master' of https://github.com/TRZ-EI/serial&#10;&#10;Conflicts:&#10;&#9;src/main/java/trzpoc/structure/DataDisplayManager.java&#10;&#9;src/test/java/trzpoc/structure/serial/SerialDataFacadeTest.java">
-      <created>1494829738793</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1494829738793</updated>
-    </task>
     <task id="LOCAL-00009" summary="Modified FontAndColorSelector - font properties now are external (fonts.properties)">
       <created>1495381599890</created>
       <option name="number" value="00009" />
@@ -1203,7 +1202,14 @@
       <option name="project" value="LOCAL" />
       <updated>1504076569346</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Updated IntelliJ project file">
+      <created>1504076601665</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1504076601665</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1255,9 +1261,9 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31895223" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Enso" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.35439137" sideWeight="0.5091053" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58859783" sideWeight="0.515415" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3293745" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6671803" sideWeight="0.4908947" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58859783" sideWeight="0.484585" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266564" sideWeight="0.49586776" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47457626" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -1300,7 +1306,7 @@
       <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.31895223" sideWeight="0.5" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6687211" sideWeight="0.4908947" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.58859783" sideWeight="0.4908947" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3266564" sideWeight="0.49586776" order="8" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.47457626" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.33280632" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -1330,7 +1336,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Added to manage configuration everywhere" />
     <MESSAGE value="fixing" />
     <MESSAGE value="Bug fix on reading csv file" />
     <MESSAGE value="Read external configuration file WIP" />
@@ -1355,7 +1360,8 @@
     <MESSAGE value="Ip adress changed" />
     <MESSAGE value="Add Class to manage Serial connection" />
     <MESSAGE value="Refactored using a new class to manage serial connection, and FIFO buffering" />
-    <option name="LAST_COMMIT_MESSAGE" value="Refactored using a new class to manage serial connection, and FIFO buffering" />
+    <MESSAGE value="Updated IntelliJ project file" />
+    <option name="LAST_COMMIT_MESSAGE" value="Updated IntelliJ project file" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1398,15 +1404,9 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java</url>
-          <line>137</line>
+          <line>139</line>
           <properties />
           <option name="timeStamp" value="219" />
-        </line-breakpoint>
-        <line-breakpoint type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java</url>
-          <line>52</line>
-          <properties />
-          <option name="timeStamp" value="222" />
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/trzpoc/utils/DataTypesConverterTest.java</url>
@@ -1421,14 +1421,14 @@
           <option name="timeStamp" value="235" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java</url>
-          <line>57</line>
+          <url>file://$PROJECT_DIR$/src/main/java/trzpoc/structure/DataDisplayManager.java</url>
+          <line>130</line>
           <properties />
-          <option name="timeStamp" value="236" />
+          <option name="timeStamp" value="247" />
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java</url>
-          <line>254</line>
+          <line>240</line>
           <properties class="trzpoc.gui.MainForSerialData" method="connectToSerialPort">
             <option name="EMULATED" value="true" />
           </properties>
@@ -1438,7 +1438,7 @@
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="237" />
+      <option name="time" value="252" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1451,13 +1451,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/target/surefire-reports/TestSuite.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/VariableConfiguratorSerialDataParser.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -1682,13 +1675,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/DataDisplayManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="166">
-          <caret line="100" column="0" lean-forward="false" selection-start-line="100" selection-start-column="0" selection-end-line="100" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/utils/FontAndColorSelector.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -1709,17 +1695,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="144">
           <caret line="8" column="33" lean-forward="false" selection-start-line="8" selection-start-column="10" selection-end-line="8" selection-end-column="42" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2034">
-          <caret line="125" column="20" lean-forward="false" selection-start-line="125" selection-start-column="20" selection-end-line="125" selection-end-column="20" />
-          <folding>
-            <element signature="e#4893#4894#0" expanded="true" />
-            <element signature="e#4934#4935#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1790,14 +1765,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="134">
-          <caret line="65" column="0" lean-forward="false" selection-start-line="65" selection-start-column="0" selection-end-line="65" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/pippo.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -1806,18 +1773,58 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="184">
+          <caret line="56" column="49" lean-forward="true" selection-start-line="56" selection-start-column="49" selection-end-line="56" selection-end-column="49" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/DataDisplayManager.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2178">
+          <caret line="130" column="0" lean-forward="false" selection-start-line="130" selection-start-column="0" selection-end-line="130" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesignerRunnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="279">
+          <caret line="20" column="0" lean-forward="false" selection-start-line="20" selection-start-column="0" selection-end-line="20" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1496#1497#0" expanded="true" />
+            <element signature="e#1536#1537#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="154" column="47" lean-forward="false" selection-start-line="154" selection-start-column="47" selection-end-line="154" selection-end-column="47" />
+        <state relative-caret-position="903">
+          <caret line="163" column="0" lean-forward="false" selection-start-line="163" selection-start-column="0" selection-end-line="163" selection-end-column="0" />
           <folding>
-            <element signature="method#addTouchEventToExit#0;class#MainForSerialData#0" expanded="false" />
-            <element signature="method#addTouchEventToStart#0;class#MainForSerialData#0" expanded="false" />
-            <element signature="method#addMouseEventToStart#0;class#MainForSerialData#0" expanded="false" />
-            <element signature="method#addCombinationKeyAcceleratorToExit#0;class#MainForSerialData#0" expanded="false" />
-            <element signature="e#9821#9822#0" expanded="true" />
-            <element signature="e#9886#9887#0" expanded="true" />
+            <element signature="e#9140#9141#0" expanded="true" />
+            <element signature="e#9205#9206#0" expanded="true" />
+            <marker date="1504081754969" expanded="false" signature="6257:7088" ph="{...}" />
+            <marker date="1504081754969" expanded="false" signature="7148:7483" ph="{...}" />
+            <marker date="1504081754969" expanded="false" signature="7542:8472" ph="{...}" />
+            <marker date="1504081754969" expanded="false" signature="8545:8829" ph="{...}" />
+            <marker date="1504081754969" expanded="false" signature="8729:8756" ph=" { " />
+            <marker date="1504081754969" expanded="false" signature="8772:8794" ph=" }" />
+            <marker date="1504081754969" expanded="false" signature="8879:8889" ph=" { " />
+            <marker date="1504081754969" expanded="false" signature="8918:8924" ph=" }" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="296">
+          <caret line="113" column="104" lean-forward="false" selection-start-line="113" selection-start-column="104" selection-end-line="113" selection-end-column="104" />
+          <folding />
         </state>
       </provider>
     </entry>
