@@ -4,6 +4,7 @@ import eu.hansolo.medusa.Gauge;
 import eu.hansolo.medusa.GaugeBuilder;
 import eu.hansolo.medusa.Section;
 import javafx.geometry.Orientation;
+import javafx.scene.CacheHint;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -76,27 +77,26 @@ public class GraphicDesigner {
 
     private void drawRowOnCanvas(CellsRow cellsRow) {
             List<Canvas> filledCanvases = new ArrayList<Canvas>();
-            int width = 0;
             if (cellsRow.isNecessaryToRedraw()) {
                 long start = System.nanoTime();
+
                 Canvas canvasForRow = cellsRow.getCanvas();
-                    /*
-                    if (!this.group.getChildren().contains(canvasForRow)) {
-                        this.group.getChildren().add(canvasForRow);
-                    }
-                    */
+                canvasForRow.setCache(false);
+                canvasForRow.setCacheHint(CacheHint.DEFAULT);
+
                 this.clearCanvas(canvasForRow);
-                //Canvas canvasForRow = new Canvas(800, 400);
-                //canvasForRow.toFront();
                 GraphicsContext gc = canvasForRow.getGraphicsContext2D();
+                int width = this.fcs.getWidthForSmallFont("W");
+
                 for (int cellIndex = 0; cellIndex < cellsRow.getCellsCount(); cellIndex++) {
                     Cell c = cellsRow.getCellByColumnIndex(cellIndex);
-                    //if (c.isChanged()) {
                     gc.setFont(c.getFont());
                     gc.setFill(c.getColor());
                     String textToFill = null;
                     if (c instanceof Variable) {
-                        textToFill = ((Variable) c).printFormattedValue();
+                        Variable v = (Variable)c;
+                        //textToFill = c.getValue();
+                        textToFill = v.printFormattedValue();
                     } else if (c instanceof Text) {
                         textToFill = c.getValue();
                     } else if (c instanceof Bar) {
@@ -107,17 +107,12 @@ public class GraphicDesigner {
                         }
                     }
                     if (textToFill != null && textToFill.length() > 0) {
-                        Font smallFont = this.fcs.getSmallFont();
-                        width = this.fcs.getWidthForFont(smallFont, "W");
-                        //gc.clearRect(c.getxPos() * width, c.getPixelScreenYPosUpper(), c.getWidth(), c.getHeight());
                         gc.fillText(textToFill, c.getxPos() * width, cellsRow.getPixelScreenYPos());
                     }
-
-                    //}
                 }
                 filledCanvases.add(canvasForRow);
-
                 cellsRow.switchOffRedrawFlag();
+
                 if (debug.equalsIgnoreCase("debug")) {
                     long elapsed = (System.nanoTime() - start) / 1000;
                     System.out.println("Time to draw the row " + cellsRow.getyPos() + " (micros): " + elapsed);
@@ -126,8 +121,6 @@ public class GraphicDesigner {
             }
         this.addOrReplaceCanvasesToGroup(filledCanvases);
         this.canvas.toFront();
-        //TODO: REMOVE AFTER TEST
-
     }
 
     private void drawOnCanvas() {
