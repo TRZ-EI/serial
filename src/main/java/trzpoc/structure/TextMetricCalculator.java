@@ -20,6 +20,7 @@ public class TextMetricCalculator {
     public int calculateWidth(String text, Font font){
         Text t = getTextByFont(text, font);
         return Double.valueOf(t.getLayoutBounds().getWidth()).intValue();
+        //return 0;
     }
     public int calculateHeight(String text, Font font){
         Text t = getTextByFont(text, font);

@@ -7,12 +7,8 @@
     <list id="b4e93cff-d048-4a6f-92cd-4a82a397bf5b" name="New changelist" comment="" />
     <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="Refactoring to emprove graphics performances">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.iws" afterPath="$PROJECT_DIR$/serial.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/CellsRow.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/CellsRow.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/TextMetricCalculator.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/TextMetricCalculator.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Variable.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Variable.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/utils/FontAndColorSelector.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/utils/FontAndColorSelector.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/trzpoc/structure/VariableTest.java" afterPath="$PROJECT_DIR$/src/test/java/trzpoc/structure/VariableTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -106,7 +102,21 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-393">
               <caret line="34" column="13" lean-forward="false" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-              <folding />
+              <folding>
+                <marker date="1504178816197" expanded="true" signature="8439:8464" ph="{...}" />
+                <marker date="1504178816197" expanded="true" signature="8439:8472" ph="{...}" />
+                <marker date="1504178816197" expanded="true" signature="8545:8829" ph="{...}" />
+                <marker date="1504178816197" expanded="true" signature="8690:8812" ph="{...}" />
+                <marker date="1504178816197" expanded="false" signature="8772:8794" ph=" }" />
+                <marker date="1504178816197" expanded="false" signature="8879:8889" ph=" { " />
+                <marker date="1504178816197" expanded="false" signature="8918:8924" ph=" }" />
+                <marker date="1504178816197" expanded="true" signature="9027:9095" ph="{...}" />
+                <marker date="1504178816197" expanded="false" signature="9140:9150" ph=" { " />
+                <marker date="1504178816197" expanded="false" signature="9200:9206" ph=" }" />
+                <marker date="1504178816197" expanded="true" signature="9261:9331" ph="{...}" />
+                <marker date="1504178816197" expanded="true" signature="9429:9566" ph="{...}" />
+                <marker date="1504178816197" expanded="true" signature="9439:9526" ph="//..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -968,13 +978,6 @@
       <option name="presentableId" value="Default" />
       <updated>1489661415561</updated>
     </task>
-    <task id="LOCAL-00011" summary="Added management for MONOSPACE fonts - use only monospace fonts">
-      <created>1495713059918</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1495713059918</updated>
-    </task>
     <task id="LOCAL-00012" summary="Fixed mapping between position in row (1,2,3...) and pixels - added grid for debug">
       <created>1495975968935</created>
       <option name="number" value="00012" />
@@ -1311,7 +1314,14 @@
       <option name="project" value="LOCAL" />
       <updated>1504178773113</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="Refactoring to emprove performances">
+      <created>1504178861610</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1504178861610</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1438,7 +1448,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Read external configuration file WIP" />
     <MESSAGE value="removed" />
     <MESSAGE value="add build script at the project root" />
     <MESSAGE value="Added class to implement CRC 16 CCITT Kermit" />
@@ -1463,7 +1472,8 @@
     <MESSAGE value="Updated IntelliJ project file" />
     <MESSAGE value="Refactoring to emprove graphics performances" />
     <MESSAGE value="Emproved performances" />
-    <option name="LAST_COMMIT_MESSAGE" value="Emproved performances" />
+    <MESSAGE value="Refactoring to emprove performances" />
+    <option name="LAST_COMMIT_MESSAGE" value="Refactoring to emprove performances" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1506,7 +1516,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java</url>
-          <line>140</line>
+          <line>138</line>
           <properties />
           <option name="timeStamp" value="219" />
         </line-breakpoint>
@@ -1531,7 +1541,7 @@
         </line-breakpoint>
         <line-breakpoint type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/trzpoc/gui/MainForSerialData.java</url>
-          <line>239</line>
+          <line>240</line>
           <properties class="trzpoc.gui.MainForSerialData" method="connectToSerialPort">
             <option name="EMULATED" value="true" />
           </properties>
@@ -1879,7 +1889,21 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-393">
           <caret line="34" column="13" lean-forward="false" selection-start-line="34" selection-start-column="13" selection-end-line="34" selection-end-column="13" />
-          <folding />
+          <folding>
+            <marker date="1504178816197" expanded="true" signature="8439:8464" ph="{...}" />
+            <marker date="1504178816197" expanded="true" signature="8439:8472" ph="{...}" />
+            <marker date="1504178816197" expanded="true" signature="8545:8829" ph="{...}" />
+            <marker date="1504178816197" expanded="true" signature="8690:8812" ph="{...}" />
+            <marker date="1504178816197" expanded="false" signature="8772:8794" ph=" }" />
+            <marker date="1504178816197" expanded="false" signature="8879:8889" ph=" { " />
+            <marker date="1504178816197" expanded="false" signature="8918:8924" ph=" }" />
+            <marker date="1504178816197" expanded="true" signature="9027:9095" ph="{...}" />
+            <marker date="1504178816197" expanded="false" signature="9140:9150" ph=" { " />
+            <marker date="1504178816197" expanded="false" signature="9200:9206" ph=" }" />
+            <marker date="1504178816197" expanded="true" signature="9261:9331" ph="{...}" />
+            <marker date="1504178816197" expanded="true" signature="9429:9566" ph="{...}" />
+            <marker date="1504178816197" expanded="true" signature="9439:9526" ph="//..." />
+          </folding>
         </state>
       </provider>
     </entry>
