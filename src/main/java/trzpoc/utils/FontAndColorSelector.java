@@ -34,6 +34,7 @@ public class FontAndColorSelector {
     private Set<Character> smallFontsChars;
     private Map<Character, Color> colorMap;
     private Properties properties;
+    private TextMetricCalculator textMetricCalculator;
 
     public static FontAndColorSelector getNewInstance(){
 
@@ -53,6 +54,7 @@ public class FontAndColorSelector {
             this.properties = ConfigurationHolder.getInstance().getProperties();
             this.smallFont = this.loadSmallFont();
             this.bigFont = this.loadBigFont();
+            this.textMetricCalculator = TextMetricCalculator.getInstance();
         }catch (Exception e){
             e.printStackTrace();
         }
@@ -96,7 +98,7 @@ public class FontAndColorSelector {
     }
 
     public int getWidthForSmallFont(String w) {
-        return TextMetricCalculator.getInstance().calculateWidth(w, this.smallFont);
+        return this.textMetricCalculator.calculateWidth(w, this.smallFont);
    }
 
     public int getWidthForBigFont(String w) {

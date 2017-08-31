@@ -48,7 +48,9 @@ public class CellsRow {
         return this.cells.contains(cell)? this.updateCell(cell): this.addCell(cell);
     }
     public Cell getCellByColumnIndex(int columnIndex){
-        return (Cell) this.cells.toArray()[columnIndex];
+
+        return this.cells.get(columnIndex);
+        //return (Cell) this.cells.toArray()[columnIndex];
     }
 
     private Cell addCell(Cell cell) {
