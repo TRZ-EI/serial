@@ -24,6 +24,7 @@ public class GraphicDesigner {
     private Map<Integer, Gauge> bars;
     private Queue<Gauge> preFetchedBars = new LinkedList<>();
     private FontAndColorSelector fcs;
+    private List<Canvas> filledCanvases = new ArrayList<Canvas>();
 
 
     public static GraphicDesigner createNewInstanceByGroupAndCanvasAndDebugParam(Group group, Canvas canvas, String debug){
@@ -76,18 +77,15 @@ public class GraphicDesigner {
     }
 
     private void drawRowOnCanvas(CellsRow cellsRow) {
-            List<Canvas> filledCanvases = new ArrayList<Canvas>();
+        long start = System.nanoTime();
+            filledCanvases.clear();
             if (cellsRow.isNecessaryToRedraw()) {
-                long start = System.nanoTime();
-
                 Canvas canvasForRow = cellsRow.getCanvas();
-                canvasForRow.setCache(false);
-                canvasForRow.setCacheHint(CacheHint.DEFAULT);
-
+                canvasForRow.setCache(true);
+                canvasForRow.setCacheHint(CacheHint.SPEED);
                 this.clearCanvas(canvasForRow);
                 GraphicsContext gc = canvasForRow.getGraphicsContext2D();
                 int width = this.fcs.getWidthForSmallFont("W");
-
                 for (int cellIndex = 0; cellIndex < cellsRow.getCellsCount(); cellIndex++) {
                     Cell c = cellsRow.getCellByColumnIndex(cellIndex);
                     gc.setFont(c.getFont());
@@ -95,7 +93,6 @@ public class GraphicDesigner {
                     String textToFill = null;
                     if (c instanceof Variable) {
                         Variable v = (Variable)c;
-                        //textToFill = c.getValue();
                         textToFill = v.printFormattedValue();
                     } else if (c instanceof Text) {
                         textToFill = c.getValue();
@@ -113,14 +110,14 @@ public class GraphicDesigner {
                 filledCanvases.add(canvasForRow);
                 cellsRow.switchOffRedrawFlag();
 
-                if (debug.equalsIgnoreCase("debug")) {
-                    long elapsed = (System.nanoTime() - start) / 1000;
-                    System.out.println("Time to draw the row " + cellsRow.getyPos() + " (micros): " + elapsed);
-                }
 
             }
         this.addOrReplaceCanvasesToGroup(filledCanvases);
         this.canvas.toFront();
+        if (debug.equalsIgnoreCase("debug")) {
+            long elapsed = (System.nanoTime() - start) / 1000;
+            System.out.println("Time to draw the row " + cellsRow.getyPos() + " (micros): " + elapsed);
+        }
     }
 
     private void drawOnCanvas() {
@@ -179,7 +176,7 @@ public class GraphicDesigner {
                 }
             }
             this.addOrReplaceCanvasesToGroup(filledCanvases);
-    //TODO: REMOVE AFTER TEST
+            //TODO: manage the method - it costs a lot of time
 
     }
 
