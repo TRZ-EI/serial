@@ -27,7 +27,7 @@ public class SerialDataManagerTest {
         assertNotNull(this.sut = SerialDataManager.createNewInstance());
     }
 
-    @Test(dependsOnMethods = {"testCreateNewInstance"})
+    //@Test(dependsOnMethods = {"testCreateNewInstance"})
     public void testConnectToSerialPort() throws Exception {
         assertTrue(this.sut.connectToSerialPort());
     }
@@ -40,7 +40,7 @@ public class SerialDataManagerTest {
         assertTrue(this.sut.getIsDataAvalaible().getValue());
     }
 
-    @Test(dependsOnMethods = {"testConnectToSerialPort"})
+    //@Test(dependsOnMethods = {"testCreateNewInstance"})
     public void testDisconnectFromSerialPort() throws Exception {
         assertTrue(this.sut.disconnectFromSerialPort());
     }
