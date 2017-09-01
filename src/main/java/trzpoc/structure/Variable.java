@@ -16,6 +16,7 @@ public class Variable extends Cell {
     private long value;
     private int integerLenght;
     private int decimalLenght;
+    private String valueToPrint;
 
     private boolean isAConfiguration = false;
 
@@ -46,8 +47,11 @@ public class Variable extends Cell {
 
         return TextMetricCalculator.getInstance().calculateWidth(this.printFormattedValue(), this.getFont());
     }
+    public String printFormattedValue(){
+        return this.valueToPrint;
+    }
 
-    public String printFormattedValue() {
+    public String prepareFormattedValue() {
         boolean negative = false;
         long tempValue = this.value;
         if (this.value < 0){
@@ -92,16 +96,19 @@ public class Variable extends Cell {
             long tempValue = Long.valueOf(value, 10);
             this.setChanged(this.value != tempValue);
             this.value = tempValue;
+            this.valueToPrint = this.prepareFormattedValue();
         }
         return this;
     }
 
     public Variable setDecimalLenght(int decimalLenght) {
         this.decimalLenght = decimalLenght;
+        this.valueToPrint = this.prepareFormattedValue();
         return this;
     }
     public Variable setIntegerLenght(int integerLenght) {
         this.integerLenght = integerLenght;
+        this.valueToPrint = this.prepareFormattedValue();
         return this;
     }
 
@@ -110,6 +117,7 @@ public class Variable extends Cell {
         this.value = d.value;
         this.decimalLenght = d.decimalLenght;
         this.integerLenght = d.integerLenght;
+        this.valueToPrint = this.prepareFormattedValue();
     }
 
     public int getIntegerLenght() {
