@@ -201,25 +201,26 @@ public class MainForSerialData extends Application{
             public void handle(MouseEvent me) {
                 if (me.getButton() == MouseButton.PRIMARY){
                     try {
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                // TODO: start process on mouse action
-                            }
-                        });
 
-                        me.consume();
+                        String[] values = {"^V07A310509f465\n","^v0700000064d0b0\n","^v07000000c8e076\n","^v070000012c0156\n","^v0700000190b73a\n","^v07000001f4e93f\n","^v07000002582a0f\n","^v07000002bc56b9\n","^v070000032005a0\n","^v0700000384aaef\n","^v07000003e81380\n","^v070000044c4000\n","^v07000004b08e8f\n","^v0700000514a2d7\n","^v0700000578c9fd\n","^v07000005dc798f\n","^v070000064044f6\n","^v07000006a4f538\n","^v07000007083e0a\n","^v070000076c7f32\n","^v07000007d07d79\n","^v070000083486e4\n","^v0700000898a8a3\n","^v07000008fc5dbc\n","^v07000009600ea5\n","^v07000009c4bf6b\n\n","^v0700000a28b406\n","^v0700000a8cb053\n","^v0700000af0f775\n","^v0700000b54b54d\n","^v0700000bb8e3e9\n","^v0700000c1c64ab\n","^v0700000c80b4a5\n"};
+                        runnable.setMessages(values);
+                        for (int i = 0; i < 10000; i ++) {
+                            Platform.runLater(runnable);
+                        }
+
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
 
                 }
+
                 else if (me.getButton() == MouseButton.SECONDARY) {
                     Platform.runLater(() ->{
                         // TODO: start process on mouse action
                     });
-                    me.consume();
                 }
+                me.consume();
 
             }
         });
