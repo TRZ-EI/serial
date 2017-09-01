@@ -2,6 +2,7 @@ package trzpoc.structure.serial;
 
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
+import javafx.scene.Group;
 import trzpoc.structure.Cell;
 import trzpoc.structure.CellsRow;
 import trzpoc.structure.DataDisplayManager;
@@ -9,6 +10,7 @@ import trzpoc.utils.DataTypesConverter;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
+import java.util.Iterator;
 
 /**
  * Created with IntelliJ IDEA.
@@ -124,5 +126,13 @@ public class SerialDataFacade {
 
     public BooleanProperty getIsDataChanged(){
         return this.isDataChanged;
+    }
+
+    public void addCanvasesToRootNode(Group root) {
+        Iterator<CellsRow> iterator = this.displayManager.getRows().iterator();
+        while(iterator.hasNext()){
+            root.getChildren().add(iterator.next().getCanvas());
+        }
+
     }
 }

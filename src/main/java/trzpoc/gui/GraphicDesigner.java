@@ -24,7 +24,6 @@ public class GraphicDesigner {
     private Map<Integer, Gauge> bars;
     private Queue<Gauge> preFetchedBars = new LinkedList<>();
     private FontAndColorSelector fcs;
-    private List<Canvas> filledCanvases = new ArrayList<Canvas>();
 
 
     public static GraphicDesigner createNewInstanceByGroupAndCanvasAndDebugParam(Group group, Canvas canvas, String debug){
@@ -78,13 +77,12 @@ public class GraphicDesigner {
 
     private void drawRowOnCanvas(CellsRow cellsRow) {
         long start = System.nanoTime();
-            filledCanvases.clear();
             if (cellsRow.isNecessaryToRedraw()) {
                 Canvas canvasForRow = cellsRow.getCanvas();
-                canvasForRow.setCache(true);
+                canvasForRow.setCache(false);
                 canvasForRow.setCacheHint(CacheHint.SPEED);
                 this.clearCanvas(canvasForRow);
-                GraphicsContext gc = canvasForRow.getGraphicsContext2D();
+                GraphicsContext gc = cellsRow.getGraphicsContext();
                 int width = this.fcs.getWidthForSmallFont("W");
                 for (int cellIndex = 0; cellIndex < cellsRow.getCellsCount(); cellIndex++) {
                     Cell c = cellsRow.getCellByColumnIndex(cellIndex);
@@ -107,12 +105,10 @@ public class GraphicDesigner {
                         gc.fillText(textToFill, c.getxPos() * width, cellsRow.getPixelScreenYPos());
                     }
                 }
-                filledCanvases.add(canvasForRow);
                 cellsRow.switchOffRedrawFlag();
 
 
             }
-        this.addOrReplaceCanvasesToGroup(filledCanvases);
         this.canvas.toFront();
         if (debug.equalsIgnoreCase("debug")) {
             long elapsed = (System.nanoTime() - start) / 1000;
@@ -175,21 +171,10 @@ public class GraphicDesigner {
 
                 }
             }
-            this.addOrReplaceCanvasesToGroup(filledCanvases);
             //TODO: manage the method - it costs a lot of time
 
     }
 
-    private void addOrReplaceCanvasesToGroup(List<Canvas> filledCanvases) {
-        for (Canvas canvas: filledCanvases){
-            if (this.group.getChildren().contains(canvas)){
-                this.group.getChildren().remove(canvas);
-                this.group.getChildren().add(canvas);
-            }else{
-                this.group.getChildren().add(canvas);
-            }
-        }
-    }
 
     private void updateBarValuesAndColor(Cell c) {
         Bar b = (Bar)c;

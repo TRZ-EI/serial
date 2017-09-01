@@ -119,6 +119,7 @@ public class MainForSerialData extends Application{
         this.serialDataFacade = SerialDataFacade.createNewInstance();
         this.serialDataManager = SerialDataManager.createNewInstance();
         this.runnable = GraphicDesignerRunnable.createNewInstanceBySerialDataFacadeAndGraphicDesigner(serialDataFacade, graphicDesigner);
+        this.serialDataFacade.addCanvasesToRootNode(root);
 
         this.addListenerForDataChanged();
         this.addListenerForDataReceived();
