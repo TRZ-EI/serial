@@ -4,6 +4,8 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  * Created with IntelliJ IDEA.
@@ -63,7 +65,11 @@ public class Variable extends Cell {
             divisor *= 10;
         }
         double calculatedValue = (double)tempValue / divisor;
-        String formattedValue = new DecimalFormat(this.createFormat()).format(calculatedValue);
+        DecimalFormat df = (DecimalFormat) NumberFormat.getNumberInstance(Locale.US);
+        df.applyPattern(this.createFormat());
+        
+
+        String formattedValue = df.format(calculatedValue);
         int integerPlaces = formattedValue.indexOf('.');
         if (integerPlaces >= 0 && integerPlaces < this.integerLenght){
             StringBuilder sb = new StringBuilder();
