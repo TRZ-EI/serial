@@ -4,7 +4,6 @@ import eu.hansolo.medusa.Gauge;
 import eu.hansolo.medusa.GaugeBuilder;
 import eu.hansolo.medusa.Section;
 import javafx.geometry.Orientation;
-import javafx.scene.CacheHint;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -24,10 +23,22 @@ public class GraphicDesigner {
     private Map<Integer, Gauge> bars;
     private Queue<Gauge> preFetchedBars = new LinkedList<>();
     private FontAndColorSelector fcs;
+    private boolean isGrid = false;
 
+
+    public static GraphicDesigner createNewInstanceByDebugParam(String debug){
+        return new GraphicDesigner(debug);
+    }
 
     public static GraphicDesigner createNewInstanceByGroupAndCanvasAndDebugParam(Group group, Canvas canvas, String debug){
         return new GraphicDesigner(group, canvas, debug);
+    }
+    public GraphicDesigner(String debug) {
+        this.debug = debug;
+        this.bars = new HashMap<>();
+        this.preFetchedBars.add(this.createOrUpdateHorizontalBar(0,0));
+        this.preFetchedBars.add(this.createOrUpdateHorizontalBar(0,0));
+        this.fcs = FontAndColorSelector.getNewInstance();
     }
 
 
@@ -40,10 +51,10 @@ public class GraphicDesigner {
         this.preFetchedBars.add(this.createOrUpdateHorizontalBar(0,0));
         this.fcs = FontAndColorSelector.getNewInstance();
     }
-    public void drawOnCanvas(DataDisplayManager dm) {
+    public void drawOnCanvas(DataDisplayManager dm, GraphicsContext gc) {
         this.dataDisplayManager = dm;
-        this.drawGrid();
-        this.drawOnCanvas();
+        //this.drawGrid();
+        this.drawOnCanvas(gc);
     }
     public void clearScreen(DataDisplayManager dataDisplayManager){
         for (int row = 0; row < dataDisplayManager.getNumberOfRows(); row++) {
@@ -55,34 +66,49 @@ public class GraphicDesigner {
             }
         }
     }
-
-    public void drawASingleRowOnCanvas(CellsRow cellsRow) {
+/*
+    public Canvas drawASingleRowOnCanvas(CellsRow cellsRow) {
         this.drawGrid();
-        this.drawRowOnCanvas(cellsRow);
+        return this.drawRowOnCanvas(cellsRow);
     }
-
-    private void drawGrid(){
-        this.canvasForGrid.getGraphicsContext2D().clearRect(0,0, canvasForGrid.getWidth(),canvasForGrid.getHeight());
-
+*/
+    public void drawGrid(GraphicsContext gc){
         for (int row = 0; row < this.dataDisplayManager.getNumberOfRows(); row++) {
             CellsRow cellsRow = this.dataDisplayManager.getOrCreateARow(row);
             // DRAW ROW
-            this.drawHorizontalRows(cellsRow);
+            this.drawHorizontalRows(cellsRow, gc);
             // DRAW VERTICAL DIVS FOR ROW
-            this.drawVerticalDivsForRow(cellsRow);
+            this.drawVerticalDivsForRow(cellsRow, gc);
 
         }
 
     }
+/*
+    private void drawGrid(){
+        if (! isGrid) {
+            this.canvasForGrid.getGraphicsContext2D().clearRect(0, 0, canvasForGrid.getWidth(), canvasForGrid.getHeight());
 
-    private void drawRowOnCanvas(CellsRow cellsRow) {
+            for (int row = 0; row < this.dataDisplayManager.getNumberOfRows(); row++) {
+                CellsRow cellsRow = this.dataDisplayManager.getOrCreateARow(row);
+                // DRAW ROW
+                this.drawHorizontalRows(cellsRow, gc);
+                // DRAW VERTICAL DIVS FOR ROW
+                this.drawVerticalDivsForRow(cellsRow, gc);
+
+            }
+            isGrid = true;
+        }
+
+    }
+*/
+    private Canvas drawRowOnCanvas(CellsRow cellsRow) {
+        Canvas retValue = null;
+
         long start = System.nanoTime();
             if (cellsRow.isNecessaryToRedraw()) {
-                Canvas canvasForRow = cellsRow.getCanvas();
-                canvasForRow.setCache(false);
-                canvasForRow.setCacheHint(CacheHint.SPEED);
-                this.clearCanvas(canvasForRow);
-                GraphicsContext gc = cellsRow.getGraphicsContext();
+                Canvas canvasForRow = new Canvas(800, 480);
+                //this.clearCanvas(canvasForRow);
+                GraphicsContext gc = canvasForRow.getGraphicsContext2D();
                 int width = this.fcs.getWidthForSmallFont("W");
                 for (int cellIndex = 0; cellIndex < cellsRow.getCellsCount(); cellIndex++) {
                     Cell c = cellsRow.getCellByColumnIndex(cellIndex);
@@ -109,34 +135,19 @@ public class GraphicDesigner {
 
 
             }
-        this.canvas.toFront();
+        //this.canvas.toFront();
+        long elapsed = (System.nanoTime() - start) / 1000;
         if (debug.equalsIgnoreCase("debug")) {
-            long elapsed = (System.nanoTime() - start) / 1000;
             System.out.println("Time to draw the row " + cellsRow.getyPos() + " (micros): " + elapsed);
         }
+        return retValue;
     }
 
-    private void drawOnCanvas() {
-        List<Canvas> filledCanvases = new ArrayList<Canvas>();
-
-            //TODO: REMOVE AFTER TEST
-
+    private void drawOnCanvas(GraphicsContext gc) {
             int width = 0;
             for (int row = 0; row < this.dataDisplayManager.getNumberOfRows(); row++) {
-                long before =System.nanoTime();
                 CellsRow cellsRow = this.dataDisplayManager.getOrCreateARow(row);
                 if (cellsRow.isNecessaryToRedraw()) {
-                    long start = System.nanoTime();
-                    Canvas canvasForRow = cellsRow.getCanvas();
-                    /*
-                    if (!this.group.getChildren().contains(canvasForRow)) {
-                        this.group.getChildren().add(canvasForRow);
-                    }
-                    */
-                    this.clearCanvas(canvasForRow);
-                    //Canvas canvasForRow = new Canvas(800, 400);
-                    //canvasForRow.toFront();
-                    GraphicsContext gc = canvasForRow.getGraphicsContext2D();
                     for (int cellIndex = 0; cellIndex < cellsRow.getCellsCount(); cellIndex++) {
                         Cell c = cellsRow.getCellByColumnIndex(cellIndex);
                         //if (c.isChanged()) {
@@ -163,16 +174,8 @@ public class GraphicDesigner {
 
                         //}
                     }
-                    filledCanvases.add(canvasForRow);
-
-                    cellsRow.switchOffRedrawFlag();
-                    long elapsed = (System.nanoTime() - start) / 1000;
-                    System.out.println("Time to draw a row (micros): " + elapsed);
-
                 }
             }
-            //TODO: manage the method - it costs a lot of time
-
     }
 
 
@@ -245,25 +248,18 @@ public class GraphicDesigner {
 
     }
 
-    private void drawHorizontalRows(CellsRow cellsRow) {
+    private void drawHorizontalRows(CellsRow cellsRow, GraphicsContext gc) {
         if (this.debug.equalsIgnoreCase("debug")) {
-            GraphicsContext gc = this.canvasForGrid.getGraphicsContext2D();
             gc.setStroke(Color.RED);
             gc.setLineWidth(0.1d);
             gc.strokeLine(0, cellsRow.getPixelScreenYPos(), 800, cellsRow.getPixelScreenYPos());
         }
     }
 
-    private void drawVerticalDivsForRow(CellsRow cellsRow) {
+    private void drawVerticalDivsForRow(CellsRow cellsRow, GraphicsContext gc) {
         FontAndColorSelector fontAndColorSelector = FontAndColorSelector.getNewInstance();
         Font font = fontAndColorSelector.getSmallFont();
-        /*
-        if (cellsRow.getCellsCount() > 0){
-          font = cellsRow.getCellByColumnIndex(0).getFont();
-        }
-        */
         if (this.debug.equalsIgnoreCase("debug") && font != null) {
-            GraphicsContext gc = this.canvasForGrid.getGraphicsContext2D();
             int maxHeight = 800;
             int width = fontAndColorSelector.getWidthForFont(font, "W");
             int x1 = width;
