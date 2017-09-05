@@ -38,10 +38,22 @@ public class SerialDataManager {
     public static SerialDataManager createNewInstance(){
         return new SerialDataManager();
     }
+
+    public static SerialDataManager createNewInstanceByQueue(BlockingQueue<String> serialBuffer) {
+        return new SerialDataManager(serialBuffer);
+    }
+
     private SerialDataManager(){
         this.serialBuffer = new LinkedBlockingQueue<>();
         this.multipleCommandSplitter = MultipleCommandSplitter.getNewInstance();
     }
+
+    private SerialDataManager(BlockingQueue<String> serialBuffer){
+        this.serialBuffer = serialBuffer;
+        this.multipleCommandSplitter = MultipleCommandSplitter.getNewInstance();
+    }
+
+
     public boolean connectToSerialPort() throws IOException, NoSuchPortException, PortInUseException {
         this.serialCommunicator = new SerialCommunicator();
         this.serialPort = this.serialCommunicator.connectToSerialPort();
@@ -144,11 +156,12 @@ public class SerialDataManager {
         return isDataAvalaible;
     }
 
-    public BlockingQueue<String> getSerialBuffer() {
+    public synchronized BlockingQueue<String> getSerialBuffer() {
         return serialBuffer;
     }
 
     public void setIsDataAvalaible(boolean value) {
         this.isDataAvalaible.set(value);
     }
+
 }
