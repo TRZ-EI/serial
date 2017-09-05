@@ -34,7 +34,7 @@ import java.util.Properties;
 
 public class MainForSerialDataOriginal extends Application{
 
-    private GraphicDesigner graphicDesigner;
+    private GraphicDesigner graphicDesigner   ;
     protected Group root;
     protected Stage primaryStage;
     private String debug;
