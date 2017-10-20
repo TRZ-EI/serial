@@ -1,5 +1,5 @@
 /* RASPBERRY PARAMS */
-def host = "192.168.188.48"
+def host = "192.168.188.27"
 def user = "pi"
 def pwd = "raspberry"
 

@@ -2,8 +2,11 @@ package trzpoc.comunication;
 
 
 import gnu.io.*;
+import javafx.beans.property.DoubleProperty;
+import javafx.beans.property.SimpleDoubleProperty;
 import trzpoc.crc.CRC16CCITT;
 import trzpoc.crc.CRC32Calculator;
+import trzpoc.utils.Chronometer;
 import trzpoc.utils.ConfigurationHolder;
 
 import java.io.IOException;
@@ -51,6 +54,7 @@ public class SerialCommunicator{
     private StringBuffer buffer;
 
     private SerialWriter writer;
+    private DoubleProperty numericValue = new SimpleDoubleProperty();
 
 
     public SerialCommunicator() throws IOException {
@@ -149,14 +153,21 @@ public class SerialCommunicator{
 
     public void manageDataReceivedFromSerialPort(String s) throws IOException {
         long startNanoseconds = System.nanoTime();
-        if (this.calculateCRC(s)) {
-            byte[] b = "OK\n".getBytes();
-            this.output.write("OK\n".getBytes());
-            this.output.flush();
-            long endNanoSeconds = System.nanoTime();
+//        if (this.calculateCRC(s)) {
+//            byte[] b = "OK\n".getBytes();
+//            this.output.write("OK\n".getBytes());
+//            this.output.flush();
+//            long endNanoSeconds = System.nanoTime();
+//
+//            System.out.println("Latency time(micros): " + (endNanoSeconds - startNanoseconds) / 1000);
+//        }
+          System.out.println(s);
+          byte[] b = "OK\n".getBytes();
+          this.output.write("OK\n".getBytes());
+          this.output.flush();
+          long endNanoSeconds = System.nanoTime();
+          System.out.println("Latency time(micros): " + (endNanoSeconds - startNanoseconds) / 1000);
 
-            System.out.println("Latency time(micros): " + (endNanoSeconds - startNanoseconds) / 1000);
-        }
     }
 
     private boolean calculateCRC(String message) {
@@ -210,9 +221,6 @@ public class SerialCommunicator{
         try {
             output.write(data);
             output.flush();
-            //this is a delimiter for the data
-            output.write(DASH_ASCII);
-            output.flush();
         } catch (Exception e) {
             logText = "Failed to write data. (" + e.toString() + ")";
             System.out.println(logText);
@@ -237,6 +245,7 @@ public class SerialCommunicator{
     }
     public static void main(String[] args) throws IOException {
         ConfigurationHolder.createSingleInstanceByConfigUri(args[0]);
+        Chronometer chronometer = new Chronometer();
 
 
 
@@ -245,14 +254,36 @@ public class SerialCommunicator{
         java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
         String input = "run";
         while ((input = reader.readLine()).length() != 0) {
-            System.out.println(input);
+            chronometer.start();
+
+            double time = chronometer.getActualTimeInSeconds();
+            do{
+                    String aTikToTransmit = Double.toString(time) + '\n';
+                    sc.writeData(aTikToTransmit.getBytes());
+                    time = chronometer.getActualTimeInSeconds();
+            }while (time <= 9999);
+
+
+            //System.out.println(input);
             if (input.equalsIgnoreCase("stop")){
                 sc.disconnect();
                 System.exit(0);
+            }else{
+
             }
         }
     }
 
+    public double convertStringDataToNumericValue(String s) {
+        if (s.length() > 0){
+            this.numericValue.set(Double.parseDouble(s));
+        }
+        return this.numericValue.get();
+    }
+
+    public DoubleProperty getNumericValue() {
+        return numericValue;
+    }
 }
 
 enum Keys{
