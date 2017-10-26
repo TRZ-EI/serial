@@ -6,7 +6,6 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import trzpoc.crc.CRC16CCITT;
 import trzpoc.crc.CRC32Calculator;
-import trzpoc.utils.Chronometer;
 import trzpoc.utils.ConfigurationHolder;
 
 import java.io.IOException;
@@ -22,7 +21,7 @@ import java.util.regex.Pattern;
  * Date: 19/01/17
  * Time: 12.42
  */
-public class SerialCommunicator implements SerialCommunicatorInterface {
+public class SerialCommunicatorRemoteClient implements SerialCommunicatorInterface{
 
 /*
  * To change this template, choose Tools | Templates
@@ -57,7 +56,7 @@ public class SerialCommunicator implements SerialCommunicatorInterface {
     private DoubleProperty numericValue = new SimpleDoubleProperty();
 
 
-    public SerialCommunicator() throws IOException {
+    public SerialCommunicatorRemoteClient() throws IOException {
         this.init();
     }
     private void init() throws IOException {
@@ -71,7 +70,7 @@ public class SerialCommunicator implements SerialCommunicatorInterface {
         try {
             this.serialPort = this.connectToSerialPort();
 
-            //this.serialPort.setLowLatency();
+            this.serialPort.setLowLatency();
 
             this.initIOStream();
             this.initListener();
@@ -188,19 +187,7 @@ public class SerialCommunicator implements SerialCommunicatorInterface {
 
     public String calculateCrCForString(String messageToCalculate) {
         int crc = CRC16CCITT.getNewInstance().calculateCRCForStringMessage(messageToCalculate);
-        return this.fillHexCodeToFourDigitIfNecessary(crc);
-    }
-
-    private String fillHexCodeToFourDigitIfNecessary(int crc) {
-        String hexCode = Integer.toHexString(crc);
-        int len = hexCode.length();
-        int zeros = 4 -len;
-        if (zeros > 0){
-            for (int i = 0; i < zeros; i ++){
-                hexCode = "0" + hexCode;
-            }
-        }
-        return hexCode;
+        return Integer.toHexString(crc);
     }
 
 
@@ -232,10 +219,8 @@ public class SerialCommunicator implements SerialCommunicatorInterface {
     //post: data sent to the other device
     public void writeData(byte[] data) {
         try {
-            for (int i = 0; i < data.length; i++) {
-                output.write(data[i]);
-                output.flush();
-            }
+            output.write(data);
+            output.flush();
         } catch (Exception e) {
             logText = "Failed to write data. (" + e.toString() + ")";
             System.out.println(logText);
@@ -260,41 +245,16 @@ public class SerialCommunicator implements SerialCommunicatorInterface {
     }
     public static void main(String[] args) throws IOException, InterruptedException {
         ConfigurationHolder.createSingleInstanceByConfigUri(args[0]);
-        Chronometer chronometer = new Chronometer();
-
-
-
         SerialCommunicator sc = new SerialCommunicator();
         sc.connect();
         java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
         String input = "run";
-        chronometer.start();
-        String configurationVariable = "^V07A310509";
-        configurationVariable += sc.calculateCrCForString(configurationVariable) + '\n';
-        sc.writeData(configurationVariable.getBytes());
-        String valueVariableTemplate = "^v07";
-        int counter = 0;
-        while (true) {
-            Thread.sleep(20);
-            //input = reader.readLine();
-            //double time = chronometer.getActualTimeInSeconds();
+        while ((input = reader.readLine()).length() != 0) {
 
-            String stringValue = Integer.toHexString(counter ++);
-            int zeros = 8 - stringValue.length();
-            String valueToTransmit = valueVariableTemplate;
-            for (int i = 0; i < zeros; i ++){
-                valueToTransmit += "0";
-            }
-            valueToTransmit += stringValue;
-            valueToTransmit += sc.calculateCrCForString(valueToTransmit);
-            valueToTransmit += '\n';
-            System.out.print("Value tx: " + valueToTransmit);
-            sc.writeData(valueToTransmit.getBytes());
-            if (input.equalsIgnoreCase("stop")){
+
+            if (input.equalsIgnoreCase("stop")) {
                 sc.disconnect();
                 System.exit(0);
-            }else{
-
             }
         }
     }
@@ -311,6 +271,3 @@ public class SerialCommunicator implements SerialCommunicatorInterface {
     }
 }
 
-enum Keys{
-    PORT, BAUD_RATE, SOURCE;
-}

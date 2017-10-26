@@ -1,12 +1,15 @@
 package trzpoc.structure.serial;
 
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import trzpoc.structure.Cell;
-import trzpoc.structure.CellsRow;
-import trzpoc.structure.DataDisplayManager;
-import trzpoc.structure.Variable;
+import trzpoc.structure.*;
+import trzpoc.utils.ConfigurationHolder;
+import trzpoc.utils.FontAndColorSelector;
 
+import java.io.UnsupportedEncodingException;
+
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
 /**
@@ -17,41 +20,81 @@ import static org.testng.Assert.assertNotNull;
  */
 public class SerialDataFacadeTest {
     private SerialDataFacade sut;
+    private FontAndColorSelector fontAndColorSelector;
 
-    @BeforeTest
-    private void setup(){
-        this.sut = SerialDataFacade.createNewInstance();
+
+    @DataProvider
+    private Object[][] testDataForConfigurationVariable(){
+        return new Object[][]{
+                {"^V07A310509", Variable.getInstanceByFontAndColor(fontAndColorSelector.selectFont('A'), fontAndColorSelector.selectColor('A'))
+                        .setIntegerLenght(3).setDecimalLenght(1).setId(7).setxPos(9).setyPos(5)},
+                {"^V03R220101", Variable.getInstanceByFontAndColor(fontAndColorSelector.selectFont('R'), fontAndColorSelector.selectColor('R'))
+                        .setIntegerLenght(2).setDecimalLenght(2).setId(3).setxPos(1).setyPos(1)},
+                {"^V07A310A0B", Variable.getInstanceByFontAndColor(fontAndColorSelector.selectFont('A'), fontAndColorSelector.selectColor('A'))
+                        .setIntegerLenght(3).setDecimalLenght(1).setId(7).setxPos(11).setyPos(10)},
+                {"^V0CA310A0B", Variable.getInstanceByFontAndColor(fontAndColorSelector.selectFont('A'), fontAndColorSelector.selectColor('A'))
+                        .setIntegerLenght(3).setDecimalLenght(1).setId(12).setxPos(11).setyPos(10)}
+        };
+    }
+    @DataProvider
+    private Object[][] testDataForVariable(){
+        return new Object[][]{
+                {"^v0C0000000A", Variable.getInstance().setAConfiguration(false).setId(12).setValue("10")},
+                {"^v0C0000000B", Variable.getInstance().setAConfiguration(false).setId(12).setValue("11")},
+                {"^v0C0000000C", Variable.getInstance().setAConfiguration(false).setId(12).setValue("12")},
+                {"^v0C0000000D", Variable.getInstance().setAConfiguration(false).setId(12).setValue("13")},
+                {"^v0C0000000E", Variable.getInstance().setAConfiguration(false).setId(12).setValue("14")},
+                {"^v0C0000000F", Variable.getInstance().setAConfiguration(false).setId(12).setValue("15")}
+        };
+    }
+    @DataProvider
+    private Object[][] testDataForText(){
+        return new Object[][]{
+                {"^tA0509TestoProva1xxxx\n", Text.getNewInstanceByFontAndColor(fontAndColorSelector.selectFont('A'), fontAndColorSelector.selectColor('A'))
+                        .setxPos(9).setyPos(5).setValue("TestoProva1")},
+                {"^tA0A0BTestoProva2xxxx\n", Text.getNewInstanceByFontAndColor(fontAndColorSelector.selectFont('A'), fontAndColorSelector.selectColor('A'))
+                        .setxPos(11).setyPos(10).setValue("TestoProva2")},
+                {"^tR0F0CQuesto essere un testo di prova lungoxxxx\n", Text.getNewInstanceByFontAndColor(fontAndColorSelector.selectFont('R'), fontAndColorSelector.selectColor('R'))
+                        .setxPos(12).setyPos(15).setValue("Questo essere un testo di prova lungo")},
+        };
     }
 
 
 
+    @BeforeTest
+    private void setup(){
+        String configurationFile = this.getClass().getClassLoader().getResource("application.properties").getFile();
+        ConfigurationHolder.createSingleInstanceByConfigUri(configurationFile);
+        this.sut = SerialDataFacade.createNewInstance();
+        this.fontAndColorSelector = FontAndColorSelector.getNewInstance();
+    }
     @Test
     public void testCreateNewInstance() throws Exception {
         assertNotNull(this.sut);
     }
-
-    //@Test
-    public void testFillMatrixWithDataManyRows() throws Exception {
-        String testDataFileName = "InputExamplesForTest.csv";
-        String realFileName = this.getClass().getClassLoader().getResource(testDataFileName).getFile();
-
-        DataDisplayManager expectedValue = this.createMatrixForTest();
-        //DataDisplayManager actualValue = this.sut.fillMatrixWithData(realFileName);
-        //assertTrue(this.verifyEquality(actualValue, expectedValue));
-
+    @Test(dataProvider = "testDataForConfigurationVariable")
+    public void testOnSerialDataParserForConfiguration(String dataToParse, Cell expectedValue) throws UnsupportedEncodingException {
+        Cell actualValue = this.sut.onSerialDataParser(dataToParse.getBytes());
+        assertEquals(actualValue, expectedValue);
     }
-    //@Test
-    public void testFillMatrixWithDataOneRow() throws Exception {
-        this.sut = SerialDataFacade.createNewInstance();
-        String testDataFileName = "InputExamplesForTestOneRow.csv";
-        String realFileName = this.getClass().getClassLoader().getResource(testDataFileName).getFile();
-
-        DataDisplayManager expectedValue = this.createMatrixForTestOneRow();
-        //DataDisplayManager actualValue = this.sut.fillMatrixWithData(realFileName);
-        //assertTrue(this.verifyEquality(actualValue, expectedValue));
-
-
+    @Test(dataProvider = "testDataForVariable")
+    public void testOnSerialDataParserForVariables(String dataToParse, Cell expectedValue) throws UnsupportedEncodingException {
+        Cell actualValue = this.sut.onSerialDataParser(dataToParse.getBytes());
+        String actualVariableValue = actualValue.getValue();
+        String expectedVariableValue = expectedValue.getValue();
+        assertEquals(actualValue, expectedValue);
+        assertEquals(actualVariableValue, expectedVariableValue);
     }
+    @Test(dataProvider = "testDataForText")
+    public void testOnSerialDataParserForText(String dataToParse, Cell expectedValue) throws UnsupportedEncodingException {
+        Cell actualValue = this.sut.onSerialDataParser(dataToParse.getBytes());
+        String actualVariableValue = actualValue.getValue();
+        String expectedVariableValue = expectedValue.getValue();
+        assertEquals(actualValue, expectedValue);
+        assertEquals(actualVariableValue, expectedVariableValue);
+    }
+
+
 /*
     ^,V,0,C,2,2,0,0
     ^,V,1,C,2,2,0,1

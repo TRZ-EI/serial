@@ -15,7 +15,7 @@ public class SerialReader implements SerialPortEventListener {
 
 
     private InputStream input;
-    private SerialCommunicator communicator;
+    private SerialCommunicatorInterface communicator;
     private StringBuilder buffer;
 
     //some ascii values for for certain things
@@ -24,13 +24,28 @@ public class SerialReader implements SerialPortEventListener {
     private final int NEW_LINE_ASCII = 10;
 
 
-    public SerialReader (InputStream in, SerialCommunicator communicator) {
+    public SerialReader (InputStream in, SerialCommunicatorInterface communicator) {
         this.input = in;
         this.communicator = communicator;
         this.buffer = new StringBuilder();
     }
 
     public void serialEvent(SerialPortEvent evt) {
+            int data;
+
+            try{
+                int len = 0;
+                while ( ( data = this.input.read()) > -1 ){
+                    if ( data == '\n' ) {
+                        break;
+                    }
+                    //buffer[len++] = (byte) data;
+                    buffer.append((char) data);
+                }
+                System.out.print(buffer.toString() + '\n');
+                buffer = new StringBuilder();
+            }
+/*
         StringBuilder message = new StringBuilder();
         if (evt.getEventType() == SerialPortEvent.DATA_AVAILABLE){
             try{
@@ -45,14 +60,16 @@ public class SerialReader implements SerialPortEventListener {
                     message.setLength(0);
                     for (int i = 0; i < values.length; i ++) {
                         System.out.println("RECEIVED: " + values[i]);
-                        this.communicator.convertStringDataToNumericValue(values[i]);
+                        //
+                        // this.communicator.convertStringDataToNumericValue(values[i]);
                     }
                 }
-            } catch (Exception e) {
+*/
+            catch (Exception e) {
                 System.out.println("Failed to read data. (" + e.toString() + ")");
             }
 
-        }
+
     }
 
 }

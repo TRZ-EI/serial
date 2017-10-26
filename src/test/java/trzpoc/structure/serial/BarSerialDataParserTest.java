@@ -3,6 +3,7 @@ package trzpoc.structure.serial;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import trzpoc.structure.Bar;
+import trzpoc.utils.ConfigurationHolder;
 import trzpoc.utils.SerialDataMock;
 
 import static org.testng.Assert.assertEquals;
@@ -19,16 +20,32 @@ public class BarSerialDataParserTest {
     private BarSerialDataParser sut;
 
     @BeforeTest
+    private void prepareFontsForTest(){
+        try {
+            this.loadProperties();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    @BeforeTest
     private void setup(){
         this.sut = BarSerialDataParser.getNewInstance();
     }
+
+    private void loadProperties(){
+        ConfigurationHolder.createSingleInstanceByConfigUri(this.getClass().getClassLoader().getResource("application.properties").getFile()).getProperties();
+    }
+
+
+
 
     @Test
     public void testGetNewInstance() throws Exception {
         assertNotNull(this.sut);
     }
 
-    @Test
+    //@Test
+    // TODO: REVIEW TEST IMPLEMENTATION
     public void testReadByteArray() throws Exception {
         SerialDataMock s = new SerialDataMock();
         // WARNING: HEX VALUES - A = 10, 14 = 20

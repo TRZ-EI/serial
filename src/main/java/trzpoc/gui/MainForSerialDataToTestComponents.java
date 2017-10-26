@@ -23,17 +23,16 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
 import javafx.stage.Stage;
-import trzpoc.comunication.SerialCommunicator;
+import trzpoc.comunication.SerialDataManager;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
-import trzpoc.utils.SerialDataMock;
 
 import java.io.*;
 import java.util.Date;
 import java.util.Properties;
 
 
-public class MainForSerialDataToTestCanvas extends Application{
+public class MainForSerialDataToTestComponents extends Application{
 
     private GraphicDesigner graphicDesigner;
     protected Group root;
@@ -42,23 +41,25 @@ public class MainForSerialDataToTestCanvas extends Application{
     private Canvas canvas;
     private Canvas canvasForGrid;
     private SerialDataFacade serialDataFacade;
+    private SerialDataManager serialDataManager;
+    private GraphicDesignerRunnable runnable;
 
-    private SerialCommunicator serialCommunicator;
-    private final int NEW_LINE_ASCII = 10;
+
 
     private final String DEFAULT_RESOURCE_FILE_NAME = "application.properties";
     private final String DEFAULT_RESOURCE_KEY = "DEBUG";
 
     private SerialPort serialPort = null;
 
+    private String resourceFile = null;
 
 
     private String readDebugValue() throws FileNotFoundException {
         Properties properties = new Properties();
         String retValue = "PRODUCTION"; // default value
-        String resourceFile = (!this.getParameters().getRaw().isEmpty())? this.getParameters().getRaw().get(0): DEFAULT_RESOURCE_FILE_NAME;
+        this.resourceFile = (!this.getParameters().getRaw().isEmpty())? this.getParameters().getRaw().get(0): DEFAULT_RESOURCE_FILE_NAME;
         try {
-            ConfigurationHolder.createSingleInstanceByConfigUri(resourceFile);
+            ConfigurationHolder.createSingleInstanceByConfigUri(this.resourceFile);
             if (ConfigurationHolder.getInstance() != null) {
                 retValue = ConfigurationHolder.getInstance().getProperties().getProperty(DEFAULT_RESOURCE_KEY);
             }
@@ -67,6 +68,18 @@ public class MainForSerialDataToTestCanvas extends Application{
         }
         return retValue;
     }
+
+    private InputStream getInputStream(String resourceFile) throws FileNotFoundException {
+        InputStream s;
+        if (resourceFile != null && resourceFile.length() > 0){
+            File aFile = new File(resourceFile);
+            s = new FileInputStream(aFile);
+        }else{
+            s = this.getClass().getClassLoader().getResourceAsStream(DEFAULT_RESOURCE_FILE_NAME);
+        }
+        return s;
+    }
+
 
     @Override
     public void start(Stage primaryStage) throws IOException, NoSuchPortException, PortInUseException {
@@ -97,16 +110,25 @@ public class MainForSerialDataToTestCanvas extends Application{
         root.getChildren().add(this.canvasForGrid);
         this.canvas.toFront();
         this.addTouchEventToStart(this.canvas);
+        this.addTouchEventToExit(this.canvasForGrid);
+        this.addTouchEventToExit(this.canvas);
         this.addMouseEventToStart(this.canvas);
         this.primaryStage.show();
         this.graphicDesigner = GraphicDesigner.createNewInstanceByGroupAndCanvasAndDebugParam(root, this.canvas, this.debug);
         this.graphicDesigner.setCanvasForGrid(this.canvasForGrid);
+        //this.graphicDesigner.drawGridForGraphicHelp();
+
         this.serialDataFacade = SerialDataFacade.createNewInstance();
+//        this.serialDataManager = SerialDataManager.createNewInstance();
+//        this.runnable = GraphicDesignerRunnable.createNewInstanceBySerialDataFacadeAndGraphicDesigner(serialDataFacade, graphicDesigner);
+//        this.serialDataFacade.addCanvasesToRootNode(root);
 
-
-
-        //this.addListenerForSocketDataChanged();
-        this.addListenerForDataChanged();
+//        this.addListenerForDataChanged();
+//        this.addListenerForDataReceived();
+//        boolean isConnected = this.connectToSerialPort();
+//        if (isConnected){
+//            System.out.println("Connected to serial port");
+//        }
 
 
     }
@@ -118,7 +140,7 @@ public class MainForSerialDataToTestCanvas extends Application{
                     @Override
                     public void run() {
                         if (newValue){
-                            graphicDesigner.drawOnCanvas(serialDataFacade.getDisplayManager());
+                            graphicDesigner.clearScreen(serialDataFacade.getDisplayManager());
                         }
 
                     }
@@ -126,6 +148,25 @@ public class MainForSerialDataToTestCanvas extends Application{
             }
         });
     }
+    private void addListenerForDataReceived(){
+        this.serialDataManager.getIsDataAvalaible().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (newValue){
+                    while(!serialDataManager.getSerialBuffer().isEmpty()){
+                        String[] y = serialDataManager.getSerialBuffer().toArray(new String[0]);
+                        serialDataManager.getSerialBuffer().clear();
+                        System.out.println("MESSAGES READ: " + y.length);
+                        runnable.setMessages(y);
+                        Platform.runLater(runnable);
+                        serialDataManager.setIsDataAvalaible(false);
+                    }
+                }
+            }
+        });
+    }
+
+
     private void addTouchEventToExit(Canvas canvas) {
         canvas.setOnTouchPressed(new EventHandler<TouchEvent>() {
             private int touches;
@@ -161,39 +202,32 @@ public class MainForSerialDataToTestCanvas extends Application{
         canvas.setOnMouseClicked(new EventHandler<MouseEvent>() {
 
             public void handle(MouseEvent me) {
-                if (me.getButton() == MouseButton.PRIMARY){
+                if (me.getButton() == MouseButton.PRIMARY) {
                     try {
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).simulateSerialReception();
-                                canvas.toFront();
 
-                                // TODO: start process on mouse action
+                        String[] values = {"^V07A310509f465\n", "^v0700000064d0b0\n", "^v07000000c8e076\n", "^v070000012c0156\n", "^v0700000190b73a\n", "^v07000001f4e93f\n", "^v07000002582a0f\n", "^v07000002bc56b9\n", "^v070000032005a0\n", "^v0700000384aaef\n", "^v07000003e81380\n", "^v070000044c4000\n", "^v07000004b08e8f\n", "^v0700000514a2d7\n", "^v0700000578c9fd\n", "^v07000005dc798f\n", "^v070000064044f6\n", "^v07000006a4f538\n", "^v07000007083e0a\n", "^v070000076c7f32\n", "^v07000007d07d79\n", "^v070000083486e4\n", "^v0700000898a8a3\n", "^v07000008fc5dbc\n", "^v07000009600ea5\n", "^v07000009c4bf6b\n\n", "^v0700000a28b406\n", "^v0700000a8cb053\n", "^v0700000af0f775\n", "^v0700000b54b54d\n", "^v0700000bb8e3e9\n", "^v0700000c1c64ab\n", "^v0700000c80b4a5\n"};
+                        //runnable.setMessages(values);
+                            for (int k = 0; k < values.length; k++) {
+                                Thread.sleep(1000);
+                                graphicDesigner.drawACellInScene(serialDataFacade.onSerialDataParser(values[k].getBytes()));
                             }
-                        });
 
-                        me.consume();
+
+                            //Platform.runLater(runnable);
+
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
-
                 }
+
+
                 else if (me.getButton() == MouseButton.SECONDARY) {
-                    Platform.runLater(new Runnable() {
-                        @Override
-                        public void run() {
-                            try {
-                                SerialDataMock.getNewInstanceBySerialDataFacade(serialDataFacade).sendRandomValuesForVariable();
-                            } catch (UnsupportedEncodingException e) {
-                                e.printStackTrace();
-                            }
-
-
-                        }
+                    Platform.runLater(() ->{
+                        // TODO: start process on mouse action
                     });
-                    me.consume();
                 }
+                me.consume();
 
             }
         });
@@ -212,8 +246,17 @@ public class MainForSerialDataToTestCanvas extends Application{
         return this.serialDataFacade;
     }
 
+    public boolean connectToSerialPort() throws IOException, NoSuchPortException, PortInUseException {
+        return this.serialDataManager.connectToSerialPort();
+    }
+
+
+    public void disconnectFromSerialPort(){
+        this.serialDataManager.disconnectFromSerialPort();
+    }
     @Override
     public void stop() throws Exception {
+
         super.stop();
     }
 

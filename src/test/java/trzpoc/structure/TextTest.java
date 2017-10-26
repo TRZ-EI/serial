@@ -3,6 +3,7 @@ package trzpoc.structure;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import trzpoc.utils.ConfigurationHolder;
 import trzpoc.utils.FontAndColorSelector;
@@ -24,9 +25,40 @@ public class TextTest {
     @BeforeMethod
     public void init(){
         ConfigurationHolder.createSingleInstanceByConfigUri(this.getClass().getClassLoader().getResource("application.properties").getFile());
-        testFont = FontAndColorSelector.getNewInstance().getBigFont();
+        testFont = FontAndColorSelector.getNewInstance().getSmallFont();
         this.sut = Text.getNewInstanceByFontAndColor(testFont, testColor);
         this.sut.setValue(TEST_STRING);
+    }
+    @DataProvider
+    private Object[][] createIds(){
+        // f(a, b) = s(a+b) + a, where s(n) = n*(n+1)/2
+        return new Object[][]{
+                {13, 24, 716},
+                {24, 13, 727},
+                {67, 2, 2482},
+                {2, 67, 2417},
+                {1,2, 7},
+                {2,1,8},
+                {0,1,1},
+                {1,0,2}
+
+        };
+    }
+
+    @DataProvider
+    private Object[][] createTextObjectsToVerifyPixelPos(){
+        int width = FontAndColorSelector.getNewInstance().getWidthForSmallFont("W");
+        int height = FontAndColorSelector.getNewInstance().getHeightForSmallFont("W");
+        return new Object[][]{
+                {Text.getNewInstanceByFontAndColor(testFont, testColor).setxPos(10).setyPos(10), width * 10, height * 10},
+                {Text.getNewInstanceByFontAndColor(testFont, testColor).setxPos(1).setyPos(20), width * 1, height * 20}
+        };
+    }
+
+    @Test(dataProvider = "createTextObjectsToVerifyPixelPos")
+    public void testToVerifyXAndYPixelPos(Cell expectedValue, int pixelXPos, int pixelYPos){
+        assertEquals(expectedValue.getPixelScreenXPos(), pixelXPos);
+        assertEquals(expectedValue.getPixelScreenYPos(), pixelYPos);
     }
 
     @Test
@@ -53,6 +85,13 @@ public class TextTest {
         this.sut.setValue(aNewTest);
         this.sut.updateData(textForUpdate);
         assertEquals(textForUpdate, sut);
+    }
+    @Test(dataProvider = "createIds")
+    public void verifyUniqueIdCalculation(int x, int y, int expectedValue){
+        this.sut.setxPos(x);
+        this.sut.setyPos(y);
+        assertEquals(this.sut.getId(), expectedValue);
+
     }
     @Test
     public void testEquals() throws Exception {

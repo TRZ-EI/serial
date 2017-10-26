@@ -29,7 +29,7 @@ public class MultipleCommandSplitterTest {
                 },
                 {"^v0701234567", new String[] {"^v0701234567"}},
                 {"^V07S31012F", new String[] {"^V07S31012F"}},
-                {"tS0104PROVA N 1", new String[] {"tS0104PROVA N 1"}},
+                {"^tS0104PROVA N 1", new String[] {"^tS0104PROVA N 1"}},
                 {"^B18-0000002000000010F", new String[] {"^B18-0000002000000010F"}}
 
         };

@@ -10,7 +10,6 @@ package trzpoc.gui;
 import gnu.io.NoSuchPortException;
 import gnu.io.PortInUseException;
 import gnu.io.SerialPort;
-import gnu.io.SerialPortEvent;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.beans.value.ChangeListener;
@@ -24,20 +23,13 @@ import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.input.TouchEvent;
 import javafx.stage.Stage;
-import trzpoc.comunication.SerialCommunicator;
-import trzpoc.crc.CRC16CCITT;
-import trzpoc.crc.CRCCalculator;
-import trzpoc.crc.Crc16CcittKermit;
-import trzpoc.structure.CellsRow;
-import trzpoc.structure.serial.MultipleCommandSplitter;
+import trzpoc.comunication.SerialDataManager;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
 
 import java.io.*;
 import java.util.Date;
-import java.util.List;
 import java.util.Properties;
-import java.util.TooManyListenersException;
 
 
 public class MainForSerialData extends Application{
@@ -49,10 +41,10 @@ public class MainForSerialData extends Application{
     private Canvas canvas;
     private Canvas canvasForGrid;
     private SerialDataFacade serialDataFacade;
-    private MultipleCommandSplitter multipleCommandSplitter;
+    private SerialDataManager serialDataManager;
+    private GraphicDesignerRunnable runnable;
 
-    private SerialCommunicator serialCommunicator;
-    private final int NEW_LINE_ASCII = 10;
+
 
     private final String DEFAULT_RESOURCE_FILE_NAME = "application.properties";
     private final String DEFAULT_RESOURCE_KEY = "DEBUG";
@@ -60,7 +52,6 @@ public class MainForSerialData extends Application{
     private SerialPort serialPort = null;
 
     private String resourceFile = null;
-
 
 
     private String readDebugValue() throws FileNotFoundException {
@@ -126,12 +117,15 @@ public class MainForSerialData extends Application{
         this.graphicDesigner = GraphicDesigner.createNewInstanceByGroupAndCanvasAndDebugParam(root, this.canvas, this.debug);
         this.graphicDesigner.setCanvasForGrid(this.canvasForGrid);
         this.serialDataFacade = SerialDataFacade.createNewInstance();
-        this.multipleCommandSplitter = MultipleCommandSplitter.getNewInstance();
+        this.serialDataManager = SerialDataManager.createNewInstance();
+        this.runnable = GraphicDesignerRunnable.createNewInstanceBySerialDataFacadeAndGraphicDesigner(serialDataFacade, graphicDesigner);
+        this.serialDataFacade.addCanvasesToRootNode(root);
 
         this.addListenerForDataChanged();
+        this.addListenerForDataReceived();
         boolean isConnected = this.connectToSerialPort();
         if (isConnected){
-            System.out.println("Connected to " + this.serialPort.getName());
+            System.out.println("Connected to serial port");
         }
 
 
@@ -152,6 +146,25 @@ public class MainForSerialData extends Application{
             }
         });
     }
+    private void addListenerForDataReceived(){
+        this.serialDataManager.getIsDataAvalaible().addListener(new ChangeListener<Boolean>() {
+            @Override
+            public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
+                if (newValue){
+                    while(!serialDataManager.getSerialBuffer().isEmpty()){
+                        String[] y = serialDataManager.getSerialBuffer().toArray(new String[0]);
+                        serialDataManager.getSerialBuffer().clear();
+                        System.out.println("MESSAGES READ: " + y.length);
+                        runnable.setMessages(y);
+                        Platform.runLater(runnable);
+                        serialDataManager.setIsDataAvalaible(false);
+                    }
+                }
+            }
+        });
+    }
+
+
     private void addTouchEventToExit(Canvas canvas) {
         canvas.setOnTouchPressed(new EventHandler<TouchEvent>() {
             private int touches;
@@ -189,25 +202,26 @@ public class MainForSerialData extends Application{
             public void handle(MouseEvent me) {
                 if (me.getButton() == MouseButton.PRIMARY){
                     try {
-                        Platform.runLater(new Runnable() {
-                            @Override
-                            public void run() {
-                                // TODO: start process on mouse action
-                            }
-                        });
 
-                        me.consume();
+                        String[] values = {"^V07A310509f465\n","^v0700000064d0b0\n","^v07000000c8e076\n","^v070000012c0156\n","^v0700000190b73a\n","^v07000001f4e93f\n","^v07000002582a0f\n","^v07000002bc56b9\n","^v070000032005a0\n","^v0700000384aaef\n","^v07000003e81380\n","^v070000044c4000\n","^v07000004b08e8f\n","^v0700000514a2d7\n","^v0700000578c9fd\n","^v07000005dc798f\n","^v070000064044f6\n","^v07000006a4f538\n","^v07000007083e0a\n","^v070000076c7f32\n","^v07000007d07d79\n","^v070000083486e4\n","^v0700000898a8a3\n","^v07000008fc5dbc\n","^v07000009600ea5\n","^v07000009c4bf6b\n\n","^v0700000a28b406\n","^v0700000a8cb053\n","^v0700000af0f775\n","^v0700000b54b54d\n","^v0700000bb8e3e9\n","^v0700000c1c64ab\n","^v0700000c80b4a5\n"};
+                        runnable.setMessages(values);
+                        for (int i = 0; i < 10000; i ++) {
+                            Platform.runLater(runnable);
+                        }
+
+
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
 
                 }
+
                 else if (me.getButton() == MouseButton.SECONDARY) {
                     Platform.runLater(() ->{
                         // TODO: start process on mouse action
                     });
-                    me.consume();
                 }
+                me.consume();
 
             }
         });
@@ -227,116 +241,12 @@ public class MainForSerialData extends Application{
     }
 
     public boolean connectToSerialPort() throws IOException, NoSuchPortException, PortInUseException {
-        /*
-        if (this.resourceFile != null){
-            this.serialCommunicator = new SerialCommunicator(this.resourceFile);
-        }else{
-        }
-        */
-        this.serialCommunicator = new SerialCommunicator();
-        this.serialPort = this.serialCommunicator.connectToSerialPort();
-        boolean success = false;
-        
-        StringBuilder message = new StringBuilder();
-        try {
-            serialPort.addEventListener((SerialPortEvent serialPortEvent) -> {
-                if (serialPortEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
-                    try {
-                        int value = serialPort.getInputStream().available();
-                        byte[] data = new byte[value];
-                        int read = serialPort.getInputStream().read(data);
-
-                        for (byte b: data){
-                            message.append((char)b);
-                        }
-                        if (message.toString().indexOf(NEW_LINE_ASCII) > 0) {
-                            final String[] messagesSent = message.toString().trim().split("\n");
-                            message.setLength(0);
-                            // ONLY ONE MESSAGE
-                            boolean isValid = this.calculateCRC(messagesSent);
-                            if (isValid) {
-                                this.serialPort.getOutputStream().write(new byte[]{'O', 'K', '\n'});
-                                this.serialPort.getOutputStream().flush();
-                            }
-                            else{
-                                this.serialPort.getOutputStream().write(new byte[]{'K', 'O', '\n'});
-                                this.serialPort.getOutputStream().flush();
-
-                            }
-                            Platform.runLater(new Runnable() {
-                                @Override
-                                public void run() {
-                                    try {
-                                        if (messagesSent.length > 0 && isValid) {
-                                            for (String tempValue: messagesSent){
-                                                //tempValue += '\n';
-                                                // TO MANAGE MULTIPLE COMMANDS IN A SINGLE ROW
-                                                List<String> commands = multipleCommandSplitter.splitMultipleCommand(tempValue);
-                                                for(String command: commands) {
-                                                    command += '\n';
-                                                    CellsRow aRow = serialDataFacade.onSerialDataInput(command.getBytes());
-                                                    if (aRow != null) {
-                                                        graphicDesigner.setDataDisplayManager(serialDataFacade.getDisplayManager());
-                                                        graphicDesigner.drawASingleRowOnCanvas(aRow);
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    } catch (UnsupportedEncodingException e) {
-                                        e.printStackTrace();
-                                    }
-                                }
-                            });
-                        }
-                    } catch (Exception e) {
-                        String error = message.toString();
-                        System.out.println("Failed to read data. (" + e.toString() + ")");
-                    }
-                }
-            });
-            serialPort.notifyOnDataAvailable(true);
-        } catch (TooManyListenersException e) {
-            e.printStackTrace();
-        }
-        return success;
-        }
-    private boolean calculateCRC(String[] messages) {
-        int score = 0;
-        int crcDigits = 4; // 4 hex digits
-        for (String message: messages){
-            int size = message.length();
-            if (size > crcDigits){
-                String hexCrc = message.substring(size - crcDigits);
-                String messageToCalculate = message.substring(0, size - crcDigits);
-                CRCCalculator calculator = this.selectCalculator();
-                int crc = calculator.calculateCRCForStringMessage(messageToCalculate);
-                String crcHex = Integer.toHexString(crc);
-                if (crcHex.length() < crcDigits){
-                    crcHex = "0" + crcHex;
-                }
-                score += (hexCrc.equalsIgnoreCase(crcHex))? 1: 0;
-            }
-        }
-        return (score == messages.length);
+        return this.serialDataManager.connectToSerialPort();
     }
 
-    private CRCCalculator selectCalculator() {
-        String crc = ConfigurationHolder.getInstance().getProperties().getProperty(ConfigurationHolder.CRC);
-        return (crc.equalsIgnoreCase("kermit"))? Crc16CcittKermit.getNewInstance(): CRC16CCITT.getNewInstance();
-    }
 
     public void disconnectFromSerialPort(){
-        if(this.serialPort != null){
-            System.out.println("disconnectFromSerialPort()");
-            this.serialPort.removeEventListener();
-            try {
-                this.serialPort.getOutputStream().close();
-                this.serialPort.getInputStream().close();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-            this.serialPort.close();
-        }
+        this.serialDataManager.disconnectFromSerialPort();
     }
     @Override
     public void stop() throws Exception {

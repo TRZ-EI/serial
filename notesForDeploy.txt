@@ -13,3 +13,6 @@ Per RASPBERRY: -Djava.library.path=/usr/lib/jni
 java -Djava.library.path=/usr/lib/jni -jar trzpoc-gui-jar-with-dependencies.jar ./application.properties
 
 ATTENZIONE: Preparare i processi Linux affinchè siano schedulati REAL TIME
+
+
+Errore: glGetError 0x505

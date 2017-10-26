@@ -2,11 +2,12 @@ package trzpoc.structure;
 
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import trzpoc.utils.ConfigurationHolder;
+import trzpoc.utils.FontAndColorSelector;
 
 import static org.testng.Assert.assertEquals;
 
@@ -20,11 +21,13 @@ import static org.testng.Assert.assertEquals;
 public class VariableTest {
     private Variable sut;
     private Font refFont;
+    private Color refColor = Color.BLUE;
 
     @BeforeMethod
     private void prepareSutForTest(){
-        this.refFont = Font.font("Serif", FontWeight.BOLD, 20);
-        this.sut = (Variable) Variable.getInstanceByFontAndColor(refFont, Color.BLUE);
+        ConfigurationHolder.createSingleInstanceByConfigUri(this.getClass().getClassLoader().getResource("application.properties").getFile());
+        this.refFont = FontAndColorSelector.getNewInstance().getSmallFont();
+        this.sut = (Variable) Variable.getInstanceByFontAndColor(refFont, refColor);
     }
     @DataProvider
     private Object[][] prepareDataForTest(){
@@ -33,13 +36,33 @@ public class VariableTest {
                 {"123456", 2, 4, "12.3456"},
                 {"-123456",4, 2, "-1234.56"},
                 {"-123456",2, 4, "-12.3456"},
-                {"1", 1, 4, "1.0000"},
-                {"-1", 1, 4, "-1.0000"},
-                {"123456", 7, 2, "123456.00"},
-                {"-123456",7, 1, "-123456.0"},
-                {"5",0, 1, ".5"}
+                {"1", 1, 4, "0.0001"},
+                {"-1", 1, 4, "-0.0001"},
+                {"123456", 7, 2, "0001234.56"},
+                {"-123456",7, 1, "-0012345.6"},
+                {"5",0, 1, ".5"},
+                {"100",3, 0, "100"},
+                {"100",3, 1, "010.0"},
+                {"1",3, 1, "000.1"}
+
+
 
         };
+    }
+    @DataProvider
+    private Object[][] createTextObjectsToVerifyPixelPos(){
+        int width = FontAndColorSelector.getNewInstance().getWidthForSmallFont("W");
+        int height = FontAndColorSelector.getNewInstance().getHeightForSmallFont("W");
+        return new Object[][]{
+                {trzpoc.structure.Variable.getInstanceByFontAndColor(this.refFont, this.refColor).setxPos(10).setyPos(10), width * 10, height * 10},
+                {trzpoc.structure.Variable.getInstanceByFontAndColor(this.refFont, this.refColor).setxPos(1).setyPos(20), width * 1, height * 20}
+        };
+    }
+
+    @Test(dataProvider = "createTextObjectsToVerifyPixelPos")
+    public void testToVerifyXAndYPixelPos(Cell expectedValue, int pixelXPos, int pixelYPos){
+        assertEquals(expectedValue.getPixelScreenXPos(), pixelXPos);
+        assertEquals(expectedValue.getPixelScreenYPos(), pixelYPos);
     }
 
 

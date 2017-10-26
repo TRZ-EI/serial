@@ -22,6 +22,7 @@ public class CRC16CCITTTest {
                 {"123456789",0x29b1},
                 {"message" ,0x9CDF},
                 {"This is a long message" ,0x3E29},
+                {"^v0700000003", 0x0af1},
                 {"Per accedere all'area privata puoi semplicemente crearti un'utenza nella sezione \"register\"." ,0xCED5}
         };
     }

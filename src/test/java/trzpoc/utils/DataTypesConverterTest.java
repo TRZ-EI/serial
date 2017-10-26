@@ -51,7 +51,7 @@ public class DataTypesConverterTest {
     @DataProvider
     private Object[][] dataToTestBytesToLong(){
         return new Object[][]{
-                {new byte[]{0x33, 0x34, 0x35, 0x36, 0x37, 0x38}, 345678L}, // HEX values
+                {new byte[]{0x33, 0x34, 0x35, 0x36, 0x37, 0x38}, 3430008L}, // HEX values
                 {new byte[]{57}, 9L}, // ASCII VALUES (09)
                 {new byte[]{56}, 8L}, // ASCII VALUES (08)
                 {new byte[]{55}, 7L}, // ASCII VALUES (07)
@@ -61,14 +61,14 @@ public class DataTypesConverterTest {
                 {new byte[]{51}, 3L}, // ASCII VALUES (03)
                 {new byte[]{50}, 2L}, // ASCII VALUES (02)
                 {new byte[]{49}, 1L}, // ASCII VALUES (01)
-                {new byte[]{0x30,48,0x30,48,49,0x37,0x32,57}, 1729L}, // MIXED ASCII/HEX VALUES (00001729)
-                {new byte[]{49, 0x39}, 19L} // MIXED ASCII/HEX VALUES (19)
+                {new byte[]{49,0x37,0x32,57}, 5929L}, // MIXED ASCII/HEX VALUES (1729)
+                {new byte[]{49, 0x39}, 25L} // MIXED ASCII/HEX VALUES (19)
         };
     }
     @DataProvider
     private Object[][] dataToTestLongToAsciiChars(){
         return new Object[][]{
-                {new byte[]{0x33, 0x34, 0x35, 0x36, 0x37, 0x38}, 345678L}, // HEX values
+                {new byte[]{0x35, 0x34, 0x36, 0x34, 0x65}, 345678L}, // HEX values
                 {new byte[]{57}, 9L}, // ASCII VALUES (09)
                 {new byte[]{56}, 8L}, // ASCII VALUES (08)
                 {new byte[]{55}, 7L}, // ASCII VALUES (07)
@@ -78,10 +78,11 @@ public class DataTypesConverterTest {
                 {new byte[]{51}, 3L}, // ASCII VALUES (03)
                 {new byte[]{50}, 2L}, // ASCII VALUES (02)
                 {new byte[]{49}, 1L}, // ASCII VALUES (01)
-                {new byte[]{49,0x37,0x32,57}, 1729L}, // MIXED ASCII/HEX VALUES (1729)
-                {new byte[]{49, 0x39}, 19L}, // MIXED ASCII/HEX VALUES (19)
-                {new byte[]{0x2D,49, 0x39}, -19L}, // MIXED ASCII/HEX VALUES (-19)
-                {new byte[]{0x2D,49,0x37,0x32,57}, -1729L} // MIXED ASCII/HEX VALUES (-1729)
+                {new byte[]{49,0x37,0x32,57}, 5929L}, // MIXED ASCII/HEX VALUES (1729)
+                {new byte[]{49, 0x39}, 25L}, // MIXED ASCII/HEX VALUES (19)
+                {new byte[]{0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x65,0x64}, -19L},
+                {new byte[]{0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,57,51,0x66}, -1729L}, // MIXED ASCII/HEX VALUES (-1729)
+
         };
     }
 

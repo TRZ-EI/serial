@@ -37,8 +37,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Screen;
 import javafx.stage.Stage;
 import trzpoc.comunication.SerialCommunicator;
-import trzpoc.gui.dataProvider.Label;
-import trzpoc.gui.dataProvider.SerialReceiverMock;
 import trzpoc.utils.Chronometer;
 import trzpoc.utils.ConfigurationHolder;
 import trzpoc.utils.RandomGeneratorInRange;
@@ -243,18 +241,7 @@ public class MainWithProgressBarUsingSerialData extends Application {
         canvas.setOnTouchPressed(new EventHandler<TouchEvent>() {
             public void handle(TouchEvent event) {
               if (event.getEventSetId() == 1) {
-                    SerialReceiverMock sm = SerialReceiverMock.getNewInstance();
-
-                    while(sm.hasMoreMessages()){
-                        Label cb = (Label) sm.getReceivedString();
-                        GraphicsContext gc = canvas.getGraphicsContext2D();
-                        gc.setFill(cb.getColor());
-                        gc.setFont(cb.getFont());
-                        gc.fillText(cb.getValue(), cb.getX(), cb.getY());
-
-                        //canvas.
                     }
-                }
                 event.consume();
             }
 

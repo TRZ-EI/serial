@@ -12,6 +12,8 @@ import javafx.scene.text.Font;
 public class Text extends Cell{
 
 
+    private int calculatedId;
+
     public static Text getNewInstance(){
         return new Text();
     }
@@ -42,6 +44,19 @@ public class Text extends Cell{
             this.setValue(dataParsed.getValue());
         }
         return this;
+    }
+    @Override
+    public int getId(){
+        if(this.calculatedId == 0) {
+            this.calculatedId = this.calculateIdUsingIniectiveFunctionForXandY(this.getxPos(), this.getyPos());
+        }
+        return this.calculatedId;
+    }
+
+    private int calculateIdUsingIniectiveFunctionForXandY(int x, int y) {
+        // f(a, b) = s(a+b) + a, where s(n) = n*(n+1)/2
+        return ((x+y)*(x+y+1))/2 + x;
+
     }
 
     @Override

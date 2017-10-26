@@ -19,7 +19,9 @@
                 </property>
             </activation>
             <properties>
-                <main-class>trzpoc.gui.MainWithProgressBarUsingSerialData</main-class>
+                <main-class>trzpoc.gui.DrawingText</main-class>
+                <!-- <main-class>trzpoc.gui.MainForSerialData</main-class> -->
+                <!--<main-class>trzpoc.gui.MainWithProgressBarUsingSerialData</main-class>-->
                 <!-- <main-class>trzpoc.comunication.SerialCommunicator</main-class> -->
                 <!-- The following class is ONLY for test purposes -->
                 <!-- <main-class>trzpoc.gui.MainForSerialDataToTestCanvas</main-class> -->
@@ -32,7 +34,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <main-class>trzpoc.comunication.SerialCommunicator</main-class>
+                <main-class>trzpoc.comunication.SerialCommunicatorRemoteClient</main-class>
                 <file-name>trzpoc-console</file-name>
             </properties>
         </profile>

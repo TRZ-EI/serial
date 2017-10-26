@@ -3,6 +3,8 @@ package trzpoc.structure;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+import java.text.DecimalFormat;
+
 /**
  * Created with IntelliJ IDEA.
  * User: luigi
@@ -14,6 +16,7 @@ public class Variable extends Cell {
     private long value;
     private int integerLenght;
     private int decimalLenght;
+    private String valueToPrint;
 
     private boolean isAConfiguration = false;
 
@@ -37,49 +40,55 @@ public class Variable extends Cell {
     }
 
     public String getValue(){
-        return Long.toString(this.value, 10);
+        return Long.toString(this.value);
     }
 
     public int getWidth() {
 
         return TextMetricCalculator.getInstance().calculateWidth(this.printFormattedValue(), this.getFont());
     }
-
-    public String printFormattedValue() {
-        String retValue = null;
-
-        String initialValue = Long.toString(this.value, 10);
-        boolean minus = (initialValue.startsWith("-"))?true: false;
-        if (minus){
-            initialValue = initialValue.replace("-", "");
-        }
-        if (initialValue.length() > this.integerLenght) {
-            retValue = this.formatValueString(initialValue);
-        }else if (initialValue.length() <= this.integerLenght){
-            retValue = this.formatValueStringWithLessThanDigits(initialValue);
-        }
-        return (minus)? "-" + retValue: retValue;
+    public String printFormattedValue(){
+        return this.valueToPrint;
     }
 
-    private String formatValueStringWithLessThanDigits(String initialValue) {
-        if(this.decimalLenght > 0){
-        initialValue += ".";
-            for (int i = 0; i < this.decimalLenght; i ++){
-                initialValue += "0";
+    public String prepareFormattedValue() {
+        boolean negative = false;
+        long tempValue = this.value;
+        if (this.value < 0){
+            negative = true;
+            tempValue *= -1;
+        }
+        int divisor = 1;
+        for (int i = 0; i < this.decimalLenght; i ++){
+            divisor *= 10;
+        }
+        double calculatedValue = (double)tempValue / divisor;
+        String formattedValue = new DecimalFormat(this.createFormat()).format(calculatedValue);
+        int integerPlaces = formattedValue.indexOf('.');
+        if (integerPlaces >= 0 && integerPlaces < this.integerLenght){
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < this.integerLenght - integerPlaces; i ++){
+                sb.append("0");
+            }
+            formattedValue = sb.toString() + formattedValue;
+        }
+        if (negative){
+            formattedValue = "-" + formattedValue;
+        }
+        return formattedValue;
+    }
+    private String createFormat(){
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < this.integerLenght; i++){
+            builder.append("#");
+        }
+        if (this.decimalLenght > 0) {
+            builder.append(".");
+            for (int i = 0; i < this.decimalLenght; i++) {
+                builder.append("0");
             }
         }
-        return initialValue;
-    }
-
-    private String formatValueString(String initialValue) {
-        if (this.integerLenght > 0 && this.decimalLenght >= 0) {
-            String integerPart = initialValue.substring(0, initialValue.length() - this.decimalLenght);
-            String decimalPart = initialValue.substring(initialValue.length() - this.decimalLenght);
-            initialValue = integerPart + "." + decimalPart;
-        }else if (this.integerLenght == 0){
-            initialValue = "." + initialValue;
-        }
-        return initialValue;
+        return builder.toString();
     }
 
     public Variable setValue(String value) {
@@ -87,16 +96,19 @@ public class Variable extends Cell {
             long tempValue = Long.valueOf(value, 10);
             this.setChanged(this.value != tempValue);
             this.value = tempValue;
+            this.valueToPrint = this.prepareFormattedValue();
         }
         return this;
     }
 
     public Variable setDecimalLenght(int decimalLenght) {
         this.decimalLenght = decimalLenght;
+        this.valueToPrint = this.prepareFormattedValue();
         return this;
     }
     public Variable setIntegerLenght(int integerLenght) {
         this.integerLenght = integerLenght;
+        this.valueToPrint = this.prepareFormattedValue();
         return this;
     }
 
@@ -105,6 +117,7 @@ public class Variable extends Cell {
         this.value = d.value;
         this.decimalLenght = d.decimalLenght;
         this.integerLenght = d.integerLenght;
+        this.valueToPrint = this.prepareFormattedValue();
     }
 
     public int getIntegerLenght() {

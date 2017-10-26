@@ -1,6 +1,7 @@
 package trzpoc.structure;
 
 import javafx.scene.canvas.Canvas;
+import javafx.scene.canvas.GraphicsContext;
 import trzpoc.utils.FontAndColorSelector;
 
 import java.util.ArrayList;
@@ -21,6 +22,7 @@ public class CellsRow {
     private int defaultHeight; // pixels
     private boolean redraw;
     private Canvas canvas;
+    private GraphicsContext graphicsContext;
     
 
 
@@ -31,6 +33,8 @@ public class CellsRow {
     private CellsRow(){
         this.redraw = false;
         this.cells = new ArrayList<Cell>();
+        this.canvas = new Canvas(800, 480);
+        this.graphicsContext = this.canvas.getGraphicsContext2D();
     }
     public int getWidthByCells(){
         int retValue = 0;
@@ -48,7 +52,9 @@ public class CellsRow {
         return this.cells.contains(cell)? this.updateCell(cell): this.addCell(cell);
     }
     public Cell getCellByColumnIndex(int columnIndex){
-        return (Cell) this.cells.toArray()[columnIndex];
+
+        return this.cells.get(columnIndex);
+        //return (Cell) this.cells.toArray()[columnIndex];
     }
 
     private Cell addCell(Cell cell) {
@@ -136,13 +142,14 @@ public class CellsRow {
     }
 
     public Canvas getCanvas() {
-        if (this.canvas == null){
-            this.canvas = new Canvas(800, 400);
-        }
         return canvas;
     }
 
     public void setCanvas(Canvas canvas) {
         this.canvas = canvas;
+    }
+
+    public GraphicsContext getGraphicsContext() {
+        return graphicsContext;
     }
 }

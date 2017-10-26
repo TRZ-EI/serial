@@ -24,7 +24,7 @@ public class MultipleCommandSplitter {
             if (syncroPos >= 0) {
                 multipleCommand = multipleCommand.substring(syncroPos + 1);
                 String charToSplit = this.extractCharToSplit(multipleCommand);
-                retValue = this.fillRetValueWithCommand(multipleCommand, charToSplit);
+                retValue = this.fillRetValueWithCommands(multipleCommand, charToSplit);
             }
         }else{
             retValue = new ArrayList<>();
@@ -33,11 +33,11 @@ public class MultipleCommandSplitter {
         return retValue;
     }
 
-    private boolean isPermittedCommand(String multipleCommand) {
+    public boolean isPermittedCommand(String multipleCommand) {
         return (multipleCommand.indexOf("^V") >= 0 || multipleCommand.indexOf("^v") >= 0);
     }
 
-    private List<String> fillRetValueWithCommand(String multipleCommand, String charToSplit) {
+    private List<String> fillRetValueWithCommands(String multipleCommand, String charToSplit) {
         List<String> retValue = new ArrayList<>();
         for (String command : multipleCommand.split(charToSplit)) {
             if (command.length() > 0) {

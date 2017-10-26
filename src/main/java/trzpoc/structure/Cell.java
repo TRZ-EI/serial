@@ -2,6 +2,7 @@ package trzpoc.structure;
 
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import trzpoc.utils.FontAndColorSelector;
 
 /**
  * Created with IntelliJ IDEA.
@@ -18,13 +19,16 @@ public abstract class Cell implements CellInterface {
     private int xPos;
     private int yPos;
     private int pixelScreenYPos;
+    private int pixelScreenXPos;
     private boolean isChanged;
-    
+
+
 
     protected Cell(Font font, Color color) {
         this();
         this.color = color;
         this.font = font;
+
     }
     protected Cell() {
         this.isChanged = false;
@@ -62,8 +66,17 @@ public abstract class Cell implements CellInterface {
         return this;
     }
     public int getPixelScreenXPos(){
-        return this.xPos * TextMetricCalculator.getInstance().calculateWidth("W", this.font);
+        int width = FontAndColorSelector.getNewInstance().getWidthForSmallFont("W");
+        return this.xPos * width;
     }
+
+    public int getPixelScreenYPos() {
+        int height = FontAndColorSelector.getNewInstance().getHeightForSmallFont("W");
+        return this.yPos * height;
+    }
+
+
+
     public int getPixelScreenYPosUpper(){
         return this.pixelScreenYPos - this.getHeight();
     }
@@ -112,9 +125,6 @@ public abstract class Cell implements CellInterface {
         return result;
     }
 
-    public int getPixelScreenYPos() {
-        return pixelScreenYPos;
-    }
 
     public Cell setPixelScreenYPos(int pixelScreenYPos) {
         this.pixelScreenYPos = pixelScreenYPos;
@@ -127,5 +137,10 @@ public abstract class Cell implements CellInterface {
 
     public void setChanged(boolean changed) {
         isChanged = changed;
+    }
+
+    public Cell setPixelScreenXPos(int pixelScreenXPos) {
+        this.pixelScreenXPos = pixelScreenXPos;
+        return this;
     }
 }
