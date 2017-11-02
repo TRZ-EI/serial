@@ -56,6 +56,9 @@ public class SerialDataManager {
     public boolean connectToSerialPort() throws IOException, NoSuchPortException, PortInUseException {
         this.serialCommunicator = new SerialCommunicator();
         this.serialPort = this.serialCommunicator.connectToSerialPort();
+        if (serialPort != null){
+            System.out.println("Connected !!!");
+        }
         StringBuilder message = new StringBuilder();
         try {
             serialPort.notifyOnDataAvailable(true);
