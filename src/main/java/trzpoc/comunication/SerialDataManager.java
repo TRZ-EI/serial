@@ -63,11 +63,13 @@ public class SerialDataManager {
         try {
             serialPort.notifyOnDataAvailable(true);
             serialPort.addEventListener((SerialPortEvent serialPortEvent) -> {
+                long timeStart = 0;
                 int data = 0;
                 if (serialPortEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
                     try {
                         while ( ( data = serialPort.getInputStream().read()) > -1 ){
                             if ( data == '\n' ) {
+                                timeStart = System.nanoTime();
                                 break;
                             }
                             message.append((char) data);
@@ -93,15 +95,13 @@ public class SerialDataManager {
                                 // TO MANAGE MULTIPLE COMMANDS IN A SINGLE ROW
                                 List<String> commands = this.multipleCommandSplitter.splitMultipleCommand(message.toString());
                                 this.serialBuffer.addAll(commands);
-                                //this.isDataAvalaible.set(!this.serialBuffer.isEmpty());
-                                //this.serialPort.getOutputStream().write(new byte[]{'O', 'K', '\n'});
-                                //this.serialPort.getOutputStream().flush();
-
+                                long elapsedTime = (System.nanoTime() - timeStart) / 1000;
+                                this.serialPort.getOutputStream().write(new String("elapsed (millis) " + elapsedTime + "\n").getBytes());
+                                this.serialPort.getOutputStream().flush();
                             }
                             else{
-                                //this.serialPort.getOutputStream().write(new byte[]{'K', 'O', '\n'});
-                                //this.serialPort.getOutputStream().flush();
-
+                                this.serialPort.getOutputStream().write(new byte[]{'K', 'O', '\n'});
+                                this.serialPort.getOutputStream().flush();
                             }
                             message.setLength(0);
 
