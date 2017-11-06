@@ -227,13 +227,13 @@ public class SerialDataMock {
     }
 
     private byte[] calculateCRC(byte[] bytes) {
-        int crc = CRC16CCITT.getNewInstance().calculateCRCforByteArrayMessage(bytes);
+        long crc = CRC16CCITT.getNewInstance().calculateCRCforByteArrayMessage(bytes);
         byte[] convertedCrc = this.convertIntToByteArray(crc);
         return convertedCrc;
     }
 
-    private byte[] convertIntToByteArray(int crc) {
-        return ByteBuffer.allocate(Integer.BYTES).putInt(crc).array();
+    private byte[] convertIntToByteArray(long crc) {
+        return ByteBuffer.allocate(Long.BYTES).putLong(crc).array();
 /*
             return new byte[] {
                     (byte)(crc >>> 24),

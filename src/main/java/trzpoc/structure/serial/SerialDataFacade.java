@@ -3,9 +3,7 @@ package trzpoc.structure.serial;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import javafx.scene.Group;
-import trzpoc.structure.Cell;
-import trzpoc.structure.CellsRow;
-import trzpoc.structure.DataDisplayManager;
+import trzpoc.structure.*;
 import trzpoc.utils.DataTypesConverter;
 
 import java.io.UnsupportedEncodingException;
@@ -24,6 +22,7 @@ import java.util.Iterator;
 public class SerialDataFacade {
 
     private final BooleanProperty isDataChanged = new SimpleBooleanProperty(false);
+    private final VariableCollector variableCollector;
 
 
     private DataDisplayManager displayManager;
@@ -33,17 +32,30 @@ public class SerialDataFacade {
         return new SerialDataFacade();
     }
     private SerialDataFacade(){
+        this.variableCollector = VariableCollector.getSingleInstance();
         //this.displayManager = DataDisplayManager.getNewInstance().prepareDisplayMap(20);
         this.dataTypesConverter = DataTypesConverter.getNewInstance();
     }
 
-    public CellsRow onSerialDataInput(byte[] data) throws UnsupportedEncodingException {
+    public Cell onSerialDataInput(byte[] data) throws UnsupportedEncodingException {
+        Cell retValue = null;
         this.isDataChanged.set(false);
         Cell dataParsed = onSerialDataParser(data);
+        if (dataParsed instanceof Clear){
+            retValue = dataParsed;
+            this.variableCollector.clear();
+        }
+        if (dataParsed instanceof Clear || dataParsed instanceof Text){
+            retValue = dataParsed;
 
-
-        return this.displayManager.addOrUpdateCellInMatrix(dataParsed);
+        }else {
+            retValue = this.variableCollector.addOrGetUpdatedInstance(dataParsed);
+//            CellsRow row = this.displayManager.addOrUpdateCellInMatrix(dataParsed);
+//            retValue = row.addOrUpdateACell(dataParsed);
+        }
+        return retValue;
     }
+
 
     public Cell onSerialDataParser(byte[] data) throws UnsupportedEncodingException {
         // first step: what type of action?
@@ -58,7 +70,7 @@ public class SerialDataFacade {
         }else if (command == 't'){ // Print text
             retValue = TextSerialDataParser.getNewInstance().readByteArray(data);
         }else if (command == 'C'){ // Clear display
-            this.isDataChanged.set(true);
+            retValue = new Clear();
         }else if (command == 'B'){ // Bar configuration
             retValue = BarSerialDataParser.getNewInstance().readByteArray(data);
         }

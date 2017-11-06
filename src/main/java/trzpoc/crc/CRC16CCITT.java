@@ -29,10 +29,10 @@ public class CRC16CCITT implements CRCCalculator{
     }
 
 
-    public int calculateCRCForStringMessage(String message){
+    public long calculateCRCForStringMessage(String message){
         return this.calculateCRCforByteArrayMessage(message.getBytes());
     }
-    public int calculateCRCforByteArrayMessage(byte[] message){
+    public long calculateCRCforByteArrayMessage(byte[] message){
         int crc = 0xFFFF;          // initial value
         for (byte b : message) {
             for (int i = 0; i < 8; i++) {
@@ -48,7 +48,7 @@ public class CRC16CCITT implements CRCCalculator{
     public static void main(String[] args){
         CRC16CCITT calculator = CRC16CCITT.getNewInstance();
         String message = "^V07S310146";
-        String referenceValue = Integer.toHexString(calculator.calculateCRCForStringMessage(message));
+        String referenceValue = Long.toHexString(calculator.calculateCRCForStringMessage(message));
         System.out.println(referenceValue);
     }
 

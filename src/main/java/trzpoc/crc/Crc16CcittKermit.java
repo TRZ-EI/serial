@@ -29,10 +29,10 @@ public class Crc16CcittKermit  implements CRCCalculator {
     }
 
 
-    public int calculateCRCForStringMessage(String message){
+    public long calculateCRCForStringMessage(String message){
         return crc16(message.getBytes());
     }
-    public int calculateCRCforByteArrayMessage(byte[] message){
+    public long calculateCRCforByteArrayMessage(byte[] message){
         return this.crc16(message);
     }
     private int crc16(byte[] buffer) {

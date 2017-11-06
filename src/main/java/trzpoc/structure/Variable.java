@@ -2,8 +2,7 @@ package trzpoc.structure;
 
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-
-import java.text.DecimalFormat;
+import trzpoc.utils.NumericFormatterByIntAndDecimals;
 
 /**
  * Created with IntelliJ IDEA.
@@ -52,43 +51,9 @@ public class Variable extends Cell {
     }
 
     public String prepareFormattedValue() {
-        boolean negative = false;
-        long tempValue = this.value;
-        if (this.value < 0){
-            negative = true;
-            tempValue *= -1;
-        }
-        int divisor = 1;
-        for (int i = 0; i < this.decimalLenght; i ++){
-            divisor *= 10;
-        }
-        double calculatedValue = (double)tempValue / divisor;
-        String formattedValue = new DecimalFormat(this.createFormat()).format(calculatedValue);
-        int integerPlaces = formattedValue.indexOf('.');
-        if (integerPlaces >= 0 && integerPlaces < this.integerLenght){
-            StringBuilder sb = new StringBuilder();
-            for (int i = 0; i < this.integerLenght - integerPlaces; i ++){
-                sb.append("0");
-            }
-            formattedValue = sb.toString() + formattedValue;
-        }
-        if (negative){
-            formattedValue = "-" + formattedValue;
-        }
-        return formattedValue;
-    }
-    private String createFormat(){
-        StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < this.integerLenght; i++){
-            builder.append("#");
-        }
-        if (this.decimalLenght > 0) {
-            builder.append(".");
-            for (int i = 0; i < this.decimalLenght; i++) {
-                builder.append("0");
-            }
-        }
-        return builder.toString();
+        return NumericFormatterByIntAndDecimals.
+                getInstanceByIntDecimalsAndValue(this.integerLenght, this.decimalLenght, this.value)
+                .invoke();
     }
 
     public Variable setValue(String value) {

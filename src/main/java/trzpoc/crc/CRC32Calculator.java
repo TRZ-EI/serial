@@ -34,11 +34,11 @@ public class CRC32Calculator implements CRCCalculator {
         return this.calculateCRCForStringMessage(message);
     }
     @Override
-    public int calculateCRCForStringMessage(String message) {
+    public long calculateCRCForStringMessage(String message) {
         return (int)this.calculateCRC32(message);
     }
     @Override
-    public int calculateCRCforByteArrayMessage(byte[] message) {
+    public long calculateCRCforByteArrayMessage(byte[] message) {
         String m = Arrays.toString(message);
         return this.calculateCRCForStringMessage(m);
     }

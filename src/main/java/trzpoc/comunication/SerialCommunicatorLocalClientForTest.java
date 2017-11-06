@@ -6,12 +6,13 @@ import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import trzpoc.crc.CRC16CCITT;
 import trzpoc.crc.CRC32Calculator;
-import trzpoc.utils.Chronometer;
+import trzpoc.crc.CRCCalculator;
+import trzpoc.crc.Crc16CcittKermit;
 import trzpoc.utils.ConfigurationHolder;
 
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 import java.util.TooManyListenersException;
 import java.util.regex.Pattern;
@@ -22,7 +23,7 @@ import java.util.regex.Pattern;
  * Date: 19/01/17
  * Time: 12.42
  */
-public class SerialCommunicator implements SerialCommunicatorInterface {
+public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorInterface, Runnable {
 
 /*
  * To change this template, choose Tools | Templates
@@ -57,7 +58,7 @@ public class SerialCommunicator implements SerialCommunicatorInterface {
     private DoubleProperty numericValue = new SimpleDoubleProperty();
 
 
-    public SerialCommunicator() throws IOException {
+    public SerialCommunicatorLocalClientForTest() throws IOException {
         this.init();
     }
     private void init() throws IOException {
@@ -187,8 +188,12 @@ public class SerialCommunicator implements SerialCommunicatorInterface {
     }
 
     public String calculateCrCForString(String messageToCalculate) {
-        long crc = CRC16CCITT.getNewInstance().calculateCRCForStringMessage(messageToCalculate);
+        long crc = this.selectCalculator().calculateCRCForStringMessage(messageToCalculate);
         return this.fillHexCodeToFourDigitIfNecessary(crc);
+    }
+    private CRCCalculator selectCalculator() {
+        String crc = ConfigurationHolder.getInstance().getProperties().getProperty(ConfigurationHolder.CRC);
+        return (crc.equalsIgnoreCase("kermit"))? Crc16CcittKermit.getNewInstance(): CRC16CCITT.getNewInstance();
     }
 
     private String fillHexCodeToFourDigitIfNecessary(long crc) {
@@ -258,60 +263,49 @@ public class SerialCommunicator implements SerialCommunicatorInterface {
             throw new IOException("Unsupported serial port parameter");
         }
     }
+    public List<String> readTestScenaryAndProduceDataForTest(String scenary){
+        List<String> list = new ArrayList<>();
+        String prefix = "serialInputs/scenario";
+        String fileName = prefix + scenary + ".txt";
+        String realFileName = this.getClass().getClassLoader().getResource(fileName).getFile();
+            try {
+                BufferedReader reader = new BufferedReader(new FileReader(realFileName));
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    line += this.calculateCrCForString(line) + '\n';
+                    list.add(line);
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return list;
+
+
+    }
+
     public static void main(String[] args) throws IOException, InterruptedException {
         ConfigurationHolder.createSingleInstanceByConfigUri(args[0]);
-        Chronometer chronometer = new Chronometer();
 
+        SerialCommunicatorLocalClientForTest sc = new SerialCommunicatorLocalClientForTest();
+        Thread runner = new Thread(sc);
+        runner.start();
 
-
-        SerialCommunicator sc = new SerialCommunicator();
-        sc.connect();
+        System.out.println("********* EMBEDDED SSL BROKER STARTED *****************");
         java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
-        String input = "run";
-        chronometer.start();
-
-        String multiConfig = "^V07S31012FV08S13020FV09S130410V0AS130629V0BA11070AV0CP110A0C";
-        String multiValues = "^v0700005436v0800005437v0900005438v0A00005439v0B00005440v0C00005441";
-
-        multiConfig += sc.calculateCrCForString(multiConfig) + '\n';
-        multiValues += sc.calculateCrCForString(multiValues) + '\n';
-        sc.writeData(multiConfig.getBytes());
-        Thread.sleep(50);
-        sc.writeData(multiValues.getBytes());
-
-        String configurationVariable = "^V07A310509";
-        configurationVariable += sc.calculateCrCForString(configurationVariable) + '\n';
-        sc.writeData(configurationVariable.getBytes());
-        String valueVariableTemplate = "^v07";
-
-
-
-        int counter = 0;
-
-
-        while (true) {
-            Thread.sleep(50);
-            //input = reader.readLine();
-            //double time = chronometer.getActualTimeInSeconds();
-
-            String stringValue = Integer.toHexString(counter ++);
-            int zeros = 8 - stringValue.length();
-            String valueToTransmit = valueVariableTemplate;
-            for (int i = 0; i < zeros; i ++){
-                valueToTransmit += "0";
-            }
-            valueToTransmit += stringValue;
-            valueToTransmit += sc.calculateCrCForString(valueToTransmit);
-            valueToTransmit += '\n';
-            System.out.print("Value tx: " + valueToTransmit);
-            sc.writeData(valueToTransmit.getBytes());
-            if (input.equalsIgnoreCase("stop")){
-                sc.disconnect();
-                System.exit(0);
+        String input = "WRITE  'STOP' TO STOP SERVER ...";
+        System.out.println(input);
+        while ((input = reader.readLine()).length() != 0) {
+            if (input.equalsIgnoreCase("s")) {
+                runner.suspend();
+                System.out.println("Service interrupted");
             }else{
-
+                runner.resume();
             }
         }
+
+
+
+
     }
 
     public double convertStringDataToNumericValue(String s) {
@@ -324,8 +318,136 @@ public class SerialCommunicator implements SerialCommunicatorInterface {
     public DoubleProperty getNumericValue() {
         return numericValue;
     }
+
+    @Override
+    public void run() {
+
+
+
+
+        
+        this.connect();
+        java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
+        String input = "run";
+
+        String clearCommand = "^C" + this.calculateCrCForString("^C") + '\n';
+        this.writeData(clearCommand.getBytes());
+
+        String multiConfig = "^V07S31012FV08S13020FV09S130410V0AS130629V0BA11070AV0CP110A0C";
+        String multiValues = "^v0700005436v0800005437v0900005438v0A00005439v0B00005440v0C00005441";
+
+        multiConfig += this.calculateCrCForString(multiConfig) + '\n';
+        multiValues += this.calculateCrCForString(multiValues) + '\n';
+        this.writeData(multiConfig.getBytes());
+        try {
+            Thread.sleep(50);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        this.writeData(multiValues.getBytes());
+
+
+
+
+
+        List<String> lines = this.readTestScenaryAndProduceDataForTest("1");
+        for (String line: lines){
+            this.writeData(line.getBytes());
+        }
+        this.waitFor(5000);
+        this.writeData(clearCommand.getBytes());
+
+        this.waitFor(5000);
+        lines = this.readTestScenaryAndProduceDataForTest("2");
+        for (String line: lines){
+            this.writeData(line.getBytes());
+        }
+        this.waitFor(5000);
+        this.writeData(clearCommand.getBytes());
+
+        lines = this.readTestScenaryAndProduceDataForTest("3");
+        for (String line: lines){
+            this.writeData(line.getBytes());
+        }
+        this.waitFor(5000);
+        this.writeData(clearCommand.getBytes());
+
+        String configurationVariable1 = "^V01R310109";
+        configurationVariable1 += this.calculateCrCForString(configurationVariable1) + '\n';
+        this.writeData(configurationVariable1.getBytes());
+
+        String configurationVariable2 = "^V02R310309";
+        configurationVariable2 += this.calculateCrCForString(configurationVariable2) + '\n';
+        this.writeData(configurationVariable2.getBytes());
+
+        String configurationVariable3 = "^V03R310509";
+        configurationVariable3 += this.calculateCrCForString(configurationVariable3) + '\n';
+        this.writeData(configurationVariable3.getBytes());
+
+        String configurationVariable4 = "^V04R310709";
+        configurationVariable4 += this.calculateCrCForString(configurationVariable4) + '\n';
+        this.writeData(configurationVariable4.getBytes());
+
+        String configurationVariable5 = "^V05R310909";
+        configurationVariable5 += this.calculateCrCForString(configurationVariable5) + '\n';
+        this.writeData(configurationVariable5.getBytes());
+
+        String configurationVariable6 = "^V06R310B09";
+        configurationVariable6 += this.calculateCrCForString(configurationVariable6) + '\n';
+        this.writeData(configurationVariable6.getBytes());
+
+        String configurationVariable7 = "^V07R310D09";
+        configurationVariable7 += this.calculateCrCForString(configurationVariable7) + '\n';
+        this.writeData(configurationVariable7.getBytes());
+
+        String configurationVariable8 = "^V08R310F09";
+        configurationVariable8 += this.calculateCrCForString(configurationVariable8) + '\n';
+        this.writeData(configurationVariable8.getBytes());
+
+
+        String valueVariableTemplate = "^v";
+
+
+        this.waitFor(5000);
+
+        int counter = 1;
+
+        // TODO: REMOVE BEFORE START REAL TEST
+        //System.exit(0);
+        while (true) {
+            this.waitFor(2000);
+            //int variableId = counter % 10 + 1;
+            String stringValue = Integer.toHexString(counter++);
+            int zeros = 8 - stringValue.length();
+            for (int index = 1; index <= 8; index ++) {
+                String sIndex = Integer.toString(index);
+                if (sIndex.length() == 1) {
+                    sIndex = "0" + sIndex;
+                }
+
+                String valueToTransmit = valueVariableTemplate + sIndex;
+                for (int i = 0; i < zeros; i++) {
+                    valueToTransmit += "0";
+                }
+                valueToTransmit += stringValue;
+                valueToTransmit += this.calculateCrCForString(valueToTransmit);
+                valueToTransmit += '\n';
+                //System.out.print("Value tx: " + valueToTransmit);
+                this.writeData(valueToTransmit.getBytes());
+                this.waitFor(2);
+            }
+
+        }
+    }
+
+    public void waitFor(int millis) {
+        try {
+            Thread.sleep(millis);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
 
-enum Keys{
-    PORT, BAUD_RATE, SOURCE;
-}
+

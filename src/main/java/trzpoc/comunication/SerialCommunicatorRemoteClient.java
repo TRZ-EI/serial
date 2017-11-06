@@ -5,7 +5,6 @@ import gnu.io.*;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import trzpoc.crc.CRC16CCITT;
-import trzpoc.crc.CRC32Calculator;
 import trzpoc.utils.ConfigurationHolder;
 
 import java.io.IOException;
@@ -13,7 +12,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.Properties;
 import java.util.TooManyListenersException;
-import java.util.regex.Pattern;
 
 /**
  * Created with IntelliJ IDEA.
@@ -186,33 +184,11 @@ public class SerialCommunicatorRemoteClient implements SerialCommunicatorInterfa
     }
 
     public String calculateCrCForString(String messageToCalculate) {
-        int crc = CRC16CCITT.getNewInstance().calculateCRCForStringMessage(messageToCalculate);
-        return Integer.toHexString(crc);
+        long crc = CRC16CCITT.getNewInstance().calculateCRCForStringMessage(messageToCalculate);
+        return Long.toHexString(crc);
     }
 
 
-    private void calculateChecksumAndSendResponse(String s) throws IOException {
-        String receveid = s.replace('\r', ' ').trim();
-        if (receveid.contains("*")) {
-            String delimiter = "*";
-            String[] parts = receveid.split(Pattern.quote(delimiter));
-            String message = parts[0];
-            String checksum = parts[1];
-            long checksumValue = Long.valueOf(checksum);
-
-            CRC32Calculator calculator = CRC32Calculator.getInstance();
-
-
-            long calculatedChecksum = calculator.calculateCRC(message);
-
-            if (checksumValue == calculatedChecksum) {
-                //this.writer.writeMessage(String.copyValueOf(new char[]{'O', 'K', '\n'}));
-
-                this.output.write(new byte[]{'O', 'K', '\n'});
-                this.output.flush();
-            }
-        }
-    }
 
     //method that can be called to send data
     //pre: open serial port

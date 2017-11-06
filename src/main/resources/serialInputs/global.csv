@@ -1,10 +1,8 @@
 # WARNING: ROW AND COLS ARE EXPRESSED IN HEX FORMAT
-#^,t,S,0,1,"0"
 # ------------ RIGA 0 -----------------------------
-#^,t,S,1,1,"1"
-^,t,S,0,4,"PROVA N 1"
-^,t,P,0,23,"Prova."
-^,V,7,S,3,1,0,2B
+^tS0004PROVA N 1
+^tP0023Prova.
+^V07S31002B
 #^,v,7,1729
 ^,t,P,0,31,sec
 # ------------ RIGA 2 -----------------------------

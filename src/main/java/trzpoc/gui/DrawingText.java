@@ -23,55 +23,47 @@ import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
+import javafx.scene.input.KeyCombination;
+import javafx.scene.input.TouchEvent;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
-import trzpoc.comunication.SerialCommunicator;
+import trzpoc.comunication.SerialDataManager;
+import trzpoc.structure.Cell;
+import trzpoc.structure.Clear;
 import trzpoc.structure.Variable;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
-import trzpoc.utils.FontAndColorSelector;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
-import java.util.Properties;
+import java.util.Date;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
 
 public class DrawingText extends Application {
+
     private Group root;
-    //private Text text;
-    private final String[] VALUES = {"^V07A310509f465\n", "^v0700000064d0b0\n", "^v07000000c8e076\n", "^v070000012c0156\n", "^v0700000190b73a\n", "^v07000001f4e93f\n", "^v07000002582a0f\n", "^v07000002bc56b9\n", "^v070000032005a0\n", "^v0700000384aaef\n", "^v07000003e81380\n", "^v070000044c4000\n", "^v07000004b08e8f\n", "^v0700000514a2d7\n", "^v0700000578c9fd\n", "^v07000005dc798f\n", "^v070000064044f6\n", "^v07000006a4f538\n", "^v07000007083e0a\n", "^v070000076c7f32\n", "^v07000007d07d79\n", "^v070000083486e4\n", "^v0700000898a8a3\n", "^v07000008fc5dbc\n", "^v07000009600ea5\n", "^v07000009c4bf6b\n\n", "^v0700000a28b406\n", "^v0700000a8cb053\n", "^v0700000af0f775\n", "^v0700000b54b54d\n", "^v0700000bb8e3e9\n", "^v0700000c1c64ab\n", "^v0700000c80b4a5\n"};
-    private final int VALUES_INDEX = VALUES.length;
+    private BlockingQueue<String> serialBuffer;
+    private SerialDataFacade facade;
+    private SerialDataManager serialDataManager;
+
     private final String DEFAULT_RESOURCE_FILE_NAME = "application.properties";
 
-    private BlockingQueue<String> serialBuffer;
-
-    private int index;
-
-    private SerialDataFacade facade;
-    //private GraphicDesigner designer;
-
     @Override public void start(Stage stage) throws FileNotFoundException, UnsupportedEncodingException, InterruptedException {
+        this.readProperties();
         this.facade = SerialDataFacade.createNewInstance();
         this.serialBuffer = new LinkedBlockingQueue<>();
-        this.readProperties();
         this.root = new Group();
-
-        this.index = 0;
-
         Scene scene = new Scene(root, 800d, 480d, Color.WHITE);
-        Canvas canvasForGrid = new Canvas(800d, 480d);
-        GraphicDesigner.createNewInstance().drawGridForGraphicHelp(canvasForGrid);
-        canvasForGrid.toFront();
-        root.getChildren().add(canvasForGrid);
+        this.drawGridOnCanvas();
 
         //this.addMouseEventToChangeText(scene);
         stage.setScene(scene);
         stage.setTitle("TRZ bar for instruments");
+        this.addCombinationKeyAcceleratorToExit(stage);
+        this.addCombinationKeyAcceleratorToClerScreen(stage);
         stage.show();
 
         // Task to write on screen
@@ -85,38 +77,68 @@ public class DrawingText extends Application {
         serialThread.start();
 
     }
-    private void addMouseEventToChangeText(final Scene scene){
 
-        scene.setOnMouseClicked(new EventHandler<MouseEvent>() {
+    protected void drawGridOnCanvas() {
+        Canvas canvasForGrid = new Canvas(800d, 480d);
+        GraphicDesigner.createNewInstance().drawGridForGraphicHelp(canvasForGrid);
+        canvasForGrid.toFront();
+        this.addTouchEventToExit(canvasForGrid);
+        root.getChildren().add(canvasForGrid);
+    }
 
-            public void handle(MouseEvent me) {
-                if (me.getButton() == MouseButton.PRIMARY) {
-                    if (index < VALUES_INDEX) {
-                        String value = VALUES[index++];
-                        try {
-                            writeTextOnScene(value);
-
-                        } catch (Exception e) {
-                            e.printStackTrace();
-                        }
+    private void addCombinationKeyAcceleratorToExit(Stage primaryStage) {
+        primaryStage.getScene().getAccelerators().put(
+                KeyCombination.keyCombination("CTRL+C"),
+                new Runnable() {
+                    public void run() {
+                        serialDataManager.disconnectFromSerialPort();
+                        Platform.exit();
                     }
                 }
-
-
-                else if (me.getButton() == MouseButton.SECONDARY) {
-                    Platform.runLater(() ->{
-                        // TODO: start process on mouse action
-                    });
+        );
+    }
+    private void addCombinationKeyAcceleratorToClerScreen(Stage primaryStage) {
+        primaryStage.getScene().getAccelerators().put(
+                KeyCombination.keyCombination("CTRL+W"),
+                new Runnable() {
+                    public void run() {
+                        root.getChildren().clear();
+                        drawGridOnCanvas();
+                    }
                 }
-                me.consume();
-
+        );
+    }
+    private void addTouchEventToExit(Canvas canvas) {
+        canvas.setOnTouchPressed(new EventHandler<TouchEvent>() {
+            private int touches;
+            private long firstTouch = 0;
+            private long secondTouch = 0;
+            public void handle(TouchEvent event) {
+                firstTouch = (firstTouch == 0)? new Date().getTime(): firstTouch;
+                secondTouch = (firstTouch > 0)? new Date().getTime(): secondTouch;
+                touches += (touches < 2 && event.getEventSetId() == 1)? 1: 0;
+                if (touches == 2 && (secondTouch - firstTouch) > 0 && (secondTouch - firstTouch) <= 1000) {
+                    serialDataManager.disconnectFromSerialPort();
+                    Platform.exit();
+                }
             }
         });
     }
-
     private void writeTextOnScene(String value) throws UnsupportedEncodingException {
-        // TODO: create a single interface for every type of data input and commands(Variable, Text, Bar, Clear)
-        Variable variable = (Variable) this.facade.onSerialDataParser(value.getBytes());
+        // TODO: create a single interface for every type of data input and commands(Configuration, Variable, Text: Bar and Clear are different)
+        Cell variable = this.facade.onSerialDataInput(value.getBytes());
+        String v = null;
+        if (variable instanceof trzpoc.structure.Text){
+            v = variable.getValue();
+        }else if (variable instanceof Variable){
+            v = ((Variable)variable).printFormattedValue();
+        }else if (variable instanceof Clear){
+            root.getChildren().clear();
+            this.drawGridOnCanvas();
+            return;
+        }
+
+        //Variable variable = (Variable) this.facade.onSerialDataParser(value.getBytes());
         String id = String.valueOf(variable.getId());
         Text myText = (Text)root.getScene().lookup("#" + id);
         if (myText == null){
@@ -124,20 +146,17 @@ public class DrawingText extends Application {
             myText.setX(variable.getPixelScreenXPos());
             myText.setY(variable.getPixelScreenYPos());
             myText.setId(id);
-            myText.setFill(Color.RED);
-            myText.setFont(FontAndColorSelector.getNewInstance().getBigFont());
-            //myText.textProperty().bind(task.messageProperty());
+            myText.setFill(variable.getColor());
+            myText.setFont(variable.getFont());
             root.getChildren().add(myText);
         }
-        myText.setText(variable.printFormattedValue());
+        myText.setText(v);
     }
-
     private void readProperties() throws FileNotFoundException {
-        Properties properties = new Properties();
-        String retValue = "PRODUCTION"; // default value
         String resourceFile = (!this.getParameters().getRaw().isEmpty())? this.getParameters().getRaw().get(0): DEFAULT_RESOURCE_FILE_NAME;
         ConfigurationHolder.createSingleInstanceByConfigUri(resourceFile);
     }
+
     private Task<Void> task = new Task<Void>() {
         @Override
         public Void call() throws Exception {
@@ -145,7 +164,6 @@ public class DrawingText extends Application {
             while (true) {
                     if (!serialBuffer.isEmpty()){
                         String message = serialBuffer.poll();
-                        System.out.println(message);
                         Platform.runLater(new Runnable() {
                             @Override public void run() {
                                 try {
@@ -165,43 +183,12 @@ public class DrawingText extends Application {
         public Void call() throws Exception {
 
             serialBuffer.add("^V07A310509f465\n");
-
-            SerialCommunicator sc = new SerialCommunicator();
-            int counter = 0;
-            boolean config = false;
+            serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(serialBuffer);
+            serialDataManager.connectToSerialPort();
 
             while (true) {
-                String valueVariableTemplate = "^v07";
-                String valueVariableTemplate1 = "^v08";
-                Thread.sleep(50);
-                String stringValue = Integer.toHexString(counter ++);
-                String valueToTransmit = getPartiallyFormattedCommand(valueVariableTemplate, stringValue);
-                valueToTransmit += sc.calculateCrCForString(valueToTransmit);
-                valueToTransmit += '\n';
-                serialBuffer.add(valueToTransmit);
-                if (counter > 500){
-                    if (!config) {
-                        serialBuffer.add("^V08A310A09f465\n");
-                        config = true;
-                    }
-                    valueToTransmit = this.getPartiallyFormattedCommand(valueVariableTemplate1, stringValue);
-                    valueToTransmit += sc.calculateCrCForString(valueToTransmit);
-                    valueToTransmit += '\n';
-                    serialBuffer.add(valueToTransmit);
-                }
-                //writeTextOnScene(valueToTransmit);
-            }
-        }
 
-        private String getPartiallyFormattedCommand(String valueVariableTemplate, String stringValue) {
-            int zeros = 8 - stringValue.length();
-
-            String valueToTransmit = valueVariableTemplate;
-            for (int i = 0; i < zeros; i ++){
-                valueToTransmit += "0";
             }
-            valueToTransmit += stringValue;
-            return valueToTransmit;
         }
     };
 

@@ -43,9 +43,9 @@ public class DataTypesConverterTest {
                 {new byte[]{'1','1'}, 17},
                 {new byte[]{'1','2'}, 18},
                 {new byte[]{'1','3'}, 19},
-                {new byte[]{'1','4'}, 20}
-
-
+                {new byte[]{'1','4'}, 20},
+                {new byte[]{'F','F','F','F','F','F','D','8'}, -40}, // signed HEX values
+                {new byte[]{'0','0','0','0','0','0','0','5'}, 5}
         };
     }
     @DataProvider
@@ -62,7 +62,10 @@ public class DataTypesConverterTest {
                 {new byte[]{50}, 2L}, // ASCII VALUES (02)
                 {new byte[]{49}, 1L}, // ASCII VALUES (01)
                 {new byte[]{49,0x37,0x32,57}, 5929L}, // MIXED ASCII/HEX VALUES (1729)
-                {new byte[]{49, 0x39}, 25L} // MIXED ASCII/HEX VALUES (19)
+                {new byte[]{49, 0x39}, 25L}, // MIXED ASCII/HEX VALUES (19)
+                {new byte[]{'F','F','F','F','F','F','D','8'}, -40}, // signed HEX values
+                {new byte[]{'0','0','0','0','0','0','0','5'}, 5}
+
         };
     }
     @DataProvider

@@ -1,0 +1,9 @@
+^V07A310509
+^tS0104Test di prova 1
+^tR0204Test di prova 2
+^tQ0304Test di prova 3
+^tP0404Test di prova 4
+^tA0901Test di prova 5
+^tG0B01Test di prova 6
+^tC0D01Test di prova 7
+^t90F01Test di prova 8

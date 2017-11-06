@@ -1,14 +1,20 @@
 /* RASPBERRY PARAMS */
-// def host = "192.168.188.27"
-def host = "192.168.1.116"
+def host = "192.168.1.3"
 def user = "pi"
 def pwd = "raspberry"
+
+/* LAPTOP PARAMS */
+//def host = "192.168.1.111"
+//def user = "luigi"
+//def pwd = "glamdring"
+
 
 /*
 // MAC PARAMS (TO TEST)
 def host = "192.168.1.101"
 def user = "talamona"
 def pwd = "glamdring"
+def command = "sshpass -p " + pwd + " ssh " + user + "@" + host + " rm -rf /Users/talamona/trz/trzpoc-gui && rm -f trzpoc-gui-bin.tar.gz"
 */
 
 println "Create console JAR"
@@ -22,7 +28,7 @@ proc.waitForProcessOutput(System.out, System.err);
 print System.out
 
 
-def command = "sshpass -p " + pwd + " ssh " + user + "@" + host + " rm -rf /Users/talamona/trz/trzpoc-gui && rm -f trzpoc-gui-bin.tar.gz"
+def command = "sshpass -p " + pwd + " ssh " + user + "@" + host + " rm -rf ~/trz/trzpoc-gui && rm -f trzpoc-gui-bin.tar.gz"
 println "Delete previous folder and distribution tar"
 proc = command.execute()
 proc.waitForProcessOutput(System.out, System.err);

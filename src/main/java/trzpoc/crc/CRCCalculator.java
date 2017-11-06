@@ -7,6 +7,6 @@ package trzpoc.crc;
  * Time: 10.07
  */
 public interface CRCCalculator {
-    public int calculateCRCForStringMessage(String message);
-    public int calculateCRCforByteArrayMessage(byte[] message);
+    public long calculateCRCForStringMessage(String message);
+    public long calculateCRCforByteArrayMessage(byte[] message);
 }

@@ -2,6 +2,7 @@ package trzpoc.structure;
 
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import trzpoc.utils.IdGeneratorByPosition;
 
 /**
  * Created with IntelliJ IDEA.
@@ -52,10 +53,9 @@ public class Text extends Cell{
         }
         return this.calculatedId;
     }
-
     private int calculateIdUsingIniectiveFunctionForXandY(int x, int y) {
-        // f(a, b) = s(a+b) + a, where s(n) = n*(n+1)/2
-        return ((x+y)*(x+y+1))/2 + x;
+        return IdGeneratorByPosition.getNewInstanceByXAndY(x, y).invoke();
+
 
     }
 
@@ -69,4 +69,5 @@ public class Text extends Cell{
         }
         return result;
     }
+
 }

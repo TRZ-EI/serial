@@ -23,7 +23,9 @@ public class CRC16CCITTTest {
                 {"message" ,0x9CDF},
                 {"This is a long message" ,0x3E29},
                 {"^v0700000003", 0x0af1},
-                {"Per accedere all'area privata puoi semplicemente crearti un'utenza nella sezione \"register\"." ,0xCED5}
+                {"Per accedere all'area privata puoi semplicemente crearti un'utenza nella sezione \"register\"." ,0xCED5},
+                {"^v070000000f", 0x00a1},
+                {"^v0800000019", 0x00de}
         };
     }
 
@@ -35,11 +37,13 @@ public class CRC16CCITTTest {
 
     @Test(dataProvider = "createDataForTest")
     public void testCalculateCRCForStringMessage(String message, long expectedValue) throws Exception {
-        assertEquals(expectedValue, this.sut.calculateCRCForStringMessage(message));
+        long actual = this.sut.calculateCRCForStringMessage(message);
+        assertEquals(expectedValue, actual);
     }
     @Test(dataProvider = "createDataForTest")
     public void testCalculateCRCforByteArrayMessage(String message, long expectedValue) throws Exception {
-       assertEquals(expectedValue, this.sut.calculateCRCforByteArrayMessage(message.getBytes()));
+        long actual = this.sut.calculateCRCforByteArrayMessage(message.getBytes());
+       assertEquals(expectedValue, actual);
     }
 
 }

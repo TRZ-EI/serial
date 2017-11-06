@@ -6,7 +6,7 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
-import static org.testng.Assert.assertEquals;
+import static org.testng.Assert.*;
 
 /**
  * Created with IntelliJ IDEA.
@@ -16,37 +16,83 @@ import static org.testng.Assert.assertEquals;
  */
 public class MultipleCommandSplitterTest {
     private MultipleCommandSplitter sut;
+    // ^V       --> sync
+    // 2 digits --> variable ID
+    // 1 digit  --> font and color
+    // 1 digit  --> int part
+    // 1 digit  --> decimal part
+    // 2 digit  --> row (y)
+    // 2 digit  --> col (x)
+    // 4 digit  --> CRC (hex) NB: only at the end of multiple command
+    // *************************************************
+    // ^v       --> sync
+    // 2 digits --> variable ID
+    // 8 digits --> value
+    // 4 digit  --> CRC (hex) NB: only at the end of multiple command
+    // *************************************************
 
-
-    @DataProvider(name="multipleCommands")
-    private Object[][] createMultipleCommandsAndResponses(){
+    @DataProvider
+    private Object[][] dataForTest(){
         return new Object[][]{
-                {"^V07S31012FV08S31022FV09S31032FV0AS31042F",
-                        new String[] {"^V07S31012F","^V08S31022F", "^V09S31032F", "^V0AS31042F"}
-                },
-                {"^v0701234567v0801234567v0901234567v0A01234567",
-                        new String[] {"^v0701234567", "^v0801234567", "^v0901234567", "^v0A01234567"}
-                },
-                {"^v0701234567", new String[] {"^v0701234567"}},
-                {"^V07S31012F", new String[] {"^V07S31012F"}},
-                {"^tS0104PROVA N 1", new String[] {"^tS0104PROVA N 1"}},
-                {"^B18-0000002000000010F", new String[] {"^B18-0000002000000010F"}}
-
+                {"^V01441002302463021203463022A03463022A8953",
+                        new String[] {"^V014410023", "^V024630212", "^V03463022A", "^V03463022A"}},
+                {"^v0100000031020000000003000000000300000000A188",
+                        new String[] {"^v0100000031", "^v0200000000", "^v0300000000","^v0300000000"}},
+                {"^v01000000000200000000030000000005000000005905",
+                        new String[] {"^v0100000000", "^v0200000000", "^v0300000000","^v0500000000"}},
+                {"^t10014Sfiato               secC08C",
+                        new String[] {"^t10014Sfiato               secC08C"}}
         };
     }
-
-
-
+    @DataProvider
+    private Object[][] dataNotPermitted(){
+        return new Object[][]{
+                {"^t10014Sfiato               secC08C"},
+                {"^t10014Sfiato               secC08C"},
+                {"^n160002100000001F5A0"},
+                {"^n160002100000001F5A0"}
+        };
+    }
+    @DataProvider
+    private Object[][] dataPermitted(){
+        return new Object[][]{
+                {"^V01441002302463021203463022A03463022A8953"},
+                {"^v0100000031020000000003000000000300000000A188"},
+                {"^v01000000000200000000030000000005000000005905"}
+        };
+    }
     @BeforeMethod
-    public void setUp() throws Exception {
+    private void setup(){
         this.sut = MultipleCommandSplitter.getNewInstance();
     }
 
-    @Test(dataProvider = "multipleCommands")
-    public void testSplitterForCommands(String multipleCommand, String[] expectedValues){
+    @Test
+    public void testGetNewInstance() throws Exception {
+        assertNotNull(this.sut);
+    }
+
+    @Test(dataProvider = "dataForTest")
+    public void testSplitMultipleCommand(String multipleCommand, String[] expectedValues){
         List<String> actualValues = this.sut.splitMultipleCommand(multipleCommand);
         assertEquals(actualValues.toArray(), expectedValues);
     }
+
+
+    @Test(dataProvider = "dataNotPermitted")
+    public void testIsPermittedCommandWithWrongData(String command) throws Exception {
+        assertFalse(this.sut.isPermittedCommand(command));
+    }
+    @Test(dataProvider = "dataPermitted")
+    public void testIsPermittedCommandWithRightData(String command) throws Exception {
+        assertTrue(this.sut.isPermittedCommand(command));
+    }
+
+
+
+
+
+
+
 
 
 }

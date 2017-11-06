@@ -100,12 +100,14 @@ public class SerialDataManager {
                                 this.serialPort.getOutputStream().flush();
                             }
                             else{
-                                this.serialPort.getOutputStream().write(new byte[]{'K', 'O', '\n'});
+                                this.serialPort.getOutputStream().write(new String("KO: " + message.toString() + "\n").getBytes());
                                 this.serialPort.getOutputStream().flush();
                             }
-                            message.setLength(0);
+                            //message.setLength(0);
 
                         }
+                        message.setLength(0);
+
                     } catch (Exception e) {
                         String error = message.toString();
                         System.out.println("Failed to read data. (" + e.toString() + ")");
@@ -127,10 +129,15 @@ public class SerialDataManager {
                 String hexCrc = message.substring(size - crcDigits);
                 String messageToCalculate = message.substring(0, size - crcDigits);
                 CRCCalculator calculator = this.selectCalculator();
-                int crc = calculator.calculateCRCForStringMessage(messageToCalculate);
-                String crcHex = Integer.toHexString(crc);
-                if (crcHex.length() < crcDigits){
+                long crc = calculator.calculateCRCForStringMessage(messageToCalculate);
+                String crcHex = Long.toHexString(crc);
+                if (crcHex.length() == 3){
                     crcHex = "0" + crcHex;
+
+                }else if (crcHex.length() == 2){
+                    crcHex = "00" + crcHex;
+                }else if (crcHex.length() == 1){
+                    crcHex = "000" + crcHex;
                 }
                 score += (hexCrc.equalsIgnoreCase(crcHex))? 1: 0;
             }
