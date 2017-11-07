@@ -22,7 +22,6 @@ public class SerialDataFacadeTest {
     private SerialDataFacade sut;
     private FontAndColorSelector fontAndColorSelector;
 
-
     @DataProvider
     private Object[][] testDataForConfigurationVariable(){
         return new Object[][]{
@@ -58,8 +57,21 @@ public class SerialDataFacadeTest {
                         .setxPos(12).setyPos(15).setValue("Questo essere un testo di prova lungo")},
         };
     }
-
-
+    @DataProvider
+    private Object[][] testDataForNumber(){
+        return new Object[][]{
+                {"^nP20001C00000001", Variable.getInstance().setIntegerLenght(2).
+                        setDecimalLenght(0).setyPos(0).setxPos(28).setId(434).setValue("1")},    // ID = 434
+                {"^nQ410611FFFFFFD8", Variable.getInstance().setIntegerLenght(4).
+                        setDecimalLenght(1).setyPos(6).setxPos(17).setId(293).setValue("-40")},  // ID = 293
+                {"^nR41062500000005", Variable.getInstance().setIntegerLenght(4).
+                        setDecimalLenght(1).setyPos(6).setxPos(37).setId(983).setValue("5")},  // ID = 983
+                {"^nS410B11FFFFFFD8", Variable.getInstance().setIntegerLenght(4).
+                        setDecimalLenght(1).setyPos(11).setxPos(17).setId(423).setValue("-40")},  // ID = 423
+                {"^nS410B250000000A", Variable.getInstance().setIntegerLenght(4).
+                        setDecimalLenght(1).setyPos(11).setxPos(37).setId(1213).setValue("10")},  // ID = 1213
+        };
+    }
 
     @BeforeTest
     private void setup(){
@@ -87,6 +99,14 @@ public class SerialDataFacadeTest {
     }
     @Test(dataProvider = "testDataForText")
     public void testOnSerialDataParserForText(String dataToParse, Cell expectedValue) throws UnsupportedEncodingException {
+        Cell actualValue = this.sut.onSerialDataParser(dataToParse.getBytes());
+        String actualVariableValue = actualValue.getValue();
+        String expectedVariableValue = expectedValue.getValue();
+        assertEquals(actualValue, expectedValue);
+        assertEquals(actualVariableValue, expectedVariableValue);
+    }
+    @Test(dataProvider = "testDataForNumber")
+    public void testOnSerialDataParserForNumber(String dataToParse, Cell expectedValue) throws UnsupportedEncodingException {
         Cell actualValue = this.sut.onSerialDataParser(dataToParse.getBytes());
         String actualVariableValue = actualValue.getValue();
         String expectedVariableValue = expectedValue.getValue();

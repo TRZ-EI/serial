@@ -39,7 +39,12 @@ public class NumberSerialDataParser implements SerialDataReader {
     private final int valuePos = 9;
     private final int valuelenght = 8;
 
-    public NumberSerialDataParser(){
+    public static NumberSerialDataParser getNewInstance() {
+        return new NumberSerialDataParser();
+    }
+
+
+    private NumberSerialDataParser(){
         this.converter = DataTypesConverter.getNewInstance();
     }
 
@@ -77,4 +82,5 @@ public class NumberSerialDataParser implements SerialDataReader {
 
         return v;
     }
+
 }

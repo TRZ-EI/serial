@@ -73,6 +73,8 @@ public class SerialDataFacade {
             retValue = new Clear();
         }else if (command == 'B'){ // Bar configuration
             retValue = BarSerialDataParser.getNewInstance().readByteArray(data);
+        }else if (command == 'n'){
+            retValue = NumberSerialDataParser.getNewInstance().readByteArray(data);
         }
         return retValue;
     }

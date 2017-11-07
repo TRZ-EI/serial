@@ -35,7 +35,12 @@ public class NumberSerialDataParserTest {
     @BeforeMethod
     public void setUp() throws Exception {
         ConfigurationHolder.createSingleInstanceByConfigUri(this.getClass().getClassLoader().getResource("application.properties").getFile());
-        this.sut = new NumberSerialDataParser();
+        this.sut = NumberSerialDataParser.getNewInstance();
+    }
+
+    @Test
+    public void testGetNewInstance(){
+        assertNotNull(this.sut);
     }
 
     @Test(dataProvider = "dataForTest")
