@@ -67,12 +67,12 @@ public abstract class Cell implements CellInterface {
     }
     public int getPixelScreenXPos(){
         int width = FontAndColorSelector.getNewInstance().getWidthForSmallFont("W");
-        return this.xPos * width;
+        return (this.xPos * width); // Value for row 0
     }
 
     public int getPixelScreenYPos() {
         int height = FontAndColorSelector.getNewInstance().getHeightForSmallFont("W");
-        return this.yPos * height;
+        return (this.yPos * height) + height;
     }
 
 

@@ -61,15 +61,15 @@ public class SerialDataFacadeTest {
     private Object[][] testDataForNumber(){
         return new Object[][]{
                 {"^nP20001C00000001", Variable.getInstance().setIntegerLenght(2).
-                        setDecimalLenght(0).setyPos(0).setxPos(28).setId(434).setValue("1")},    // ID = 434
+                        setDecimalLenght(0).setyPos(0).setxPos(28).setId(String.valueOf(434).hashCode()).setValue("1")},    // ID = 434
                 {"^nQ410611FFFFFFD8", Variable.getInstance().setIntegerLenght(4).
-                        setDecimalLenght(1).setyPos(6).setxPos(17).setId(293).setValue("-40")},  // ID = 293
+                        setDecimalLenght(1).setyPos(6).setxPos(17).setId(String.valueOf(293).hashCode()).setValue("-40")},  // ID = 293
                 {"^nR41062500000005", Variable.getInstance().setIntegerLenght(4).
-                        setDecimalLenght(1).setyPos(6).setxPos(37).setId(983).setValue("5")},  // ID = 983
+                        setDecimalLenght(1).setyPos(6).setxPos(37).setId(String.valueOf(983).hashCode()).setValue("5")},  // ID = 983
                 {"^nS410B11FFFFFFD8", Variable.getInstance().setIntegerLenght(4).
-                        setDecimalLenght(1).setyPos(11).setxPos(17).setId(423).setValue("-40")},  // ID = 423
+                        setDecimalLenght(1).setyPos(11).setxPos(17).setId(String.valueOf(423).hashCode()).setValue("-40")},  // ID = 423
                 {"^nS410B250000000A", Variable.getInstance().setIntegerLenght(4).
-                        setDecimalLenght(1).setyPos(11).setxPos(37).setId(1213).setValue("10")},  // ID = 1213
+                        setDecimalLenght(1).setyPos(11).setxPos(37).setId(String.valueOf(1213).hashCode()).setValue("10")},  // ID = 1213
         };
     }
 

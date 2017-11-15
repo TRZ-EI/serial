@@ -15,21 +15,35 @@ import java.util.*;
  */
 public class FontAndColorSelector {
 
-    private final char NERO_PICCOLO = 'P';     //0x31
+/*
+    private final char NERO_PICCOLO = 'P';
     private final char ROSSO_PICCOLO = 'Q';
     private final char VERDE_PICCOLO = 'R';
     private final char BLU_PICCOLO = 'S';
 
 
-    private final char NERO_GRANDE = '9';  //0x39
+    private final char NERO_GRANDE = '9';
     private final char ROSSO_GRANDE = 'A';
     private final char VERDE_GRANDE = 'G';
     private final char BLU_GRANDE = 'C';
+*/
+    private char NERO_PICCOLO;
+    private char ROSSO_PICCOLO;
+    private char VERDE_PICCOLO;
+    private char BLU_PICCOLO;
+    private char ROSSO_PICCOLO_GRASSETTO;
+
+
+    private char NERO_GRANDE;
+    private char ROSSO_GRANDE;
+    private char VERDE_GRANDE;
+    private char BLU_GRANDE;
 
     private final char CHAR_FOR_METRIC = 'W'; // char to measure tipical dimensions
+    
 
 
-    private Font bigFont,smallFont;
+    private Font bigFont,smallFont, smallBoldFont;
 
     private Set<Character> smallFontsChars;
     private Map<Character, Color> colorMap;
@@ -37,11 +51,18 @@ public class FontAndColorSelector {
     private TextMetricCalculator textMetricCalculator;
 
     public static FontAndColorSelector getNewInstance(){
-
         return new FontAndColorSelector();
+
     }
+
     public Font selectFont(char selector){
-        return smallFontsChars.contains(selector)? smallFont: bigFont;
+        Font retValue = null;
+        if (smallFontsChars.contains(selector)){
+            retValue = (selector == ROSSO_PICCOLO_GRASSETTO)? this.smallBoldFont: this.smallFont;
+        }else{
+            retValue = this.bigFont;
+        }
+        return retValue;
     }
     public Color selectColor(char selector){
         Color c = colorMap.get(selector);
@@ -49,15 +70,35 @@ public class FontAndColorSelector {
     }
     private FontAndColorSelector(){
         try {
+
+            this.properties = ConfigurationHolder.getInstance().getProperties();
+            this.readFontMappingsFromConfigurationFile();
+
             this.smallFontsChars = this.fillDataForFonts();
             this.colorMap = this.fillDataForColors();
-            this.properties = ConfigurationHolder.getInstance().getProperties();
             this.smallFont = this.loadSmallFont();
+            this.smallBoldFont = this.loadSmallBoldFont();
             this.bigFont = this.loadBigFont();
             this.textMetricCalculator = TextMetricCalculator.getInstance();
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+
+    private void readFontMappingsFromConfigurationFile() {
+        this.NERO_PICCOLO = this.properties.getProperty(String.valueOf(FontMappings.NERO_PICCOLO)).charAt(0);
+        this.ROSSO_PICCOLO = this.properties.getProperty(String.valueOf(FontMappings.ROSSO_PICCOLO)).charAt(0);
+        this.VERDE_PICCOLO = this.properties.getProperty(String.valueOf(FontMappings.VERDE_PICCOLO)).charAt(0);
+        this.BLU_PICCOLO = this.properties.getProperty(String.valueOf(FontMappings.BLU_PICCOLO)).charAt(0);
+        this.ROSSO_PICCOLO_GRASSETTO = this.properties.getProperty(String.valueOf(FontMappings.ROSSO_PICCOLO_GRASSETTO)).charAt(0);
+
+
+
+        this.NERO_GRANDE = this.properties.getProperty(String.valueOf(FontMappings.NERO_GRANDE)).charAt(0);
+        this.ROSSO_GRANDE = this.properties.getProperty(String.valueOf(FontMappings.ROSSO_GRANDE)).charAt(0);
+        this.VERDE_GRANDE = this.properties.getProperty(String.valueOf(FontMappings.VERDE_GRANDE)).charAt(0);
+        this.BLU_GRANDE = this.properties.getProperty(String.valueOf(FontMappings.BLU_GRANDE)).charAt(0);
     }
 
     private Map<Character,Color> fillDataForColors() {
@@ -66,6 +107,7 @@ public class FontAndColorSelector {
         retValue.put(NERO_GRANDE, Color.BLACK);
 
         retValue.put(ROSSO_PICCOLO, Color.RED);
+        retValue.put(ROSSO_PICCOLO_GRASSETTO, Color.RED);
         retValue.put(ROSSO_GRANDE, Color.RED);
 
         retValue.put(BLU_PICCOLO, Color.BLUE);
@@ -80,6 +122,7 @@ public class FontAndColorSelector {
         Set<Character> retValue = new HashSet<Character>();
         retValue.add(NERO_PICCOLO);
         retValue.add(ROSSO_PICCOLO);
+        retValue.add(ROSSO_PICCOLO_GRASSETTO);
         retValue.add(VERDE_PICCOLO);
         retValue.add(BLU_PICCOLO);
         return retValue;
@@ -90,6 +133,11 @@ public class FontAndColorSelector {
         String weight = this.properties.getProperty(FontProperties.SMALL_FONT_WEIGHT.name());
         return Font.font(font, FontWeight.findByName(weight), Integer.parseInt(size));
     }
+    private Font loadSmallBoldFont() {
+        Font baseType = loadSmallFont();
+        return Font.font(baseType.getName(), FontWeight.BOLD, baseType.getSize());
+    }
+
     private Font loadBigFont(){
         String font = this.properties.getProperty(FontProperties.BIG_FONT.name());
         String size = this.properties.getProperty(FontProperties.BIG_SIZE.name());
@@ -128,8 +176,16 @@ public class FontAndColorSelector {
         return smallFont;
     }
 
+    public Font getSmallBoldFont() {
+        return this.smallBoldFont;
+    }
+
     private enum FontProperties{
         SMALL_FONT,SMALL_FONT_WEIGHT,SMALL_SIZE,BIG_FONT,BIG_FONT_WEIGHT,BIG_SIZE;
+    }
+    private enum FontMappings{
+        NERO_PICCOLO,ROSSO_PICCOLO,ROSSO_PICCOLO_GRASSETTO,VERDE_PICCOLO,BLU_PICCOLO,
+        NERO_GRANDE,ROSSO_GRANDE,VERDE_GRANDE,BLU_GRANDE;
     }
 
 

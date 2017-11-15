@@ -1,14 +1,13 @@
 package trzpoc.structure.serial;
 
-import javafx.beans.property.BooleanProperty;
-import javafx.beans.property.SimpleBooleanProperty;
-import javafx.scene.Group;
-import trzpoc.structure.*;
+import trzpoc.structure.Cell;
+import trzpoc.structure.Clear;
+import trzpoc.structure.Text;
+import trzpoc.structure.VariableCollector;
 import trzpoc.utils.DataTypesConverter;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
-import java.util.Iterator;
 
 /**
  * Created with IntelliJ IDEA.
@@ -21,11 +20,7 @@ import java.util.Iterator;
  */
 public class SerialDataFacade {
 
-    private final BooleanProperty isDataChanged = new SimpleBooleanProperty(false);
     private final VariableCollector variableCollector;
-
-
-    private DataDisplayManager displayManager;
     private DataTypesConverter dataTypesConverter;
 
     public static SerialDataFacade createNewInstance(){
@@ -33,27 +28,25 @@ public class SerialDataFacade {
     }
     private SerialDataFacade(){
         this.variableCollector = VariableCollector.getSingleInstance();
-        //this.displayManager = DataDisplayManager.getNewInstance().prepareDisplayMap(20);
         this.dataTypesConverter = DataTypesConverter.getNewInstance();
     }
 
     public Cell onSerialDataInput(byte[] data) throws UnsupportedEncodingException {
-        Cell retValue = null;
-        this.isDataChanged.set(false);
+        //Cell retValue = null;
         Cell dataParsed = onSerialDataParser(data);
         if (dataParsed instanceof Clear){
-            retValue = dataParsed;
-            this.variableCollector.clear();
+            //retValue = dataParsed;
+            //this.variableCollector.clear();
         }
         if (dataParsed instanceof Clear || dataParsed instanceof Text){
-            retValue = dataParsed;
+            //retValue = dataParsed;
 
         }else {
-            retValue = this.variableCollector.addOrGetUpdatedInstance(dataParsed);
+//            retValue = this.variableCollector.addOrGetUpdatedInstance(dataParsed);
 //            CellsRow row = this.displayManager.addOrUpdateCellInMatrix(dataParsed);
 //            retValue = row.addOrUpdateACell(dataParsed);
         }
-        return retValue;
+        return dataParsed;
     }
 
 
@@ -71,7 +64,10 @@ public class SerialDataFacade {
             retValue = TextSerialDataParser.getNewInstance().readByteArray(data);
         }else if (command == 'C'){ // Clear display
             retValue = new Clear();
-        }else if (command == 'B'){ // Bar configuration
+        }else if (command == 'K'){
+            retValue = RowCleanerSerialDataParser.getNewInstance().readByteArray(data);
+        }
+        else if (command == 'B'){ // Bar configuration
             retValue = BarSerialDataParser.getNewInstance().readByteArray(data);
         }else if (command == 'n'){
             retValue = NumberSerialDataParser.getNewInstance().readByteArray(data);
@@ -85,22 +81,4 @@ public class SerialDataFacade {
         byte byteCommand = Arrays.copyOfRange(data, commandPos, commandPos + commandLenght)[0];
         return this.dataTypesConverter.byteToChar(byteCommand);
     }
-
-
-    public DataDisplayManager getDisplayManager() {
-        return this.displayManager;
-    }
-
-    public BooleanProperty getIsDataChanged(){
-        return this.isDataChanged;
-    }
-
-    public void addCanvasesToRootNode(Group root) {
-        Iterator<CellsRow> iterator = this.displayManager.getRows().iterator();
-        while(iterator.hasNext()){
-            root.getChildren().add(iterator.next().getCanvas());
-        }
-
-    }
-
 }

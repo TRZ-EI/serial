@@ -55,8 +55,8 @@ public class VariableTest {
         int width = FontAndColorSelector.getNewInstance().getWidthForSmallFont("W");
         int height = FontAndColorSelector.getNewInstance().getHeightForSmallFont("W");
         return new Object[][]{
-                {trzpoc.structure.Variable.getInstanceByFontAndColor(this.refFont, this.refColor).setxPos(10).setyPos(10), width * 10, height * 10},
-                {trzpoc.structure.Variable.getInstanceByFontAndColor(this.refFont, this.refColor).setxPos(1).setyPos(20), width * 1, height * 20}
+                {trzpoc.structure.Variable.getInstanceByFontAndColor(this.refFont, this.refColor).setxPos(10).setyPos(10), width * 10, height * 10 + height},
+                {trzpoc.structure.Variable.getInstanceByFontAndColor(this.refFont, this.refColor).setxPos(1).setyPos(20), width * 1, height * 20 + height}
         };
     }
 

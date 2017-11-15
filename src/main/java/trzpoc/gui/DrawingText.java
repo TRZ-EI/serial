@@ -16,6 +16,8 @@
 
 package trzpoc.gui;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.Multimap;
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -31,12 +33,15 @@ import javafx.stage.Stage;
 import trzpoc.comunication.SerialDataManager;
 import trzpoc.structure.Cell;
 import trzpoc.structure.Clear;
+import trzpoc.structure.RowCleaner;
 import trzpoc.structure.Variable;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
+import trzpoc.utils.SerialDataEmulator;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
+import java.util.Collection;
 import java.util.Date;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -48,6 +53,8 @@ public class DrawingText extends Application {
     private BlockingQueue<String> serialBuffer;
     private SerialDataFacade facade;
     private SerialDataManager serialDataManager;
+
+    private Multimap<Integer, Text> rows = ArrayListMultimap.create();
 
     private final String DEFAULT_RESOURCE_FILE_NAME = "application.properties";
 
@@ -125,7 +132,7 @@ public class DrawingText extends Application {
         });
     }
     private void writeTextOnScene(String value) throws UnsupportedEncodingException {
-        // TODO: create a single interface for every type of data input and commands(Configuration, Variable, Text: Bar and Clear are different)
+        // TODO: create a single interface for every type of data input and commands(Configuration, Variable, Text, Number: Bar and Clear are different)
         Cell variable = this.facade.onSerialDataInput(value.getBytes());
         String v = null;
         if (variable instanceof trzpoc.structure.Text){
@@ -134,11 +141,15 @@ public class DrawingText extends Application {
             v = ((Variable)variable).printFormattedValue();
         }else if (variable instanceof Clear){
             root.getChildren().clear();
+            this.rows.clear();
             this.drawGridOnCanvas();
             return;
-        }
+        }else if (variable instanceof RowCleaner){
+            Collection<Text> contents = this.rows.get(variable.getId());
+            root.getChildren().removeAll(contents);
 
-        //Variable variable = (Variable) this.facade.onSerialDataParser(value.getBytes());
+            return;
+        }
         String id = String.valueOf(variable.getId());
         Text myText = (Text)root.getScene().lookup("#" + id);
         if (myText == null){
@@ -149,7 +160,9 @@ public class DrawingText extends Application {
             myText.setFill(variable.getColor());
             myText.setFont(variable.getFont());
             root.getChildren().add(myText);
+            this.rows.put(variable.getyPos(), myText);
         }
+        
         myText.setText(v);
     }
     private void readProperties() throws FileNotFoundException {
@@ -183,8 +196,13 @@ public class DrawingText extends Application {
         public Void call() throws Exception {
 
             serialBuffer.add("^V07A310509f465\n");
-            serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(serialBuffer);
-            serialDataManager.connectToSerialPort();
+
+            //serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(serialBuffer);
+            //serialDataManager.connectToSerialPort();
+
+            SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 1000);
+            sde.runScenario("serialInputs/clean-row-before-cleaner-test.txt");
+            sde.runScenario("serialInputs/clean-row-after-cleaner-test.txt");
 
             while (true) {
 

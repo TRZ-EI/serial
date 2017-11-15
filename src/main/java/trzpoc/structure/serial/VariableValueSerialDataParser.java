@@ -33,6 +33,7 @@ public class VariableValueSerialDataParser implements SerialDataReader{
 
     }
 
+    @Override
     public Cell readByteArray(byte[] data) throws UnsupportedEncodingException {
 
         byte[] varId = Arrays.copyOfRange(data, idVariablePos, idVariablePos + idVariableLenght);

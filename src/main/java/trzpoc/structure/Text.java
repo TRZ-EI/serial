@@ -49,11 +49,17 @@ public class Text extends Cell{
     @Override
     public int getId(){
         if(this.calculatedId == 0) {
-            this.calculatedId = this.calculateIdUsingIniectiveFunctionForXandY(this.getxPos(), this.getyPos());
+            this.calculatedId = this.calculateHashedId(this.getxPos(), this.getyPos());
         }
         return this.calculatedId;
     }
-    private int calculateIdUsingIniectiveFunctionForXandY(int x, int y) {
+
+    private int calculateHashedId(int x, int y) {
+        // TODO
+        return String.valueOf((this.calculateIdUsingIniectiveFunctionForXandY(x, y))).hashCode();
+    }
+
+    public int calculateIdUsingIniectiveFunctionForXandY(int x, int y) {
         return IdGeneratorByPosition.getNewInstanceByXAndY(x, y).invoke();
 
 

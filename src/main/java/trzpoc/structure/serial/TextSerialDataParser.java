@@ -36,6 +36,7 @@ public class TextSerialDataParser implements SerialDataReader{
     private final int crcLenght = 4;
 
     private final int eolLenght = 1;
+    private byte newLine = 0x0A;
 
     private DataTypesConverter converter;
 
@@ -48,8 +49,6 @@ public class TextSerialDataParser implements SerialDataReader{
 
 
     public Cell readByteArray(byte[] data) throws UnsupportedEncodingException {
-        byte newLine = 0x0A;
-
 
         byte fc = Arrays.copyOfRange(data, this.fontColorPos, this.fontColorPos + this.fontColorLenght)[0];
         char selectorForFontAndColor = this.converter.byteToChar(fc);
@@ -60,7 +59,8 @@ public class TextSerialDataParser implements SerialDataReader{
         byte[] columnInBytes = Arrays.copyOfRange(data, this.colPos, this.colPos + this.colLenght);
         int columnIndex = this.converter.bytesToInt(columnInBytes);
 
-        int newLineIndex = data.length - 1;
+        int newLineIndex = this.thereIsNewLine(data);
+
         int lastTextCharIndex = newLineIndex - 4;
         int firstTextCharIndex = 7;
 
@@ -74,5 +74,14 @@ public class TextSerialDataParser implements SerialDataReader{
         textCell.setyPos(rowIndex);
 
         return textCell;
+    }
+
+    private int thereIsNewLine(byte[] data) {
+        int index = 0;
+        for (byte b: data){
+            index = (b == newLine)? 1: 0;
+        }
+        return data.length - index;
+
     }
 }

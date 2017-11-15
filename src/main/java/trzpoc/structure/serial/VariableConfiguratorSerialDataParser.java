@@ -1,6 +1,5 @@
 package trzpoc.structure.serial;
 
-import trzpoc.structure.Cell;
 import trzpoc.structure.Variable;
 import trzpoc.utils.DataTypesConverter;
 import trzpoc.utils.FontAndColorSelector;
@@ -49,7 +48,7 @@ public class VariableConfiguratorSerialDataParser implements SerialDataReader {
         return new VariableConfiguratorSerialDataParser();
     }
 
-    public Cell readByteArray(byte[] data) throws UnsupportedEncodingException {
+    public Variable readByteArray(byte[] data) throws UnsupportedEncodingException {
         byte[] varId = Arrays.copyOfRange(data, idVariablePos, idVariablePos + idVariableLenght);
 
         int id = this.converter.bytesToInt(varId);

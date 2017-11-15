@@ -45,7 +45,8 @@ public class DataTypesConverterTest {
                 {new byte[]{'1','3'}, 19},
                 {new byte[]{'1','4'}, 20},
                 {new byte[]{'F','F','F','F','F','F','D','8'}, -40}, // signed HEX values
-                {new byte[]{'0','0','0','0','0','0','0','5'}, 5}
+                {new byte[]{'0','0','0','0','0','0','0','5'}, 5},
+                {"00000001".getBytes(), 1}
         };
     }
     @DataProvider

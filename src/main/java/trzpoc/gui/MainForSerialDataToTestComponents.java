@@ -132,7 +132,9 @@ public class MainForSerialDataToTestComponents extends Application{
 
 
     }
+
     private void addListenerForDataChanged(){
+/*
         this.serialDataFacade.getIsDataChanged().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -147,6 +149,7 @@ public class MainForSerialDataToTestComponents extends Application{
                 });
             }
         });
+*/
     }
     private void addListenerForDataReceived(){
         this.serialDataManager.getIsDataAvalaible().addListener(new ChangeListener<Boolean>() {

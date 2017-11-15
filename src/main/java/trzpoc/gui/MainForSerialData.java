@@ -119,7 +119,7 @@ public class MainForSerialData extends Application{
         this.serialDataFacade = SerialDataFacade.createNewInstance();
         this.serialDataManager = SerialDataManager.createNewInstance();
         this.runnable = GraphicDesignerRunnable.createNewInstanceBySerialDataFacadeAndGraphicDesigner(serialDataFacade, graphicDesigner);
-        this.serialDataFacade.addCanvasesToRootNode(root);
+        //this.serialDataFacade.addCanvasesToRootNode(root);
 
         this.addListenerForDataChanged();
         this.addListenerForDataReceived();
@@ -131,6 +131,7 @@ public class MainForSerialData extends Application{
 
     }
     private void addListenerForDataChanged(){
+/*
         this.serialDataFacade.getIsDataChanged().addListener(new ChangeListener<Boolean>() {
             @Override
             public void changed(ObservableValue<? extends Boolean> observable, Boolean oldValue, Boolean newValue) {
@@ -145,6 +146,7 @@ public class MainForSerialData extends Application{
                 });
             }
         });
+*/
     }
     private void addListenerForDataReceived(){
         this.serialDataManager.getIsDataAvalaible().addListener(new ChangeListener<Boolean>() {

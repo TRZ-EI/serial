@@ -3,6 +3,7 @@ package trzpoc.structure.serial;
 import javafx.scene.paint.Color;
 import trzpoc.structure.Bar;
 import trzpoc.structure.Cell;
+import trzpoc.structure.Variable;
 import trzpoc.utils.DataTypesConverter;
 import trzpoc.utils.FontAndColorSelector;
 

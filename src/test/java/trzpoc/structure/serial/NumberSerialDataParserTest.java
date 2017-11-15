@@ -23,11 +23,11 @@ public class NumberSerialDataParserTest {
     @DataProvider
     private Object[][] dataForTest(){
         return new Object[][]{
-                {"^nP20001C00000001", 434, "1", 2, 0, 0, 28},    // ID = 434
-                {"^nQ410611FFFFFFD8", 293, "-40", 4, 1, 6, 17},  // ID = 293
-                {"^nR41062500000005", 983, "5", 4, 1, 6, 37},    // ID = 983
-                {"^nS410B11FFFFFFD8", 423, "-40", 4, 1, 11, 17},  // ID = 423
-                {"^nS410B250000000A", 1213, "10", 4, 1, 11, 37}   // ID = 1213
+                {"^nP20001C00000001", String.valueOf(434).hashCode(), "1", 2, 0, 0, 28},    // ID = 434
+                {"^nQ410611FFFFFFD8", String.valueOf(293).hashCode(), "-40", 4, 1, 6, 17},  // ID = 293
+                {"^nR41062500000005", String.valueOf(983).hashCode(), "5", 4, 1, 6, 37},    // ID = 983
+                {"^nS410B11FFFFFFD8", String.valueOf(423).hashCode(), "-40", 4, 1, 11, 17},  // ID = 423
+                {"^nS410B250000000A", String.valueOf(1213).hashCode(), "10", 4, 1, 11, 37}   // ID = 1213
         };
     }
     

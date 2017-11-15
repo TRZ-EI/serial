@@ -4,7 +4,6 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import trzpoc.structure.Variable;
-import trzpoc.utils.SerialDataMock;
 
 import static org.testng.Assert.*;
 
@@ -23,14 +22,32 @@ public class VariableValueSerialDataParserTest {
         //ConfigurationHolder.createSingleInstanceByConfigUri("application.properties");
         this.sut = VariableValueSerialDataParser.getInstance();
     }
+
+
+
+
     @DataProvider
     private Object[][] dataForTest(){
         return new Object[][]{
-                {"1", 100L},
-                {"34", 10000L},
-                {"8", 10L},
-                {"18", -10L},
-                {"4", -120L}
+                {"^v0A00000001", Variable.getInstance().setAConfiguration(false).setId(10).setValue("1")},
+                {"^v0200000001", Variable.getInstance().setAConfiguration(false).setId(2).setValue("1")},
+                {"^v0A00000002", Variable.getInstance().setAConfiguration(false).setId(10).setValue("2")},
+                {"^v0200000002", Variable.getInstance().setAConfiguration(false).setId(2).setValue("2")},
+                {"^v0A00000003", Variable.getInstance().setAConfiguration(false).setId(10).setValue("3")},
+                {"^v0200000003", Variable.getInstance().setAConfiguration(false).setId(2).setValue("3")},
+                {"^v0A00000004", Variable.getInstance().setAConfiguration(false).setId(10).setValue("4")},
+                {"^v02FFFFFF79", Variable.getInstance().setAConfiguration(false).setId(2).setValue("-135")}
+                /*
+                {"v0A00000005"},
+                {"v0200000005"},
+                {"v0A00000006"},
+                {"v0200000006"},
+                {"v0A00000007"},
+                {"v0200000007"},
+                {"v0A00000008"},
+                {"v0200000008"},
+                {"v0A00000009"}
+                */
         };
     }
 
@@ -40,14 +57,10 @@ public class VariableValueSerialDataParserTest {
     }
 
     @Test(dataProvider = "dataForTest")
-    public void testReadByteArray(String id, long value) throws Exception {
-        SerialDataMock sdm = new SerialDataMock();
-        byte[] rawData = sdm.prepareDataToTransmitAVariable(id, value);
-        Variable expectedValue = Variable.getInstance().setAConfiguration(false).setValue(Long.toString(value));
-        expectedValue.setId(Integer.valueOf(id));
-        Variable actualValue = (Variable) this.sut.readByteArray(rawData);
+    public void testReadByteArray(String command, Variable expectedValue) throws Exception {
+        Variable actualValue = (Variable) this.sut.readByteArray(command.getBytes());
         assertEquals(actualValue, expectedValue);
-        assertFalse(actualValue.isAConfiguration());
+        assertEquals(actualValue.getValue(), expectedValue.getValue());
     }
 
 }

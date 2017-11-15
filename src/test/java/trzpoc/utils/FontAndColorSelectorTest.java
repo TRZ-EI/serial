@@ -4,7 +4,6 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.BeforeTest;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import trzpoc.structure.TextMetricCalculator;
@@ -23,20 +22,22 @@ import static org.testng.Assert.assertNotNull;
  */
 public class FontAndColorSelectorTest {
 
-    private final char NERO_PICCOLO = 'P';     //0x31
-    private final char ROSSO_PICCOLO = 'Q';
-    private final char VERDE_PICCOLO = 'R';
-    private final char BLU_PICCOLO = 'S';
+    private final char NERO_PICCOLO = '1';     
+    private final char ROSSO_PICCOLO = '2';
+    private final char VERDE_PICCOLO = '3';
+    private final char BLU_PICCOLO = '4';
+    private final char ROSSO_PICCOLO_GRASSETTO = '6';
 
 
-    private final char NERO_GRANDE = '9';  //0x39
-    private final char ROSSO_GRANDE = 'A';
-    private final char VERDE_GRANDE = 'G';
-    private final char BLU_GRANDE = 'C';
+    private final char NERO_GRANDE = 'D';
+    private final char ROSSO_GRANDE = 'E';
+    private final char VERDE_GRANDE = 'F';
+    private final char BLU_GRANDE = 'G';
 
     private FontAndColorSelector sut;
     private Font bigFont;
     private Font smallFont;
+    private Font smallBoldFont;
 
 
     @DataProvider
@@ -45,6 +46,7 @@ public class FontAndColorSelectorTest {
             {NERO_PICCOLO, Color.BLACK},
             {NERO_GRANDE, Color.BLACK},
             {ROSSO_PICCOLO, Color.RED},
+            {ROSSO_PICCOLO_GRASSETTO, Color.RED},
             {ROSSO_GRANDE, Color.RED},
             {BLU_PICCOLO, Color.BLUE},
             {BLU_GRANDE, Color.BLUE},
@@ -60,16 +62,16 @@ public class FontAndColorSelectorTest {
             {ROSSO_PICCOLO, this.smallFont},
             {ROSSO_GRANDE, this.bigFont},
             {BLU_PICCOLO, this.smallFont},
+            {ROSSO_PICCOLO_GRASSETTO, this.smallBoldFont},
             {BLU_GRANDE, this.bigFont},
             {VERDE_PICCOLO, this.smallFont},
             {VERDE_GRANDE, this.bigFont},
         };
     }
-    @BeforeTest
     private void prepareFontsForTest(){
         try {
-            this.loadProperties();
             this.smallFont = this.loadSmallFont();
+            this.smallBoldFont = this.loadSmallAndBoldFont();
             this.bigFont = this.loadBigFont();
         } catch (Exception e) {
             e.printStackTrace();
@@ -91,9 +93,15 @@ public class FontAndColorSelectorTest {
         String size = ConfigurationHolder.getInstance().getProperties().getProperty(FontProperties.SMALL_SIZE.name());
         return Font.font(font, FontWeight.findByName(weight), Integer.parseInt(size));
     }
+    private Font loadSmallAndBoldFont(){
+        Font baseType = this.loadSmallFont();
+        return Font.font(baseType.getName(), FontWeight.BOLD, baseType.getSize());
+    }
 
     @BeforeMethod
     private void createNewInstance(){
+        this.loadProperties();
+        this.prepareFontsForTest();
         this.sut = FontAndColorSelector.getNewInstance();
     }
 
@@ -116,6 +124,16 @@ public class FontAndColorSelectorTest {
         String smallSize = ConfigurationHolder.getInstance().getProperties().getProperty(FontProperties.SMALL_SIZE.name());
         double expectedValue = Double.parseDouble(smallSize);
         assertEquals(expectedValue, actualValue);
+    }
+    @Test
+    public void testGetSmallBoldFont(){
+        Font actualValue = this.sut.getSmallBoldFont();
+        double actualSize = actualValue.getSize();
+        // See value in properties file <fonts.properties>
+        String smallSize = ConfigurationHolder.getInstance().getProperties().getProperty(FontProperties.SMALL_SIZE.name());
+        double expectedSize = Double.parseDouble(smallSize);
+        assertEquals(expectedSize, actualSize);
+        assertEquals(actualValue.getStyle().toLowerCase(), "bold");
     }
 
     @Test(dataProvider = "dataToTestForFont")
