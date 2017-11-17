@@ -16,7 +16,6 @@ public class Bar extends Cell {
 
     public Bar setMinValue(long minValue) {
         if(this.minValue != minValue){
-            this.setChanged(true);
             this.minValue = minValue;
         }
         return this;
@@ -28,7 +27,6 @@ public class Bar extends Cell {
 
     public Bar setMaxValue(long maxValue) {
         if(this.maxValue != maxValue){
-            this.setChanged(true);
             this.maxValue = maxValue;
         }
         return this;

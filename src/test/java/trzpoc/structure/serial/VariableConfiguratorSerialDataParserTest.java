@@ -5,11 +5,10 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 import trzpoc.structure.Variable;
 import trzpoc.utils.ConfigurationHolder;
-import trzpoc.utils.DataTypesConverter;
-import trzpoc.utils.SerialDataMock;
+import trzpoc.utils.FontAndColorSelector;
 
-import static org.testng.Assert.assertNotNull;
-import static org.testng.Assert.assertTrue;
+import static org.testng.Assert.assertEquals;
+import static org.testng.AssertJUnit.assertNotNull;
 
 /**
  * Created with IntelliJ IDEA.
@@ -20,87 +19,19 @@ import static org.testng.Assert.assertTrue;
 public class VariableConfiguratorSerialDataParserTest {
 
     private VariableConfiguratorSerialDataParser sut;
-     /*
-    private final char NERO_PICCOLO = 'P';     //0x31
-    private final char ROSSO_PICCOLO = 'Q';
-    private final char VERDE_PICCOLO = 'R';
-    private final char BLU_PICCOLO = 'S';
+    private FontAndColorSelector fontAndColorSelector;
 
-
-    private final char NERO_GRANDE = '9';  //0x39
-    private final char ROSSO_GRANDE = 'A';
-    private final char VERDE_GRANDE = 'P';
-    private final char BLU_GRANDE = 'C';
-
-     */
-
-
-    @DataProvider
-    private Object[][] prepareDataForTest(){
-        return new Object[][]{
-                // WARNING: HEX VALUES
-                {"C", 'P', '2', '4', "A", "1"}, //NERO PICCOLO
-                {"C", 'Q', '2', '4', "A", "1"}, //ROSSO PICCOLO
-                {"C", 'R', '2', '4', "A", "1"}, //VERDE PICCOLO
-                {"C", 'S', '2', '4', "A", "1"}, //BLU PICCOLO
-
-                {"C", '9', '2', '4', "A", "1"}, //NERO GRANDE
-                {"C", 'A', '2', '4', "A", "1"}, //ROSSO GRANDE
-                {"C", 'P', '2', '4', "A", "1"}, //VERDE PICCOLO
-                {"C", 'C', '2', '4', "A", "1"}, //BLU GRANDE
-
-                {"1", 'A', '2', '4', "A", "1"}, //ROSSO GRANDE
-                {"2", 'A', '2', '4', "A", "1"}, //ROSSO GRANDE
-                {"3", 'A', '2', '4', "A", "1"}, //ROSSO GRANDE
-                {"4", 'A', '2', '4', "A", "1"}, //ROSSO GRANDE
-                {"5", 'A', '2', '4', "A", "1"}, //ROSSO GRANDE
-                {"6", 'A', '2', '4', "A", "1"}, //ROSSO GRANDE
-                {"7", 'A', '2', '4', "A", "1"}, //ROSSO GRANDE
-                {"8", 'A', '2', '4', "A", "1"}, //ROSSO GRANDE
-                {"9", 'A', '2', '4', "A", "1"}, //ROSSO GRANDE
-                {"A", 'A', '2', '4', "A", "1"}, //ROSSO GRANDE
-                {"63", 'A', '2', '4', "A", "1"}, //ROSSO GRANDE
-                {"63", 'A', '0', '0', "A", "63"}, //ROSSO GRANDE
-                {"63", 'A', '1', '1', "1", "59"}, //ROSSO GRANDE
-                {"63", 'A', '2', '2', "2", "4F"}, //ROSSO GRANDE
-                {"63", 'A', '3', '3', "99", "C"}, //ROSSO GRANDE
-                {"63", 'A', '4', '4', "30", "9"}, //ROSSO GRANDE
-                {"63", 'A', '5', '5', "15", "45"}, //ROSSO GRANDE
-                {"63", 'A', '6', '7', "3", "3B"}, //ROSSO GRANDE
-                {"63", 'A', '7', '7', "7", "31"}, //ROSSO GRANDE
-                {"63", 'A', '8', '8', "77", "27"}, //ROSSO GRANDE
-                {"63", 'A', '9', '9', "88", "1D"} //ROSSO GRANDE
-
-                
-        };
-    }
-
-    @BeforeMethod
-    public void setUp() throws Exception {
-        ConfigurationHolder.createSingleInstanceByConfigUri(this.getClass().getClassLoader().getResource("application.properties").getFile());
-        this.sut = VariableConfiguratorSerialDataParser.getNewInstance();
-    }
-    @Test
-    public void testGetNewInstance() throws Exception {
-        assertNotNull(VariableConfiguratorSerialDataParser.getNewInstance());
-    }
-    @Test(dataProvider = "prepareDataForTest")
-    public void testReadByteArray(String varNumber, char fontColor, char chars, char decimals, String row, String column) throws Exception {
-        SerialDataMock sdm = new SerialDataMock();
-        DataTypesConverter converter = DataTypesConverter.getNewInstance();
-
-        byte[] rawData = sdm.prepareDataToConfigureAVariable(varNumber, fontColor, chars, decimals ,row, column);
-        Variable expectedValue = this.sut.createVariable(fontColor);
-        int digits = converter.bytesToInt(new byte[]{(byte)chars});
-        int decs = converter.bytesToInt(new byte[]{(byte)decimals});
-        int col = converter.bytesToInt(column.getBytes());
-        int r = converter.bytesToInt(row.getBytes());
-        int id = converter.bytesToInt(varNumber.getBytes());
-        expectedValue.setAConfiguration(true).setIntegerLenght(digits).setDecimalLenght(decs).setxPos(col).setyPos(r).setId(id);
-        Variable actualValue = (Variable) this.sut.readByteArray(rawData);
-        assertTrue(actualValue.equals(expectedValue));
-        assertTrue(actualValue.isAConfiguration());
-    }
+    /*
+    NERO_PICCOLO=1
+    ROSSO_PICCOLO=2
+    VERDE_PICCOLO=3
+    BLU_PICCOLO=4
+    ROSSO_PICCOLO_GRASSETTO=6
+    NERO_GRANDE=D
+    ROSSO_GRANDE=E
+    VERDE_GRANDE=F
+    BLU_GRANDE=G
+    
     /*
     private final char NERO_PICCOLO = 'P';     //0x31
     private final char ROSSO_PICCOLO = 'Q';
@@ -114,6 +45,53 @@ public class VariableConfiguratorSerialDataParserTest {
     private final char BLU_GRANDE = 'C';
 
      */
+
+    
+    
+
+    @DataProvider
+    private Object[][] prepareDataForTest(){
+        return new Object[][]{
+                {"^V05E410416819C", Variable.getInstanceByFontAndColor(fontAndColorSelector.selectFont('E'), fontAndColorSelector.selectColor('E'))
+                        .setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(true).setyPos(4).setxPos(22).setId(5)},
+                {"^V06E410916F433", Variable.getInstanceByFontAndColor(fontAndColorSelector.selectFont('E'), fontAndColorSelector.selectColor('E'))
+                        .setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(true).setyPos(9).setxPos(22).setId(6)},
+                {"^V0145100230354", Variable.getInstanceByFontAndColor(fontAndColorSelector.selectFont('4'), fontAndColorSelector.selectColor('4'))
+                        .setIntegerLenght(5).setDecimalLenght(1).setAConfiguration(true).setyPos(0).setxPos(35).setId(1)},
+                {"^V0A453020F3D2E", Variable.getInstanceByFontAndColor(fontAndColorSelector.selectFont('4'), fontAndColorSelector.selectColor('4'))
+                        .setIntegerLenght(5).setDecimalLenght(3).setAConfiguration(true).setyPos(2).setxPos(15).setId(10)},
+                {"^V05E410416819C", Variable.getInstanceByFontAndColor(fontAndColorSelector.selectFont('E'), fontAndColorSelector.selectColor('E'))
+                        .setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(true).setyPos(4).setxPos(22).setId(5)},
+                {"^V0CE410916F433", Variable.getInstanceByFontAndColor(fontAndColorSelector.selectFont('E'), fontAndColorSelector.selectColor('E'))
+                        .setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(true).setyPos(9).setxPos(22).setId(12)}
+
+
+        };
+    }
+
+    @BeforeMethod
+    public void setUp() throws Exception {
+        ConfigurationHolder.createSingleInstanceByConfigUri(this.getClass().getClassLoader().getResource("application.properties").getFile());
+        this.sut = VariableConfiguratorSerialDataParser.getNewInstance();
+        this.fontAndColorSelector = FontAndColorSelector.getNewInstance();
+    }
+    @Test
+    public void testGetNewInstance() throws Exception {
+        assertNotNull(VariableConfiguratorSerialDataParser.getNewInstance());
+    }
+    @Test(dataProvider = "prepareDataForTest")
+    public void testReadByteArray(String message, Variable expectedValue) throws Exception {
+        Variable actualValue = this.sut.readByteArray(message.getBytes());
+        assertEquals(actualValue, expectedValue);
+        assertEquals(actualValue.getIntegerLenght(), expectedValue.getIntegerLenght());
+        assertEquals(actualValue.getDecimalLenght(), expectedValue.getDecimalLenght());
+        assertEquals(actualValue.getColor(), expectedValue.getColor());
+        assertEquals(actualValue.getFont(), expectedValue.getFont());
+        assertEquals(actualValue.isAConfiguration(), expectedValue.isAConfiguration());
+
+
+
+    }
 
 
 }

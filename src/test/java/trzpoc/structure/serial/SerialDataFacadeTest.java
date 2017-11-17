@@ -72,6 +72,28 @@ public class SerialDataFacadeTest {
                         setDecimalLenght(1).setyPos(11).setxPos(37).setId(String.valueOf(1213).hashCode()).setValue("10")},  // ID = 1213
         };
     }
+    @DataProvider
+    private Object[][] testDataForBar(){
+        return new Object[][]{
+            {"^B05FFFFFFD80000000507", Bar.getInstance().setMinValue(-40).setMaxValue(5).setId(5).setyPos(7).setxPos(10)},
+            {"^B06FFFFFFD80000000A0C", Bar.getInstance().setMinValue(-40).setMaxValue(10).setId(6).setyPos(12).setxPos(10)}
+        };
+    }
+    @DataProvider
+    private Object[][] testDataForClear(){
+        return new Object[][]{
+                {"^C", new Clear()}
+        };
+    }
+    @DataProvider
+    private Object[][] testDataForRowCleaner(){
+        return new Object[][]{
+            {"^K097C2F", RowCleaner.getInstanceByRowId(9)},
+            {"^K0A0ACE", RowCleaner.getInstanceByRowId(10)},
+            {"^K0B755E", RowCleaner.getInstanceByRowId(11)},
+            {"^K0C755E", RowCleaner.getInstanceByRowId(12)}
+        };
+    }
 
     @BeforeTest
     private void setup(){
@@ -113,85 +135,16 @@ public class SerialDataFacadeTest {
         assertEquals(actualValue, expectedValue);
         assertEquals(actualVariableValue, expectedVariableValue);
     }
-
-
-/*
-    ^,V,0,C,2,2,0,0
-    ^,V,1,C,2,2,0,1
-    ^,V,2,C,2,2,0,2
-    ^,V,3,C,2,2,0,3
-    ^,V,4,C,2,2,0,4
-    ^,V,5,C,2,2,0,5
-*/
-    private DataDisplayManager createMatrixForTestOneRow() {
-        DataDisplayManager retValue = DataDisplayManager.getNewInstance();
-        retValue.prepareDisplayMap(20);
-        int rowIndex = 0;
-        Variable v = null;
-        for (int column = 0; column < 6; column ++){
-
-
-            VariableConfiguratorSerialDataParser dp = VariableConfiguratorSerialDataParser.getNewInstance();
-            v = dp.createVariable('C');
-            v.setxPos(column).setyPos(rowIndex).setId(column);
-            retValue.addOrUpdateCellInMatrix(v);
-        }
-        
-        return retValue;
-
-
+    @Test(dataProvider = "testDataForClear")
+    public void testOnSerialDataParserForClear(String dataToParse, Cell expectedValue) throws UnsupportedEncodingException {
+        assertEquals(this.sut.onSerialDataParser(dataToParse.getBytes()), expectedValue);
     }
-
-    private boolean verifyEquality(DataDisplayManager actualValue, DataDisplayManager expectedValue) {
-        boolean retValue = actualValue.getNumberOfRows() == expectedValue.getNumberOfRows();
-        if (retValue) {
-            for (int i = 0; i < actualValue.getNumberOfRows(); i++) {
-                CellsRow one = actualValue.getOrCreateARow(i);
-                CellsRow otherOne = expectedValue.getOrCreateARow(i);
-                retValue &= this.compareRows(one, otherOne);
-            }
-        }
-        return retValue;
+    @Test(dataProvider = "testDataForRowCleaner")
+    public void testOnSerialDataParserForRowCleaner(String dataToParse, Cell expectedValue) throws UnsupportedEncodingException {
+        assertEquals(this.sut.onSerialDataParser(dataToParse.getBytes()), expectedValue);
     }
-
-    /*
-
-        ^,V,0,C,2,2,0,1
-        ^,V,1,C,2,2,1,1
-        ^,V,2,C,2,2,2,1
-        ^,V,3,C,2,2,3,1
-        ^,V,4,C,2,2,4,1
-        ^,V,5,C,2,2,5,1
-    */
-    private DataDisplayManager createMatrixForTest(){
-        DataDisplayManager retValue = DataDisplayManager.getNewInstance();
-        retValue.prepareDisplayMap(20);
-        for (int y = 0; y < 6; y ++){
-            retValue.addOrUpdateCellInMatrix(this.createCellForTest(y, 1));
-        }
-        return retValue;
-
-    }
-
-    private Cell createCellForTest(int row, int column){
-        VariableConfiguratorSerialDataParser dp = VariableConfiguratorSerialDataParser.getNewInstance();
-        Variable v = dp.createVariable('C');
-        v.setxPos(column).setyPos(row).setId(row);
-        return v;
-
-    }
-
-    private boolean compareRows(CellsRow one, CellsRow otherOne) {
-        boolean retValue = one.equals(otherOne);
-        if (retValue){
-            Cell oneCell = null;
-            Cell otherCell = null;
-            for (int column = 0; column < one.getCellsCount(); column ++){
-                oneCell = one.getCellByColumnIndex(column);
-                otherCell = otherOne.getCellByColumnIndex(column);
-                retValue &= oneCell.equals(otherCell);
-            }
-        }
-        return retValue;
+    @Test(dataProvider = "testDataForBar")
+    public void testOnSerialDataParserForBar(String dataToParse, Cell expectedValue) throws UnsupportedEncodingException {
+        assertEquals(this.sut.onSerialDataParser(dataToParse.getBytes()), expectedValue);
     }
 }

@@ -1,9 +1,15 @@
 package trzpoc.structure.serial;
 
 import org.testng.annotations.BeforeTest;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
+import trzpoc.structure.Bar;
+import trzpoc.structure.Cell;
 import trzpoc.utils.ConfigurationHolder;
 
+import java.io.UnsupportedEncodingException;
+
+import static org.testng.Assert.assertEquals;
 import static org.testng.Assert.assertNotNull;
 
 /**
@@ -29,6 +35,16 @@ public class BarSerialDataParserTest {
         this.sut = BarSerialDataParser.getNewInstance();
     }
 
+    @DataProvider
+    private Object[][] testDataForBar(){
+        return new Object[][]{
+                {"^B05FFFFFFD800000005071234", Bar.getInstance().setMinValue(-40).setMaxValue(5).setId(5).setyPos(7).setxPos(10)},
+                {"^B06FFFFFFD80000000A0C1234", Bar.getInstance().setMinValue(-40).setMaxValue(10).setId(6).setyPos(12).setxPos(10)}
+        };
+    }
+
+
+
     private void loadProperties(){
         ConfigurationHolder.createSingleInstanceByConfigUri(this.getClass().getClassLoader().getResource("application.properties").getFile()).getProperties();
     }
@@ -41,10 +57,10 @@ public class BarSerialDataParserTest {
         assertNotNull(this.sut);
     }
 
-    //@Test
-    // TODO: REVIEW TEST IMPLEMENTATION
-    public void testReadByteArray() throws Exception {
-
+    @Test(dataProvider = "testDataForBar")
+    public void testReadByteArray(String dataToParse, Cell expectedValue) throws UnsupportedEncodingException {
+        Cell actualValue = this.sut.readByteArray(dataToParse.getBytes());
+        assertEquals(actualValue, expectedValue);
     }
 
 }

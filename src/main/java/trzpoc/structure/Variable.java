@@ -59,7 +59,6 @@ public class Variable extends Cell {
     public Variable setValue(String value) {
         if (value != null){
             long tempValue = Long.valueOf(value, 10);
-            this.setChanged(this.value != tempValue);
             this.value = tempValue;
             this.valueToPrint = this.prepareFormattedValue();
         }

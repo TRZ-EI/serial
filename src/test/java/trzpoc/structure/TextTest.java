@@ -136,14 +136,6 @@ public class TextTest {
         assertFalse(this.sut.equals(textForUpdate));
     }
     @Test
-    public void testIsChanged() throws Exception {
-        String aNewTest = "A new Test";
-        this.sut.setValue(aNewTest);
-        assertTrue(this.sut.isChanged());
-        this.sut.setValue(aNewTest);
-        assertFalse(this.sut.isChanged());
-    }
-    @Test
     public void testGetUpperLeftCoordinatesOfContainerRectangle(){
         TextMetricCalculator calculator = TextMetricCalculator.getInstance();
 

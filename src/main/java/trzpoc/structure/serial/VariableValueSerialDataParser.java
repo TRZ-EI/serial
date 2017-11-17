@@ -28,9 +28,11 @@ public class VariableValueSerialDataParser implements SerialDataReader{
 
     private DataTypesConverter converter;
 
+    public static SerialDataReader getNewInstance() {
+        return new VariableValueSerialDataParser();
+    }
     private VariableValueSerialDataParser(){
         this.converter = DataTypesConverter.getNewInstance();
-
     }
 
     @Override
@@ -51,4 +53,5 @@ public class VariableValueSerialDataParser implements SerialDataReader{
     public static VariableValueSerialDataParser getInstance() {
         return new VariableValueSerialDataParser();
     }
+
 }

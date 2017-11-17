@@ -1,13 +1,12 @@
 package trzpoc.structure.serial;
 
 import trzpoc.structure.Cell;
-import trzpoc.structure.Clear;
-import trzpoc.structure.Text;
-import trzpoc.structure.VariableCollector;
 import trzpoc.utils.DataTypesConverter;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created with IntelliJ IDEA.
@@ -15,37 +14,40 @@ import java.util.Arrays;
  * Date: 01/05/17
  * Time: 14.26
  *
- * Interface between data received from a serial port (mocked by a SerialDataMock)
+ * Interface between data received from a serial port
  * and structure to print to RaspBerry screen
  */
 public class SerialDataFacade {
 
-    private final VariableCollector variableCollector;
+    //private final VariableCollector variableCollector;
     private DataTypesConverter dataTypesConverter;
+    private Map<Character, SerialDataReader> parsersMap;
 
     public static SerialDataFacade createNewInstance(){
         return new SerialDataFacade();
     }
     private SerialDataFacade(){
-        this.variableCollector = VariableCollector.getSingleInstance();
+        //this.variableCollector = VariableCollector.getSingleInstance();
         this.dataTypesConverter = DataTypesConverter.getNewInstance();
+        this.fillParsersMap();
+    }
+
+    private void fillParsersMap() {
+        this.parsersMap = new HashMap<>();
+        this.parsersMap.put('V', VariableConfiguratorSerialDataParser.getNewInstance());
+        this.parsersMap.put('v', VariableValueSerialDataParser.getNewInstance());
+        this.parsersMap.put('t', TextSerialDataParser.getNewInstance());
+        this.parsersMap.put('C', ClearSerialDataParser.getNewInstance());
+        this.parsersMap.put('K', RowCleanerSerialDataParser.getNewInstance());
+        this.parsersMap.put('B', BarSerialDataParser.getNewInstance());
+        this.parsersMap.put('n', NumberSerialDataParser.getNewInstance());
+
+
+
     }
 
     public Cell onSerialDataInput(byte[] data) throws UnsupportedEncodingException {
-        //Cell retValue = null;
         Cell dataParsed = onSerialDataParser(data);
-        if (dataParsed instanceof Clear){
-            //retValue = dataParsed;
-            //this.variableCollector.clear();
-        }
-        if (dataParsed instanceof Clear || dataParsed instanceof Text){
-            //retValue = dataParsed;
-
-        }else {
-//            retValue = this.variableCollector.addOrGetUpdatedInstance(dataParsed);
-//            CellsRow row = this.displayManager.addOrUpdateCellInMatrix(dataParsed);
-//            retValue = row.addOrUpdateACell(dataParsed);
-        }
         return dataParsed;
     }
 
@@ -53,25 +55,9 @@ public class SerialDataFacade {
     public Cell onSerialDataParser(byte[] data) throws UnsupportedEncodingException {
         // first step: what type of action?
         char command = this.readCommandFromData(data);
-        Cell retValue = null;
 
         // second step: On command received, parse data
-        if (command == 'V'){ // Configure variable
-            retValue = VariableConfiguratorSerialDataParser.getNewInstance().readByteArray(data);
-        }else if (command == 'v'){ // Valorize variable
-            retValue = VariableValueSerialDataParser.getInstance().readByteArray(data);
-        }else if (command == 't'){ // Print text
-            retValue = TextSerialDataParser.getNewInstance().readByteArray(data);
-        }else if (command == 'C'){ // Clear display
-            retValue = new Clear();
-        }else if (command == 'K'){
-            retValue = RowCleanerSerialDataParser.getNewInstance().readByteArray(data);
-        }
-        else if (command == 'B'){ // Bar configuration
-            retValue = BarSerialDataParser.getNewInstance().readByteArray(data);
-        }else if (command == 'n'){
-            retValue = NumberSerialDataParser.getNewInstance().readByteArray(data);
-        }
+        Cell retValue = this.parsersMap.get(Character.valueOf(command)).readByteArray(data);
         return retValue;
     }
 

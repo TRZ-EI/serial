@@ -147,7 +147,6 @@ public class DrawingText extends Application {
         }else if (variable instanceof RowCleaner){
             Collection<Text> contents = this.rows.get(variable.getId());
             root.getChildren().removeAll(contents);
-
             return;
         }
         String id = String.valueOf(variable.getId());
@@ -162,9 +161,10 @@ public class DrawingText extends Application {
             root.getChildren().add(myText);
             this.rows.put(variable.getyPos(), myText);
         }
-        
+
         myText.setText(v);
     }
+
     private void readProperties() throws FileNotFoundException {
         String resourceFile = (!this.getParameters().getRaw().isEmpty())? this.getParameters().getRaw().get(0): DEFAULT_RESOURCE_FILE_NAME;
         ConfigurationHolder.createSingleInstanceByConfigUri(resourceFile);

@@ -20,7 +20,6 @@ public abstract class Cell implements CellInterface {
     private int yPos;
     private int pixelScreenYPos;
     private int pixelScreenXPos;
-    private boolean isChanged;
 
 
 
@@ -31,7 +30,6 @@ public abstract class Cell implements CellInterface {
 
     }
     protected Cell() {
-        this.isChanged = false;
     }
 
 
@@ -60,7 +58,6 @@ public abstract class Cell implements CellInterface {
 
     public Cell setValue(String value) {
         if (value != null) {
-            this.isChanged = !value.equals(this.value);
             this.value = value;
         }
         return this;
@@ -131,13 +128,6 @@ public abstract class Cell implements CellInterface {
         return this;
     }
 
-    public boolean isChanged() {
-        return isChanged;
-    }
-
-    public void setChanged(boolean changed) {
-        isChanged = changed;
-    }
 
     public Cell setPixelScreenXPos(int pixelScreenXPos) {
         this.pixelScreenXPos = pixelScreenXPos;
