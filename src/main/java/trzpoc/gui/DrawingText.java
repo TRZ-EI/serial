@@ -31,13 +31,9 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import trzpoc.comunication.SerialDataManager;
-import trzpoc.structure.Cell;
-import trzpoc.structure.Clear;
-import trzpoc.structure.RowCleaner;
-import trzpoc.structure.Variable;
+import trzpoc.structure.*;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
-import trzpoc.utils.SerialDataEmulator;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
@@ -149,6 +145,9 @@ public class DrawingText extends Application {
             root.getChildren().removeAll(contents);
             return;
         }
+        else if (variable  instanceof Bar){
+            // TODO: manage Bar
+        }
         String id = String.valueOf(variable.getId());
         Text myText = (Text)root.getScene().lookup("#" + id);
         if (myText == null){
@@ -196,14 +195,14 @@ public class DrawingText extends Application {
         public Void call() throws Exception {
 
             serialBuffer.add("^V07A310509f465\n");
+            serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(serialBuffer);
+            serialDataManager.connectToSerialPort();
 
-            //serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(serialBuffer);
-            //serialDataManager.connectToSerialPort();
-
+            /*
             SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 1000);
             sde.runScenario("serialInputs/clean-row-before-cleaner-test.txt");
             sde.runScenario("serialInputs/clean-row-after-cleaner-test.txt");
-
+            */
             while (true) {
 
             }

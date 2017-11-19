@@ -27,6 +27,8 @@ public class ConfigurationHolder {
     public static final String BIG_FONT_WEIGHT="BIG_FONT_WEIGHT";
     public static final String BIG_SIZE="BIG_SIZE";
     public static final String CRC="CRC";
+// END OF LINE VALUE ---
+    public static final String END_OF_LINE="END_OF_LINE";
 
 
 

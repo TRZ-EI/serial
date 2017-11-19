@@ -25,7 +25,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * Time: 14.31
  */
 public class SerialDataManager {
-    private final int NEW_LINE_ASCII = 10;
+    private char NEW_LINE;
 
     private SerialPort serialPort;
     private SerialCommunicator serialCommunicator;
@@ -46,10 +46,16 @@ public class SerialDataManager {
     private SerialDataManager(){
         this.serialBuffer = new LinkedBlockingQueue<>();
         this.multipleCommandSplitter = MultipleCommandSplitter.getNewInstance();
+        this.NEW_LINE = this.readEndLineFromConfiguration();
     }
     private SerialDataManager(BlockingQueue<String> serialBuffer) {
         this.serialBuffer = serialBuffer;
         this.multipleCommandSplitter = MultipleCommandSplitter.getNewInstance();
+        this.NEW_LINE = this.readEndLineFromConfiguration();
+    }
+    private char readEndLineFromConfiguration(){
+        String value = ConfigurationHolder.getInstance().getProperties().getProperty(ConfigurationHolder.END_OF_LINE);
+        return (char)Integer.parseInt(value, 16);
     }
 
 
@@ -68,7 +74,7 @@ public class SerialDataManager {
                 if (serialPortEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
                     try {
                         while ( ( data = serialPort.getInputStream().read()) > -1 ){
-                            if ( data == '\n' ) {
+                            if ( data == this.NEW_LINE ) {
                                 timeStart = System.nanoTime();
                                 break;
                             }
@@ -96,11 +102,11 @@ public class SerialDataManager {
                                 List<String> commands = this.multipleCommandSplitter.splitMultipleCommand(message.toString());
                                 this.serialBuffer.addAll(commands);
                                 long elapsedTime = (System.nanoTime() - timeStart) / 1000;
-                                this.serialPort.getOutputStream().write(new String("elapsed (millis) " + elapsedTime + "\n").getBytes());
+                                this.serialPort.getOutputStream().write(new String("elapsed (micros) " + elapsedTime + this.NEW_LINE).getBytes());
                                 this.serialPort.getOutputStream().flush();
                             }
                             else{
-                                this.serialPort.getOutputStream().write(new String("KO: " + message.toString() + "\n").getBytes());
+                                this.serialPort.getOutputStream().write(new String("KO: " + message.toString() + this.NEW_LINE).getBytes());
                                 this.serialPort.getOutputStream().flush();
                             }
                             //message.setLength(0);
