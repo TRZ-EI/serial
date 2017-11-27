@@ -14,4 +14,9 @@ public class RowCleaner extends Cell {
     private RowCleaner(int id){
         this.setId(id);
     }
+
+    @Override
+    public void accept(StructureVisitor visitor) {
+        visitor.visit(this);
+    }
 }

@@ -7,4 +7,9 @@ package trzpoc.structure;
  * Time: 16.36
  */
 public class Clear extends Cell {
+
+    @Override
+    public void accept(StructureVisitor visitor) {
+        visitor.visit(this);
+    }
 }

@@ -40,6 +40,12 @@ public class Text extends Cell{
         return super.getValue();
     }
 
+    @Override
+    public void accept(StructureVisitor visitor) {
+        visitor.visit(this);
+
+    }
+
     public Text updateData(Text dataParsed) {
         if (this.equals(dataParsed)) {
             this.setValue(dataParsed.getValue());

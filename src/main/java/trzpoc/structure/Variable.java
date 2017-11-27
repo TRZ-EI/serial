@@ -42,6 +42,11 @@ public class Variable extends Cell {
         return Long.toString(this.value);
     }
 
+    @Override
+    public void accept(StructureVisitor visitor) {
+        visitor.visit(this);
+    }
+
     public int getWidth() {
 
         return TextMetricCalculator.getInstance().calculateWidth(this.printFormattedValue(), this.getFont());

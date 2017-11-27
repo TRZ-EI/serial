@@ -35,4 +35,9 @@ public class Bar extends Cell {
     public static Bar getInstance() {
         return new Bar();
     }
+
+    @Override
+    public void accept(StructureVisitor visitor) {
+        visitor.visit(this);
+    }
 }

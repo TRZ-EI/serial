@@ -28,16 +28,16 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.TouchEvent;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import trzpoc.comunication.SerialDataManager;
-import trzpoc.structure.*;
+import trzpoc.structure.Cell;
+import trzpoc.structure.StructureVisitor;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
+import trzpoc.utils.SerialDataEmulator;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
-import java.util.Collection;
 import java.util.Date;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -50,11 +50,14 @@ public class DrawingText extends Application {
     private SerialDataFacade facade;
     private SerialDataManager serialDataManager;
 
-    private Multimap<Integer, Text> rows = ArrayListMultimap.create();
+    private Multimap<Integer, javafx.scene.Node> rows = ArrayListMultimap.create();
 
     private final String DEFAULT_RESOURCE_FILE_NAME = "application.properties";
+    private StructureVisitor visitor;
+
 
     @Override public void start(Stage stage) throws FileNotFoundException, UnsupportedEncodingException, InterruptedException {
+        this.visitor = new StructureVisitor(this);
         this.readProperties();
         this.facade = SerialDataFacade.createNewInstance();
         this.serialBuffer = new LinkedBlockingQueue<>();
@@ -81,7 +84,7 @@ public class DrawingText extends Application {
 
     }
 
-    protected void drawGridOnCanvas() {
+    public void drawGridOnCanvas() {
         Canvas canvasForGrid = new Canvas(800d, 480d);
         GraphicDesigner.createNewInstance().drawGridForGraphicHelp(canvasForGrid);
         canvasForGrid.toFront();
@@ -128,40 +131,8 @@ public class DrawingText extends Application {
         });
     }
     private void writeTextOnScene(String value) throws UnsupportedEncodingException {
-        // TODO: create a single interface for every type of data input and commands(Configuration, Variable, Text, Number: Bar and Clear are different)
         Cell variable = this.facade.onSerialDataInput(value.getBytes());
-        String v = null;
-        if (variable instanceof trzpoc.structure.Text){
-            v = variable.getValue();
-        }else if (variable instanceof Variable){
-            v = ((Variable)variable).printFormattedValue();
-        }else if (variable instanceof Clear){
-            root.getChildren().clear();
-            this.rows.clear();
-            this.drawGridOnCanvas();
-            return;
-        }else if (variable instanceof RowCleaner){
-            Collection<Text> contents = this.rows.get(variable.getId());
-            root.getChildren().removeAll(contents);
-            return;
-        }
-        else if (variable  instanceof Bar){
-            // TODO: manage Bar
-        }
-        String id = String.valueOf(variable.getId());
-        Text myText = (Text)root.getScene().lookup("#" + id);
-        if (myText == null){
-            myText = new Text();
-            myText.setX(variable.getPixelScreenXPos());
-            myText.setY(variable.getPixelScreenYPos());
-            myText.setId(id);
-            myText.setFill(variable.getColor());
-            myText.setFont(variable.getFont());
-            root.getChildren().add(myText);
-            this.rows.put(variable.getyPos(), myText);
-        }
-
-        myText.setText(v);
+        variable.accept(this.visitor);
     }
 
     private void readProperties() throws FileNotFoundException {
@@ -194,15 +165,16 @@ public class DrawingText extends Application {
         @Override
         public Void call() throws Exception {
 
-            serialBuffer.add("^V07A310509f465\n");
-            serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(serialBuffer);
-            serialDataManager.connectToSerialPort();
+            serialBuffer.add("^V073310509f465\n");
+            //serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(serialBuffer);
+            //serialDataManager.connectToSerialPort();
 
-            /*
+
             SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 1000);
-            sde.runScenario("serialInputs/clean-row-before-cleaner-test.txt");
-            sde.runScenario("serialInputs/clean-row-after-cleaner-test.txt");
-            */
+            //sde.runScenario("serialInputs/clean-row-before-cleaner-test.txt");
+            //sde.runScenario("serialInputs/clean-row-after-cleaner-test.txt");
+            sde.runScenario("serialInputs/barAndVariable-fragment.txt");
+
             while (true) {
 
             }
@@ -212,5 +184,13 @@ public class DrawingText extends Application {
 
     public static void main(String[] args) {
         launch(args);
+    }
+
+    public Group getRoot() {
+        return root;
+    }
+
+    public Multimap<Integer, javafx.scene.Node> getRows() {
+        return rows;
     }
 }

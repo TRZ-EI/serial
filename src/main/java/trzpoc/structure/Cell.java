@@ -33,6 +33,7 @@ public abstract class Cell implements CellInterface {
     }
 
 
+
     public Color getColor() {
         return color;
     }

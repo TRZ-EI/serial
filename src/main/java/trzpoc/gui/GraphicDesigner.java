@@ -53,35 +53,17 @@ public class GraphicDesigner {
     }
 
 
-
-    private void updateBarValuesAndColor(Cell c) {
-        Bar b = (Bar)c;
-        double value = (c.getValue() != null)? Double.parseDouble(c.getValue()): ((Bar)c).getMinValue();
-        double delta = b.getMaxValue() - b.getMinValue();
-        double blueReference = b.getMinValue() + 0.8 * delta;
-        Color barColor = (value >= blueReference)? Color.BLUE: Color.GREEN;
-        this.bars.get(c.getId()).barColorProperty().set(barColor);
-        this.bars.get(c.getId()).setValue(value);
-    }
-
-
-    private void configureBar(Cell c) {
+    public Gauge configureBar(Bar cellBar) {
         // TODO: EXPERIMENTS WITH BARS
         double prefHeight = 200d;
         double prefWidth = 700d;
-        int pixelScreenYPos = c.getPixelScreenYPos();
+        int pixelScreenYPos = cellBar.getPixelScreenYPos();
 
 
-        Bar cellBar = (Bar) c;
         Gauge bar = null;
-        if (!this.preFetchedBars.isEmpty()){
-            bar = this.preFetchedBars.remove();
-        }else{
-            bar = this.createOrUpdateHorizontalBar(cellBar.getMinValue(), cellBar.getMaxValue());
-        }
+        bar = this.createOrUpdateHorizontalBar(cellBar.getMinValue(), cellBar.getMaxValue());
 
         //Gauge
-
         bar.addSection(new Section(cellBar.getMinValue(), 0, Color.GREEN));
         bar.addSection(new Section(0, cellBar.getMaxValue(), Color.BLUE));
 
@@ -92,11 +74,10 @@ public class GraphicDesigner {
         bar.setPrefSize(prefWidth, prefHeight);
         bar.setLayoutX(30);
         bar.setLayoutY(pixelScreenYPos - prefHeight / 2);
-        this.group.getChildren().add(bar);
-        this.bars.put(c.getId(), bar);
+        return bar;
     }
 
-    private Gauge createOrUpdateHorizontalBar(long minValue, long maxValue) {
+    public Gauge createOrUpdateHorizontalBar(long minValue, long maxValue) {
         Gauge gauge = GaugeBuilder.create()
                 .value(minValue)
                 .minValue(minValue)

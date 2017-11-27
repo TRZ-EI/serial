@@ -8,4 +8,5 @@ package trzpoc.structure;
  */
 public interface CellInterface {
     String getValue();
+    public void accept(StructureVisitor visitor);
 }
