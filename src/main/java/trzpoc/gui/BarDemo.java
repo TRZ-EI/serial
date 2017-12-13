@@ -16,8 +16,9 @@
 
 package trzpoc.gui;
 
-import eu.hansolo.medusa.*;
-import eu.hansolo.medusa.Gauge.SkinType;
+import eu.hansolo.medusa.Gauge;
+import eu.hansolo.medusa.GaugeBuilder;
+import eu.hansolo.medusa.Section;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
 import javafx.geometry.Orientation;
@@ -63,6 +64,7 @@ public class BarDemo extends Application {
             .sections(new Section(-2, 0, Color.GREEN),
                     new Section(0, 1, Color.BLUE)
                   )
+                
             .build();
         gauge21.setSkin(new TRZLinearSkin(gauge21));
 

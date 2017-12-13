@@ -3,7 +3,7 @@ package trzpoc.structure.serial;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
-import trzpoc.structure.Variable;
+import trzpoc.structure.Number;
 import trzpoc.utils.ConfigurationHolder;
 
 import java.io.UnsupportedEncodingException;
@@ -45,7 +45,7 @@ public class NumberSerialDataParserTest {
 
     @Test(dataProvider = "dataForTest")
     public void testReadByteArray(String command, int expectedId, String expectedValue, int intPart, int decPart, int row, int col) throws UnsupportedEncodingException {
-        Variable actualValue = (Variable) this.sut.readByteArray(command.getBytes());
+        Number actualValue = this.sut.readByteArray(command.getBytes());
         assertNotNull(actualValue);
         assertEquals(actualValue.getId(), expectedId);
         assertEquals(actualValue.getValue(), expectedValue);

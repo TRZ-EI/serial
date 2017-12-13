@@ -4,6 +4,7 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import eu.hansolo.medusa.Gauge;
 import javafx.scene.Node;
+import javafx.scene.paint.Color;
 import trzpoc.gui.DrawingText;
 import trzpoc.gui.GraphicDesigner;
 
@@ -31,21 +32,32 @@ public class StructureVisitor {
         value = cell.getValue();
         this.findTextAndFillWithData(cell);
     }
+    public void visit(Number number) {
+        this.value = number.printFormattedValue();
+        this.findTextAndFillWithData(number);
+    }
+
     public void visit(Variable cell){
         if (cell.isAConfiguration()){
             this.configurations.put(cell.getId(), cell);
         }else {
             cell = this.mergeWithConfiguration(cell);
-            value = cell.printFormattedValue();
-            this.findTextAndFillWithData(cell);
+            if (cell != null) {
+                value = cell.printFormattedValue();
+                this.findTextAndFillWithData(cell);
+            }
         }
     }
 
     private Variable mergeWithConfiguration(Variable cell) {
+        Variable retValue = null;
         Variable configuration = this.configurations.get(cell.getId());
-        return (Variable) cell.setDecimalLenght(configuration.getDecimalLenght())
-                .setIntegerLenght(configuration.getIntegerLenght()).setFont(configuration.getFont())
-                .setColor(configuration.getColor()).setxPos(configuration.getxPos()).setyPos(configuration.getyPos());
+        if (configuration != null){
+            retValue = (Variable) cell.setDecimalLenght(configuration.getDecimalLenght())
+                    .setIntegerLenght(configuration.getIntegerLenght()).setFont(configuration.getFont())
+                    .setColor(configuration.getColor()).setxPos(configuration.getxPos()).setyPos(configuration.getyPos());
+    }
+        return retValue;
     }
 
     public void visit(Clear cell){
@@ -96,10 +108,11 @@ public class StructureVisitor {
     }
     private void update(Gauge t, String rawValue){
         double valueInDouble = Double.parseDouble(rawValue);
-        //double delta = t.getMaxValue() - t.getMinValue();
+        double delta = t.getMaxValue() - t.getMinValue();
         //double blueReference = t.getMinValue() + 0.8 * delta;
-        //Color barColor = (valueInDouble >= blueReference)? Color.BLUE: Color.GREEN;
-        //t.barColorProperty().set(barColor);
+        double blueReference = 0d;
+        Color barColor = (valueInDouble > blueReference)? Color.BLUE: Color.GREEN;
+        t.barColorProperty().set(barColor);
         t.setValue(valueInDouble);
     }
 
@@ -121,4 +134,5 @@ public class StructureVisitor {
         retValue.setFont(variable.getFont());
         return retValue;
     }
+
 }

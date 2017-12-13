@@ -1,5 +1,5 @@
 /* RASPBERRY PARAMS */
-def host = "192.168.1.3"
+def host = "192.168.1.108"
 def user = "pi"
 def pwd = "raspberry"
 
@@ -30,6 +30,7 @@ print System.out
 
 def command = "sshpass -p " + pwd + " ssh " + user + "@" + host + " rm -rf ~/trz/trzpoc-gui && rm -f trzpoc-gui-bin.tar.gz"
 println "Delete previous folder and distribution tar"
+println command
 proc = command.execute()
 proc.waitForProcessOutput(System.out, System.err);
 print System.out
@@ -38,6 +39,7 @@ print System.err
 println "Copy and expand distribution tar"
 command = "sshpass -p " + pwd + " scp target/trzpoc-gui-bin.tar.gz " + user + "@" + host + ":~/trz/"
 //proc = "sshpass -p glamdring scp target/trzpoc-gui-bin.tar.gz talamona@192.168.1.101:~/trz/".execute()
+println command
 proc = command.execute();
 proc.waitForProcessOutput(System.out, System.err);
 print System.out

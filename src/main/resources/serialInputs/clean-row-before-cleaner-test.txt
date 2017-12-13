@@ -1,3 +1,4 @@
+^t10100 Prova senza comando ClearRow B86F
 ^t10900 Perdita max +camera1         mBarB86F
 ^n151091600000005DD71
 ^n151091600000005DD71

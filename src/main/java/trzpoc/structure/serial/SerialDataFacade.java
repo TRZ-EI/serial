@@ -53,18 +53,25 @@ public class SerialDataFacade {
 
 
     public Cell onSerialDataParser(byte[] data) throws UnsupportedEncodingException {
+        Cell retValue = null;
+
         // first step: what type of action?
         char command = this.readCommandFromData(data);
-
-        // second step: On command received, parse data
-        Cell retValue = this.parsersMap.get(Character.valueOf(command)).readByteArray(data);
+        if (command != '0') {
+            // second step: On command received, parse data
+            retValue = this.parsersMap.get(Character.valueOf(command)).readByteArray(data);
+        }
         return retValue;
     }
 
     private char readCommandFromData(byte[] data) {
+        char command = this.dataTypesConverter.byteToChar(data[0]);
         final int commandPos = 1;
         final int commandLenght = 1;
-        byte byteCommand = Arrays.copyOfRange(data, commandPos, commandPos + commandLenght)[0];
-        return this.dataTypesConverter.byteToChar(byteCommand);
+        if (command == '^') {
+            byte byteCommand = Arrays.copyOfRange(data, commandPos, commandPos + commandLenght)[0];
+            command = this.dataTypesConverter.byteToChar(byteCommand);
+        }
+        return command;
     }
 }

@@ -1,6 +1,6 @@
 package trzpoc.structure.serial;
 
-import trzpoc.structure.Variable;
+import trzpoc.structure.Number;
 import trzpoc.utils.DataTypesConverter;
 import trzpoc.utils.FontAndColorSelector;
 import trzpoc.utils.IdGeneratorByPosition;
@@ -49,7 +49,7 @@ public class NumberSerialDataParser implements SerialDataReader {
 
 
     @Override
-    public Variable readByteArray(byte[] data) throws UnsupportedEncodingException {
+    public Number readByteArray(byte[] data) throws UnsupportedEncodingException {
 
         byte fontColor = Arrays.copyOfRange(data, fontColorPos, fontColorPos + fontColorLenght)[0];
         char fc = this.converter.byteToChar(fontColor);
@@ -69,17 +69,11 @@ public class NumberSerialDataParser implements SerialDataReader {
         byte[] valueInBytes = Arrays.copyOfRange(data, valuePos, valuePos + valuelenght);
         long value  = this.converter.bytesToLong(valueInBytes);
 
-        Variable v = Variable.getInstance();
+        Number v = Number.getInstance();
         v.setIntegerLenght(integerDigits).setDecimalLenght(decimalDigits).setxPos(column).setyPos(row).setValue(Long.toString(value));
         v.setFont(FontAndColorSelector.getNewInstance().selectFont(fc)).setColor(FontAndColorSelector.getNewInstance().selectColor(fc));
         int id = String.valueOf(IdGeneratorByPosition.getNewInstanceByXAndY(column, row).invoke()).hashCode();
         v.setId(id);
-
-
-
-
-
-
         return v;
     }
 

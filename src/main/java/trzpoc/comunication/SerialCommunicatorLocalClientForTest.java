@@ -276,6 +276,7 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
                 BufferedReader reader = new BufferedReader(new FileReader(realFileName));
                 String line;
                 while ((line = reader.readLine()) != null) {
+                    line += this.calculateCrCForString(line);
                     line += this.END_OF_LINE;
                     list.add(line);
                 }
@@ -325,24 +326,61 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
 
     @Override
     public void run() {
-
-
-
-
-        
         this.connect();
         java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
         String input = "run";
         String clearCommand = "^C" + this.calculateCrCForString("^C") + this.END_OF_LINE;
 
+        //sde.runScenario("serialInputs/clean-row-before-cleaner-test.txt");
+        //sde.runScenario("serialInputs/clean-row-after-cleaner-test.txt");
+        //sde.runScenario("serialInputs/real-examples-prova3-fragment1-1.txt");
+        //sde.runScenario("serialInputs/real-examples-prova3-fragment1-2.txt");
+        //sde.runScenario("serialInputs/real-examples-prova3-fragment1-3.txt");
+        //sde.runScenario("serialInputs/real-examples-prova3-fragment1-4.txt");
+        //sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-bars.txt");
 
-
-
-        List<String> lines = this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1.txt");
+        List<String> lines = this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1-1-no-crc.txt");
         for (String line: lines){
+            System.out.println(line);
             this.writeData(line.getBytes());
             this.waitFor(500);
         }
+        lines = this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1-2-no-crc.txt");
+        for (String line: lines){
+            System.out.println(line);
+            this.writeData(line.getBytes());
+            this.waitFor(500);
+        }
+        lines = this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1-3-no-crc.txt");
+        for (String line: lines){
+            System.out.println(line);
+            this.writeData(line.getBytes());
+            this.waitFor(500);
+        }
+
+
+
+
+        lines = this.readTestScenaryAndProduceDataForTest("serialInputs/clean-row-before-cleaner-test-no-crc.txt");
+        for (String line: lines){
+            System.out.println(line);
+            this.writeData(line.getBytes());
+            this.waitFor(500);
+        }
+        lines = this.readTestScenaryAndProduceDataForTest("serialInputs/clean-row-after-cleaner-test-no-crc.txt");
+        for (String line: lines){
+            System.out.println(line);
+            this.writeData(line.getBytes());
+            this.waitFor(500);
+        }
+        lines = this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt");
+        for (String line: lines){
+            System.out.println(line);
+            this.writeData(line.getBytes());
+            this.waitFor(500);
+        }
+
+
 
     }
 

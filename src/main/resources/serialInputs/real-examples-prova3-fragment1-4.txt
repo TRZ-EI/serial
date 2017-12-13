@@ -1,81 +1,19 @@
 ^C3978
-^t10100 Prova 3 frammento 1 B86F
-^t10200prova trasmissione testo              trasmissione 3FF2
-^t30300prova trasmissione testo              trasmissione53A6
-^t20400prova trasmissione testo              trasmissione 5565
-^t40500prova trasmissione testo              trasmissione 9C67
-^t40600prova trasmissione testo              trasmissione 22F9
-^t10700prova trasmissione testo              trasmissione 23DE
-^t30800prova trasmissione testo              trasmissione 5FF3
-^t10900prova trasmissione testo              trasmissione 816C
-^t20A00prova trasmissione testo              trasmissione 6D3D
-^t10B00prova trasmissione testo              trasmissione F441
-^t20C00prova trasmissione testo              trasmissione 17D5
-^t10D00prova trasmissione testo              trasmissione 2C1B
-^t40E00prova trasmissione testo              trasmissione 2D3C
-^t10F00prova trasmissione testo              trasmissione C3DC
-^t21000prova trasmissione testo              trasmissione 5AA0
-^C3978
-^tE0100  -- TRZ -- Arona  (NO) Prova 3 frammento 1854C
-^t10300 Strumento per prove di tenuta 7362
-^t10400 Verifica memoria di calibrazione 3ABB
-^t10900 Vers firm. 150100-0 30b 640  A80C
-^t10B00 mod. MC15-G10  mat ------------ 9BDB
-^t30400 Calibrazione 0K                        3A63
-^t10500 Verifica memoria dati9EBE
-^t30500 Verifica memoria dati  OK    5B5C
-^C3978
-^tG0100  SELEZIONE COMANDI CF33
-^t60307Esecuzione prove  1DCC
-^t10407Programmazione parametri  380B
-^t10507Programmazione tappi DB9E
-^t10607Calibrazione strumento 0448
-^t10707Programmazione orologio  BE29
-^t10807Visualizzazione contapezzi  6ADB
-^t20B07F1 per selezionare in DOWN  12F1
-^t20C07F2 per selezionare in UP  DE33
-^t20D07ENT per eseguire  782F
-^C3978
-^t10000Verifica dati del bloccoAED9
-^n120001C000000010744
-^t30300Dati memorizzati OKF541
-^t30400Programmazione tappi OK03DA
-
-
-
-
-
-
-
-^C3978
-^tE0100    TEST EMERGENZA     754D
-^t20E00   ENT per uscireBB37
-^t10500   FUNGO EMERGENZA PIGIATOC02A
-^t10700   Sbloccare EMERGENZA e pigiare RES EMERGENZABE27
-^t10900   Attesa RES EMERGENZA9B41
-^t10B00   Fine test EMERGENZAEA07
-^C3978
-^t10100                                                           D568
-^t10000                                                           AAF8
-^t60000  Rilasciare i pulsanti5243
-^t10000                                                           AAF8
-^t10000   ATTESA START BLOCCO  0966
-^n120001C000000010744
-^C3978
+^t11200 Prova 3 frammento 4 B86F
 ^t10000    Chiusura     pinza A55C
 ^t10000      Chiusura       tappi 1571
 ^t40000   PROVA N 1           11C7
-^t10200   Press. P1=        Bar   Press. P2=        BarE559
+^t10200   Press. P1=         Bar   Press. P2=        BarE559
 ^tE0400   DP1=           mBar6163
-^tE0900   DP2=           mBar673D
+^tE0A00   DP2=           mBar673D
 ^t10606S2 =         mBar    S1 =         mBarF047
-^t10B06S4 =         mBar    S3 =         mBar6B55
+^t10D06S4 =         mBar    S3 =         mBar6B55
 ^n141060AFFFFFFD8EEA5
 ^n141061F00000005816F
-^n1410B0AFFFFFFD8EE3A
-^n1410B1F0000000AB453
+^n1410D0AFFFFFFD8EE3A
+^n1410D1F0000000AB453
 ^t10014Immiss.             sec  5482
-^V01441001702463020D03463022903463022A8953
+^V01441001F02433020E0343302278953
 ^v01000000310200000A1603000009FC03000009FCA971
 ^v01000000300200000A1603000009FC03000009FC6C45
 ^v010000002F0200000A1603000009FC03000009FC0F19
@@ -178,9 +116,9 @@
 ^v01000000010200000A1603000009FC03000009FC30D7
 ^v01000000000200000A1603000009FC03000009FCF5E3
 ^V05E410416819C
-^V06E410916F433
+^V06E410A16F433
 ^B05FFFFFFD800000005076689
-^B06FFFFFFD80000000A0C0D59
+^B06FFFFFFD80000000E0C0D59
 ^t10014Prova.               sec8FA8
 ^v01000000630200000A1603000009FC050000000054FA
 ^v060000000053CF
