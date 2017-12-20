@@ -29,38 +29,36 @@ public class VariableValueSerialDataParserTest {
     @DataProvider
     private Object[][] dataForTest(){
         return new Object[][]{
-                {"^v0A00000001","0000.1",
-                        Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(10).setValue("1")},
-                {"^v0200000001","0000.1",
-                        Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(2).setValue("1")},
-                {"^v0A00000002","0000.2",
-                        Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(10).setValue("2")},
-                {"^v0200000002","0000.2",
-                        Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(2).setValue("2")},
-                {"^v0A00000003", "0000.3",
-                        Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(10).setValue("3")},
-                {"^v0200000003", "0000.3",
-                        Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(2).setValue("3")},
-                {"^v0A00000004", "0000.4",
-                        Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(10).setValue("4")},
                 {"^v02FFFFFF79", "-0013.5",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(2).setValue("-135")},
-                {"^v05FFFFFFD80597","-0004.0",
+                {"^v05FFFFFFD8","-0004.0",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(5).setValue("-40")},
-                {"^v06FFFFFFF453CF","-0001.2",
+                {"^v06FFFFFFF4","-0001.2",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(6).setValue("-12")},
-                {"^v0500000003C0A3","0000.3",
+                {"^v0500000003","0000.3",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(5).setValue("3")},
-                {"^v060000000453CF","0000.4",
+                {"^v0600000004","0000.4",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(6).setValue("4")},
-                {"^v0500000005A3FF","0000.5",
+                {"^v0500000005","0000.5",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(5).setValue("5")},
-                {"^v060000000A53CF","0001.0",
+                {"^v060000000A","0001.0",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(6).setValue("10")},
-                {"^v05FFFFFFF9E4B2","-0000.7",
+                {"^v05FFFFFFF9","-0000.7",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(5).setValue("-7")},
-                {"^v06FFFFFFFF53CF","-0000.1",
+                {"^v06FFFFFFFF","-0000.1",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(6).setValue("-1")}
+        };
+    }
+    @DataProvider
+    private Object[][] wrongDataForTest(){
+        return new Object[][]{
+                {"^v0A0001"},
+                {"^v020001"},
+                {"^v0A000002"},
+                {"^v020000002"},
+                {"^v0A00003"},
+                {"^v020003"},
+                {"^v0A0000004"}
         };
     }
 
@@ -76,6 +74,10 @@ public class VariableValueSerialDataParserTest {
         assertEquals(actualValue, expectedValue);
         assertEquals(actualValue.getValue(), expectedValue.getValue());
         assertEquals(actualValue.prepareFormattedValue(), expectedFormattedValue);
+    }
+    @Test(dataProvider = "wrongDataForTest")
+    public void testReadByteArrayWithWrongDataLenght(String command) throws Exception {
+        assertNull(this.sut.readByteArray(command.getBytes()));
     }
 
 }

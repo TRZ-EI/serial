@@ -25,11 +25,6 @@ import java.util.regex.Pattern;
  */
 public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorInterface, Runnable {
 
-/*
- * To change this template, choose Tools | Templates
- * and open the template in the editor.
- */
-
 
     private Properties properties;
 
@@ -41,9 +36,6 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
     //the timeout value for connecting with the port
     final static int TIMEOUT = 2000;
 
-    //some ascii values for for certain things
-    final static int SPACE_ASCII = 32;
-    final static int DASH_ASCII = 45;
     private char END_OF_LINE;
 
     //a string for recording what goes on in the program
@@ -327,61 +319,24 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
     @Override
     public void run() {
         this.connect();
-        java.io.BufferedReader reader = new java.io.BufferedReader(new java.io.InputStreamReader(System.in));
-        String input = "run";
-        String clearCommand = "^C" + this.calculateCrCForString("^C") + this.END_OF_LINE;
+//        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-1-no-crc.txt");
+//        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-2-no-crc.txt");
+//        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-3-no-crc.txt");
+//        this.sendMessagesToRemoteClient("serialInputs/clean-row-before-cleaner-test-no-crc.txt");
+//        this.sendMessagesToRemoteClient("serialInputs/clean-row-after-cleaner-test-no-crc.txt");
+        for (int i = 0; i < 20; i++){
+            this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt");
+            this.waitFor(2000);
+        }
+    }
 
-        //sde.runScenario("serialInputs/clean-row-before-cleaner-test.txt");
-        //sde.runScenario("serialInputs/clean-row-after-cleaner-test.txt");
-        //sde.runScenario("serialInputs/real-examples-prova3-fragment1-1.txt");
-        //sde.runScenario("serialInputs/real-examples-prova3-fragment1-2.txt");
-        //sde.runScenario("serialInputs/real-examples-prova3-fragment1-3.txt");
-        //sde.runScenario("serialInputs/real-examples-prova3-fragment1-4.txt");
-        //sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-bars.txt");
-
-        List<String> lines = this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1-1-no-crc.txt");
+    private void sendMessagesToRemoteClient(String resource) {
+        List<String> lines = this.readTestScenaryAndProduceDataForTest(resource);
         for (String line: lines){
             System.out.println(line);
             this.writeData(line.getBytes());
-            this.waitFor(500);
+            this.waitFor(100);
         }
-        lines = this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1-2-no-crc.txt");
-        for (String line: lines){
-            System.out.println(line);
-            this.writeData(line.getBytes());
-            this.waitFor(500);
-        }
-        lines = this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1-3-no-crc.txt");
-        for (String line: lines){
-            System.out.println(line);
-            this.writeData(line.getBytes());
-            this.waitFor(500);
-        }
-
-
-
-
-        lines = this.readTestScenaryAndProduceDataForTest("serialInputs/clean-row-before-cleaner-test-no-crc.txt");
-        for (String line: lines){
-            System.out.println(line);
-            this.writeData(line.getBytes());
-            this.waitFor(500);
-        }
-        lines = this.readTestScenaryAndProduceDataForTest("serialInputs/clean-row-after-cleaner-test-no-crc.txt");
-        for (String line: lines){
-            System.out.println(line);
-            this.writeData(line.getBytes());
-            this.waitFor(500);
-        }
-        lines = this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt");
-        for (String line: lines){
-            System.out.println(line);
-            this.writeData(line.getBytes());
-            this.waitFor(500);
-        }
-
-
-
     }
 
     public void waitFor(int millis) {

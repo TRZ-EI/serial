@@ -37,17 +37,24 @@ public class VariableValueSerialDataParser implements SerialDataReader{
 
     @Override
     public Cell readByteArray(byte[] data) throws UnsupportedEncodingException {
+        Cell retValue = null;
+        if (this.controlDataLenght(data)) {
 
-        byte[] varId = Arrays.copyOfRange(data, idVariablePos, idVariablePos + idVariableLenght);
-        int id = this.converter.bytesToInt(varId);
+            byte[] varId = Arrays.copyOfRange(data, idVariablePos, idVariablePos + idVariableLenght);
+            int id = this.converter.bytesToInt(varId);
 
-        byte [] varValue = Arrays.copyOfRange(data, valuePos, valuePos + valueLenght);
-        long value = this.converter.bytesToLong(varValue);
+            byte[] varValue = Arrays.copyOfRange(data, valuePos, valuePos + valueLenght);
+            long value = this.converter.bytesToLong(varValue);
 
-        byte[] crcValue = Arrays.copyOfRange(data, crcPos, crcPos + crcLenght);
-        int crc = this.converter.notAsciiBytesToInt(crcValue);
+            byte[] crcValue = Arrays.copyOfRange(data, crcPos, crcPos + crcLenght);
+            int crc = this.converter.notAsciiBytesToInt(crcValue);
+            retValue = Variable.getInstance().setAConfiguration(false).setId(id).setValue(Long.toString(value));
+        }
+        return retValue;
+    }
 
-        return Variable.getInstance().setAConfiguration(false).setId(id).setValue(Long.toString(value));
+    private boolean controlDataLenght(byte[] data) {
+        return (data.length == 12);
     }
 
     public static VariableValueSerialDataParser getInstance() {

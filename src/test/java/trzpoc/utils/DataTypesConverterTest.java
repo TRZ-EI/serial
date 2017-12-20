@@ -46,7 +46,8 @@ public class DataTypesConverterTest {
                 {new byte[]{'1','4'}, 20},
                 {new byte[]{'F','F','F','F','F','F','D','8'}, -40}, // signed HEX values
                 {new byte[]{'0','0','0','0','0','0','0','5'}, 5},
-                {"00000001".getBytes(), 1}
+                {"00000001".getBytes(), 1},
+                {"FFFF".getBytes(), 65535}
         };
     }
     @DataProvider
@@ -65,7 +66,8 @@ public class DataTypesConverterTest {
                 {new byte[]{49,0x37,0x32,57}, 5929L}, // MIXED ASCII/HEX VALUES (1729)
                 {new byte[]{49, 0x39}, 25L}, // MIXED ASCII/HEX VALUES (19)
                 {new byte[]{'F','F','F','F','F','F','D','8'}, -40}, // signed HEX values
-                {new byte[]{'0','0','0','0','0','0','0','5'}, 5}
+                {new byte[]{'0','0','0','0','0','0','0','5'}, 5},
+                {"FFFF".getBytes(), 65535}
 
         };
     }
@@ -86,6 +88,7 @@ public class DataTypesConverterTest {
                 {new byte[]{49, 0x39}, 25L}, // MIXED ASCII/HEX VALUES (19)
                 {new byte[]{0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x65,0x64}, -19L},
                 {new byte[]{0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,0x66,57,51,0x66}, -1729L}, // MIXED ASCII/HEX VALUES (-1729)
+
 
         };
     }

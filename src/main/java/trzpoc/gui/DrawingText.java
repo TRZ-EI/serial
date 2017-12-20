@@ -34,6 +34,7 @@ import trzpoc.structure.Cell;
 import trzpoc.structure.StructureVisitor;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
+import trzpoc.utils.SerialDataEmulator;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
@@ -131,7 +132,9 @@ public class DrawingText extends Application {
     }
     private void writeTextOnScene(String value) throws UnsupportedEncodingException {
         Cell variable = this.facade.onSerialDataInput(value.getBytes());
-        variable.accept(this.visitor);
+        if(variable != null){
+            variable.accept(this.visitor);
+        }
     }
 
     private void readProperties() throws FileNotFoundException {
@@ -169,7 +172,7 @@ public class DrawingText extends Application {
             serialDataManager.connectToSerialPort();
 
 
-            //SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 1000);
+            SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 1000);
 
             //sde.runScenario("serialInputs/clean-row-before-cleaner-test.txt");
             //sde.runScenario("serialInputs/clean-row-after-cleaner-test.txt");
@@ -177,7 +180,7 @@ public class DrawingText extends Application {
             //sde.runScenario("serialInputs/real-examples-prova3-fragment1-2.txt");
             //sde.runScenario("serialInputs/real-examples-prova3-fragment1-3.txt");
             //sde.runScenario("serialInputs/real-examples-prova3-fragment1-4.txt");
-            //sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-bars.txt");
+            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt");
 
 
 
