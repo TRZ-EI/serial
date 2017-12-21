@@ -1,12 +1,12 @@
 /* RASPBERRY PARAMS */
-def host = "192.168.1.115"
-def user = "pi"
-def pwd = "raspberry"
+//def host = "192.168.1.115"
+//def user = "pi"
+//def pwd = "raspberry"
 
 /* LAPTOP PARAMS */
-//def host = "192.168.1.111"
-//def user = "luigi"
-//def pwd = "glamdring"
+def host = "192.168.1.111"
+def user = "luigi"
+def pwd = "glamdring"
 
 
 /*

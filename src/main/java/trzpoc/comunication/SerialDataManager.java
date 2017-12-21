@@ -1,9 +1,8 @@
 package trzpoc.comunication;
 
-import gnu.io.NoSuchPortException;
-import gnu.io.PortInUseException;
-import gnu.io.SerialPort;
-import gnu.io.SerialPortEvent;
+import com.fazecast.jSerialComm.SerialPort;
+import com.fazecast.jSerialComm.SerialPortDataListener;
+import com.fazecast.jSerialComm.SerialPortEvent;
 import javafx.beans.property.BooleanProperty;
 import javafx.beans.property.SimpleBooleanProperty;
 import trzpoc.crc.CRC16CCITT;
@@ -59,68 +58,61 @@ public class SerialDataManager {
     }
 
 
-    public boolean connectToSerialPort() throws IOException, NoSuchPortException, PortInUseException {
-        this.serialCommunicator = new SerialCommunicator();
-        this.serialPort = this.serialCommunicator.connectToSerialPort();
+    public boolean connectToSerialPort() throws IOException{
+        this.serialPort = SerialPort.getCommPort("/dev/ttyUSB0");
+        this.serialPort.setBaudRate(115200);
+        this.serialPort.setComPortParameters(115200, 8, SerialPort.ONE_STOP_BIT, SerialPort.NO_PARITY);
+        this.serialPort.openPort();
         if (serialPort != null){
             System.out.println("Connected !!!");
         }
         StringBuilder message = new StringBuilder();
         try {
-            serialPort.notifyOnDataAvailable(true);
-            serialPort.addEventListener((SerialPortEvent serialPortEvent) -> {
-                long timeStart = 0;
+
+            serialPort.addDataListener(new SerialPortDataListener() {
                 int data = 0;
-                if (serialPortEvent.getEventType() == SerialPortEvent.DATA_AVAILABLE) {
+                @Override
+                public int getListeningEvents() { return SerialPort.LISTENING_EVENT_DATA_AVAILABLE; }
+                @Override
+                public void serialEvent(SerialPortEvent event)
+                {
+                    if (event.getEventType() != SerialPort.LISTENING_EVENT_DATA_AVAILABLE){
+                        return;
+                    }
                     try {
                         while ( ( data = serialPort.getInputStream().read()) > -1 ){
-                            if ( data == this.NEW_LINE ) {
-                                timeStart = System.nanoTime();
+                            if ( data == NEW_LINE ) {
                                 break;
                             }
                             message.append((char) data);
                         }
-
-
-
-
-
-
-                        //int value = serialPort.getInputStream().available();
-                        //byte[] data = new byte[value];
-                        //int read = serialPort.getInputStream().read(data);
-
-                        //for (byte b: data){
-                        //    message.append((char)b);
-                        //}
                         if (message.toString().startsWith("^")) {
 
                             // ONLY ONE MESSAGE
-                            boolean isValid = this.calculateCRC(new String[]{message.toString()});
+                            boolean isValid = calculateCRC(new String[]{message.toString()});
                             if (isValid) {
                                 // TO MANAGE MULTIPLE COMMANDS IN A SINGLE ROW
-                                List<String> commands = this.multipleCommandSplitter.splitMultipleCommand(message.toString());
-                                this.serialBuffer.addAll(commands);
-                                long elapsedTime = (System.nanoTime() - timeStart) / 1000;
-                                this.serialPort.getOutputStream().write(new String("elapsed (micros) " + elapsedTime + this.NEW_LINE).getBytes());
-                                this.serialPort.getOutputStream().flush();
+                                List<String> commands = multipleCommandSplitter.splitMultipleCommand(message.toString());
+                                serialBuffer.addAll(commands);
+                                serialPort.getOutputStream().write(new String("OK").getBytes());
+                                serialPort.getOutputStream().flush();
                             }
                             else{
-                                this.serialPort.getOutputStream().write(new String("KO: " + message.toString() + this.NEW_LINE).getBytes());
-                                this.serialPort.getOutputStream().flush();
+                                serialPort.getOutputStream().write(new String("KO: " + message.toString() + NEW_LINE).getBytes());
+                                serialPort.getOutputStream().flush();
                             }
-                            //message.setLength(0);
-
                         }
                         message.setLength(0);
 
-                    } catch (Exception e) {
-                        String error = message.toString();
-                        System.out.println("Failed to read data. (" + e.toString() + ")");
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
                 }
             });
-        } catch (TooManyListenersException e) {
+
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return this.serialPort != null;
@@ -160,11 +152,11 @@ public class SerialDataManager {
         boolean retValue = true;
         if(this.serialPort != null){
             System.out.println("disconnectFromSerialPort()");
-            this.serialPort.removeEventListener();
+            this.serialPort.removeDataListener();
             try {
                 this.serialPort.getOutputStream().close();
                 this.serialPort.getInputStream().close();
-                this.serialPort.close();
+                this.serialPort.closePort();
             } catch (Exception e) {
                 retValue = false;
                 e.printStackTrace();

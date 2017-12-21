@@ -1,7 +1,7 @@
 package trzpoc.comunication;
 
 
-import gnu.io.*;
+import com.fazecast.jSerialComm.SerialPort;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import trzpoc.crc.CRC16CCITT;
@@ -49,7 +49,6 @@ public class SerialCommunicator implements SerialCommunicatorInterface {
     //this string is written to the GUI
     String logText = "";
 
-    private CommPortIdentifier selectedPortIdentifier;
     private SerialPort serialPort;
     private StringBuffer buffer;
 
@@ -94,13 +93,13 @@ public class SerialCommunicator implements SerialCommunicatorInterface {
         return this.serialPort;
     }
 
-    public SerialPort connectToSerialPort() throws NoSuchPortException, PortInUseException, IOException {
+    public SerialPort connectToSerialPort(){
         String selectedPort = this.properties.getProperty(Keys.PORT.toString());
 
-        selectedPortIdentifier = CommPortIdentifier.getPortIdentifier(selectedPort);
+
         //the method below returns an object of type CommPort
-        this.serialPort = (SerialPort) selectedPortIdentifier.open("TRZ-poc", TIMEOUT);
-        this.serialPort.disableReceiveTimeout();
+        this.serialPort = SerialPort.getCommPort(selectedPort);
+        //this.serialPort.disableReceiveTimeout();
         this.setSerialPortParameters();
         return this.serialPort;
     }
