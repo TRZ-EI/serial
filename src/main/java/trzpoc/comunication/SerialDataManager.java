@@ -13,7 +13,6 @@ import trzpoc.utils.ConfigurationHolder;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.TooManyListenersException;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.LinkedBlockingQueue;
 
@@ -27,7 +26,7 @@ public class SerialDataManager {
     private char NEW_LINE;
 
     private SerialPort serialPort;
-    private SerialCommunicator serialCommunicator;
+    //private SerialCommunicator serialCommunicator;
     private MultipleCommandSplitter multipleCommandSplitter;
     private BlockingQueue<String> serialBuffer;
     private BooleanProperty isDataAvalaible = new SimpleBooleanProperty(false);
@@ -58,7 +57,7 @@ public class SerialDataManager {
     }
 
 
-    public boolean connectToSerialPort() throws IOException{
+    public SerialPort connectToSerialPort() throws IOException{
         this.serialPort = SerialPort.getCommPort("/dev/ttyUSB0");
         this.serialPort.setBaudRate(115200);
         this.serialPort.setComPortParameters(115200, 8, SerialPort.ONE_STOP_BIT, SerialPort.NO_PARITY);
@@ -115,7 +114,7 @@ public class SerialDataManager {
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return this.serialPort != null;
+        return this.serialPort;
     }
 
     private boolean calculateCRC(String[] messages) {

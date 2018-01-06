@@ -10,6 +10,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import trzpoc.gui.hansolo.skins.TRZLinearSkin;
 import trzpoc.structure.*;
+import trzpoc.utils.ConfigurationHolder;
 import trzpoc.utils.FontAndColorSelector;
 
 import java.util.HashMap;
@@ -28,6 +29,7 @@ public class GraphicDesigner {
 
     public GraphicDesigner() {
         this.fcs = FontAndColorSelector.getNewInstance();
+        this.debug = ConfigurationHolder.getInstance().getProperties().getProperty(ConfigurationHolder.DEBUG);
     }
 
 
@@ -102,9 +104,9 @@ public class GraphicDesigner {
 
 
     public void drawGridForGraphicHelp(Canvas gridCanvas){
-        this.drawHorizontalLinesOnCanvas(gridCanvas);
-        this.drawVerticalLinesOnCanvas(gridCanvas);
         if (this.debug != null && this.debug.equalsIgnoreCase("debug")) {
+            this.drawHorizontalLinesOnCanvas(gridCanvas);
+            this.drawVerticalLinesOnCanvas(gridCanvas);
         }
     }
 

@@ -1,7 +1,7 @@
 package trzpoc.comunication;
 
 
-import gnu.io.*;
+import com.fazecast.jSerialComm.SerialPort;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
 import trzpoc.crc.CRC16CCITT;
@@ -14,7 +14,6 @@ import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
-import java.util.TooManyListenersException;
 import java.util.regex.Pattern;
 
 /**
@@ -42,7 +41,6 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
     //this string is written to the GUI
     String logText = "";
 
-    private CommPortIdentifier selectedPortIdentifier;
     private SerialPort serialPort;
     private StringBuffer buffer;
 
@@ -66,84 +64,40 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
     }
 
     public SerialPort connect() {
-        String selectedPort = this.properties.getProperty(Keys.PORT.toString());
-
         try {
-            this.serialPort = this.connectToSerialPort();
-
-            //this.serialPort.setLowLatency();
-
+            this.serialPort = SerialDataManager.createNewInstance().connectToSerialPort();
             this.initIOStream();
-            this.initListener();
-            //logging
-            logText = selectedPort + " opened successfully.";
-            System.out.println(logText);
-        }
-        catch (NoSuchPortException e){
-            logText = selectedPort + " doesn't exist. (" + e.toString() + ")";
-            System.out.println(logText);
-        }
-        catch (PortInUseException e){
-            logText = selectedPort + " is in use. (" + e.toString() + ")";
-            System.out.println(logText);
-        }
-        catch (Exception e){
-            logText = "Failed to open " + selectedPort + "(" + e.toString() + ")";
-            System.out.println(logText);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
         return this.serialPort;
     }
 
-    public SerialPort connectToSerialPort() throws NoSuchPortException, PortInUseException, IOException {
-        String selectedPort = this.properties.getProperty(Keys.PORT.toString());
-
-        selectedPortIdentifier = CommPortIdentifier.getPortIdentifier(selectedPort);
-        //the method below returns an object of type CommPort
-        this.serialPort = (SerialPort) selectedPortIdentifier.open("TRZ-poc", TIMEOUT);
-        this.serialPort.disableReceiveTimeout();
-        this.setSerialPortParameters();
-        return this.serialPort;
-    }
 
     //open the input and output streams
     //pre: an open port
     //post: initialized intput and output streams for use to communicate data
     public boolean initIOStream(){
-        boolean successful = false;
-        try {
-            input = serialPort.getInputStream();
-            output = serialPort.getOutputStream();
-            this.writer = new SerialWriter(output);
-            Thread t = new Thread(this.writer);
-            t.setPriority(Thread.MAX_PRIORITY);
-            t.start();
-            successful = true;
-        } catch (IOException e) {
-            logText = "I/O Streams failed to open. (" + e.toString() + ")";
-        }
-        return successful;
+        input = serialPort.getInputStream();
+        output = serialPort.getOutputStream();
+        this.writer = new SerialWriter(output);
+        Thread t = new Thread(this.writer);
+        t.setPriority(Thread.MAX_PRIORITY);
+        t.start();
+        return (input != null && output != null);
     }
     //starts the event listener that knows whenever data is available to be read
     //pre: an open serial port
     //post: an event listener for the serial port that knows when data is recieved
-    public void initListener(){
-        try{
-            serialPort.addEventListener(new SerialReader(this.input, this));
-            serialPort.notifyOnDataAvailable(true);
-        }catch (TooManyListenersException e){
-            logText = "Too many listeners. (" + e.toString() + ")";
-            System.out.println(logText);
-        }
-    }
     public void disconnect(){
         try{
-            serialPort.removeEventListener();
-            serialPort.close();
+            serialPort.removeDataListener();
             input.close();
             output.close();
+            serialPort.closePort();
             System.out.println("Disconnected.");
         }catch (Exception e){
-            System.out.println("Failed to close " + serialPort.getName() + "(" + e.toString() + ")");
+            System.out.println("Failed to close " + serialPort.getDescriptivePortName() + "(" + e.toString() + ")");
         }
     }
 
@@ -244,23 +198,6 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
             System.out.println(logText);
         }
     }
-    private void setSerialPortParameters() throws IOException {
-        String baudRate = this.properties.getProperty(Keys.BAUD_RATE.toString());
-        int baudRateValue = Integer.valueOf(baudRate); // 57600bps
-        try {
-            // Set serial port to 57600bps-8N1..my favourite
-            this.serialPort.setSerialPortParams(
-                    baudRateValue,
-                    SerialPort.DATABITS_8,
-                    SerialPort.STOPBITS_1,
-                    SerialPort.PARITY_NONE);
-
-            this.serialPort.setFlowControlMode(
-                    SerialPort.FLOWCONTROL_NONE);
-        } catch (UnsupportedCommOperationException ex) {
-            throw new IOException("Unsupported serial port parameter");
-        }
-    }
     public List<String> readTestScenaryAndProduceDataForTest(String scenary){
         List<String> list = new ArrayList<>();
         String realFileName = this.getClass().getClassLoader().getResource(scenary).getFile();
@@ -319,14 +256,18 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
     @Override
     public void run() {
         this.connect();
-//        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-1-no-crc.txt");
-//        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-2-no-crc.txt");
-//        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-3-no-crc.txt");
-//        this.sendMessagesToRemoteClient("serialInputs/clean-row-before-cleaner-test-no-crc.txt");
-//        this.sendMessagesToRemoteClient("serialInputs/clean-row-after-cleaner-test-no-crc.txt");
-        for (int i = 0; i < 20; i++){
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-1-no-crc.txt");
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-2-no-crc.txt");
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-3-no-crc.txt");
+        this.sendMessagesToRemoteClient("serialInputs/clean-row-before-cleaner-test-no-crc.txt");
+        this.sendMessagesToRemoteClient("serialInputs/clean-row-after-cleaner-test-no-crc.txt");
+        for (int i = 0; i < 200; i++){
             this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt");
-            this.waitFor(2000);
+            String testHeader = "^t11215 cycle # " + i;
+            testHeader += this.calculateCrCForString(testHeader);
+            testHeader += this.END_OF_LINE;
+            this.writeData(testHeader.getBytes());
+            this.waitFor(500);
         }
     }
 

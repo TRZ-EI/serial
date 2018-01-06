@@ -35,6 +35,7 @@ public class NumericFormatterByIntAndDecimals {
         }
         double calculatedValue = (double)tempValue / divisor;
         String formattedValue = new DecimalFormat(this.createFormat()).format(calculatedValue);
+        /*
         int integerPlaces = formattedValue.indexOf('.');
         if (integerPlaces >= 0 && integerPlaces < this.integerPart){
             StringBuilder sb = new StringBuilder();
@@ -43,6 +44,7 @@ public class NumericFormatterByIntAndDecimals {
             }
             formattedValue = sb.toString() + formattedValue;
         }
+        */
         if (negative){
             formattedValue = "-" + formattedValue;
         }

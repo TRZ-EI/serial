@@ -34,7 +34,6 @@ import trzpoc.structure.Cell;
 import trzpoc.structure.StructureVisitor;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
-import trzpoc.utils.SerialDataEmulator;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
@@ -54,6 +53,7 @@ public class DrawingText extends Application {
 
     private final String DEFAULT_RESOURCE_FILE_NAME = "application.properties";
     private StructureVisitor visitor;
+    private Canvas canvasForGrid;
 
 
     @Override public void start(Stage stage) throws FileNotFoundException, UnsupportedEncodingException, InterruptedException {
@@ -85,11 +85,20 @@ public class DrawingText extends Application {
     }
 
     public void drawGridOnCanvas() {
-        Canvas canvasForGrid = new Canvas(800d, 480d);
-        GraphicDesigner.createNewInstance().drawGridForGraphicHelp(canvasForGrid);
-        canvasForGrid.toFront();
-        this.addTouchEventToExit(canvasForGrid);
-        root.getChildren().add(canvasForGrid);
+        this.canvasForGrid = this.getSingleTonCanvasForGrid();
+        this.root.getChildren().add(this.canvasForGrid);
+        this.canvasForGrid.toFront();
+    }
+
+    private Canvas getSingleTonCanvasForGrid() {
+        if (this.canvasForGrid == null){
+            this.canvasForGrid = new Canvas(800d,480d);
+            GraphicDesigner.createNewInstance().drawGridForGraphicHelp(this.canvasForGrid);
+            this.addTouchEventToExit(this.canvasForGrid);
+        }
+        return this.canvasForGrid;
+
+
     }
 
     private void addCombinationKeyAcceleratorToExit(Stage primaryStage) {
@@ -167,25 +176,24 @@ public class DrawingText extends Application {
         @Override
         public Void call() throws Exception {
 
-            serialBuffer.add("^V073310509f465\n");
             serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(serialBuffer);
             serialDataManager.connectToSerialPort();
 
 
-            SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 1000);
 
-            //sde.runScenario("serialInputs/clean-row-before-cleaner-test.txt");
-            //sde.runScenario("serialInputs/clean-row-after-cleaner-test.txt");
-            //sde.runScenario("serialInputs/real-examples-prova3-fragment1-1.txt");
-            //sde.runScenario("serialInputs/real-examples-prova3-fragment1-2.txt");
-            //sde.runScenario("serialInputs/real-examples-prova3-fragment1-3.txt");
-            //sde.runScenario("serialInputs/real-examples-prova3-fragment1-4.txt");
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt");
-
-
-
-            //sde.runScenario("serialInputs/barAndVariable-fragment.txt");
-            //sde.runScenario("serialInputs/real-examples-prova2.txt");
+            /*
+            SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 200);
+//            sde.runScenario("serialInputs/clean-row-before-cleaner-test.txt");
+//            sde.runScenario("serialInputs/clean-row-after-cleaner-test.txt");
+//            sde.runScenario("serialInputs/real-examples-prova3-fragment1-1.txt");
+//            sde.runScenario("serialInputs/real-examples-prova3-fragment1-2.txt");
+//            sde.runScenario("serialInputs/real-examples-prova3-fragment1-3.txt");
+//            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4.txt");
+//            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt");
+//            sde.runScenario("serialInputs/barAndVariable-fragment.txt");
+//            sde.runScenario("serialInputs/real-examples-prova2.txt");
+            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlign-no-crc.txt");
+            */
 
             while (true) {
 
