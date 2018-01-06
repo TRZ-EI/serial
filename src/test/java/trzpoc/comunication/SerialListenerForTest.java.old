@@ -1,7 +1,5 @@
 package trzpoc.comunication;
 
-import gnu.io.NoSuchPortException;
-import gnu.io.PortInUseException;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import trzpoc.utils.ConfigurationHolder;

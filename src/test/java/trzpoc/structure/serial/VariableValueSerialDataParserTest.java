@@ -29,23 +29,23 @@ public class VariableValueSerialDataParserTest {
     @DataProvider
     private Object[][] dataForTest(){
         return new Object[][]{
-                {"^v02FFFFFF79", "-0013.5",
+                {"^v02FFFFFF79", "-13.5",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(2).setValue("-135")},
-                {"^v05FFFFFFD8","-0004.0",
+                {"^v05FFFFFFD8","-4.0",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(5).setValue("-40")},
-                {"^v06FFFFFFF4","-0001.2",
+                {"^v06FFFFFFF4","-1.2",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(6).setValue("-12")},
-                {"^v0500000003","0000.3",
+                {"^v0500000003",".3",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(5).setValue("3")},
-                {"^v0600000004","0000.4",
+                {"^v0600000004",".4",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(6).setValue("4")},
-                {"^v0500000005","0000.5",
+                {"^v0500000005",".5",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(5).setValue("5")},
-                {"^v060000000A","0001.0",
+                {"^v060000000A","1.0",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(6).setValue("10")},
-                {"^v05FFFFFFF9","-0000.7",
+                {"^v05FFFFFFF9","-.7",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(5).setValue("-7")},
-                {"^v06FFFFFFFF","-0000.1",
+                {"^v06FFFFFFFF","-.1",
                         Variable.getInstance().setIntegerLenght(4).setDecimalLenght(1).setAConfiguration(false).setId(6).setValue("-1")}
         };
     }

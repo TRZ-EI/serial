@@ -3,10 +3,12 @@ package trzpoc.structure;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import eu.hansolo.medusa.Gauge;
+import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import trzpoc.gui.DrawingText;
 import trzpoc.gui.GraphicDesigner;
+import trzpoc.utils.RightTextAligner;
 
 import java.util.Collection;
 import java.util.HashMap;
@@ -24,9 +26,11 @@ public class StructureVisitor {
     private DrawingText mainWindow;
     private Multimap<Integer, Node> multipleItems = ArrayListMultimap.create();
     private Map<Integer, Variable> configurations = new HashMap<>();
+    private RightTextAligner rightTextAligner;
 
     public StructureVisitor(DrawingText drawingText) {
         this.mainWindow = drawingText;
+        this.rightTextAligner = new RightTextAligner();
     }
     public void visit(Text cell){
         value = cell.getValue();
@@ -61,7 +65,9 @@ public class StructureVisitor {
     }
 
     public void visit(Clear cell){
-        this.mainWindow.getRoot().getChildren().clear();
+        //this.mainWindow.getRoot().getScene().
+        ObservableList<Node> nodes = this.mainWindow.getRoot().getChildren();
+        this.mainWindow.getRoot().getChildren().removeAll(nodes);
         this.mainWindow.getRows().clear();
         this.mainWindow.drawGridOnCanvas();
     }
@@ -127,7 +133,8 @@ public class StructureVisitor {
         String id = String.valueOf(variable.getId());
         javafx.scene.text.Text retValue;
         retValue = new javafx.scene.text.Text();
-        retValue.setX(variable.getPixelScreenXPos());
+        int rightPos = this.rightTextAligner.calculatePrintingPositionByCell(variable);
+        retValue.setX(rightPos);
         retValue.setY(variable.getPixelScreenYPos());
         retValue.setId(id);
         retValue.setFill(variable.getColor());
