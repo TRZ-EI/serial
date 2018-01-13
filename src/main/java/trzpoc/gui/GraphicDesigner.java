@@ -2,14 +2,13 @@ package trzpoc.gui;
 
 import eu.hansolo.medusa.Gauge;
 import eu.hansolo.medusa.GaugeBuilder;
-import eu.hansolo.medusa.Section;
 import javafx.geometry.Orientation;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import trzpoc.gui.hansolo.skins.TRZLinearSkin;
-import trzpoc.structure.*;
+import trzpoc.structure.Bar;
 import trzpoc.utils.ConfigurationHolder;
 import trzpoc.utils.FontAndColorSelector;
 
@@ -58,7 +57,7 @@ public class GraphicDesigner {
     public Gauge configureBar(Bar cellBar) {
         // TODO: EXPERIMENTS WITH BARS
         double prefHeight = 200d;
-        double prefWidth = 700d;
+        double prefWidth = 800d;
         int pixelScreenYPos = cellBar.getPixelScreenYPos();
 
 
@@ -66,15 +65,15 @@ public class GraphicDesigner {
         bar = this.createOrUpdateHorizontalBar(cellBar.getMinValue(), cellBar.getMaxValue());
 
         //Gauge
-        bar.addSection(new Section(cellBar.getMinValue(), 0, Color.GREEN));
-        bar.addSection(new Section(0, cellBar.getMaxValue(), Color.BLUE));
+        //bar.addSection(new Section(cellBar.getMinValue(), 0, Color.GREEN));
+        //bar.addSection(new Section(0, cellBar.getMaxValue(), Color.BLUE));
 
         bar.setValue(cellBar.getMinValue());
         bar.setMinValue(cellBar.getMinValue());
         bar.setMaxValue(cellBar.getMaxValue());
 
         bar.setPrefSize(prefWidth, prefHeight);
-        bar.setLayoutX(30);
+        bar.setLayoutX(0);
         bar.setLayoutY(pixelScreenYPos - prefHeight / 2);
         return bar;
     }
@@ -84,12 +83,13 @@ public class GraphicDesigner {
                 .value(minValue)
                 .minValue(minValue)
                 .maxValue(maxValue)
-                .skinType(Gauge.SkinType.LINEAR)
+                .startFromZero(true)
                 .orientation(Orientation.HORIZONTAL)
                 .sectionsVisible(true)
                 .valueVisible(false)
                 .foregroundBaseColor(Color.BLUE)
                 .barColor(Color.GREEN)
+                
                 /*
                 .sections(new Section(minValue, 0, Color.GREEN),
                         new Section(0, maxValue, Color.BLUE)
