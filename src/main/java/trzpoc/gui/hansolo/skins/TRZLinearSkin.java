@@ -52,6 +52,7 @@ public class TRZLinearSkin extends GaugeSkinBase {
     private Orientation           orientation;
     private Line                  barBorder1;
     private Line                  barBorder2;
+    private Line                  zeroMark;
     private Rectangle             barBackground;
     private Rectangle             bar;
     private Rectangle             barHighlight;
@@ -103,6 +104,7 @@ public class TRZLinearSkin extends GaugeSkinBase {
 
         barBorder1 = new Line();
         barBorder2 = new Line();
+        this.zeroMark = new Line();
 
         barBackground = new Rectangle();
         bar = new Rectangle();
@@ -114,6 +116,7 @@ public class TRZLinearSkin extends GaugeSkinBase {
 
         pane = new Pane(barBorder1,
                         barBorder2,
+                        this.zeroMark,
                         barBackground,
                         bar,
                         barHighlight);
@@ -397,17 +400,28 @@ public class TRZLinearSkin extends GaugeSkinBase {
                 maxValuePosition = barBackground.getLayoutX() + barBackground.getLayoutBounds().getWidth();
                 zeroPosition     = minValuePosition - gauge.getMinValue() * stepSize;
 
+                double ypos1 = barBackground.getLayoutY() - 1;
+                double ypos2 = barBackground.getLayoutY() + barBackground.getLayoutBounds().getHeight() + 1;
+
                 barBorder1.setStartX(minValuePosition);
-                barBorder1.setStartY(barBackground.getLayoutY() - 1);
+                barBorder1.setStartY(ypos1);
                 barBorder1.setEndX(maxValuePosition);
-                barBorder1.setEndY(barBackground.getLayoutY() - 1);
+                barBorder1.setEndY(ypos1);
+
                 barBorder2.setStartX(minValuePosition);
-                barBorder2.setStartY(barBackground.getLayoutY() + barBackground.getLayoutBounds().getHeight() + 1);
+                barBorder2.setStartY(ypos2);
                 barBorder2.setEndX(maxValuePosition);
-                barBorder2.setEndY(barBackground.getLayoutY() + barBackground.getLayoutBounds().getHeight() + 1);
+                barBorder2.setEndY(ypos2);
 
                 barBorder1.setStroke(barBorderColor);
                 barBorder2.setStroke(barBorderColor);
+
+                this.zeroMark.setStartX(zeroPosition);
+                this.zeroMark.setStartY(ypos1);
+                this.zeroMark.setEndX(zeroPosition);
+                this.zeroMark.setEndY(ypos2);
+                this.zeroMark.setStroke(Color.BLUE);
+                this.zeroMark.setStrokeWidth(3);
 
                 bar.setHeight(0.14286 * height);
                 bar.setLayoutX(0);

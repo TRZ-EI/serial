@@ -60,7 +60,9 @@ public class StructureVisitor {
             retValue = (Variable) cell.setDecimalLenght(configuration.getDecimalLenght())
                     .setIntegerLenght(configuration.getIntegerLenght()).setFont(configuration.getFont())
                     .setColor(configuration.getColor()).setxPos(configuration.getxPos()).setyPos(configuration.getyPos());
-    }
+        }else{
+            retValue = cell;
+        }
         return retValue;
     }
 
@@ -112,13 +114,14 @@ public class StructureVisitor {
     private void update(javafx.scene.text.Text t){
         t.setText(this.value);
     }
+
     private void update(Gauge t, String rawValue){
         double valueInDouble = Double.parseDouble(rawValue);
-        double delta = t.getMaxValue() - t.getMinValue();
-        //double blueReference = t.getMinValue() + 0.8 * delta;
-        double blueReference = 0d;
-        Color barColor = (valueInDouble > blueReference)? Color.BLUE: Color.GREEN;
-        t.barColorProperty().set(barColor);
+        if (valueInDouble >= t.getMaxValue() || valueInDouble <= t.getMinValue()){
+            t.barColorProperty().set(Color.RED);
+        }else{
+            t.barColorProperty().set(Color.GREEN);
+        }
         t.setValue(valueInDouble);
     }
 

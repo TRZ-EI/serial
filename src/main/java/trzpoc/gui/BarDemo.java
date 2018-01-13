@@ -17,12 +17,15 @@
 package trzpoc.gui;
 
 import eu.hansolo.medusa.Gauge;
+import eu.hansolo.medusa.GaugeBuilder;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
+import javafx.geometry.Orientation;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
+import trzpoc.gui.hansolo.skins.TRZLinearSkin;
 import trzpoc.utils.ConfigurationHolder;
 
 import java.io.FileNotFoundException;
@@ -45,9 +48,8 @@ public class BarDemo extends Application {
 
         this.readProperties();
 
-        gauge21 = GraphicDesigner.createNewInstance().createOrUpdateHorizontalBar(-2, 1);
 
-/*        gauge21 = GaugeBuilder.create()
+        gauge21 = GaugeBuilder.create()
                               //.skinType(SkinType.LINEAR)
                               //.title("Linear")
             .tickLabelDecimals(0)
@@ -67,7 +69,7 @@ public class BarDemo extends Application {
                 
             .build();
         gauge21.setSkin(new TRZLinearSkin(gauge21));
-*/
+
         lastTimerCall = System.nanoTime();
         timer = new AnimationTimer() {
             @Override public void handle(long now) {

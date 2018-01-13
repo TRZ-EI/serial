@@ -57,44 +57,38 @@ public class GraphicDesigner {
     public Gauge configureBar(Bar cellBar) {
         // TODO: EXPERIMENTS WITH BARS
         double prefHeight = 200d;
-        double prefWidth = 800d;
+        double prefWidth = 890d;
         int pixelScreenYPos = cellBar.getPixelScreenYPos();
-
-
-        Gauge bar = null;
-        bar = this.createOrUpdateHorizontalBar(cellBar.getMinValue(), cellBar.getMaxValue());
-
-        //Gauge
-        //bar.addSection(new Section(cellBar.getMinValue(), 0, Color.GREEN));
-        //bar.addSection(new Section(0, cellBar.getMaxValue(), Color.BLUE));
+        Gauge bar = this.createOrUpdateHorizontalBar(cellBar.getMinValue(), cellBar.getMaxValue());
 
         bar.setValue(cellBar.getMinValue());
         bar.setMinValue(cellBar.getMinValue());
         bar.setMaxValue(cellBar.getMaxValue());
 
+
+
         bar.setPrefSize(prefWidth, prefHeight);
-        bar.setLayoutX(0);
+        bar.setLayoutX(-45);
         bar.setLayoutY(pixelScreenYPos - prefHeight / 2);
         return bar;
     }
 
-    public Gauge createOrUpdateHorizontalBar(long minValue, long maxValue) {
+    private Gauge createOrUpdateHorizontalBar(long minValue, long maxValue) {
         Gauge gauge = GaugeBuilder.create()
                 .value(minValue)
                 .minValue(minValue)
                 .maxValue(maxValue)
+                .skinType(Gauge.SkinType.LINEAR)
                 .startFromZero(true)
+                .keepAspect(false)
+                .animated(true)
                 .orientation(Orientation.HORIZONTAL)
-                .sectionsVisible(true)
                 .valueVisible(false)
                 .foregroundBaseColor(Color.BLUE)
                 .barColor(Color.GREEN)
-                
-                /*
-                .sections(new Section(minValue, 0, Color.GREEN),
-                        new Section(0, maxValue, Color.BLUE)
-                )
-                */
+
+
+
                 .build();
         gauge.setSkin(new TRZLinearSkin(gauge));
         return gauge;
