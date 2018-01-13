@@ -17,17 +17,15 @@
 package trzpoc.gui;
 
 import eu.hansolo.medusa.Gauge;
-import eu.hansolo.medusa.GaugeBuilder;
-import eu.hansolo.medusa.Section;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;
-import javafx.geometry.Orientation;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
-import trzpoc.gui.hansolo.skins.TRZLinearSkin;
+import trzpoc.utils.ConfigurationHolder;
 
+import java.io.FileNotFoundException;
 import java.util.Random;
 
 
@@ -40,19 +38,23 @@ public class BarDemo extends Application {
     private Gauge          gauge21;
     private AnimationTimer timer;
     private long lastTimerCall;
+    private final String DEFAULT_RESOURCE_FILE_NAME = "application.properties";
 
-    @Override public void init() {
+    @Override public void init() throws FileNotFoundException {
         // TODO: isolate this
 
+        this.readProperties();
 
+        gauge21 = GraphicDesigner.createNewInstance().createOrUpdateHorizontalBar(-2, 1);
 
-        gauge21 = GaugeBuilder.create()
+/*        gauge21 = GaugeBuilder.create()
                               //.skinType(SkinType.LINEAR)
                               //.title("Linear")
             .tickLabelDecimals(0)
             .minValue(-2)
             .maxValue(1)
             .areasVisible(true)
+            .startFromZero(true)
             .orientation(Orientation.HORIZONTAL)
             .sectionsVisible(true)
             .valueVisible(false)
@@ -61,13 +63,11 @@ public class BarDemo extends Application {
             .barEffectEnabled(true)
             .barBorderColor(Color.CHOCOLATE)
 
-            .sections(new Section(-2, 0, Color.GREEN),
-                    new Section(0, 1, Color.BLUE)
-                  )
+ 
                 
             .build();
         gauge21.setSkin(new TRZLinearSkin(gauge21));
-
+*/
         lastTimerCall = System.nanoTime();
         timer = new AnimationTimer() {
             @Override public void handle(long now) {
@@ -89,12 +89,12 @@ public class BarDemo extends Application {
 
     }
 
-    @Override public void start(Stage stage) {
+    @Override public void start(Stage stage) throws FileNotFoundException {
         stage.setWidth(800d);
         stage.setHeight(480d);
         Group root = new Group();
-        gauge21.setPrefSize(700d, 200d);
-        gauge21.setLayoutX(10);
+        gauge21.setPrefSize(800d, 200d);
+        gauge21.setLayoutX(0);
         gauge21.setLayoutY(300);
         root.getChildren().add(gauge21);
         
@@ -110,6 +110,10 @@ public class BarDemo extends Application {
 
 
     }
+    private void readProperties() throws FileNotFoundException {
+        String resourceFile = (!this.getParameters().getRaw().isEmpty())? this.getParameters().getRaw().get(0): DEFAULT_RESOURCE_FILE_NAME;
+        ConfigurationHolder.createSingleInstanceByConfigUri(resourceFile);
+    }
 
     @Override public void stop() {
         System.exit(0);
@@ -118,6 +122,7 @@ public class BarDemo extends Application {
 
 
     public static void main(String[] args) {
+
         launch(args);
     }
 }
