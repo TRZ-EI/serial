@@ -81,7 +81,7 @@ public class GraphicDesigner {
                 .skinType(Gauge.SkinType.LINEAR)
                 .startFromZero(true)
                 .keepAspect(false)
-                .animated(true)
+                .animated(false)
                 .orientation(Orientation.HORIZONTAL)
                 .valueVisible(false)
                 .foregroundBaseColor(Color.BLUE)
