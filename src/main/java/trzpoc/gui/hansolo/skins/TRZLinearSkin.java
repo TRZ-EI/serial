@@ -345,7 +345,9 @@ public class TRZLinearSkin extends GaugeSkinBase {
 
                 minValuePosition = barBackground.getLayoutY() + barBackground.getLayoutBounds().getHeight();
                 maxValuePosition = barBackground.getLayoutY();
-                zeroPosition     = minValuePosition + gauge.getMinValue() * stepSize;
+                zeroPosition     = maxValuePosition - (maxValuePosition * 0.3);
+
+
 
                 barBorder1.setStartX(barBackground.getLayoutX() - 1);
                 barBorder1.setStartY(maxValuePosition);
@@ -398,7 +400,11 @@ public class TRZLinearSkin extends GaugeSkinBase {
 
                 minValuePosition = barBackground.getLayoutX();
                 maxValuePosition = barBackground.getLayoutX() + barBackground.getLayoutBounds().getWidth();
-                zeroPosition     = minValuePosition - gauge.getMinValue() * stepSize;
+
+                zeroPosition = maxValuePosition -(maxValuePosition * 0.3);
+
+
+
 
                 double ypos1 = barBackground.getLayoutY() - 1;
                 double ypos2 = barBackground.getLayoutY() + barBackground.getLayoutBounds().getHeight() + 1;

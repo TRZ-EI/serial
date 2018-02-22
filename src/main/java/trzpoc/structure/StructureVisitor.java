@@ -119,10 +119,13 @@ public class StructureVisitor {
         double valueInDouble = Double.parseDouble(rawValue);
         if (valueInDouble >= t.getMaxValue() || valueInDouble <= t.getMinValue()){
             t.barColorProperty().set(Color.RED);
+            // Add 30% value to compensate zero pos fixed to 70% of lenght bar
+            t.setValue(valueInDouble + (valueInDouble * 0.3));
         }else{
             t.barColorProperty().set(Color.GREEN);
+            t.setValue(valueInDouble);
         }
-        t.setValue(valueInDouble);
+
     }
 
 

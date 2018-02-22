@@ -6,11 +6,19 @@
   <component name="ChangeListManager">
     <list id="b4e93cff-d048-4a6f-92cd-4a82a397bf5b" name="New changelist" comment="" />
     <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.iml" afterPath="$PROJECT_DIR$/serial.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.ipr" afterPath="$PROJECT_DIR$/serial.ipr" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers1-no-crc.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers2-no-crc.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers3-no-crc.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables-no-crc.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables1-no-crc.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables2-no-crc.txt" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables3-no-crc.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.iws" afterPath="$PROJECT_DIR$/serial.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/hansolo/skins/TRZLinearSkin.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/hansolo/skins/TRZLinearSkin.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlign-no-crc.txt" afterPath="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlign-no-crc.txt" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,109 +36,101 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="InvalidationListener.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/applications/jvm64/jdk1.8.0_122/javafx-src.zip!/javafx/beans/InvalidationListener.java">
+      <file leaf-file-name="DrawingText.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="48" column="17" lean-forward="false" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
+            <state relative-caret-position="387">
+              <caret line="208" column="93" lean-forward="false" selection-start-line="208" selection-start-column="93" selection-end-line="208" selection-end-column="93" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name=".gitignore" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
+      <file leaf-file-name="real-examples-prova3-fragment1-4-rightAlignNumbers1-no-crc.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers1-no-crc.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="0" lean-forward="false" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+            <state relative-caret-position="162">
+              <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BarDemo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/BarDemo.java">
+      <file leaf-file-name="real-examples-prova3-fragment1-4-rightAlignNumbers3-no-crc.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers3-no-crc.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="918">
-              <caret line="67" column="1" lean-forward="false" selection-start-line="67" selection-start-column="1" selection-end-line="67" selection-end-column="1" />
-              <folding>
-                <marker date="1518883169127" expanded="false" signature="4146:4155" ph=" { " />
-                <marker date="1518883169127" expanded="true" signature="4146:4174" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="StructureVisitor.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2142">
-              <caret line="135" column="53" lean-forward="false" selection-start-line="135" selection-start-column="53" selection-end-line="135" selection-end-column="53" />
-              <folding>
-                <marker date="1518883169139" expanded="true" signature="4350:4391" ph="{...}" />
-                <marker date="1518883169139" expanded="true" signature="4469:4662" ph="{...}" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="324">
-              <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+            <state relative-caret-position="90">
+              <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Window.java" pinned="false" current-in-tab="false">
-        <entry file="jar://$USER_HOME$/applications/jvm64/jdk1.8.0_122/javafx-src.zip!/javafx/stage/Window.java">
+      <file leaf-file-name="real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="6750">
-              <caret line="451" column="49" lean-forward="false" selection-start-line="451" selection-start-column="49" selection-end-line="451" selection-end-column="49" />
+            <state relative-caret-position="90">
+              <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Cell.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Cell.java">
+      <file leaf-file-name="real-examples-prova3-fragment1-4-rightAlignNumbers2-no-crc.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers2-no-crc.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1062">
-              <caret line="67" column="0" lean-forward="false" selection-start-line="67" selection-start-column="0" selection-end-line="67" selection-end-column="0" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.groovy" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.groovy">
+      <file leaf-file-name="real-examples-prova3-fragment1-4-rightAlignVariables3-no-crc.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables3-no-crc.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="18">
-              <caret line="1" column="23" lean-forward="false" selection-start-line="1" selection-start-column="23" selection-end-line="1" selection-end-column="23" />
+            <state relative-caret-position="72">
+              <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Bar.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Bar.java">
+      <file leaf-file-name="real-examples-prova3-fragment1-4-rightAlignVariables2-no-crc.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables2-no-crc.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
-              <folding>
-                <element signature="e#781#782#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="72">
+              <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="GraphicDesigner.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java">
+      <file leaf-file-name="real-examples-prova3-fragment1-4-rightAlignVariables1-no-crc.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables1-no-crc.txt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="212">
-              <caret line="83" column="31" lean-forward="false" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="real-examples-prova3-fragment1-4-rightAlign-no-crc.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlign-no-crc.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="540">
+              <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="real-examples-prova3-fragment1-4-rightAlignVariables-no-crc.txt" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables-no-crc.txt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
               <folding />
             </state>
           </provider>
@@ -235,14 +235,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/Variable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/RowCleaner.java" />
-        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/Clear.java" />
-        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/Bar.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/serialInputs/bar-fragment.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/Text.java" />
-        <option value="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/VariableConfiguratorSerialDataParserTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/Number.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/NumberSerialDataParser.java" />
         <option value="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/NumberSerialDataParserTest.java" />
@@ -278,14 +270,22 @@
         <option value="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/VariableValueSerialDataParserTest.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/utils/RightTextAligner.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlign-no-crc.txt" />
         <option value="$PROJECT_DIR$/src/main/resources/serialInputs/test-bars-no-crc.txt" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java" />
         <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/BarDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/hansolo/skins/TRZLinearSkin.java" />
-        <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java" />
+        <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlign-no-crc.txt" />
+        <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables1-no-crc.txt" />
+        <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables-no-crc.txt" />
+        <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables2-no-crc.txt" />
+        <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables3-no-crc.txt" />
+        <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers2-no-crc.txt" />
+        <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers1-no-crc.txt" />
+        <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers3-no-crc.txt" />
+        <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt" />
+        <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java" />
       </list>
     </option>
   </component>
@@ -394,6 +394,16 @@
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="trzpoc" type="462c0819:PsiDirectoryNode" />
               <item name="gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="serial" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="trzpoc" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+              <item name="skins" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="serial" type="b2602c69:ProjectViewProjectNode" />
@@ -609,6 +619,9 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="TEXT&#10;JAVA" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="trzpoc.structure" />
+    </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="trzpoc.comunication" />
       <recent name="trzpoc.structure.serial" />
@@ -628,10 +641,6 @@
       <recent name="trzpoc.utils" />
       <recent name="trzpoc.structure" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/serialInputs" />
-      <recent name="$PROJECT_DIR$/src/main/resources" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="trzpoc.structure" />
       <recent name="trzpoc.comunication" />
@@ -646,8 +655,9 @@
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/test/resources" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="trzpoc.structure" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/serialInputs" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -662,7 +672,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.SerialCommunicatorLocalClientForTest">
+  <component name="RunManager" selected="Application.DrawingTextWithSerial">
     <configuration name="BarDemo" type="Application" factoryName="Application" nameIsGenerated="true">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
         <pattern>
@@ -1461,7 +1471,7 @@
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24807397" sideWeight="0.48774704" order="12" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.6640986" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3652174" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4387352" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="SonarQube" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32972136" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.24940239" sideWeight="0.5" order="1" side_tool="true" content_ui="tabs" />
       <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -1617,7 +1627,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java</url>
-          <line>142</line>
+          <line>143</line>
           <properties />
           <option name="timeStamp" value="395" />
         </line-breakpoint>
@@ -1645,72 +1655,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/test/java/trzpoc/utils/DataTypesConverterTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="467">
-          <caret line="69" column="22" lean-forward="false" selection-start-line="69" selection-start-column="22" selection-end-line="69" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/utils/TestToDelete.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-3.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-2-no-crc.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-bars.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-36">
-          <caret line="1" column="30" lean-forward="false" selection-start-line="1" selection-start-column="28" selection-end-line="1" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/utils/DataTypesConverter.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="43" column="0" lean-forward="false" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="61" column="78" lean-forward="false" selection-start-line="61" selection-start-column="78" selection-end-line="61" selection-end-column="78" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataReader.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="28" column="16" lean-forward="false" selection-start-line="28" selection-start-column="16" selection-end-line="28" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/TextSerialDataParserTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-71">
-          <caret line="17" column="13" lean-forward="false" selection-start-line="17" selection-start-column="13" selection-end-line="17" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/SerialDataFacadeTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="159">
-          <caret line="45" column="30" lean-forward="false" selection-start-line="45" selection-start-column="30" selection-end-line="45" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -1751,17 +1695,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="486">
           <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicatorLocalClientForTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4392">
-          <caret line="262" column="0" lean-forward="false" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="method#manageDataReceivedFromSerialPort#0;class#SerialCommunicatorLocalClientForTest#0" expanded="false" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1839,7 +1772,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="324">
           <caret line="18" column="0" lean-forward="false" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1873,16 +1805,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlign-no-crc.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="72">
-          <caret line="4" column="7" lean-forward="false" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/applications/jvm64/jdk1.8.0_122/javafx-src.zip!/javafx/beans/InvalidationListener.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="450">
+        <state relative-caret-position="0">
           <caret line="48" column="17" lean-forward="false" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
           <folding />
         </state>
@@ -1892,7 +1817,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="112">
           <caret line="73" column="0" lean-forward="false" selection-start-line="73" selection-start-column="0" selection-end-line="73" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1947,17 +1871,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2142">
-          <caret line="135" column="53" lean-forward="false" selection-start-line="135" selection-start-column="53" selection-end-line="135" selection-end-column="53" />
-          <folding>
-            <marker date="1518883169139" expanded="true" signature="4350:4391" ph="{...}" />
-            <marker date="1518883169139" expanded="true" signature="4469:4662" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/test-bars-no-crc.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="252">
@@ -1985,20 +1898,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/hansolo/skins/TRZLinearSkin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="399">
-          <caret line="423" column="48" lean-forward="false" selection-start-line="423" selection-start-column="48" selection-end-line="423" selection-end-column="48" />
+        <state relative-caret-position="612">
+          <caret line="66" column="0" lean-forward="false" selection-start-line="66" selection-start-column="0" selection-end-line="66" selection-end-column="0" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="423">
-          <caret line="195" column="2" lean-forward="false" selection-start-line="195" selection-start-column="2" selection-end-line="195" selection-end-column="2" />
-          <folding>
-            <element signature="e#5728#6444#0" expanded="true" />
-            <element signature="e#6443#6444#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -2012,7 +1914,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Bar.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
+        <state relative-caret-position="468">
           <caret line="41" column="0" lean-forward="false" selection-start-line="41" selection-start-column="0" selection-end-line="41" selection-end-column="0" />
           <folding>
             <element signature="e#781#782#0" expanded="true" />
@@ -2022,8 +1924,122 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="212">
+        <state relative-caret-position="370">
           <caret line="83" column="31" lean-forward="false" selection-start-line="83" selection-start-column="31" selection-end-line="83" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/Demo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-116">
+          <caret line="45" column="13" lean-forward="false" selection-start-line="45" selection-start-column="13" selection-end-line="45" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicatorLocalClientForTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="855">
+          <caret line="262" column="0" lean-forward="false" selection-start-line="262" selection-start-column="0" selection-end-line="262" selection-end-column="0" />
+          <folding>
+            <element signature="method#manageDataReceivedFromSerialPort#0;class#SerialCommunicatorLocalClientForTest#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1890">
+          <caret line="121" column="78" lean-forward="false" selection-start-line="121" selection-start-column="78" selection-end-line="121" selection-end-column="78" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-bars.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="342">
+          <caret line="22" column="12" lean-forward="false" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlign-no-crc.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="540">
+          <caret line="30" column="17" lean-forward="false" selection-start-line="30" selection-start-column="17" selection-end-line="30" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables1-no-crc.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables-no-crc.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="10" column="12" lean-forward="false" selection-start-line="10" selection-start-column="12" selection-end-line="10" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables2-no-crc.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables3-no-crc.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="72">
+          <caret line="4" column="12" lean-forward="false" selection-start-line="4" selection-start-column="12" selection-end-line="4" selection-end-column="12" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers2-no-crc.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers1-no-crc.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="162">
+          <caret line="9" column="17" lean-forward="false" selection-start-line="9" selection-start-column="17" selection-end-line="9" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers3-no-crc.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="387">
+          <caret line="208" column="93" lean-forward="false" selection-start-line="208" selection-start-column="93" selection-end-line="208" selection-end-column="93" />
           <folding />
         </state>
       </provider>
