@@ -6,9 +6,7 @@
   <component name="ChangeListManager">
     <list id="b4e93cff-d048-4a6f-92cd-4a82a397bf5b" name="New changelist" comment="" />
     <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.groovy" afterPath="$PROJECT_DIR$/build.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/serial.iws" afterPath="$PROJECT_DIR$/serial.iws" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java" />
     </list>
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -912,13 +910,6 @@
       <option name="presentableId" value="Default" />
       <updated>1489661415561</updated>
     </task>
-    <task id="LOCAL-00005" summary="Structure package for config and value variable terminated">
-      <created>1493992764407</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1493992764407</updated>
-    </task>
     <task id="LOCAL-00006" summary="WIP - now it's possible to print to Raspberry screen">
       <created>1494170886542</created>
       <option name="number" value="00006" />
@@ -1255,7 +1246,14 @@
       <option name="project" value="LOCAL" />
       <updated>1519310325893</updated>
     </task>
-    <option name="localTasksCounter" value="54" />
+    <task id="LOCAL-00054" summary="added resources to test right align">
+      <created>1521465674675</created>
+      <option name="number" value="00054" />
+      <option name="presentableId" value="LOCAL-00054" />
+      <option name="project" value="LOCAL" />
+      <updated>1521465674676</updated>
+    </task>
+    <option name="localTasksCounter" value="55" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1400,7 +1398,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Fixed bug for hex to int conversion" />
     <MESSAGE value="Bug fixing" />
     <MESSAGE value="Added to manage configuration everywhere" />
     <MESSAGE value="fixing" />
@@ -1425,7 +1422,8 @@
     <MESSAGE value="modification to test bar devels" />
     <MESSAGE value="modification to emprove bar behaviour" />
     <MESSAGE value="wip" />
-    <option name="LAST_COMMIT_MESSAGE" value="wip" />
+    <MESSAGE value="added resources to test right align" />
+    <option name="LAST_COMMIT_MESSAGE" value="added resources to test right align" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
