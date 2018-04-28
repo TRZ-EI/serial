@@ -105,13 +105,14 @@ public class StructureVisitor {
     private void updateValue(Cell cell) {
         for (Node n: this.multipleItems.get(cell.getId())){
             if (n instanceof javafx.scene.text.Text){
-               this.update((javafx.scene.text.Text)n);
+               this.update(cell, (javafx.scene.text.Text)n);
             }else{
                this.update((Gauge)n, cell.getValue());
             }
         }
     }
-    private void update(javafx.scene.text.Text t){
+    private void update(Cell cell, javafx.scene.text.Text t){
+        this.updateStartingPositionToWriteText(cell, t);
         t.setText(this.value);
     }
 
@@ -139,13 +140,17 @@ public class StructureVisitor {
         String id = String.valueOf(variable.getId());
         javafx.scene.text.Text retValue;
         retValue = new javafx.scene.text.Text();
-        int rightPos = this.rightTextAligner.calculatePrintingPositionByCell(variable);
-        retValue.setX(rightPos);
-        retValue.setY(variable.getPixelScreenYPos());
+        this.updateStartingPositionToWriteText(variable, retValue);
         retValue.setId(id);
         retValue.setFill(variable.getColor());
         retValue.setFont(variable.getFont());
         return retValue;
+    }
+
+    private void updateStartingPositionToWriteText(Cell variable, javafx.scene.text.Text retValue) {
+        int rightPos = this.rightTextAligner.calculatePrintingPositionByCell(variable);
+        retValue.setX(rightPos);
+        retValue.setY(variable.getPixelScreenYPos());
     }
 
 }

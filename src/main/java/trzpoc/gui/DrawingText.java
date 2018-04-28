@@ -178,18 +178,20 @@ public class DrawingText extends Application {
 
             serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(serialBuffer);
             serialDataManager.connectToSerialPort();
-
 /*
             SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 200);
+            sde.runScenario("serialInputs/testToRightAlign/prova2-complete-no-crc.txt");
+            //sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt");
+
             sde.runScenario("serialInputs/clean-row-before-cleaner-test.txt");
             sde.runScenario("serialInputs/clean-row-after-cleaner-test.txt");
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-1.txt");
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-2.txt");
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-3.txt");
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4.txt");
+            sde.runScenario("serialInputs/real-examples-prova3-fragment1-1-no-crc.txt");
+            sde.runScenario("serialInputs/real-examples-prova3-fragment1-2-no-crc.txt");
+            sde.runScenario("serialInputs/real-examples-prova3-fragment1-3-no-crc.txt");
+            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-no-crc.txt");
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt");
             sde.runScenario("serialInputs/barAndVariable-fragment.txt");
-            sde.runScenario("serialInputs/real-examples-prova2.txt");
+            sde.runScenario("serialInputs/real-examples-prova2-no-crc.txt");
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlign-no-crc.txt");
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables-no-crc.txt");
             Thread.sleep(1000);
@@ -207,10 +209,11 @@ public class DrawingText extends Application {
             Thread.sleep(1000);
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt");
             sde.runScenario("serialInputs/test-bars-no-crc.txt");
-*/
+            */
             while (true) {
 
             }
+
         }
     };
 
