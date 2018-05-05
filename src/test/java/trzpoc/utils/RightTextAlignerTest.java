@@ -11,7 +11,7 @@ import org.testng.annotations.Test;
 public class RightTextAlignerTest {
     @Test
     public void testCalculatePrintingPositionByCell() throws Exception {
-        RightTextAligner sut = new RightTextAligner();
+        RightTextAligner sut = RightTextAligner.getSingleInstance();
 
 
 

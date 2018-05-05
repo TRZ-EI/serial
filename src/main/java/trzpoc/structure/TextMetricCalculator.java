@@ -11,29 +11,33 @@ import javafx.scene.text.Text;
  */
 public class TextMetricCalculator {
 
-
+    private Text referenceText;
+    private static TextMetricCalculator instance;
     public static TextMetricCalculator getInstance() {
-        return new TextMetricCalculator();
+        if (instance == null){
+            instance = new TextMetricCalculator();
+        }
+        return instance;
     }
-
-
+    private TextMetricCalculator() {
+        this.referenceText = new Text();
+    }
     public int calculateWidth(String text, Font font){
-        Text t = getTextByFont(text, font);
-        return Double.valueOf(t.getLayoutBounds().getWidth()).intValue();
+        this.setStringAndFontOnReferenceText(text, font);
+        return Double.valueOf(this.referenceText.getLayoutBounds().getWidth()).intValue();
         //return 0;
     }
     public int calculateHeight(String text, Font font){
-        Text t = getTextByFont(text, font);
-        return Double.valueOf(t.getLayoutBounds().getHeight()).intValue();
+        this.setStringAndFontOnReferenceText(text, font);
+        return Double.valueOf(this.referenceText.getLayoutBounds().getHeight()).intValue();
     }
     public int calculateWidthOfSpace(Font font){
-        Text t = getTextByFont(" ", font);
-        return Double.valueOf(t.getLayoutBounds().getWidth()).intValue();
+        this.setStringAndFontOnReferenceText(" ", font);
+        return Double.valueOf(this.referenceText.getLayoutBounds().getWidth()).intValue();
     }
-    private Text getTextByFont(String text, Font font) {
-        Text t = new Text(text);
-        t.setFont(font);
-        return t;
+    private void setStringAndFontOnReferenceText(String text, Font font) {
+        this.referenceText.setText(text);
+        this.referenceText.setFont(font);
     }
 
 }

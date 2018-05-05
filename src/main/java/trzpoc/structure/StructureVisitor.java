@@ -30,7 +30,7 @@ public class StructureVisitor {
 
     public StructureVisitor(DrawingText drawingText) {
         this.mainWindow = drawingText;
-        this.rightTextAligner = new RightTextAligner();
+        this.rightTextAligner = RightTextAligner.getSingleInstance();
     }
     public void visit(Text cell){
         value = cell.getValue();
@@ -47,7 +47,7 @@ public class StructureVisitor {
         }else {
             cell = this.mergeWithConfiguration(cell);
             if (cell != null) {
-                value = cell.printFormattedValue();
+                this.value = cell.printFormattedValue();
                 this.findTextAndFillWithData(cell);
             }
         }

@@ -57,8 +57,8 @@ public class DrawingText extends Application {
 
 
     @Override public void start(Stage stage) throws FileNotFoundException, UnsupportedEncodingException, InterruptedException {
-        this.visitor = new StructureVisitor(this);
         this.readProperties();
+        this.visitor = new StructureVisitor(this);
         this.facade = SerialDataFacade.createNewInstance();
         this.serialBuffer = new LinkedBlockingQueue<>();
         this.root = new Group();

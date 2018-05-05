@@ -12,6 +12,22 @@ import trzpoc.structure.Variable;
  */
 public class RightTextAligner {
 
+    private static RightTextAligner instance;
+
+    private final FontAndColorSelector fontAndColorSelector;
+
+    public static RightTextAligner getSingleInstance(){
+        if(instance == null){
+            instance = new RightTextAligner();
+        }
+        return instance;
+    }
+    private RightTextAligner(){
+        this.fontAndColorSelector = FontAndColorSelector.getNewInstance();
+    }
+
+
+
     public int calculatePrintingPositionByCell(Cell cell){
         int retValue = cell.getPixelScreenXPos();
         if (cell instanceof Number) {
@@ -23,13 +39,13 @@ public class RightTextAligner {
     }
     private int calculatePositionByCell(Variable cell){
         String value = cell.printFormattedValue();
-        int fontWidth = FontAndColorSelector.getNewInstance().getWidthForFont(cell.getFont(), "W");
+        int fontWidth = this.fontAndColorSelector.getWidthForFont(cell.getFont(), "W");
         int deltaPos = value.length() * fontWidth;
         return cell.getPixelScreenXPos() - deltaPos;
     }
     private int calculatePositionByCell(Number cell){
         String value = cell.printFormattedValue();
-        int fontWidth = FontAndColorSelector.getNewInstance().getWidthForFont(cell.getFont(), "W");
+        int fontWidth = this.fontAndColorSelector.getWidthForFont(cell.getFont(), "W");
         int deltaPos = value.length() * fontWidth;
         return cell.getPixelScreenXPos() - deltaPos;
     }

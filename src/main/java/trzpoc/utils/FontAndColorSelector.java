@@ -50,9 +50,13 @@ public class FontAndColorSelector {
     private Properties properties;
     private TextMetricCalculator textMetricCalculator;
 
-    public static FontAndColorSelector getNewInstance(){
-        return new FontAndColorSelector();
+    private static FontAndColorSelector instance;
 
+    public static FontAndColorSelector getNewInstance(){
+        if (instance == null){
+            instance = new FontAndColorSelector();
+        }
+        return instance;
     }
 
     public Font selectFont(char selector){
@@ -150,22 +154,22 @@ public class FontAndColorSelector {
    }
 
     public int getWidthForBigFont(String w) {
-        return TextMetricCalculator.getInstance().calculateWidth(w, this.bigFont);
+        return this.textMetricCalculator.calculateWidth(w, this.bigFont);
     }
 
     public int getHeightForSmallFont(String w) {
-        return TextMetricCalculator.getInstance().calculateHeight(w, this.smallFont);
+        return this.textMetricCalculator.calculateHeight(w, this.smallFont);
     }
 
     public int getHeightForBigFont(String w) {
-        return TextMetricCalculator.getInstance().calculateHeight(w, this.bigFont);
+        return this.textMetricCalculator.calculateHeight(w, this.bigFont);
     }
     public int getWidthForFont(Font font, String w) {
-        return TextMetricCalculator.getInstance().calculateWidth(w, font);
+        return this.textMetricCalculator.calculateWidth(w, font);
     }
 
     public int getHeightForFont(Font font, String w) {
-        return TextMetricCalculator.getInstance().calculateHeight(w, font);
+        return this.textMetricCalculator.calculateHeight(w, font);
     }
 
     public Font getBigFont() {
