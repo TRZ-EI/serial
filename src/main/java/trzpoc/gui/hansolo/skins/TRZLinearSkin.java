@@ -399,8 +399,8 @@ public class TRZLinearSkin extends GaugeSkinBase {
                                                          new Stop(1.0, Color.rgb(255, 255, 255, 0.05))));
 
                 minValuePosition = barBackground.getLayoutX();
-                maxValuePosition = barBackground.getLayoutX() + barBackground.getLayoutBounds().getWidth();
-
+                maxValuePosition = barBackground.getLayoutX() + barBackground.getLayoutBounds().getWidth() + 80;
+                // TODO: CHANGE VALUE OF maxValuePosition to change red bar max
                 zeroPosition = maxValuePosition -(maxValuePosition * 0.3);
 
 

@@ -23,7 +23,7 @@ proc.waitForProcessOutput(System.out, System.err);
 print System.out
 
 println "Create graphic JAR"
-proc = "mvn compile assembly:single -Dgui=true package".execute()
+proc = "mvn clean compile assembly:single -Dgui=true package".execute()
 proc.waitForProcessOutput(System.out, System.err);
 print System.out
 

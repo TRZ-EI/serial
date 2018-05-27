@@ -34,6 +34,7 @@ import trzpoc.structure.Cell;
 import trzpoc.structure.StructureVisitor;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
+import trzpoc.utils.SerialDataEmulator;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
@@ -158,6 +159,8 @@ public class DrawingText extends Application {
             while (true) {
                     if (!serialBuffer.isEmpty()){
                         String message = serialBuffer.poll();
+                        //writeTextOnScene(message);
+
                         Platform.runLater(new Runnable() {
                             @Override public void run() {
                                 try {
@@ -167,6 +170,7 @@ public class DrawingText extends Application {
                                 }
                             }
                         });
+
                     }
             }
         }
@@ -178,8 +182,8 @@ public class DrawingText extends Application {
 
             serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(serialBuffer);
             serialDataManager.connectToSerialPort();
-/*
-            SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 200);
+            SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 10);
+            /*
             sde.runScenario("serialInputs/testToRightAlign/prova2-complete-no-crc.txt");
             //sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt");
 
@@ -208,8 +212,8 @@ public class DrawingText extends Application {
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers3-no-crc.txt");
             Thread.sleep(1000);
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt");
-            sde.runScenario("serialInputs/test-bars-no-crc.txt");
             */
+            sde.runScenario("serialInputs/test-bars-no-crc.txt");
             while (true) {
 
             }
