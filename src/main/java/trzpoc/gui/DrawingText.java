@@ -34,12 +34,13 @@ import trzpoc.structure.Cell;
 import trzpoc.structure.StructureVisitor;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
-import trzpoc.utils.SerialDataEmulator;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.FutureTask;
 import java.util.concurrent.LinkedBlockingQueue;
 
 
@@ -145,6 +146,7 @@ public class DrawingText extends Application {
         if(variable != null){
             variable.accept(this.visitor);
         }
+        System.out.println("writeTextOnScene triggered on " + System.currentTimeMillis() + " ");
     }
 
     private void readProperties() throws FileNotFoundException {
@@ -159,9 +161,8 @@ public class DrawingText extends Application {
             while (true) {
                     if (!serialBuffer.isEmpty()){
                         String message = serialBuffer.poll();
-                        //writeTextOnScene(message);
-
-                        Platform.runLater(new Runnable() {
+                        System.out.println("Task task triggered on " + System.currentTimeMillis() + " ");
+                        this.runAndWait(new Runnable() {
                             @Override public void run() {
                                 try {
                                     writeTextOnScene(message);
@@ -170,11 +171,17 @@ public class DrawingText extends Application {
                                 }
                             }
                         });
-
                     }
             }
         }
+        private void runAndWait(Runnable runnable) throws InterruptedException, ExecutionException {
+            FutureTask future = new FutureTask(runnable, null);
+            Platform.runLater(future);
+            future.get();
+
+        }
     };
+
 
     private Task<Void> serialTask = new Task<Void>() {
         @Override
@@ -182,8 +189,8 @@ public class DrawingText extends Application {
 
             serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(serialBuffer);
             serialDataManager.connectToSerialPort();
-            SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 10);
             /*
+            SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 0);
             sde.runScenario("serialInputs/testToRightAlign/prova2-complete-no-crc.txt");
             //sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt");
 
@@ -212,8 +219,8 @@ public class DrawingText extends Application {
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers3-no-crc.txt");
             Thread.sleep(1000);
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt");
-            */
             sde.runScenario("serialInputs/test-bars-no-crc.txt");
+            */
             while (true) {
 
             }
