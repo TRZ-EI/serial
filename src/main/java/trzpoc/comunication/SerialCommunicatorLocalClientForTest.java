@@ -256,31 +256,36 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
     @Override
     public void run() {
         this.connect();
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-1-no-crc.txt");
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-2-no-crc.txt");
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-3-no-crc.txt");
-        this.sendMessagesToRemoteClient("serialInputs/clean-row-before-cleaner-test-no-crc.txt");
-        this.sendMessagesToRemoteClient("serialInputs/clean-row-after-cleaner-test-no-crc.txt");
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables-no-crc.txt");
-        this.waitFor(1000);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables1-no-crc.txt");
-        this.waitFor(1000);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables2-no-crc.txt");
-        this.waitFor(1000);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables3-no-crc.txt");
-        this.waitFor(1000);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers1-no-crc.txt");
-        this.waitFor(1000);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers2-no-crc.txt");
-        this.waitFor(1000);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers3-no-crc.txt");
-        this.waitFor(1000);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt");
+        //this.testOne();
+        this.testTwo();
+    }
 
 
+    public void testOne() {
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-1-no-crc.txt", 10);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-2-no-crc.txt", 10);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-3-no-crc.txt", 10);
+        this.sendMessagesToRemoteClient("serialInputs/clean-row-before-cleaner-test-no-crc.txt", 10);
+        this.sendMessagesToRemoteClient("serialInputs/clean-row-after-cleaner-test-no-crc.txt", 10);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables-no-crc.txt", 10);
+        this.waitFor(1000);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables1-no-crc.txt", 10);
+        this.waitFor(1000);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables2-no-crc.txt", 10);
+        this.waitFor(1000);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables3-no-crc.txt", 10);
+        this.waitFor(1000);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers1-no-crc.txt", 10);
+        this.waitFor(1000);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers2-no-crc.txt", 10);
+        this.waitFor(1000);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers3-no-crc.txt", 10);
+        this.waitFor(1000);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt", 10);
 
-        for (int i = 0; i < 200; i++){
-            this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt");
+
+        for (int i = 0; i < 2000; i++){
+            this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt", 0);
             String testHeader = "^t11215 cycle # " + i;
             testHeader += this.calculateCrCForString(testHeader);
             testHeader += this.END_OF_LINE;
@@ -288,16 +293,29 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
             this.waitFor(500);
         }
     }
+    private void testTwo() {
+        for (int k = 0; k < 100; k++) {
+            // 15 commands without pause
+            this.sendMessagesToRemoteClient("serialInputs/15commands-fragment-no-crc.txt", 0);
+            // wait for 100 ms
+            this.waitFor(100);
+            for (int i = 0; i < 100; i++) {
+                // 5 commands without pause
+                this.sendMessagesToRemoteClient("serialInputs/5commands-fragment-no-crc.txt", 0);
+                // wait for 100 ms
+                this.waitFor(100);
+            }
+        }
+    }
 
-    private void sendMessagesToRemoteClient(String resource) {
+    private void sendMessagesToRemoteClient(String resource, int pause) {
         List<String> lines = this.readTestScenaryAndProduceDataForTest(resource);
         for (String line: lines){
             System.out.println(line);
             this.writeData(line.getBytes());
-            this.waitFor(100);
+            this.waitFor(pause);
         }
     }
-
     public void waitFor(int millis) {
         try {
             Thread.sleep(millis);
