@@ -3,7 +3,6 @@ package trzpoc.structure;
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import eu.hansolo.medusa.Gauge;
-import javafx.collections.ObservableList;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import trzpoc.gui.DrawingText;
@@ -68,8 +67,9 @@ public class StructureVisitor {
 
     public void visit(Clear cell){
         //this.mainWindow.getRoot().getScene().
-        ObservableList<Node> nodes = this.mainWindow.getRoot().getChildren();
-        this.mainWindow.getRoot().getChildren().removeAll(nodes);
+        //ObservableList<Node> nodes = this.mainWindow.getRoot().getChildren();
+        this.mainWindow.getRoot().getChildren().clear();
+        //this.mainWindow.getRoot().getChildren().removeAll(nodes);
         this.mainWindow.getRows().clear();
         this.mainWindow.drawGridOnCanvas();
     }

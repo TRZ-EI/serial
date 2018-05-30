@@ -257,7 +257,7 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
     public void run() {
         this.connect();
         //this.testOne();
-        this.testTwo();
+        this.testTwo(0);
     }
 
 
@@ -293,15 +293,15 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
             this.waitFor(500);
         }
     }
-    private void testTwo() {
-        for (int k = 0; k < 100; k++) {
+    private void testTwo(int interval) {
+        for (int k = 0; k < 400; k++) {
             // 15 commands without pause
-            this.sendMessagesToRemoteClient("serialInputs/15commands-fragment-no-crc.txt", 0);
+            this.sendMessagesToRemoteClient("serialInputs/15commands-fragment-no-crc.txt", interval);
             // wait for 100 ms
             this.waitFor(100);
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 10; i++) {
                 // 5 commands without pause
-                this.sendMessagesToRemoteClient("serialInputs/5commands-fragment-no-crc.txt", 0);
+                this.sendMessagesToRemoteClient("serialInputs/5commands-fragment-no-crc.txt", interval);
                 // wait for 100 ms
                 this.waitFor(100);
             }

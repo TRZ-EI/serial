@@ -65,7 +65,7 @@ public class SerialDataManager {
         if (serialPort != null){
             System.out.println("Connected !!!");
         }
-        StringBuilder message = new StringBuilder();
+
         try {
 
             serialPort.addDataListener(new SerialPortDataListener() {
@@ -75,6 +75,7 @@ public class SerialDataManager {
                 @Override
                 public void serialEvent(SerialPortEvent event)
                 {
+                    StringBuilder message = new StringBuilder();
                     if (event.getEventType() != SerialPort.LISTENING_EVENT_DATA_AVAILABLE){
                         return;
                     }
@@ -101,7 +102,8 @@ public class SerialDataManager {
                                 serialPort.getOutputStream().flush();
                             }
                         }
-                        message.setLength(0);
+                        //message = new StringBuilder();
+
 
 
                     } catch (IOException e) {

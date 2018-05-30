@@ -57,6 +57,9 @@ public class DrawingText extends Application {
     private StructureVisitor visitor;
     private Canvas canvasForGrid;
 
+    private MyRunnable myRunnable = new MyRunnable();
+
+
 
     @Override public void start(Stage stage) throws FileNotFoundException, UnsupportedEncodingException, InterruptedException {
         this.readProperties();
@@ -76,7 +79,7 @@ public class DrawingText extends Application {
 
         // Task to write on screen
         Thread th = new Thread(task);
-        th.setDaemon(true);
+        th.setDaemon(false);
         th.start();
 
         // Task to read from serial (future)
@@ -142,11 +145,12 @@ public class DrawingText extends Application {
         });
     }
     private void writeTextOnScene(String value) throws UnsupportedEncodingException {
+        System.out.println("DEBUG INFO - 3 --> call writeTextOnScene:" + System.currentTimeMillis());
         Cell variable = this.facade.onSerialDataInput(value.getBytes());
         if(variable != null){
+            System.out.println("DEBUG INFO - 4 --> call accept visitor:" + System.currentTimeMillis());
             variable.accept(this.visitor);
         }
-        System.out.println("writeTextOnScene triggered on " + System.currentTimeMillis() + " ");
     }
 
     private void readProperties() throws FileNotFoundException {
@@ -155,22 +159,29 @@ public class DrawingText extends Application {
     }
 
     private Task<Void> task = new Task<Void>() {
+
+
         @Override
         public Void call() throws Exception {
 
             while (true) {
                     if (!serialBuffer.isEmpty()){
-                        String message = serialBuffer.poll();
-                        System.out.println("Task task triggered on " + System.currentTimeMillis() + " ");
+                        //String message = serialBuffer.poll();
+                        this.runAndWait(myRunnable);
+
+/*
                         this.runAndWait(new Runnable() {
                             @Override public void run() {
                                 try {
-                                    writeTextOnScene(message);
+                                    writeTextOnScene(serialBuffer.poll());
                                 } catch (UnsupportedEncodingException e) {
                                     e.printStackTrace();
                                 }
                             }
                         });
+*/
+
+
                     }
             }
         }
@@ -181,6 +192,20 @@ public class DrawingText extends Application {
 
         }
     };
+    class MyRunnable implements Runnable{
+        @Override
+        public void run() {
+            try {
+                System.out.println("DEBUG INFO - 1 --> serialBuffer content:" + serialBuffer.size());
+                System.out.println("DEBUG INFO - 2 --> call draw method:" + System.currentTimeMillis());
+                writeTextOnScene(serialBuffer.take());
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
 
     private Task<Void> serialTask = new Task<Void>() {

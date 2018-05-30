@@ -1,0 +1,1018 @@
+DEBUG INFO - 4 --> call accept visitor:1527678554466
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678554478
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554478
+DEBUG INFO - 4 --> call accept visitor:1527678554478
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678554491
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554491
+DEBUG INFO - 4 --> call accept visitor:1527678554491
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678554534
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554534
+DEBUG INFO - 4 --> call accept visitor:1527678554534
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678554539
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554539
+DEBUG INFO - 4 --> call accept visitor:1527678554540
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678554552
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554552
+DEBUG INFO - 4 --> call accept visitor:1527678554552
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678554565
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554565
+DEBUG INFO - 4 --> call accept visitor:1527678554565
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678554577
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554577
+DEBUG INFO - 4 --> call accept visitor:1527678554577
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678554589
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554589
+DEBUG INFO - 4 --> call accept visitor:1527678554590
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678554634
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554635
+DEBUG INFO - 4 --> call accept visitor:1527678554635
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678554640
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554640
+DEBUG INFO - 4 --> call accept visitor:1527678554641
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678554652
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554652
+DEBUG INFO - 4 --> call accept visitor:1527678554652
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678554664
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554664
+DEBUG INFO - 4 --> call accept visitor:1527678554665
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678554677
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554677
+DEBUG INFO - 4 --> call accept visitor:1527678554677
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678554689
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554689
+DEBUG INFO - 4 --> call accept visitor:1527678554689
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678554736
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554736
+DEBUG INFO - 4 --> call accept visitor:1527678554736
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678554742
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554742
+DEBUG INFO - 4 --> call accept visitor:1527678554742
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678554754
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554754
+DEBUG INFO - 4 --> call accept visitor:1527678554754
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678554767
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554767
+DEBUG INFO - 4 --> call accept visitor:1527678554768
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678554780
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554780
+DEBUG INFO - 4 --> call accept visitor:1527678554780
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678554792
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554792
+DEBUG INFO - 4 --> call accept visitor:1527678554792
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678554837
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554837
+DEBUG INFO - 4 --> call accept visitor:1527678554837
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678554843
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554843
+DEBUG INFO - 4 --> call accept visitor:1527678554843
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678554855
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554855
+DEBUG INFO - 4 --> call accept visitor:1527678554855
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678554868
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554868
+DEBUG INFO - 4 --> call accept visitor:1527678554868
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678554880
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554880
+DEBUG INFO - 4 --> call accept visitor:1527678554880
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678554893
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554893
+DEBUG INFO - 4 --> call accept visitor:1527678554893
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678554935
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554936
+DEBUG INFO - 4 --> call accept visitor:1527678554936
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678554941
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554941
+DEBUG INFO - 4 --> call accept visitor:1527678554941
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678554953
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554953
+DEBUG INFO - 4 --> call accept visitor:1527678554953
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678554966
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554966
+DEBUG INFO - 4 --> call accept visitor:1527678554966
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678554979
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554979
+DEBUG INFO - 4 --> call accept visitor:1527678554979
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678554991
+DEBUG INFO - 3 --> call writeTextOnScene:1527678554992
+DEBUG INFO - 4 --> call accept visitor:1527678554992
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555036
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555036
+DEBUG INFO - 4 --> call accept visitor:1527678555036
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555042
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555042
+DEBUG INFO - 4 --> call accept visitor:1527678555042
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555054
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555054
+DEBUG INFO - 4 --> call accept visitor:1527678555054
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678555066
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555066
+DEBUG INFO - 4 --> call accept visitor:1527678555066
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555079
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555079
+DEBUG INFO - 4 --> call accept visitor:1527678555079
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555091
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555091
+DEBUG INFO - 4 --> call accept visitor:1527678555091
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555138
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555138
+DEBUG INFO - 4 --> call accept visitor:1527678555138
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555143
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555144
+DEBUG INFO - 4 --> call accept visitor:1527678555144
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555156
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555156
+DEBUG INFO - 4 --> call accept visitor:1527678555156
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678555169
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555169
+DEBUG INFO - 4 --> call accept visitor:1527678555169
+DEBUG INFO - 1 --> serialBuffer content:5
+DEBUG INFO - 2 --> call draw method:1527678555183
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555183
+DEBUG INFO - 4 --> call accept visitor:1527678555183
+DEBUG INFO - 1 --> serialBuffer content:6
+DEBUG INFO - 2 --> call draw method:1527678555197
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555197
+DEBUG INFO - 4 --> call accept visitor:1527678555197
+DEBUG INFO - 1 --> serialBuffer content:7
+DEBUG INFO - 2 --> call draw method:1527678555210
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555210
+DEBUG INFO - 4 --> call accept visitor:1527678555210
+DEBUG INFO - 1 --> serialBuffer content:7
+DEBUG INFO - 2 --> call draw method:1527678555214
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555214
+DEBUG INFO - 4 --> call accept visitor:1527678555214
+DEBUG INFO - 1 --> serialBuffer content:7
+DEBUG INFO - 2 --> call draw method:1527678555217
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555217
+DEBUG INFO - 4 --> call accept visitor:1527678555217
+DEBUG INFO - 1 --> serialBuffer content:7
+DEBUG INFO - 2 --> call draw method:1527678555225
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555225
+DEBUG INFO - 4 --> call accept visitor:1527678555225
+DEBUG INFO - 1 --> serialBuffer content:6
+DEBUG INFO - 2 --> call draw method:1527678555228
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555228
+DEBUG INFO - 4 --> call accept visitor:1527678555228
+DEBUG INFO - 1 --> serialBuffer content:5
+DEBUG INFO - 2 --> call draw method:1527678555229
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555229
+DEBUG INFO - 4 --> call accept visitor:1527678555230
+DEBUG INFO - 1 --> serialBuffer content:4
+DEBUG INFO - 2 --> call draw method:1527678555231
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555231
+DEBUG INFO - 4 --> call accept visitor:1527678555231
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678555233
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555233
+DEBUG INFO - 4 --> call accept visitor:1527678555233
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555234
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555234
+DEBUG INFO - 4 --> call accept visitor:1527678555234
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555241
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555242
+DEBUG INFO - 4 --> call accept visitor:1527678555242
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555245
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555245
+DEBUG INFO - 4 --> call accept visitor:1527678555245
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555246
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555246
+DEBUG INFO - 4 --> call accept visitor:1527678555246
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555258
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555258
+DEBUG INFO - 4 --> call accept visitor:1527678555258
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678555275
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555275
+DEBUG INFO - 4 --> call accept visitor:1527678555275
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555292
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555292
+DEBUG INFO - 4 --> call accept visitor:1527678555292
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555308
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555308
+DEBUG INFO - 4 --> call accept visitor:1527678555309
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555340
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555340
+DEBUG INFO - 4 --> call accept visitor:1527678555340
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555345
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555345
+DEBUG INFO - 4 --> call accept visitor:1527678555345
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555358
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555358
+DEBUG INFO - 4 --> call accept visitor:1527678555358
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678555375
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555375
+DEBUG INFO - 4 --> call accept visitor:1527678555375
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555391
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555391
+DEBUG INFO - 4 --> call accept visitor:1527678555391
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555408
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555408
+DEBUG INFO - 4 --> call accept visitor:1527678555408
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555439
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555439
+DEBUG INFO - 4 --> call accept visitor:1527678555439
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555444
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555444
+DEBUG INFO - 4 --> call accept visitor:1527678555445
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555455
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555455
+DEBUG INFO - 4 --> call accept visitor:1527678555455
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678555467
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555467
+DEBUG INFO - 4 --> call accept visitor:1527678555467
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555479
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555479
+DEBUG INFO - 4 --> call accept visitor:1527678555479
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555491
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555491
+DEBUG INFO - 4 --> call accept visitor:1527678555491
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555539
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555539
+DEBUG INFO - 4 --> call accept visitor:1527678555539
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555545
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555545
+DEBUG INFO - 4 --> call accept visitor:1527678555545
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555555
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555555
+DEBUG INFO - 4 --> call accept visitor:1527678555555
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555566
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555566
+DEBUG INFO - 4 --> call accept visitor:1527678555567
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555579
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555579
+DEBUG INFO - 4 --> call accept visitor:1527678555579
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555592
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555592
+DEBUG INFO - 4 --> call accept visitor:1527678555592
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555641
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555641
+DEBUG INFO - 4 --> call accept visitor:1527678555641
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555646
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555646
+DEBUG INFO - 4 --> call accept visitor:1527678555646
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555657
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555658
+DEBUG INFO - 4 --> call accept visitor:1527678555658
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678555670
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555670
+DEBUG INFO - 4 --> call accept visitor:1527678555670
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555682
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555682
+DEBUG INFO - 4 --> call accept visitor:1527678555682
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555695
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555695
+DEBUG INFO - 4 --> call accept visitor:1527678555695
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555739
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555739
+DEBUG INFO - 4 --> call accept visitor:1527678555739
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555745
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555745
+DEBUG INFO - 4 --> call accept visitor:1527678555745
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555756
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555756
+DEBUG INFO - 4 --> call accept visitor:1527678555756
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678555768
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555769
+DEBUG INFO - 4 --> call accept visitor:1527678555769
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555781
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555781
+DEBUG INFO - 4 --> call accept visitor:1527678555781
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555794
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555794
+DEBUG INFO - 4 --> call accept visitor:1527678555794
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555840
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555840
+DEBUG INFO - 4 --> call accept visitor:1527678555840
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555846
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555846
+DEBUG INFO - 4 --> call accept visitor:1527678555846
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555857
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555857
+DEBUG INFO - 4 --> call accept visitor:1527678555857
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678555870
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555870
+DEBUG INFO - 4 --> call accept visitor:1527678555870
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555882
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555882
+DEBUG INFO - 4 --> call accept visitor:1527678555882
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555895
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555895
+DEBUG INFO - 4 --> call accept visitor:1527678555895
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555942
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555942
+DEBUG INFO - 4 --> call accept visitor:1527678555942
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555947
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555948
+DEBUG INFO - 4 --> call accept visitor:1527678555948
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555958
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555958
+DEBUG INFO - 4 --> call accept visitor:1527678555958
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678555969
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555969
+DEBUG INFO - 4 --> call accept visitor:1527678555969
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678555982
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555982
+DEBUG INFO - 4 --> call accept visitor:1527678555982
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678555994
+DEBUG INFO - 3 --> call writeTextOnScene:1527678555995
+DEBUG INFO - 4 --> call accept visitor:1527678555995
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556042
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556042
+DEBUG INFO - 4 --> call accept visitor:1527678556043
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556048
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556048
+DEBUG INFO - 4 --> call accept visitor:1527678556048
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678556059
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556059
+DEBUG INFO - 4 --> call accept visitor:1527678556059
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678556071
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556071
+DEBUG INFO - 4 --> call accept visitor:1527678556072
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678556084
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556084
+DEBUG INFO - 4 --> call accept visitor:1527678556084
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556096
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556096
+DEBUG INFO - 4 --> call accept visitor:1527678556097
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556141
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556141
+DEBUG INFO - 4 --> call accept visitor:1527678556141
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556147
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556147
+DEBUG INFO - 4 --> call accept visitor:1527678556147
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556158
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556158
+DEBUG INFO - 4 --> call accept visitor:1527678556158
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678556170
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556170
+DEBUG INFO - 4 --> call accept visitor:1527678556170
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678556183
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556183
+DEBUG INFO - 4 --> call accept visitor:1527678556183
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556195
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556195
+DEBUG INFO - 4 --> call accept visitor:1527678556195
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556242
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556242
+DEBUG INFO - 4 --> call accept visitor:1527678556242
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556248
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556248
+DEBUG INFO - 4 --> call accept visitor:1527678556248
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556259
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556259
+DEBUG INFO - 4 --> call accept visitor:1527678556259
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678556271
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556271
+DEBUG INFO - 4 --> call accept visitor:1527678556271
+DEBUG INFO - 1 --> serialBuffer content:4
+DEBUG INFO - 2 --> call draw method:1527678556283
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556283
+DEBUG INFO - 4 --> call accept visitor:1527678556283
+DEBUG INFO - 1 --> serialBuffer content:5
+DEBUG INFO - 2 --> call draw method:1527678556296
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556296
+DEBUG INFO - 4 --> call accept visitor:1527678556296
+DEBUG INFO - 1 --> serialBuffer content:6
+DEBUG INFO - 2 --> call draw method:1527678556308
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556308
+DEBUG INFO - 4 --> call accept visitor:1527678556308
+DEBUG INFO - 1 --> serialBuffer content:6
+DEBUG INFO - 2 --> call draw method:1527678556312
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556312
+DEBUG INFO - 4 --> call accept visitor:1527678556312
+DEBUG INFO - 1 --> serialBuffer content:7
+DEBUG INFO - 2 --> call draw method:1527678556324
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556324
+DEBUG INFO - 4 --> call accept visitor:1527678556324
+DEBUG INFO - 1 --> serialBuffer content:7
+DEBUG INFO - 2 --> call draw method:1527678556327
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556327
+DEBUG INFO - 4 --> call accept visitor:1527678556327
+DEBUG INFO - 1 --> serialBuffer content:6
+DEBUG INFO - 2 --> call draw method:1527678556328
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556328
+DEBUG INFO - 4 --> call accept visitor:1527678556329
+DEBUG INFO - 1 --> serialBuffer content:5
+DEBUG INFO - 2 --> call draw method:1527678556330
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556330
+DEBUG INFO - 4 --> call accept visitor:1527678556330
+DEBUG INFO - 1 --> serialBuffer content:4
+DEBUG INFO - 2 --> call draw method:1527678556341
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556341
+DEBUG INFO - 4 --> call accept visitor:1527678556341
+DEBUG INFO - 1 --> serialBuffer content:4
+DEBUG INFO - 2 --> call draw method:1527678556344
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556344
+DEBUG INFO - 4 --> call accept visitor:1527678556344
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678556346
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556346
+DEBUG INFO - 4 --> call accept visitor:1527678556346
+DEBUG INFO - 1 --> serialBuffer content:4
+DEBUG INFO - 2 --> call draw method:1527678556357
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556357
+DEBUG INFO - 4 --> call accept visitor:1527678556357
+DEBUG INFO - 1 --> serialBuffer content:4
+DEBUG INFO - 2 --> call draw method:1527678556360
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556360
+DEBUG INFO - 4 --> call accept visitor:1527678556360
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678556361
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556361
+DEBUG INFO - 4 --> call accept visitor:1527678556361
+DEBUG INFO - 1 --> serialBuffer content:4
+DEBUG INFO - 2 --> call draw method:1527678556374
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556374
+DEBUG INFO - 4 --> call accept visitor:1527678556374
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678556390
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556391
+DEBUG INFO - 4 --> call accept visitor:1527678556391
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678556407
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556407
+DEBUG INFO - 4 --> call accept visitor:1527678556408
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556424
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556424
+DEBUG INFO - 4 --> call accept visitor:1527678556424
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556445
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556445
+DEBUG INFO - 4 --> call accept visitor:1527678556445
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556449
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556449
+DEBUG INFO - 4 --> call accept visitor:1527678556449
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678556461
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556461
+DEBUG INFO - 4 --> call accept visitor:1527678556461
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678556472
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556472
+DEBUG INFO - 4 --> call accept visitor:1527678556472
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678556484
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556484
+DEBUG INFO - 4 --> call accept visitor:1527678556484
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556496
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556496
+DEBUG INFO - 4 --> call accept visitor:1527678556496
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556545
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556545
+DEBUG INFO - 4 --> call accept visitor:1527678556545
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556551
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556551
+DEBUG INFO - 4 --> call accept visitor:1527678556551
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678556562
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556562
+DEBUG INFO - 4 --> call accept visitor:1527678556562
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678556574
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556574
+DEBUG INFO - 4 --> call accept visitor:1527678556574
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678556587
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556587
+DEBUG INFO - 4 --> call accept visitor:1527678556587
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556599
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556599
+DEBUG INFO - 4 --> call accept visitor:1527678556599
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556644
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556644
+DEBUG INFO - 4 --> call accept visitor:1527678556644
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556649
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556649
+DEBUG INFO - 4 --> call accept visitor:1527678556650
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556660
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556660
+DEBUG INFO - 4 --> call accept visitor:1527678556660
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678556672
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556672
+DEBUG INFO - 4 --> call accept visitor:1527678556673
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678556685
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556685
+DEBUG INFO - 4 --> call accept visitor:1527678556685
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556697
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556697
+DEBUG INFO - 4 --> call accept visitor:1527678556698
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556744
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556745
+DEBUG INFO - 4 --> call accept visitor:1527678556745
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556750
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556750
+DEBUG INFO - 4 --> call accept visitor:1527678556750
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556761
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556761
+DEBUG INFO - 4 --> call accept visitor:1527678556762
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678556773
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556773
+DEBUG INFO - 4 --> call accept visitor:1527678556773
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678556785
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556785
+DEBUG INFO - 4 --> call accept visitor:1527678556785
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556798
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556798
+DEBUG INFO - 4 --> call accept visitor:1527678556798
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556846
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556846
+DEBUG INFO - 4 --> call accept visitor:1527678556846
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556851
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556851
+DEBUG INFO - 4 --> call accept visitor:1527678556851
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556862
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556862
+DEBUG INFO - 4 --> call accept visitor:1527678556862
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678556873
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556873
+DEBUG INFO - 4 --> call accept visitor:1527678556873
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678556885
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556885
+DEBUG INFO - 4 --> call accept visitor:1527678556885
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556898
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556898
+DEBUG INFO - 4 --> call accept visitor:1527678556898
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556947
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556947
+DEBUG INFO - 4 --> call accept visitor:1527678556947
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678556953
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556953
+DEBUG INFO - 4 --> call accept visitor:1527678556953
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678556964
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556964
+DEBUG INFO - 4 --> call accept visitor:1527678556964
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678556976
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556976
+DEBUG INFO - 4 --> call accept visitor:1527678556976
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678556989
+DEBUG INFO - 3 --> call writeTextOnScene:1527678556989
+DEBUG INFO - 4 --> call accept visitor:1527678556989
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557001
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557001
+DEBUG INFO - 4 --> call accept visitor:1527678557001
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557048
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557048
+DEBUG INFO - 4 --> call accept visitor:1527678557048
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557053
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557053
+DEBUG INFO - 4 --> call accept visitor:1527678557053
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678557064
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557065
+DEBUG INFO - 4 --> call accept visitor:1527678557065
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678557077
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557077
+DEBUG INFO - 4 --> call accept visitor:1527678557077
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678557090
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557090
+DEBUG INFO - 4 --> call accept visitor:1527678557090
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557102
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557102
+DEBUG INFO - 4 --> call accept visitor:1527678557102
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557146
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557146
+DEBUG INFO - 4 --> call accept visitor:1527678557147
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557152
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557152
+DEBUG INFO - 4 --> call accept visitor:1527678557152
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557163
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557163
+DEBUG INFO - 4 --> call accept visitor:1527678557163
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678557175
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557175
+DEBUG INFO - 4 --> call accept visitor:1527678557176
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678557188
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557188
+DEBUG INFO - 4 --> call accept visitor:1527678557188
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557200
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557201
+DEBUG INFO - 4 --> call accept visitor:1527678557201
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557247
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557247
+DEBUG INFO - 4 --> call accept visitor:1527678557247
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557253
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557253
+DEBUG INFO - 4 --> call accept visitor:1527678557253
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557264
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557264
+DEBUG INFO - 4 --> call accept visitor:1527678557264
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678557275
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557275
+DEBUG INFO - 4 --> call accept visitor:1527678557275
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678557287
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557287
+DEBUG INFO - 4 --> call accept visitor:1527678557287
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557300
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557300
+DEBUG INFO - 4 --> call accept visitor:1527678557300
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557348
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557348
+DEBUG INFO - 4 --> call accept visitor:1527678557348
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557354
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557354
+DEBUG INFO - 4 --> call accept visitor:1527678557354
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557365
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557365
+DEBUG INFO - 4 --> call accept visitor:1527678557365
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678557377
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557377
+DEBUG INFO - 4 --> call accept visitor:1527678557377
+DEBUG INFO - 1 --> serialBuffer content:4
+DEBUG INFO - 2 --> call draw method:1527678557389
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557389
+DEBUG INFO - 4 --> call accept visitor:1527678557390
+DEBUG INFO - 1 --> serialBuffer content:5
+DEBUG INFO - 2 --> call draw method:1527678557402
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557402
+DEBUG INFO - 4 --> call accept visitor:1527678557402
+DEBUG INFO - 1 --> serialBuffer content:6
+DEBUG INFO - 2 --> call draw method:1527678557415
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557415
+DEBUG INFO - 4 --> call accept visitor:1527678557415
+DEBUG INFO - 1 --> serialBuffer content:6
+DEBUG INFO - 2 --> call draw method:1527678557418
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557418
+DEBUG INFO - 4 --> call accept visitor:1527678557418
+DEBUG INFO - 1 --> serialBuffer content:5
+DEBUG INFO - 2 --> call draw method:1527678557421
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557421
+DEBUG INFO - 4 --> call accept visitor:1527678557421
+DEBUG INFO - 1 --> serialBuffer content:5
+DEBUG INFO - 2 --> call draw method:1527678557424
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557424
+DEBUG INFO - 4 --> call accept visitor:1527678557424
+DEBUG INFO - 1 --> serialBuffer content:4
+DEBUG INFO - 2 --> call draw method:1527678557427
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557427
+DEBUG INFO - 4 --> call accept visitor:1527678557427
+DEBUG INFO - 1 --> serialBuffer content:5
+DEBUG INFO - 2 --> call draw method:1527678557440
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557440
+DEBUG INFO - 4 --> call accept visitor:1527678557440
+DEBUG INFO - 1 --> serialBuffer content:4
+DEBUG INFO - 2 --> call draw method:1527678557443
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557443
+DEBUG INFO - 4 --> call accept visitor:1527678557443
+DEBUG INFO - 1 --> serialBuffer content:5
+DEBUG INFO - 2 --> call draw method:1527678557456
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557456
+DEBUG INFO - 4 --> call accept visitor:1527678557457
+DEBUG INFO - 1 --> serialBuffer content:4
+DEBUG INFO - 2 --> call draw method:1527678557460
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557460
+DEBUG INFO - 4 --> call accept visitor:1527678557460
+DEBUG INFO - 1 --> serialBuffer content:6
+DEBUG INFO - 2 --> call draw method:1527678557473
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557473
+DEBUG INFO - 4 --> call accept visitor:1527678557474
+DEBUG INFO - 1 --> serialBuffer content:6
+DEBUG INFO - 2 --> call draw method:1527678557490
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557490
+DEBUG INFO - 4 --> call accept visitor:1527678557490
+DEBUG INFO - 1 --> serialBuffer content:5
+DEBUG INFO - 2 --> call draw method:1527678557491
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557491
+DEBUG INFO - 4 --> call accept visitor:1527678557491
+DEBUG INFO - 1 --> serialBuffer content:4
+DEBUG INFO - 2 --> call draw method:1527678557506
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557506
+DEBUG INFO - 4 --> call accept visitor:1527678557507
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678557523
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557523
+DEBUG INFO - 4 --> call accept visitor:1527678557523
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678557539
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557540
+DEBUG INFO - 4 --> call accept visitor:1527678557540
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678557557
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557557
+DEBUG INFO - 4 --> call accept visitor:1527678557557
+DEBUG INFO - 1 --> serialBuffer content:5
+DEBUG INFO - 2 --> call draw method:1527678557573
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557573
+DEBUG INFO - 4 --> call accept visitor:1527678557573
+DEBUG INFO - 1 --> serialBuffer content:5
+DEBUG INFO - 2 --> call draw method:1527678557589
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557589
+DEBUG INFO - 4 --> call accept visitor:1527678557589
+DEBUG INFO - 1 --> serialBuffer content:4
+DEBUG INFO - 2 --> call draw method:1527678557606
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557606
+DEBUG INFO - 4 --> call accept visitor:1527678557606
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678557623
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557623
+DEBUG INFO - 4 --> call accept visitor:1527678557623
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678557639
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557639
+DEBUG INFO - 4 --> call accept visitor:1527678557639
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678557656
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557657
+DEBUG INFO - 4 --> call accept visitor:1527678557657
+DEBUG INFO - 1 --> serialBuffer content:4
+DEBUG INFO - 2 --> call draw method:1527678557669
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557669
+DEBUG INFO - 4 --> call accept visitor:1527678557669
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678557670
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557670
+DEBUG INFO - 4 --> call accept visitor:1527678557670
+DEBUG INFO - 1 --> serialBuffer content:4
+DEBUG INFO - 2 --> call draw method:1527678557682
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557682
+DEBUG INFO - 4 --> call accept visitor:1527678557682
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678557694
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557694
+DEBUG INFO - 4 --> call accept visitor:1527678557694
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678557707
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557707
+DEBUG INFO - 4 --> call accept visitor:1527678557707
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557718
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557718
+DEBUG INFO - 4 --> call accept visitor:1527678557718
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557750
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557750
+DEBUG INFO - 4 --> call accept visitor:1527678557750
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557756
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557756
+DEBUG INFO - 4 --> call accept visitor:1527678557756
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678557768
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557768
+DEBUG INFO - 4 --> call accept visitor:1527678557768
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678557780
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557780
+DEBUG INFO - 4 --> call accept visitor:1527678557780
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678557792
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557792
+DEBUG INFO - 4 --> call accept visitor:1527678557793
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557805
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557805
+DEBUG INFO - 4 --> call accept visitor:1527678557806
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557851
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557851
+DEBUG INFO - 4 --> call accept visitor:1527678557851
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557856
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557856
+DEBUG INFO - 4 --> call accept visitor:1527678557856
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678557869
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557869
+DEBUG INFO - 4 --> call accept visitor:1527678557869
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678557882
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557882
+DEBUG INFO - 4 --> call accept visitor:1527678557882
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678557895
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557895
+DEBUG INFO - 4 --> call accept visitor:1527678557895
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557907
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557907
+DEBUG INFO - 4 --> call accept visitor:1527678557907
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557952
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557952
+DEBUG INFO - 4 --> call accept visitor:1527678557952
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678557958
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557958
+DEBUG INFO - 4 --> call accept visitor:1527678557958
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678557970
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557970
+DEBUG INFO - 4 --> call accept visitor:1527678557971
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678557984
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557984
+DEBUG INFO - 4 --> call accept visitor:1527678557984
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678557996
+DEBUG INFO - 3 --> call writeTextOnScene:1527678557996
+DEBUG INFO - 4 --> call accept visitor:1527678557996
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678558009
+DEBUG INFO - 3 --> call writeTextOnScene:1527678558009
+DEBUG INFO - 4 --> call accept visitor:1527678558009
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678558051
+DEBUG INFO - 3 --> call writeTextOnScene:1527678558051
+DEBUG INFO - 4 --> call accept visitor:1527678558051
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678558057
+DEBUG INFO - 3 --> call writeTextOnScene:1527678558057
+DEBUG INFO - 4 --> call accept visitor:1527678558057
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678558069
+DEBUG INFO - 3 --> call writeTextOnScene:1527678558069
+DEBUG INFO - 4 --> call accept visitor:1527678558069
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678558082
+DEBUG INFO - 3 --> call writeTextOnScene:1527678558082
+DEBUG INFO - 4 --> call accept visitor:1527678558083
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678558095
+DEBUG INFO - 3 --> call writeTextOnScene:1527678558095
+DEBUG INFO - 4 --> call accept visitor:1527678558095
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678558108
+DEBUG INFO - 3 --> call writeTextOnScene:1527678558108
+DEBUG INFO - 4 --> call accept visitor:1527678558108
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678558152
+DEBUG INFO - 3 --> call writeTextOnScene:1527678558152
+DEBUG INFO - 4 --> call accept visitor:1527678558152
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678558157
+DEBUG INFO - 3 --> call writeTextOnScene:1527678558158
+DEBUG INFO - 4 --> call accept visitor:1527678558158
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678558170
+DEBUG INFO - 3 --> call writeTextOnScene:1527678558170
+DEBUG INFO - 4 --> call accept visitor:1527678558170
+DEBUG INFO - 1 --> serialBuffer content:3
+DEBUG INFO - 2 --> call draw method:1527678558182
+DEBUG INFO - 3 --> call writeTextOnScene:1527678558182
+DEBUG INFO - 4 --> call accept visitor:1527678558182
+DEBUG INFO - 1 --> serialBuffer content:2
+DEBUG INFO - 2 --> call draw method:1527678558195
+DEBUG INFO - 3 --> call writeTextOnScene:1527678558195
+DEBUG INFO - 4 --> call accept visitor:1527678558195
+DEBUG INFO - 1 --> serialBuffer content:1
+DEBUG INFO - 2 --> call draw method:1527678558207
+DEBUG INFO - 3 --> call writeTextOnScene:1527678558207
+DEBUG INFO - 4 --> call accept visitor:1527678558207
+^C:~/trz $
