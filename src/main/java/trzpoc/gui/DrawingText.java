@@ -145,10 +145,10 @@ public class DrawingText extends Application {
         });
     }
     private void writeTextOnScene(String value) throws UnsupportedEncodingException {
-        System.out.println("DEBUG INFO - 3 --> call writeTextOnScene:" + System.currentTimeMillis());
+        //System.out.println("DEBUG INFO - 3 --> call writeTextOnScene:" + System.currentTimeMillis());
         Cell variable = this.facade.onSerialDataInput(value.getBytes());
         if(variable != null){
-            System.out.println("DEBUG INFO - 4 --> call accept visitor:" + System.currentTimeMillis());
+            //System.out.println("DEBUG INFO - 4 --> call accept visitor:" + System.currentTimeMillis());
             variable.accept(this.visitor);
         }
     }
@@ -166,22 +166,7 @@ public class DrawingText extends Application {
 
             while (true) {
                     if (!serialBuffer.isEmpty()){
-                        //String message = serialBuffer.poll();
                         this.runAndWait(myRunnable);
-
-/*
-                        this.runAndWait(new Runnable() {
-                            @Override public void run() {
-                                try {
-                                    writeTextOnScene(serialBuffer.poll());
-                                } catch (UnsupportedEncodingException e) {
-                                    e.printStackTrace();
-                                }
-                            }
-                        });
-*/
-
-
                     }
             }
         }
@@ -196,8 +181,8 @@ public class DrawingText extends Application {
         @Override
         public void run() {
             try {
-                System.out.println("DEBUG INFO - 1 --> serialBuffer content:" + serialBuffer.size());
-                System.out.println("DEBUG INFO - 2 --> call draw method:" + System.currentTimeMillis());
+                //System.out.println("DEBUG INFO - 1 --> serialBuffer content:" + serialBuffer.size());
+                //System.out.println("DEBUG INFO - 2 --> call draw method:" + System.currentTimeMillis());
                 writeTextOnScene(serialBuffer.take());
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();

@@ -256,36 +256,36 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
     @Override
     public void run() {
         this.connect();
-        //this.testOne();
+        this.testOne(10);
         this.testTwo(0);
     }
 
 
-    public void testOne() {
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-1-no-crc.txt", 10);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-2-no-crc.txt", 10);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-3-no-crc.txt", 10);
-        this.sendMessagesToRemoteClient("serialInputs/clean-row-before-cleaner-test-no-crc.txt", 10);
-        this.sendMessagesToRemoteClient("serialInputs/clean-row-after-cleaner-test-no-crc.txt", 10);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables-no-crc.txt", 10);
+    public void testOne(int interval) {
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-1-no-crc.txt", interval);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-2-no-crc.txt", interval);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-3-no-crc.txt", interval);
+        this.sendMessagesToRemoteClient("serialInputs/clean-row-before-cleaner-test-no-crc.txt", interval);
+        this.sendMessagesToRemoteClient("serialInputs/clean-row-after-cleaner-test-no-crc.txt", interval);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables-no-crc.txt", interval);
         this.waitFor(1000);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables1-no-crc.txt", 10);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables1-no-crc.txt", interval);
         this.waitFor(1000);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables2-no-crc.txt", 10);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables2-no-crc.txt", interval);
         this.waitFor(1000);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables3-no-crc.txt", 10);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables3-no-crc.txt", interval);
         this.waitFor(1000);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers1-no-crc.txt", 10);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers1-no-crc.txt", interval);
         this.waitFor(1000);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers2-no-crc.txt", 10);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers2-no-crc.txt", interval);
         this.waitFor(1000);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers3-no-crc.txt", 10);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers3-no-crc.txt", interval);
         this.waitFor(1000);
-        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt", 10);
+        this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt", interval);
 
 
         for (int i = 0; i < 2000; i++){
-            this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt", 0);
+            this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt", interval);
             String testHeader = "^t11215 cycle # " + i;
             testHeader += this.calculateCrCForString(testHeader);
             testHeader += this.END_OF_LINE;
