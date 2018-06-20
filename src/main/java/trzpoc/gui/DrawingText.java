@@ -34,6 +34,7 @@ import trzpoc.structure.Cell;
 import trzpoc.structure.StructureVisitor;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
+import trzpoc.utils.SerialDataEmulator;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
@@ -199,9 +200,9 @@ public class DrawingText extends Application {
 
             serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(serialBuffer);
             serialDataManager.connectToSerialPort();
-            /*
             SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 0);
-            sde.runScenario("serialInputs/testToRightAlign/prova2-complete-no-crc.txt");
+            sde.runScenario("serialInputs/variable-fragment.txt");
+            /*
             //sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt");
 
             sde.runScenario("serialInputs/clean-row-before-cleaner-test.txt");
