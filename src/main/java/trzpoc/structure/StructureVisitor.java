@@ -47,6 +47,7 @@ public class StructureVisitor {
             cell = this.mergeWithConfiguration(cell);
             if (cell != null) {
                 this.value = cell.printFormattedValue();
+
                 this.findTextAndFillWithData(cell);
             }
         }
@@ -93,14 +94,25 @@ public class StructureVisitor {
 
     private void findTextAndFillWithData(Cell variable){
         String id = String.valueOf(variable.getId());
+
+        // TO TEST: REMOVE SEARCH
         javafx.scene.text.Text myText = (javafx.scene.text.Text)this.mainWindow.getRoot().getScene().lookup("#" + id);
         if (myText == null){
             myText = createTextNode(variable);
             this.addNodeToJfxTree(variable, myText);
         }
         this.updateValue(variable);
-        //myText.setText(this.value);
     }
+
+/*
+    // WRITE FOR TEXT
+    private void findTextAndFillWithData(Cell variable){
+        // TO TEST: REMOVE SEARCH
+        javafx.scene.text.Text myText = this.createTextNode(variable);
+        this.addNodeToJfxTree(variable, myText);
+        this.updateValue(variable);
+    }
+*/
 
     private void updateValue(Cell cell) {
         for (Node n: this.multipleItems.get(cell.getId())){
@@ -138,6 +150,7 @@ public class StructureVisitor {
     }
 
     private javafx.scene.text.Text createTextNode(Cell variable) {
+        long start = System.currentTimeMillis();
         String id = String.valueOf(variable.getId());
         javafx.scene.text.Text retValue;
         retValue = new javafx.scene.text.Text();
@@ -145,6 +158,7 @@ public class StructureVisitor {
         retValue.setId(id);
         retValue.setFill(variable.getColor());
         retValue.setFont(variable.getFont());
+        System.out.println("createTextNode time=" + (System.currentTimeMillis() - start));
         return retValue;
     }
 

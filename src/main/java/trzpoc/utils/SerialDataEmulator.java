@@ -54,7 +54,7 @@ public class SerialDataEmulator {
             line = linReader.nextLine();
             line += this.tranformCRCValueToString(crcCalculator.calculateCRCForStringMessage(line));
             this.serialBuffer.addAll(MultipleCommandSplitter.getNewInstance().splitMultipleCommand(line));
-            System.out.println(line);
+            //System.out.println(line);
         }
 
     }

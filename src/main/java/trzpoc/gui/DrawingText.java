@@ -201,7 +201,10 @@ public class DrawingText extends Application {
             serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(serialBuffer);
             serialDataManager.connectToSerialPort();
             SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 0);
-            sde.runScenario("serialInputs/variable-fragment.txt");
+            for (int i = 0; i < 1000; i ++) {
+                sde.runScenario("serialInputs/variable-fragment.txt");
+                Thread.sleep(100);
+            }
             /*
             //sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt");
 
