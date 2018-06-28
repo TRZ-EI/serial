@@ -42,7 +42,7 @@ public class SerialDataEmulator {
     public static SerialDataEmulator getNewInstanceBySerialBufferAndWaitingTime(BlockingQueue<String> queue, int waitingTime) {
         return new SerialDataEmulator(queue, waitingTime);
     }
-    public void runScenario(String fileName) throws IOException, InterruptedException {
+    public BlockingQueue<String> runScenario(String fileName) throws IOException, InterruptedException {
         String realFileName = this.getClass().getClassLoader().getResource(fileName).getFile();
         Scanner linReader = new Scanner(new File(realFileName));
         CRCCalculator crcCalculator = this.selectCalculator();
@@ -56,6 +56,7 @@ public class SerialDataEmulator {
             this.serialBuffer.addAll(MultipleCommandSplitter.getNewInstance().splitMultipleCommand(line));
             //System.out.println(line);
         }
+        return this.serialBuffer;
 
     }
     private CRCCalculator selectCalculator() {

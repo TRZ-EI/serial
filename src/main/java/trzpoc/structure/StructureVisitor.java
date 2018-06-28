@@ -150,15 +150,12 @@ public class StructureVisitor {
     }
 
     private javafx.scene.text.Text createTextNode(Cell variable) {
-        long start = System.currentTimeMillis();
         String id = String.valueOf(variable.getId());
-        javafx.scene.text.Text retValue;
-        retValue = new javafx.scene.text.Text();
+        javafx.scene.text.Text retValue = new javafx.scene.text.Text();
         this.updateStartingPositionToWriteText(variable, retValue);
         retValue.setId(id);
         retValue.setFill(variable.getColor());
         retValue.setFont(variable.getFont());
-        System.out.println("createTextNode time=" + (System.currentTimeMillis() - start));
         return retValue;
     }
 

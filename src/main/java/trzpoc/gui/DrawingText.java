@@ -1,18 +1,4 @@
-/*
- * Copyright (c) 2016 by Gerrit Grunwald
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *     http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+
 
 package trzpoc.gui;
 
@@ -34,7 +20,6 @@ import trzpoc.structure.Cell;
 import trzpoc.structure.StructureVisitor;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
-import trzpoc.utils.SerialDataEmulator;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
@@ -58,7 +43,7 @@ public class DrawingText extends Application {
     private StructureVisitor visitor;
     private Canvas canvasForGrid;
 
-    private MyRunnable myRunnable = new MyRunnable();
+    private MyRunnable myRunnable;
 
 
 
@@ -71,22 +56,20 @@ public class DrawingText extends Application {
         Scene scene = new Scene(root, 800d, 480d, Color.WHITE);
         this.drawGridOnCanvas();
 
-        //this.addMouseEventToChangeText(scene);
         stage.setScene(scene);
         stage.setTitle("TRZ bar for instruments");
         this.addCombinationKeyAcceleratorToExit(stage);
         this.addCombinationKeyAcceleratorToClerScreen(stage);
         stage.show();
 
-        // Task to write on screen
-        Thread th = new Thread(task);
-        th.setDaemon(false);
-        th.start();
 
-        // Task to read from serial (future)
+        this.serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(serialBuffer);
+        this.serialDataManager.setMain(this);
         Thread serialThread = new Thread(serialTask);
-        serialThread.setDaemon(true);
+        serialThread.setDaemon(false);
         serialThread.start();
+
+        this.myRunnable = new MyRunnable(this.serialBuffer);
 
     }
 
@@ -159,37 +142,34 @@ public class DrawingText extends Application {
         ConfigurationHolder.createSingleInstanceByConfigUri(resourceFile);
     }
 
-    private Task<Void> task = new Task<Void>() {
 
+    public void runAndWaitMyRunnable() throws InterruptedException, ExecutionException {
+        FutureTask future = new FutureTask(this.myRunnable, null);
+        Platform.runLater(future);
+        future.get();
 
-        @Override
-        public Void call() throws Exception {
-
-            while (true) {
-                    if (!serialBuffer.isEmpty()){
-                        this.runAndWait(myRunnable);
-                    }
-            }
-        }
-        private void runAndWait(Runnable runnable) throws InterruptedException, ExecutionException {
-            FutureTask future = new FutureTask(runnable, null);
-            Platform.runLater(future);
-            future.get();
-
-        }
-    };
+    }
     class MyRunnable implements Runnable{
+
+        private final BlockingQueue<String> serialBuffer;
+
+        public MyRunnable(BlockingQueue<String> serialBuffer){
+            this.serialBuffer = serialBuffer;
+        }
         @Override
         public void run() {
             try {
-                //System.out.println("DEBUG INFO - 1 --> serialBuffer content:" + serialBuffer.size());
-                //System.out.println("DEBUG INFO - 2 --> call draw method:" + System.currentTimeMillis());
-                writeTextOnScene(serialBuffer.take());
-            } catch (UnsupportedEncodingException e) {
+                while (!this.serialBuffer.isEmpty()) {
+                    writeTextOnScene(this.serialBuffer.take());
+                }
+                //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
+                System.out.println("BlockingQueue serialBuffer content after take:" + serialBuffer.size());
+            }catch(UnsupportedEncodingException e){
                 e.printStackTrace();
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
+
         }
     }
 
@@ -198,13 +178,40 @@ public class DrawingText extends Application {
         @Override
         public Void call() throws Exception {
 
-            serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(serialBuffer);
             serialDataManager.connectToSerialPort();
-            SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 0);
+            /* TODO: EXPORT THIS BLOCK TO A METHOD, TO INVOKE ONLY FOR TEST REASONS
+            BlockingQueue<String> list = new LinkedBlockingQueue<>();
+            SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(list, 0);
+
+            BlockingQueue<String> totalList = new LinkedBlockingQueue<>();
+
+            sde.runScenario("serialInputs/variable-fragment.txt");
+
+            System.out.println("Starting fill totalList");
+            for (int i = 0; i < 20; i ++) {
+                totalList.addAll(list);
+            }
+            System.out.println("End fill totalList: " + totalList.size());
+            while(totalList.size() > 0) {
+                serialBuffer.add(totalList.take());
+            }
+            */
+
+
+
+
+            //parkinglist.addAll(list);
+
+/* TODO: EXPERIMENTS
+
             for (int i = 0; i < 1000; i ++) {
-                sde.runScenario("serialInputs/variable-fragment.txt");
+                for(int k = 0; k < list.size(); k ++){
+                    serialBuffer.add(list.poll());
+                }
+                list.addAll(parkinglist);
                 Thread.sleep(100);
             }
+*/
             /*
             //sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt");
 

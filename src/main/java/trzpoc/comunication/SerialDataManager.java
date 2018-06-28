@@ -8,12 +8,14 @@ import javafx.beans.property.SimpleBooleanProperty;
 import trzpoc.crc.CRC16CCITT;
 import trzpoc.crc.CRCCalculator;
 import trzpoc.crc.Crc16CcittKermit;
+import trzpoc.gui.DrawingText;
 import trzpoc.structure.serial.MultipleCommandSplitter;
 import trzpoc.utils.ConfigurationHolder;
 
 import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.ExecutionException;
 import java.util.concurrent.LinkedBlockingQueue;
 
 /**
@@ -31,6 +33,7 @@ public class SerialDataManager {
     private BlockingQueue<String> serialBuffer;
     private BooleanProperty isDataAvalaible = new SimpleBooleanProperty(false);
 
+    private DrawingText main;
 
 
     public static SerialDataManager createNewInstance(){
@@ -58,6 +61,8 @@ public class SerialDataManager {
 
 
     public SerialPort connectToSerialPort() throws IOException{
+        // TODO: EXPORT PARAMS TO CONFIG FILE
+
         this.serialPort = SerialPort.getCommPort("/dev/ttyUSB0");
         this.serialPort.setBaudRate(115200);
         this.serialPort.setComPortParameters(115200, 8, SerialPort.ONE_STOP_BIT, SerialPort.NO_PARITY);
@@ -68,6 +73,7 @@ public class SerialDataManager {
 
         try {
 
+            // TODO: EXTRACT LISTENER CLASS IN A DEDICATED FILE
             serialPort.addDataListener(new SerialPortDataListener() {
                 int data = 0;
                 @Override
@@ -75,6 +81,8 @@ public class SerialDataManager {
                 @Override
                 public void serialEvent(SerialPortEvent event)
                 {
+
+                    // TODO: MOVE THE FOLLOWING ROW IN THE try catch BLOCK
                     StringBuilder message = new StringBuilder();
                     if (event.getEventType() != SerialPort.LISTENING_EVENT_DATA_AVAILABLE){
                         return;
@@ -93,7 +101,12 @@ public class SerialDataManager {
                             if (isValid) {
                                 // TO MANAGE MULTIPLE COMMANDS IN A SINGLE ROW
                                 List<String> commands = multipleCommandSplitter.splitMultipleCommand(message.toString());
+                                //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
+                                System.out.println("Command added to serialBuffer:" + commands.size());
+
                                 serialBuffer.addAll(commands);
+                                main.runAndWaitMyRunnable();
+
                                 serialPort.getOutputStream().write(new String("OK").getBytes());
                                 serialPort.getOutputStream().flush();
                             }
@@ -102,11 +115,14 @@ public class SerialDataManager {
                                 serialPort.getOutputStream().flush();
                             }
                         }
-                        //message = new StringBuilder();
 
 
 
                     } catch (IOException e) {
+                        e.printStackTrace();
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    } catch (ExecutionException e) {
                         e.printStackTrace();
                     }
                 }
@@ -166,16 +182,22 @@ public class SerialDataManager {
         return retValue;
     }
 
-
+    // TODO: REMOVE
     public BooleanProperty getIsDataAvalaible() {
         return isDataAvalaible;
     }
 
+    // TODO: REMOVE
     public BlockingQueue<String> getSerialBuffer() {
         return serialBuffer;
     }
 
+    // TODO: REMOVE
     public void setIsDataAvalaible(boolean value) {
         this.isDataAvalaible.set(value);
+    }
+
+    public void setMain(DrawingText main){
+        this.main = main;
     }
 }

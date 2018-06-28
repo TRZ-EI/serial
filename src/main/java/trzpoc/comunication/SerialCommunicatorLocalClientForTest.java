@@ -256,8 +256,9 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
     @Override
     public void run() {
         this.connect();
-        this.testOne(10);
-        this.testTwo(0);
+        this.testOne(50);
+        this.testTwo(50);
+        this.testThree(10);
     }
 
 
@@ -284,8 +285,9 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
         this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt", interval);
 
 
-        for (int i = 0; i < 2000; i++){
-            this.sendMessagesToRemoteClient("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt", interval);
+        List<String> lines = this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt");
+        for (int i = 0; i < 4000; i++){
+            this.sendMessagesToRemoteClientReadingList(lines, interval);
             String testHeader = "^t11215 cycle # " + i;
             testHeader += this.calculateCrCForString(testHeader);
             testHeader += this.END_OF_LINE;
@@ -294,28 +296,44 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
         }
     }
     private void testTwo(int interval) {
+        List<String> linesForFirstSet = this.readTestScenaryAndProduceDataForTest("serialInputs/15commands-fragment-no-crc.txt");
+        List<String> linesForSecondSet = this.readTestScenaryAndProduceDataForTest("serialInputs/5commands-fragment-no-crc.txt");
+
         for (int k = 0; k < 400; k++) {
             // 15 commands without pause
-            this.sendMessagesToRemoteClient("serialInputs/15commands-fragment-no-crc.txt", interval);
+            this.sendMessagesToRemoteClientReadingList(linesForFirstSet, interval);
             // wait for 100 ms
             this.waitFor(100);
             for (int i = 0; i < 10; i++) {
                 // 5 commands without pause
-                this.sendMessagesToRemoteClient("serialInputs/5commands-fragment-no-crc.txt", interval);
+                this.sendMessagesToRemoteClientReadingList(linesForSecondSet, interval);
                 // wait for 100 ms
                 this.waitFor(100);
             }
         }
     }
+    private void testThree(int interval) {
+        this.sendMessagesToRemoteClient("serialInputs/variable-fragment.txt", interval);
+    }
 
-    private void sendMessagesToRemoteClient(String resource, int pause) {
+    private List<String> sendMessagesToRemoteClient(String resource, int pause) {
         List<String> lines = this.readTestScenaryAndProduceDataForTest(resource);
         for (String line: lines){
             System.out.println(line);
             this.writeData(line.getBytes());
             this.waitFor(pause);
         }
+        return lines;
     }
+    private void sendMessagesToRemoteClientReadingList(List<String> list, int pause) {
+        for (String line: list){
+            System.out.println(line);
+            this.writeData(line.getBytes());
+            this.waitFor(pause);
+        }
+    }
+
+
     public void waitFor(int millis) {
         try {
             Thread.sleep(millis);
