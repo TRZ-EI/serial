@@ -159,11 +159,11 @@ public class DrawingText extends Application {
         @Override
         public void run() {
             try {
+                //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
+                System.out.println("BlockingQueue serialBuffer content before take:" + serialBuffer.size());
                 while (!this.serialBuffer.isEmpty()) {
                     writeTextOnScene(this.serialBuffer.take());
                 }
-                //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
-                System.out.println("BlockingQueue serialBuffer content after take:" + serialBuffer.size());
             }catch(UnsupportedEncodingException e){
                 e.printStackTrace();
             } catch (InterruptedException e) {
