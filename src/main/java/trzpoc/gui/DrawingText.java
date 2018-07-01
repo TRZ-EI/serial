@@ -144,14 +144,20 @@ public class DrawingText extends Application {
 
 
     public void runAndWaitMyRunnable() throws InterruptedException, ExecutionException {
-        FutureTask future = new FutureTask(this.myRunnable, null);
-        Platform.runLater(future);
-        future.get();
+
+        while (!this.serialBuffer.isEmpty()) {
+            FutureTask future = new FutureTask(this.myRunnable, null);
+            this.myRunnable.setMessage(this.serialBuffer.take());
+            Platform.runLater(future);
+            future.get();
+        }
+
 
     }
     class MyRunnable implements Runnable{
 
         private final BlockingQueue<String> serialBuffer;
+        private String message;
 
         public MyRunnable(BlockingQueue<String> serialBuffer){
             this.serialBuffer = serialBuffer;
@@ -161,15 +167,15 @@ public class DrawingText extends Application {
             try {
                 //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
                 System.out.println("BlockingQueue serialBuffer content before take:" + serialBuffer.size());
-                while (!this.serialBuffer.isEmpty()) {
-                    writeTextOnScene(this.serialBuffer.take());
-                }
-            }catch(UnsupportedEncodingException e){
-                e.printStackTrace();
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
 
+                    writeTextOnScene(this.message);
+                }
+                catch (UnsupportedEncodingException e1) {
+                e1.printStackTrace();
+            }
+        }
+        public void setMessage(String message) {
+            this.message = message;
         }
     }
 
