@@ -35,6 +35,9 @@ public class SerialDataManager {
 
     private DrawingText main;
 
+    // TODO: ONLY TO DEBUG - DELETE WHEN DONE
+    private long receivedCommands;
+
 
     public static SerialDataManager createNewInstance(){
         return new SerialDataManager();
@@ -48,6 +51,8 @@ public class SerialDataManager {
         this.serialBuffer = new LinkedBlockingQueue<>();
         this.multipleCommandSplitter = MultipleCommandSplitter.getNewInstance();
         this.NEW_LINE = this.readEndLineFromConfiguration();
+        // TODO: ONLY TO DEBUG - DELETE WHEN DONE
+        this.receivedCommands = 0;
     }
     private SerialDataManager(BlockingQueue<String> serialBuffer) {
         this.serialBuffer = serialBuffer;
@@ -88,8 +93,11 @@ public class SerialDataManager {
                         return;
                     }
                     try {
+                        //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
+                        System.out.println("LISTENING_EVENT_DATA_AVAILABLE true");
                         while ( ( data = serialPort.getInputStream().read()) > -1 ){
                             if ( data == NEW_LINE ) {
+                                receivedCommands ++;
                                 break;
                             }
                             message.append((char) data);
@@ -103,6 +111,7 @@ public class SerialDataManager {
                                 List<String> commands = multipleCommandSplitter.splitMultipleCommand(message.toString());
                                 //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
                                 System.out.println("Command added to serialBuffer:" + commands.size());
+                                System.out.println("Total commands received: " + receivedCommands);
 
                                 serialBuffer.addAll(commands);
                                 main.runAndWaitMyRunnable();
