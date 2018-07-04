@@ -86,6 +86,10 @@ public class SerialDataManager {
                 @Override
                 public void serialEvent(SerialPortEvent event)
                 {
+                    //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
+                    System.out.println("EVENT RECEIVED: " + event.getEventType());
+                    System.out.println("DATA RECEIVED: " + event.getReceivedData());
+
 
                     // TODO: MOVE THE FOLLOWING ROW IN THE try catch BLOCK
                     StringBuilder message = new StringBuilder();
@@ -98,6 +102,8 @@ public class SerialDataManager {
                         while ( ( data = serialPort.getInputStream().read()) > -1 ){
                             if ( data == NEW_LINE ) {
                                 receivedCommands ++;
+
+
                                 break;
                             }
                             message.append((char) data);
@@ -107,6 +113,11 @@ public class SerialDataManager {
                             // ONLY ONE MESSAGE
                             boolean isValid = calculateCRC(new String[]{message.toString()});
                             if (isValid) {
+
+                                verifyStopAndCloseAndOpenSerialPort(message);
+
+
+
                                 // TO MANAGE MULTIPLE COMMANDS IN A SINGLE ROW
                                 List<String> commands = multipleCommandSplitter.splitMultipleCommand(message.toString());
                                 //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
@@ -116,12 +127,12 @@ public class SerialDataManager {
                                 serialBuffer.addAll(commands);
                                 main.runAndWaitMyRunnable();
 
-                                serialPort.getOutputStream().write(new String("OK").getBytes());
-                                serialPort.getOutputStream().flush();
+                                //serialPort.getOutputStream().write(new String("OK").getBytes());
+                                //serialPort.getOutputStream().flush();
                             }
                             else{
-                                serialPort.getOutputStream().write(new String("KO: " + message.toString() + NEW_LINE).getBytes());
-                                serialPort.getOutputStream().flush();
+                                //serialPort.getOutputStream().write(new String("KO: " + message.toString() + NEW_LINE).getBytes());
+                                //serialPort.getOutputStream().flush();
                             }
                         }
 
@@ -142,6 +153,27 @@ public class SerialDataManager {
             e.printStackTrace();
         }
         return this.serialPort;
+    }
+
+    private void verifyStopAndCloseAndOpenSerialPort(StringBuilder message) throws IOException {
+        if (message.toString().toLowerCase().indexOf("attesa start spazio blocco") >= 0){
+            //this.serialPort.getOutputStream().close();
+            //this.serialPort.getInputStream().close();
+
+//            this.serialPort.getOutputStream().flush();
+//            this.serialPort.getInputStream().reset();
+
+
+
+
+            //this.disconnectFromSerialPort();
+            //this.connectToSerialPort();
+
+            // TODO: MESSAGE TO DEBUG: REMOVE WHEN DONE
+            if (this.serialPort != null){
+                System.out.println("Serial port reconnected");
+            }
+        }
     }
 
     private boolean calculateCRC(String[] messages) {
@@ -174,15 +206,15 @@ public class SerialDataManager {
         return (crc.equalsIgnoreCase("kermit"))? Crc16CcittKermit.getNewInstance(): CRC16CCITT.getNewInstance();
     }
 
-    public boolean disconnectFromSerialPort(){
+    public synchronized boolean disconnectFromSerialPort(){
         boolean retValue = true;
         if(this.serialPort != null){
             System.out.println("disconnectFromSerialPort()");
-            this.serialPort.removeDataListener();
             try {
                 this.serialPort.getOutputStream().close();
                 this.serialPort.getInputStream().close();
                 this.serialPort.closePort();
+                this.serialPort.removeDataListener();
             } catch (Exception e) {
                 retValue = false;
                 e.printStackTrace();

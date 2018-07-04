@@ -285,3 +285,5 @@
 ^C
 ^tE0100   EMERGENZA O BARRIERA 
 ^t20405Togliere EMERGENZA e pigiare ENT
+^C
+^tE0100   Attesa START spazio blocco x

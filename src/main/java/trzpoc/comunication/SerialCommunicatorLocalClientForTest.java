@@ -288,11 +288,7 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
         List<String> lines = this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt");
         for (int i = 0; i < 4000; i++){
             this.sendMessagesToRemoteClientReadingList(lines, interval);
-            String testHeader = "^t11215 cycle # " + i;
-            testHeader += this.calculateCrCForString(testHeader);
-            testHeader += this.END_OF_LINE;
-            this.writeData(testHeader.getBytes());
-            this.waitFor(500);
+            this.waitFor(2000);
         }
     }
     private void testTwo(int interval) {
