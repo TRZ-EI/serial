@@ -24,7 +24,7 @@ import java.util.concurrent.LinkedBlockingQueue;
  * Date: 26/08/17
  * Time: 14.31
  */
-public class SerialDataManager {
+public class SerialDataManager implements SerialPortDataListener{
     private char NEW_LINE;
 
     private SerialPort serialPort;
@@ -74,83 +74,7 @@ public class SerialDataManager {
         this.serialPort.openPort();
         if (serialPort != null){
             System.out.println("Connected !!!");
-        }
-
-        try {
-
-            // TODO: EXTRACT LISTENER CLASS IN A DEDICATED FILE
-            serialPort.addDataListener(new SerialPortDataListener() {
-                int data = 0;
-                @Override
-                public int getListeningEvents() { return SerialPort.LISTENING_EVENT_DATA_AVAILABLE; }
-                @Override
-                public void serialEvent(SerialPortEvent event)
-                {
-                    //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
-                    System.out.println("EVENT RECEIVED: " + event.getEventType());
-                    System.out.println("DATA RECEIVED: " + event.getReceivedData());
-
-
-                    // TODO: MOVE THE FOLLOWING ROW IN THE try catch BLOCK
-                    StringBuilder message = new StringBuilder();
-                    if (event.getEventType() != SerialPort.LISTENING_EVENT_DATA_AVAILABLE){
-                        return;
-                    }
-                    try {
-                        //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
-                        System.out.println("LISTENING_EVENT_DATA_AVAILABLE true");
-                        while ( ( data = serialPort.getInputStream().read()) > -1 ){
-                            if ( data == NEW_LINE ) {
-                                receivedCommands ++;
-
-
-                                break;
-                            }
-                            message.append((char) data);
-                        }
-                        if (message.toString().startsWith("^")) {
-
-                            // ONLY ONE MESSAGE
-                            boolean isValid = calculateCRC(new String[]{message.toString()});
-                            if (isValid) {
-
-                                verifyStopAndCloseAndOpenSerialPort(message);
-
-
-
-                                // TO MANAGE MULTIPLE COMMANDS IN A SINGLE ROW
-                                List<String> commands = multipleCommandSplitter.splitMultipleCommand(message.toString());
-                                //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
-                                System.out.println("Command added to serialBuffer:" + commands.size());
-                                System.out.println("Total commands received: " + receivedCommands);
-
-                                serialBuffer.addAll(commands);
-                                main.runAndWaitMyRunnable();
-
-                                //serialPort.getOutputStream().write(new String("OK").getBytes());
-                                //serialPort.getOutputStream().flush();
-                            }
-                            else{
-                                //serialPort.getOutputStream().write(new String("KO: " + message.toString() + NEW_LINE).getBytes());
-                                //serialPort.getOutputStream().flush();
-                            }
-                        }
-
-
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    } catch (ExecutionException e) {
-                        e.printStackTrace();
-                    }
-                }
-            });
-
-
-        } catch (Exception e) {
-            e.printStackTrace();
+            serialPort.addDataListener(this);
         }
         return this.serialPort;
     }
@@ -211,10 +135,10 @@ public class SerialDataManager {
         if(this.serialPort != null){
             System.out.println("disconnectFromSerialPort()");
             try {
+                this.serialPort.removeDataListener();
                 this.serialPort.getOutputStream().close();
                 this.serialPort.getInputStream().close();
                 this.serialPort.closePort();
-                this.serialPort.removeDataListener();
             } catch (Exception e) {
                 retValue = false;
                 e.printStackTrace();
@@ -240,5 +164,72 @@ public class SerialDataManager {
 
     public void setMain(DrawingText main){
         this.main = main;
+    }
+
+    @Override
+    public int getListeningEvents() { return SerialPort.LISTENING_EVENT_DATA_AVAILABLE; }
+
+    @Override
+    public void serialEvent(SerialPortEvent event) {
+
+        int data = 0;
+        //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
+        System.out.println("EVENT RECEIVED: " + event.getEventType());
+        System.out.println("DATA RECEIVED: " + event.getReceivedData());
+
+
+        // TODO: MOVE THE FOLLOWING ROW IN THE try catch BLOCK
+        StringBuilder message = new StringBuilder();
+        if (event.getEventType() != SerialPort.LISTENING_EVENT_DATA_AVAILABLE){
+            return;
+        }
+        try {
+            //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
+            System.out.println("LISTENING_EVENT_DATA_AVAILABLE true");
+            while ( ( data = serialPort.getInputStream().read()) > -1 ){
+                if ( data == NEW_LINE ) {
+                    receivedCommands ++;
+                    break;
+                }
+                message.append((char) data);
+            }
+            if (message.toString().startsWith("^")) {
+
+                // ONLY ONE MESSAGE
+                boolean isValid = calculateCRC(new String[]{message.toString()});
+                if (isValid) {
+
+                    verifyStopAndCloseAndOpenSerialPort(message);
+
+
+
+                    // TO MANAGE MULTIPLE COMMANDS IN A SINGLE ROW
+                    List<String> commands = multipleCommandSplitter.splitMultipleCommand(message.toString());
+                    //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
+                    System.out.println("Command added to serialBuffer:" + commands.size());
+                    System.out.println("Total commands received: " + receivedCommands);
+
+                    serialBuffer.addAll(commands);
+                    main.runAndWaitMyRunnable();
+
+                    //serialPort.getOutputStream().write(new String("OK").getBytes());
+                    //serialPort.getOutputStream().flush();
+                }
+                else{
+                    //serialPort.getOutputStream().write(new String("KO: " + message.toString() + NEW_LINE).getBytes());
+                    //serialPort.getOutputStream().flush();
+                }
+            }
+
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
     }
 }

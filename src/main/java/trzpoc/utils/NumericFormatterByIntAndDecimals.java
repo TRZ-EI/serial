@@ -1,6 +1,8 @@
 package trzpoc.utils;
 
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.util.Locale;
 
 /**
  * Created with IntelliJ IDEA.
@@ -34,7 +36,11 @@ public class NumericFormatterByIntAndDecimals {
             divisor *= 10;
         }
         double calculatedValue = (double)tempValue / divisor;
-        String formattedValue = new DecimalFormat(this.createFormat()).format(calculatedValue);
+        DecimalFormat formatter = (DecimalFormat) DecimalFormat.getNumberInstance(Locale.US);
+
+        formatter.applyPattern(this.createFormat());
+        String formattedValue = formatter.format(calculatedValue);
+        //String formattedValue = new DecimalFormat(this.createFormat()).format(calculatedValue);
         /*
         int integerPlaces = formattedValue.indexOf('.');
         if (integerPlaces >= 0 && integerPlaces < this.integerPart){

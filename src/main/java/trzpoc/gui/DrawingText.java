@@ -6,7 +6,6 @@ import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.concurrent.Task;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -22,6 +21,7 @@ import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.concurrent.BlockingQueue;
@@ -44,10 +44,12 @@ public class DrawingText extends Application {
     private Canvas canvasForGrid;
 
     private MyRunnable myRunnable;
+    private FutureTask future;
 
 
 
-    @Override public void start(Stage stage) throws FileNotFoundException, UnsupportedEncodingException, InterruptedException {
+
+    @Override public void start(Stage stage) throws IOException, InterruptedException {
         this.readProperties();
         this.visitor = new StructureVisitor(this);
         this.facade = SerialDataFacade.createNewInstance();
@@ -65,11 +67,22 @@ public class DrawingText extends Application {
 
         this.serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(serialBuffer);
         this.serialDataManager.setMain(this);
-        Thread serialThread = new Thread(serialTask);
-        serialThread.setDaemon(false);
-        serialThread.start();
+        this.serialDataManager.connectToSerialPort();
+        //Thread serialThread = new Thread(serialTask);
+        //serialThread.setDaemon(false);
+        //serialThread.start();
 
         this.myRunnable = new MyRunnable(this.serialBuffer);
+
+
+    }
+    public void restart() throws IOException {
+        System.out.println( "Restarting serial port!" );
+        this.serialDataManager.disconnectFromSerialPort();
+        this.serialDataManager = SerialDataManager.createNewInstanceBySerialBuffer(this.serialBuffer);
+        this.serialDataManager.setMain(this);
+        this.serialDataManager.connectToSerialPort();
+
 
     }
 
@@ -144,15 +157,15 @@ public class DrawingText extends Application {
 
 
     public void runAndWaitMyRunnable() throws InterruptedException, ExecutionException {
-
+        this.future = new FutureTask(this.myRunnable, null);
         while (!this.serialBuffer.isEmpty()) {
-            FutureTask future = new FutureTask(this.myRunnable, null);
+            //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
+            System.out.println("BlockingQueue serialBuffer content before take:" + serialBuffer.size());
+
             this.myRunnable.setMessage(this.serialBuffer.take());
-            Platform.runLater(future);
-            future.get();
+            Platform.runLater(this.future);
+            this.future.get();
         }
-
-
     }
     class MyRunnable implements Runnable{
 
@@ -165,8 +178,6 @@ public class DrawingText extends Application {
         @Override
         public void run() {
             try {
-                //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
-                System.out.println("BlockingQueue serialBuffer content before take:" + serialBuffer.size());
 
                     writeTextOnScene(this.message);
                 }
@@ -179,12 +190,12 @@ public class DrawingText extends Application {
         }
     }
 
-
+/*
     private Task<Void> serialTask = new Task<Void>() {
         @Override
         public Void call() throws Exception {
 
-            serialDataManager.connectToSerialPort();
+            //serialDataManager.connectToSerialPort();
             /* TODO: EXPORT THIS BLOCK TO A METHOD, TO INVOKE ONLY FOR TEST REASONS
             BlockingQueue<String> list = new LinkedBlockingQueue<>();
             SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(list, 0);
@@ -247,14 +258,14 @@ public class DrawingText extends Application {
             Thread.sleep(1000);
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt");
             sde.runScenario("serialInputs/test-bars-no-crc.txt");
-            */
+
             while (true) {
 
             }
 
         }
     };
-
+*/
 
     public static void main(String[] args) {
         launch(args);
