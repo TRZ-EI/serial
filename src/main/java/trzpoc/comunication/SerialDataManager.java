@@ -86,24 +86,16 @@ public class SerialDataManager {
                 @Override
                 public void serialEvent(SerialPortEvent event)
                 {
-                    //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
-                    System.out.println("EVENT RECEIVED: " + event.getEventType());
-                    System.out.println("DATA RECEIVED: " + event.getReceivedData());
-
-
-                    // TODO: MOVE THE FOLLOWING ROW IN THE try catch BLOCK
-                    StringBuilder message = new StringBuilder();
                     if (event.getEventType() != SerialPort.LISTENING_EVENT_DATA_AVAILABLE){
                         return;
                     }
                     try {
+                        StringBuilder message = new StringBuilder();
                         //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
                         System.out.println("LISTENING_EVENT_DATA_AVAILABLE true");
                         while ( ( data = serialPort.getInputStream().read()) > -1 ){
                             if ( data == NEW_LINE ) {
                                 receivedCommands ++;
-
-
                                 break;
                             }
                             message.append((char) data);
@@ -114,7 +106,7 @@ public class SerialDataManager {
                             boolean isValid = calculateCRC(new String[]{message.toString()});
                             if (isValid) {
 
-                                verifyStopAndCloseAndOpenSerialPort(message);
+                                //verifyStopAndCloseAndOpenSerialPort(message, receivedCommands);
 
 
 
@@ -155,26 +147,6 @@ public class SerialDataManager {
         return this.serialPort;
     }
 
-    private void verifyStopAndCloseAndOpenSerialPort(StringBuilder message) throws IOException {
-        if (message.toString().toLowerCase().indexOf("attesa start spazio blocco") >= 0){
-            //this.serialPort.getOutputStream().close();
-            //this.serialPort.getInputStream().close();
-
-//            this.serialPort.getOutputStream().flush();
-//            this.serialPort.getInputStream().reset();
-
-
-
-
-            //this.disconnectFromSerialPort();
-            //this.connectToSerialPort();
-
-            // TODO: MESSAGE TO DEBUG: REMOVE WHEN DONE
-            if (this.serialPort != null){
-                System.out.println("Serial port reconnected");
-            }
-        }
-    }
 
     private boolean calculateCRC(String[] messages) {
         int score = 0;
