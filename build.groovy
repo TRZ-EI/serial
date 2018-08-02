@@ -4,7 +4,7 @@
 //def pwd = "raspberry"
 
 /* RASPBERRY PARAMS BT */
-def host = "192.168.1.119"
+def host = "192.168.1.120"
 def user = "pi"
 def pwd = "raspberry"
 
