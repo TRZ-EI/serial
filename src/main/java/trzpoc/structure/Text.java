@@ -41,9 +41,8 @@ public class Text extends Cell{
     }
 
     @Override
-    public void accept(StructureVisitor visitor) {
-        visitor.visit(this);
-
+    public Runnable accept(StructureVisitor visitor) {
+        return visitor.visit(this);
     }
 
     public Text updateData(Text dataParsed) {

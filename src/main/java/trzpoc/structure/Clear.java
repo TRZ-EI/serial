@@ -9,7 +9,7 @@ package trzpoc.structure;
 public class Clear extends Cell {
 
     @Override
-    public void accept(StructureVisitor visitor) {
-        visitor.visit(this);
+    public Runnable accept(StructureVisitor visitor) {
+        return visitor.visit(this);
     }
 }

@@ -31,26 +31,27 @@ public class StructureVisitor {
         this.mainWindow = drawingText;
         this.rightTextAligner = RightTextAligner.getSingleInstance();
     }
-    public void visit(Text cell){
+    public Runnable visit(Text cell){
         value = cell.getValue();
-        this.findTextAndFillWithData(cell);
+        return this.findTextAndFillWithData(cell);
     }
-    public void visit(Number number) {
+    public Runnable visit(Number number) {
         this.value = number.printFormattedValue();
-        this.findTextAndFillWithData(number);
+        return this.findTextAndFillWithData(number);
     }
 
-    public void visit(Variable cell){
+    public Runnable visit(Variable cell){
+        Runnable retValue = null;
         if (cell.isAConfiguration()){
             this.configurations.put(cell.getId(), cell);
         }else {
             cell = this.mergeWithConfiguration(cell);
             if (cell != null) {
                 this.value = cell.printFormattedValue();
-
-                this.findTextAndFillWithData(cell);
+                retValue = this.findTextAndFillWithData(cell);
             }
         }
+        return retValue;
     }
 
     private Variable mergeWithConfiguration(Variable cell) {
@@ -66,42 +67,48 @@ public class StructureVisitor {
         return retValue;
     }
 
-    public void visit(Clear cell){
+    public Runnable visit(Clear cell){
         //this.mainWindow.getRoot().getScene().
         //ObservableList<Node> nodes = this.mainWindow.getRoot().getChildren();
-        this.mainWindow.getRoot().getChildren().clear();
         //this.mainWindow.getRoot().getChildren().removeAll(nodes);
         this.mainWindow.getRows().clear();
-        this.mainWindow.drawGridOnCanvas();
+        return new JfxCleaner(this.mainWindow);
     }
-    public void visit(RowCleaner cell){
+    public Runnable visit(RowCleaner cell){
         Collection<javafx.scene.Node> contents = this.mainWindow.getRows().get(cell.getId());
-        this.mainWindow.getRoot().getChildren().removeAll(contents);
+
+
+
+        return new JfxRowCleaner(this.mainWindow, contents);
     }
-    public void visit(Bar cell){
-        this.findBarAndFillWithData(cell);
+    public Runnable visit(Bar cell){
+        return this.findBarAndFillWithData(cell);
     }
 
-    private void findBarAndFillWithData(Bar variable){
+    private Runnable findBarAndFillWithData(Bar variable){
+        Runnable returnValue = null;
         String id = String.valueOf(variable.getId());
         Node bar = this.mainWindow.getRoot().getScene().lookup("#" + id);
         if (bar == null){
             bar = GraphicDesigner.createNewInstance().configureBar(variable);
-            this.addNodeToJfxTree(variable, bar);
+            returnValue = this.addNodeToJfxTree(variable, bar);
         }
+        return returnValue;
     }
 
 
-    private void findTextAndFillWithData(Cell variable){
+    private Runnable findTextAndFillWithData(Cell variable){
+        Runnable retValue = null;
         String id = String.valueOf(variable.getId());
 
         // TO TEST: REMOVE SEARCH
         javafx.scene.text.Text myText = (javafx.scene.text.Text)this.mainWindow.getRoot().getScene().lookup("#" + id);
         if (myText == null){
             myText = createTextNode(variable);
-            this.addNodeToJfxTree(variable, myText);
+            retValue = this.addNodeToJfxTree(variable, myText);
         }
-        this.updateValue(variable);
+        retValue = this.updateValue(variable);
+        return retValue;
     }
 
 /*
@@ -114,39 +121,44 @@ public class StructureVisitor {
     }
 */
 
-    private void updateValue(Cell cell) {
+    private Runnable updateValue(Cell cell) {
+        Runnable retValue = null;
         for (Node n: this.multipleItems.get(cell.getId())){
             if (n instanceof javafx.scene.text.Text){
-               this.update(cell, (javafx.scene.text.Text)n);
+               retValue = this.update(cell, (javafx.scene.text.Text)n);
             }else{
-               this.update((Gauge)n, cell.getValue());
+               retValue = this.update((Gauge)n, cell.getValue());
             }
         }
+        return retValue;
     }
-    private void update(Cell cell, javafx.scene.text.Text t){
+    private Runnable update(Cell cell, javafx.scene.text.Text t){
         this.updateStartingPositionToWriteText(cell, t);
-        t.setText(this.value);
+        return new JfxTextUpdater(t, value);
     }
 
-    private void update(Gauge t, String rawValue){
+    private Runnable update(Gauge t, String rawValue){
+        Color color = null;
+        double finalValue = 0;
+
         double valueInDouble = Double.parseDouble(rawValue);
         if (valueInDouble >= t.getMaxValue() || valueInDouble <= t.getMinValue()){
-            t.barColorProperty().set(Color.RED);
+            color = Color.RED;
+            finalValue = valueInDouble * 10;
             // Add 30% value to compensate zero pos fixed to 70% of lenght bar
             //t.setValue(valueInDouble + (valueInDouble * 0.3));
-            t.setValue(valueInDouble * 10);
         }else{
-            t.barColorProperty().set(Color.GREEN);
-            t.setValue(valueInDouble);
+            color = Color.GREEN;
+            finalValue = valueInDouble;
         }
-
+        return new JfxGaugeBarUpdater(color, finalValue, t);
     }
 
 
-    private void addNodeToJfxTree(Cell variable, javafx.scene.Node myText) {
-        this.mainWindow.getRoot().getChildren().add(myText);
+    private Runnable addNodeToJfxTree(Cell variable, Node myText) {
         this.mainWindow.getRows().put(variable.getyPos(), myText);
         this.multipleItems.put(variable.getId(), myText);
+        return new JfxTreeEnhancer(myText, this.mainWindow);
     }
 
     private javafx.scene.text.Text createTextNode(Cell variable) {

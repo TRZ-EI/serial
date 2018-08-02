@@ -1,0 +1,26 @@
+package trzpoc.structure;
+
+import javafx.scene.Node;
+import trzpoc.gui.DrawingText;
+
+/**
+ * Created with IntelliJ IDEA.
+ * User: luigi
+ * Date: 02/08/18
+ * Time: 11:19
+ */
+public class JfxTreeEnhancer implements Runnable {
+
+    private final Node node;
+    private final DrawingText window;
+
+    public JfxTreeEnhancer(Node myText, DrawingText mainWindow) {
+        this.node = myText;
+        this.window = mainWindow;
+    }
+    @Override
+    public void run() {
+        this.window.getRoot().getChildren().add(node);
+
+    }
+}

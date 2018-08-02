@@ -43,8 +43,8 @@ public class DrawingText extends Application {
     private StructureVisitor visitor;
     private Canvas canvasForGrid;
 
-    private MyRunnable myRunnable;
-
+    private FutureTask future;
+    private Runnable aRunnable;
 
 
     @Override public void start(Stage stage) throws FileNotFoundException, UnsupportedEncodingException, InterruptedException {
@@ -69,7 +69,7 @@ public class DrawingText extends Application {
         serialThread.setDaemon(false);
         serialThread.start();
 
-        this.myRunnable = new MyRunnable(this.serialBuffer);
+        //this.myRunnable = new MyRunnable(this.serialBuffer);
 
     }
 
@@ -128,13 +128,15 @@ public class DrawingText extends Application {
             }
         });
     }
-    private void writeTextOnScene(String value) throws UnsupportedEncodingException {
+    private Runnable writeTextOnScene(String value) throws UnsupportedEncodingException {
         //System.out.println("DEBUG INFO - 3 --> call writeTextOnScene:" + System.currentTimeMillis());
+        Runnable retValue = null;
         Cell variable = this.facade.onSerialDataInput(value.getBytes());
         if(variable != null){
             //System.out.println("DEBUG INFO - 4 --> call accept visitor:" + System.currentTimeMillis());
-            variable.accept(this.visitor);
+            retValue = variable.accept(this.visitor);
         }
+        return retValue;
     }
 
     private void readProperties() throws FileNotFoundException {
@@ -142,7 +144,7 @@ public class DrawingText extends Application {
         ConfigurationHolder.createSingleInstanceByConfigUri(resourceFile);
     }
 
-
+/*
     public void runAndWaitMyRunnable() throws InterruptedException, ExecutionException {
 
         while (!this.serialBuffer.isEmpty()) {
@@ -154,30 +156,22 @@ public class DrawingText extends Application {
 
 
     }
-    class MyRunnable implements Runnable{
+*/
+    public void runAndWaitMyRunnable() throws InterruptedException, ExecutionException {
 
-        private final BlockingQueue<String> serialBuffer;
-        private String message;
-
-        public MyRunnable(BlockingQueue<String> serialBuffer){
-            this.serialBuffer = serialBuffer;
-        }
-        @Override
-        public void run() {
+        while (!this.serialBuffer.isEmpty()) {
             try {
-                //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
-                System.out.println("BlockingQueue serialBuffer content before take:" + serialBuffer.size());
+                this.aRunnable = this.writeTextOnScene(this.serialBuffer.take());
+                this.future = new FutureTask(aRunnable, null);
+                Platform.runLater(this.future);
+                this.future.get();
 
-                    writeTextOnScene(this.message);
-                }
-                catch (UnsupportedEncodingException e1) {
-                e1.printStackTrace();
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
             }
         }
-        public void setMessage(String message) {
-            this.message = message;
-        }
     }
+
 
 
     private Task<Void> serialTask = new Task<Void>() {
