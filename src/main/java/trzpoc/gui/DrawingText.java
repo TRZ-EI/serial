@@ -20,6 +20,7 @@ import trzpoc.structure.Cell;
 import trzpoc.structure.StructureVisitor;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
+import trzpoc.utils.SerialDataEmulator;
 
 import java.io.FileNotFoundException;
 import java.io.UnsupportedEncodingException;
@@ -179,69 +180,56 @@ public class DrawingText extends Application {
         public Void call() throws Exception {
 
             serialDataManager.connectToSerialPort();
-            /* TODO: EXPORT THIS BLOCK TO A METHOD, TO INVOKE ONLY FOR TEST REASONS
-            BlockingQueue<String> list = new LinkedBlockingQueue<>();
-            SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(list, 0);
+            /* TODO: EXPORT THIS BLOCK TO A METHOD, TO INVOKE ONLY FOR TEST REASONS */
+            SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 10);
 
-            BlockingQueue<String> totalList = new LinkedBlockingQueue<>();
-
-            sde.runScenario("serialInputs/variable-fragment.txt");
-
-            System.out.println("Starting fill totalList");
-            for (int i = 0; i < 20; i ++) {
-                totalList.addAll(list);
-            }
-            System.out.println("End fill totalList: " + totalList.size());
-            while(totalList.size() > 0) {
-                serialBuffer.add(totalList.take());
-            }
-            */
-
-
-
-
-            //parkinglist.addAll(list);
-
-/* TODO: EXPERIMENTS
-
-            for (int i = 0; i < 1000; i ++) {
-                for(int k = 0; k < list.size(); k ++){
-                    serialBuffer.add(list.poll());
-                }
-                list.addAll(parkinglist);
-                Thread.sleep(100);
-            }
-*/
-            /*
             //sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt");
 
             sde.runScenario("serialInputs/clean-row-before-cleaner-test.txt");
+            runAndWaitMyRunnable();
             sde.runScenario("serialInputs/clean-row-after-cleaner-test.txt");
+            runAndWaitMyRunnable();
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-1-no-crc.txt");
+            runAndWaitMyRunnable();
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-2-no-crc.txt");
+            runAndWaitMyRunnable();
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-3-no-crc.txt");
+            runAndWaitMyRunnable();
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-no-crc.txt");
+            runAndWaitMyRunnable();
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt");
+            runAndWaitMyRunnable();
             sde.runScenario("serialInputs/barAndVariable-fragment.txt");
+            runAndWaitMyRunnable();
             sde.runScenario("serialInputs/real-examples-prova2-no-crc.txt");
+            runAndWaitMyRunnable();
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlign-no-crc.txt");
+            runAndWaitMyRunnable();
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables-no-crc.txt");
+            runAndWaitMyRunnable();
             Thread.sleep(1000);
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables1-no-crc.txt");
+            runAndWaitMyRunnable();
             Thread.sleep(1000);
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables2-no-crc.txt");
+            runAndWaitMyRunnable();
             Thread.sleep(1000);
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables3-no-crc.txt");
+            runAndWaitMyRunnable();
             Thread.sleep(1000);
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers1-no-crc.txt");
+            runAndWaitMyRunnable();
             Thread.sleep(1000);
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers2-no-crc.txt");
+            runAndWaitMyRunnable();
             Thread.sleep(1000);
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers3-no-crc.txt");
+            runAndWaitMyRunnable();
             Thread.sleep(1000);
             sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt");
+            runAndWaitMyRunnable();
             sde.runScenario("serialInputs/test-bars-no-crc.txt");
-            */
+            runAndWaitMyRunnable();
             while (true) {
 
             }
