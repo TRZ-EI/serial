@@ -106,8 +106,9 @@ public class StructureVisitor {
         if (myText == null){
             myText = createTextNode(variable);
             retValue = this.addNodeToJfxTree(variable, myText);
+        }else {
+            retValue = this.updateValue(variable);
         }
-        retValue = this.updateValue(variable);
         return retValue;
     }
 
@@ -168,6 +169,7 @@ public class StructureVisitor {
         retValue.setId(id);
         retValue.setFill(variable.getColor());
         retValue.setFont(variable.getFont());
+        retValue.setText(this.value);
         return retValue;
     }
 
