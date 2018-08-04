@@ -4,25 +4,20 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
+    <list id="b4e93cff-d048-4a6f-92cd-4a82a397bf5b" name="New changelist" comment="" />
     <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="wip">
-      <change afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxCleaner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxGaugeBarUpdater.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxRowCleaner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxTextUpdater.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxTreeEnhancer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/serial.ipr" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxCompositeRunnable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxGaugeBarUpdaterFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxTextUpdaterFragment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/RunnableFragment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/build.groovy" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/serial.iml" beforeDir="false" afterPath="$PROJECT_DIR$/serial.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/serial.iws" beforeDir="false" afterPath="$PROJECT_DIR$/serial.iws" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Bar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Bar.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/CellInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/CellInterface.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Clear.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Clear.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Number.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Number.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/RowCleaner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/RowCleaner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxGaugeBarUpdater.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxTextUpdater.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Text.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Variable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Variable.java" afterDir="false" />
     </list>
-    <list id="b4e93cff-d048-4a6f-92cd-4a82a397bf5b" name="New changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -42,8 +37,8 @@
       <file leaf-file-name="StructureVisitor.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="765">
-              <caret line="93" column="57" lean-forward="true" selection-start-line="93" selection-start-column="57" selection-end-line="93" selection-end-column="57" />
+            <state relative-caret-position="40">
+              <caret line="137" column="34" selection-start-line="137" selection-start-column="34" selection-end-line="137" selection-end-column="34" />
               <folding>
                 <element signature="e#2858#2859#0" expanded="true" />
                 <element signature="e#2914#2915#0" expanded="true" />
@@ -52,59 +47,58 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="JfxCleaner.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxCleaner.java">
+      <file leaf-file-name="JfxGaugeBarUpdaterFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxGaugeBarUpdaterFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="300">
-              <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+            <state relative-caret-position="345">
+              <caret line="24" selection-start-line="24" selection-end-line="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JfxCompositeRunnable.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxCompositeRunnable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="165">
+              <caret line="11" selection-start-line="11" selection-end-line="11" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#231#232#0" expanded="true" />
+                <element signature="e#280#281#0" expanded="true" />
+                <element signature="e#477#478#0" expanded="true" />
+                <element signature="e#521#522#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="JfxTextUpdaterFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxTextUpdaterFragment.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="180">
+              <caret line="12" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="e#238#239#0" expanded="true" />
-                <element signature="e#277#278#0" expanded="true" />
+                <element signature="e#283#284#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="DrawingText.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java">
+      <file leaf-file-name="RunnableFragment.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/RunnableFragment.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="570">
-              <caret line="176" lean-forward="true" selection-start-line="171" selection-end-line="176" />
+            <state relative-caret-position="45">
+              <caret line="3" column="17" lean-forward="true" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Bar.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Bar.java">
+      <file leaf-file-name="JfxTreeEnhancer.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxTreeEnhancer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="40" column="15" selection-start-line="40" selection-start-column="15" selection-end-line="40" selection-end-column="15" />
-              <folding>
-                <element signature="e#785#786#0" expanded="true" />
-                <element signature="e#827#828#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JfxRowCleaner.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxRowCleaner.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="270">
-              <caret line="21" selection-start-line="21" selection-end-line="21" />
-              <folding>
-                <element signature="e#524#525#0" expanded="true" />
-                <element signature="e#600#601#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="JfxGaugeBarUpdater.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxGaugeBarUpdater.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="330">
-              <caret line="22" column="66" lean-forward="true" selection-start-line="22" selection-start-column="66" selection-end-line="22" selection-end-column="66" />
+            <state relative-caret-position="390">
+              <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -112,53 +106,20 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Text.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Text.java">
+      <file leaf-file-name="DrawingText.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="328">
-              <caret line="44" column="20" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="20" />
+            <state relative-caret-position="421">
+              <caret line="131" column="21" selection-start-line="131" selection-start-column="21" selection-end-line="131" selection-end-column="21" />
               <folding>
-                <element signature="e#869#870#0" expanded="true" />
-                <element signature="e#911#912#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Number.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Number.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="465">
-              <caret line="45" column="15" lean-forward="true" selection-start-line="45" selection-start-column="15" selection-end-line="45" selection-end-column="15" />
-              <folding>
-                <element signature="e#941#942#0" expanded="true" />
-                <element signature="e#983#984#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Clear.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Clear.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="180">
-              <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
-              <folding>
-                <element signature="e#216#217#0" expanded="true" />
-                <element signature="e#258#259#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RowCleaner.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/RowCleaner.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="225">
-              <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
-              <folding>
-                <element signature="e#388#389#0" expanded="true" />
-                <element signature="e#430#431#0" expanded="true" />
+                <element signature="e#6471#9685#0" expanded="true" />
+                <element signature="e#9684#9685#0" expanded="true" />
+                <element signature="e#9790#9791#0" expanded="true" />
+                <element signature="e#9818#9819#0" expanded="true" />
+                <element signature="e#9848#9849#0" expanded="true" />
+                <element signature="e#9875#9876#0" expanded="true" />
+                <element signature="e#9936#9937#0" expanded="true" />
+                <element signature="e#9963#9964#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -169,8 +130,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="TestNG Test Class" />
+        <option value="Interface" />
         <option value="Class" />
       </list>
     </option>
@@ -250,7 +211,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="stopAndGoSerialPort" />
+        <entry key="$PROJECT_DIR$" value="chengesToDebugSlowMotions-test" />
       </map>
     </option>
     <option name="PUSH_TAGS">
@@ -260,12 +221,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicator.java" />
-        <option value="$PROJECT_DIR$/src/test/java/trzpoc/comunication/SerialListenerForTest.java" />
-        <option value="$PROJECT_DIR$/src/main/resources/serialInputs/clean-row-after-cleaner-test-no-crc.txt" />
-        <option value="$PROJECT_DIR$/src/main/java/trzpoc/utils/NumericFormatterByIntAndDecimals.java" />
-        <option value="$PROJECT_DIR$/src/test/java/trzpoc/utils/NumericFormatterByIntAndDecimalsTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/trzpoc/structure/VariableTest.java" />
         <option value="$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/VariableValueSerialDataParserTest.java" />
         <option value="$PROJECT_DIR$/src/main/resources/application.properties" />
         <option value="$PROJECT_DIR$/src/main/resources/serialInputs/test-bars-no-crc.txt" />
@@ -295,7 +250,6 @@
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialPortTimer.java" />
         <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicatorLocalClientForTest.java" />
-        <option value="$PROJECT_DIR$/build.groovy" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/swing/DisplayGraphics.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialDataManager.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/Variable.java" />
@@ -309,8 +263,15 @@
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxGaugeBarUpdater.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxRowCleaner.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxCleaner.java" />
-        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/trzpoc/utils/NumericFormatterByIntAndDecimals.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java" />
+        <option value="$PROJECT_DIR$/build.groovy" />
+        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxMultipleAdapter.java" />
+        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/RunnableFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxCompositeRunnable.java" />
+        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java" />
+        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxTextUpdaterFragment.java" />
+        <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxGaugeBarUpdaterFragment.java" />
       </list>
     </option>
   </component>
@@ -354,6 +315,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="serial" type="58d84e3e:PackageViewProjectNode" />
+              <item name="serial" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="serial" type="58d84e3e:PackageViewProjectNode" />
+              <item name="serial" type="616d4139:PackageViewModuleNode" />
+              <item name="trzpoc" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -510,22 +487,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="serial" type="58d84e3e:PackageViewProjectNode" />
-              <item name="serial" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="serial" type="58d84e3e:PackageViewProjectNode" />
-              <item name="serial" type="616d4139:PackageViewModuleNode" />
-              <item name="trzpoc" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -606,6 +567,36 @@
               <item name="resources" type="462c0819:PsiDirectoryNode" />
               <item name="serialInputs" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="serial" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="serial" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="serial" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="trzpoc" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="serial" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="test" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="trzpoc" type="462c0819:PsiDirectoryNode" />
+              <item name="utils" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -623,6 +614,9 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="trzpoc.structure" />
+    </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="trzpoc.comunication" />
       <recent name="trzpoc.structure.serial" />
@@ -642,11 +636,6 @@
       <recent name="trzpoc.utils" />
       <recent name="trzpoc.structure" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/serialInputs/testToRightAlign" />
-      <recent name="$PROJECT_DIR$/src/main/resources/serialInputs" />
-      <recent name="$PROJECT_DIR$/src/main/resources" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="trzpoc.gui.hansolo.skins" />
       <recent name="trzpoc.structure" />
@@ -661,8 +650,10 @@
       <recent name="$PROJECT_DIR$/src/main/scripts" />
       <recent name="$PROJECT_DIR$/src/test/resources" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="trzpoc.structure" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/serialInputs/testToRightAlign" />
+      <recent name="$PROJECT_DIR$/src/main/resources/serialInputs" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -677,7 +668,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DrawingTextWithSerial">
+  <component name="RunManager" selected="Remote.TRZ-remote">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
@@ -771,6 +762,22 @@
       <setting name="workDir" value="file://$PROJECT_DIR$" />
       <setting name="debug" value="false" />
     </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <patterns />
+    </configuration>
     <configuration name="Mac-remote" type="Remote" factoryName="Remote">
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
@@ -786,7 +793,7 @@
       <option name="USE_SOCKET_TRANSPORT" value="true" />
       <option name="SERVER_MODE" value="false" />
       <option name="SHMEM_ADDRESS" value="javadebug" />
-      <option name="HOST" value="192.168.1.119" />
+      <option name="HOST" value="192.168.188.48" />
       <option name="PORT" value="5005" />
       <RunnerSettings RunnerId="Debug">
         <option name="DEBUG_PORT" value="5005" />
@@ -873,12 +880,6 @@
       <properties />
       <listeners />
     </configuration>
-    <configuration name="&lt;template&gt;" type="JUnit" default="true" selected="false">
-      <option name="MAIN_CLASS_NAME" />
-      <option name="VM_PARAMETERS" value="-ea" />
-      <option name="PARAMETERS" />
-      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
-    </configuration>
     <list>
       <item itemvalue="Application.SerialCommunicatorRunner" />
       <item itemvalue="Application.DrawingTextWithSerial" />
@@ -888,11 +889,11 @@
       <item itemvalue="Application.BarDemo" />
       <item itemvalue="Remote.Mac-remote" />
       <item itemvalue="Remote.TRZ-remote" />
+      <item itemvalue="Application.DisplayGraphics" />
+      <item itemvalue="Application.DrawingTextOriginal" />
       <item itemvalue="Groovy.build" />
       <item itemvalue="TestNG.FontAndColorSelectorTest" />
       <item itemvalue="TestNG.TextMetricCalculatorTest" />
-      <item itemvalue="Application.DisplayGraphics" />
-      <item itemvalue="Application.DrawingTextOriginal" />
     </list>
     <recent_temporary>
       <list>
@@ -911,13 +912,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1489661415561</updated>
-    </task>
-    <task id="LOCAL-00011" summary="Added management for MONOSPACE fonts - use only monospace fonts">
-      <created>1495713059918</created>
-      <option name="number" value="00011" />
-      <option name="presentableId" value="LOCAL-00011" />
-      <option name="project" value="LOCAL" />
-      <updated>1495713059918</updated>
     </task>
     <task id="LOCAL-00012" summary="Fixed mapping between position in row (1,2,3...) and pixels - added grid for debug">
       <created>1495975968935</created>
@@ -1255,7 +1249,14 @@
       <option name="project" value="LOCAL" />
       <updated>1530703896191</updated>
     </task>
-    <option name="localTasksCounter" value="60" />
+    <task id="LOCAL-00060" summary="NumericFormatterByIntAndDecimals.java: fixed parsing to use US locale">
+      <created>1533282079809</created>
+      <option name="number" value="00060" />
+      <option name="presentableId" value="LOCAL-00060" />
+      <option name="project" value="LOCAL" />
+      <updated>1533282079809</updated>
+    </task>
+    <option name="localTasksCounter" value="61" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1300,64 +1301,63 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="58" y="-11" width="1863" height="1092" extended-state="6" />
-    <editor active="true" />
+    <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
     <layout>
-      <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="bottom" id="TODO" order="4" weight="0.32948583" />
-      <window_info anchor="right" id="Enso" order="6" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.31669268" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.512253" side_tool="true" weight="0.35439137" />
-      <window_info anchor="right" id="Maven Projects" order="4" weight="0.32885376" />
+      <window_info anchor="right" id="Maven Projects" order="4" weight="0.32828686" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49586776" weight="0.32633787" />
-      <window_info anchor="bottom" id="Run" order="12" sideWeight="0.48774704" weight="0.26040062" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.6640986" />
+      <window_info anchor="bottom" id="Run" order="12" sideWeight="0.48774704" weight="0.25897035" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.73166925" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.40110192" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.36363637" />
-      <window_info anchor="bottom" id="SonarQube" order="9" weight="0.32972136" />
+      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.40796813" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24940239" />
-      <window_info id="UI Designer" order="3" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.4980716" weight="0.4083205" />
+      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.4980716" weight="0.4071763" />
+      <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24980174" />
       <window_info anchor="right" id="Code Iris" order="7" />
       <window_info anchor="right" id="Data View" order="8" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32972136" />
+      <window_info anchor="bottom" id="SonarQube" order="9" weight="0.32972136" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Enso" order="6" />
+      <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32972136" />
+      <window_info id="UI Designer" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3174114" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.36363637" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49586776" weight="0.3266564" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.36363637" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24980174" />
-      <window_info id="Project" order="4" visible="true" weight="0.40158102" />
-      <window_info anchor="right" id="Code Iris" order="7" />
-      <window_info anchor="bottom" id="SonarQube" order="9" weight="0.32972136" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" id="Data View" order="8" />
+      <window_info anchor="bottom" id="Run" order="12" sideWeight="0.48774704" weight="0.25897035" />
+      <window_info anchor="bottom" id="SonarQube" order="9" weight="0.32972136" />
+      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.40796813" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24940239" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="4" weight="0.32948583" />
       <window_info anchor="right" id="Enso" order="6" />
-      <window_info anchor="bottom" id="TODO" order="4" weight="0.32972136" />
-      <window_info anchor="bottom" id="Run" order="12" sideWeight="0.48774704" weight="0.26040062" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32972136" />
       <window_info id="Designer" order="0" />
-      <window_info id="UI Designer" order="3" />
-      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.4980716" weight="0.4083205" />
+      <window_info anchor="right" id="Code Iris" order="7" />
+      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.4980716" weight="0.4071763" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.6640986" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.73166925" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.512253" side_tool="true" weight="0.35439137" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49586776" weight="0.32633787" />
+      <window_info id="UI Designer" order="3" />
       <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.3174114" />
-      <window_info anchor="right" id="Maven Projects" order="4" weight="0.32885376" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.31669268" />
+      <window_info anchor="right" id="Maven Projects" order="4" weight="0.32828686" />
       <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
@@ -1394,7 +1394,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="removed" />
     <MESSAGE value="add build script at the project root" />
     <MESSAGE value="Added class to implement CRC 16 CCITT Kermit" />
     <MESSAGE value="IntelliJ Idea Project modifications" />
@@ -1419,7 +1418,8 @@
     <MESSAGE value="WIP" />
     <MESSAGE value="Initial commit in this branch, after unstash" />
     <MESSAGE value="wip" />
-    <option name="LAST_COMMIT_MESSAGE" value="wip" />
+    <MESSAGE value="NumericFormatterByIntAndDecimals.java: fixed parsing to use US locale" />
+    <option name="LAST_COMMIT_MESSAGE" value="NumericFormatterByIntAndDecimals.java: fixed parsing to use US locale" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1462,15 +1462,15 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java</url>
-          <line>104</line>
+          <line>45</line>
           <properties />
-          <option name="timeStamp" value="435" />
+          <option name="timeStamp" value="438" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="436" />
+      <option name="time" value="439" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1483,49 +1483,6 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$MAVEN_REPOSITORY$/eu/hansolo/Medusa/7.9/Medusa-7.9.jar!/eu/hansolo/medusa/Gauge.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="650" selection-start-line="650" selection-end-line="650" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/applications/jvm64/jdk1.8.0_122/javafx-src.zip!/javafx/scene/control/SkinBase.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="84" selection-start-line="84" selection-end-line="84" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="184">
-          <caret line="92" selection-start-line="92" selection-end-line="92" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/hansolo/skins/TRZLinearSkin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6642">
-          <caret line="401" column="110" selection-start-line="401" selection-start-column="110" selection-end-line="401" selection-end-column="110" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/applications/jvm64/jdk1.8.0_122/javafx-src.zip!/javafx/concurrent/Task.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="1450" selection-start-line="1450" selection-end-line="1450" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicRunnable.java" />
-    <entry file="file://$PROJECT_DIR$/runningResultsTest1.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18324">
-          <caret line="1018" selection-start-line="1018" selection-end-line="1018" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/15commands-fragment-no-crc.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
@@ -1553,13 +1510,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_5.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="18">
-          <caret line="1" selection-start-line="1" selection-end-line="1" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$APPLICATION_CONFIG_DIR$/scratches/scratch_5.txt" />
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
@@ -1567,13 +1518,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/applications/jvm64/jdk1.8.0_122/src.zip!/java/util/ArrayList.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-8">
-          <caret line="417" selection-start-line="417" selection-end-line="417" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="jar://$USER_HOME$/applications/jvm64/jdk1.8.0_122/src.zip!/java/util/ArrayList.java" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/variable-fragment.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="36">
@@ -1656,20 +1601,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/com/fazecast/jSerialComm/1.3.11/jSerialComm-1.3.11.jar!/com/fazecast/jSerialComm/SerialPort.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="133">
-          <caret line="272" column="22" selection-start-line="272" selection-start-column="22" selection-end-line="272" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="108">
-          <caret line="6" column="25" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/swing/DisplayGraphics.java" />
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingTextOriginal.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1703,51 +1634,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Variable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="46" column="25" lean-forward="true" selection-start-line="46" selection-start-column="25" selection-end-line="46" selection-end-column="25" />
-          <folding>
-            <element signature="e#1003#1004#0" expanded="true" />
-            <element signature="e#1045#1046#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxTreeEnhancer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxTextUpdater.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="315">
-          <caret line="21" column="17" selection-start-line="21" selection-start-column="17" selection-end-line="21" selection-end-column="17" />
-          <folding>
-            <element signature="e#402#403#0" expanded="true" />
-            <element signature="e#439#440#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxGaugeBarUpdater.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="330">
-          <caret line="22" column="66" lean-forward="true" selection-start-line="22" selection-start-column="66" selection-end-line="22" selection-end-column="66" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Text.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="328">
+        <state relative-caret-position="480">
           <caret line="44" column="20" selection-start-line="44" selection-start-column="20" selection-end-line="44" selection-end-column="20" />
           <folding>
             <element signature="e#869#870#0" expanded="true" />
@@ -1758,7 +1647,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/RowCleaner.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="225">
+        <state relative-caret-position="210">
           <caret line="19" column="20" selection-start-line="19" selection-start-column="20" selection-end-line="19" selection-end-column="20" />
           <folding>
             <element signature="e#388#389#0" expanded="true" />
@@ -1771,17 +1660,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="270">
           <caret line="21" selection-start-line="21" selection-end-line="21" />
-          <folding>
-            <element signature="e#524#525#0" expanded="true" />
-            <element signature="e#600#601#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Number.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="465">
-          <caret line="45" column="15" lean-forward="true" selection-start-line="45" selection-start-column="15" selection-end-line="45" selection-end-column="15" />
+        <state relative-caret-position="555">
+          <caret line="45" column="15" selection-start-line="45" selection-start-column="15" selection-end-line="45" selection-end-column="15" />
           <folding>
             <element signature="e#941#942#0" expanded="true" />
             <element signature="e#983#984#0" expanded="true" />
@@ -1791,8 +1676,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Clear.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="18" lean-forward="true" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
+        <state relative-caret-position="165">
+          <caret line="12" column="18" selection-start-line="12" selection-start-column="18" selection-end-line="12" selection-end-column="18" />
           <folding>
             <element signature="e#216#217#0" expanded="true" />
             <element signature="e#258#259#0" expanded="true" />
@@ -1811,10 +1696,122 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxCleaner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="20" column="26" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+          <folding>
+            <element signature="e#277#278#0" expanded="true" />
+            <element signature="e#317#318#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/utils/NumericFormatterByIntAndDecimals.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="128">
+          <caret line="29" column="28" selection-start-line="29" selection-start-column="28" selection-end-line="29" selection-end-column="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/Variable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="278">
+          <caret line="46" selection-start-line="46" selection-end-line="46" />
+          <folding>
+            <element signature="e#1045#1046#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$MAVEN_REPOSITORY$/com/fazecast/jSerialComm/1.3.11/jSerialComm-1.3.11.jar!/com/fazecast/jSerialComm/SerialPort.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="249">
+          <caret line="750" selection-start-line="750" selection-end-line="750" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/trzpoc/utils/NumericFormatterByIntAndDecimalsTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="379">
+          <caret line="41" column="44" selection-start-line="41" selection-start-column="44" selection-end-line="41" selection-end-column="44" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="421">
+          <caret line="131" column="21" selection-start-line="131" selection-start-column="21" selection-end-line="131" selection-end-column="21" />
+          <folding>
+            <element signature="e#6471#9685#0" expanded="true" />
+            <element signature="e#9684#9685#0" expanded="true" />
+            <element signature="e#9790#9791#0" expanded="true" />
+            <element signature="e#9818#9819#0" expanded="true" />
+            <element signature="e#9848#9849#0" expanded="true" />
+            <element signature="e#9875#9876#0" expanded="true" />
+            <element signature="e#9936#9937#0" expanded="true" />
+            <element signature="e#9963#9964#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxCompositeRunnable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" selection-start-line="11" selection-end-line="11" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#231#232#0" expanded="true" />
+            <element signature="e#280#281#0" expanded="true" />
+            <element signature="e#477#478#0" expanded="true" />
+            <element signature="e#521#522#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxTextUpdaterFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" selection-start-line="12" selection-end-line="12" />
+          <folding>
+            <element signature="e#238#239#0" expanded="true" />
+            <element signature="e#283#284#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxGaugeBarUpdaterFragment.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="345">
+          <caret line="24" selection-start-line="24" selection-end-line="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxTextUpdater.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="150">
+          <caret line="10" column="24" lean-forward="true" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+          <folding>
+            <element signature="e#402#403#0" expanded="true" />
+            <element signature="e#447#448#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="765">
-          <caret line="93" column="57" lean-forward="true" selection-start-line="93" selection-start-column="57" selection-end-line="93" selection-end-column="57" />
+        <state relative-caret-position="40">
+          <caret line="137" column="34" selection-start-line="137" selection-start-column="34" selection-end-line="137" selection-end-column="34" />
           <folding>
             <element signature="e#2858#2859#0" expanded="true" />
             <element signature="e#2914#2915#0" expanded="true" />
@@ -1822,21 +1819,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxCleaner.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxMultipleAdapter.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="20" column="26" lean-forward="true" selection-start-line="20" selection-start-column="26" selection-end-line="20" selection-end-column="26" />
+        <state relative-caret-position="585">
+          <caret line="39" column="19" selection-start-line="39" selection-start-column="19" selection-end-line="39" selection-end-column="19" />
           <folding>
-            <element signature="e#238#239#0" expanded="true" />
-            <element signature="e#277#278#0" expanded="true" />
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/RunnableFragment.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="570">
-          <caret line="176" lean-forward="true" selection-start-line="171" selection-end-line="176" />
+        <state relative-caret-position="45">
+          <caret line="3" column="17" lean-forward="true" selection-start-line="3" selection-start-column="17" selection-end-line="3" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxGaugeBarUpdater.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="20" lean-forward="true" selection-start-line="11" selection-start-column="20" selection-end-line="11" selection-end-column="20" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxTreeEnhancer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="390">
+          <caret line="26" lean-forward="true" selection-start-line="26" selection-end-line="26" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

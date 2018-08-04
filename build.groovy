@@ -1,12 +1,13 @@
-/* RASPBERRY PARAMS HOME */
-//def host = "192.168.188.48"
-//def user = "pi"
-//def pwd = "raspberry"
-
-/* RASPBERRY PARAMS BT */
-def host = "192.168.1.120"
 def user = "pi"
 def pwd = "raspberry"
+
+
+
+/* RASPBERRY PARAMS HOME */
+def host = "192.168.188.48"
+
+/* RASPBERRY PARAMS BT */
+//def host = "192.168.1.120"
 
 /* LAPTOP PARAMS */
 //def host = "192.168.1.111"
