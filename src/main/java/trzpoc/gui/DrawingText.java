@@ -163,9 +163,11 @@ public class DrawingText extends Application {
         while (!this.serialBuffer.isEmpty()) {
             try {
                 this.aRunnable = this.writeTextOnScene(this.serialBuffer.take());
-                this.future = new FutureTask(aRunnable, null);
-                Platform.runLater(this.future);
-                this.future.get();
+                if (this.aRunnable != null){
+                    this.future = new FutureTask(aRunnable, null);
+                    Platform.runLater(this.future);
+                    this.future.get();
+                }
 
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
