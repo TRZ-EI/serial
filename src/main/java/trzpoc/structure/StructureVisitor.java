@@ -123,22 +123,22 @@ public class StructureVisitor {
 */
 
     private Runnable updateValue(Cell cell) {
-        Runnable retValue = null;
+        JfxCompositeRunnable retValue = new JfxCompositeRunnable();
         for (Node n: this.multipleItems.get(cell.getId())){
             if (n instanceof javafx.scene.text.Text){
-               retValue = this.update(cell, (javafx.scene.text.Text)n);
+               retValue.add(this.update(cell, (javafx.scene.text.Text)n));
             }else{
-               retValue = this.update((Gauge)n, cell.getValue());
+               retValue.add(this.update((Gauge)n, cell.getValue()));
             }
         }
         return retValue;
     }
-    private Runnable update(Cell cell, javafx.scene.text.Text t){
+    private RunnableFragment update(Cell cell, javafx.scene.text.Text t){
         this.updateStartingPositionToWriteText(cell, t);
-        return new JfxTextUpdater(t, value);
+        return new JfxTextUpdaterFragment(t, value);
     }
 
-    private Runnable update(Gauge t, String rawValue){
+    private RunnableFragment update(Gauge t, String rawValue){
         Color color = null;
         double finalValue = 0;
 
@@ -152,7 +152,7 @@ public class StructureVisitor {
             color = Color.GREEN;
             finalValue = valueInDouble;
         }
-        return new JfxGaugeBarUpdater(color, finalValue, t);
+        return new JfxGaugeBarUpdaterFragment(color, finalValue, t);
     }
 
 
