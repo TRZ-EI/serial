@@ -256,9 +256,10 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
     @Override
     public void run() {
         this.connect();
+        //this.testTwo(50);
+        //this.testThree(25);
+        //this.testFour(10);
         this.testOne(50);
-        this.testTwo(50);
-        this.testThree(10);
     }
 
 
@@ -288,14 +289,29 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
         List<String> lines = this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt");
         for (int i = 0; i < 4000; i++){
             this.sendMessagesToRemoteClientReadingList(lines, interval);
+        }
+/*
+        List<String> lines = this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1-1-no-crc.txt");
+        for (int i = 0; i < 4000; i++){
+            this.sendMessagesToRemoteClientReadingList(lines, interval);
             this.waitFor(2000);
         }
+*/
+
+
+
+
+
+
+
+
+
     }
     private void testTwo(int interval) {
         List<String> linesForFirstSet = this.readTestScenaryAndProduceDataForTest("serialInputs/15commands-fragment-no-crc.txt");
         List<String> linesForSecondSet = this.readTestScenaryAndProduceDataForTest("serialInputs/5commands-fragment-no-crc.txt");
 
-        for (int k = 0; k < 400; k++) {
+        for (int k = 0; k < 50; k++) {
             // 15 commands without pause
             this.sendMessagesToRemoteClientReadingList(linesForFirstSet, interval);
             // wait for 100 ms
@@ -309,7 +325,23 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
         }
     }
     private void testThree(int interval) {
-        this.sendMessagesToRemoteClient("serialInputs/variable-fragment.txt", interval);
+
+        List<String> lines = this.readTestScenaryAndProduceDataForTest("serialInputs/variable-fragment.txt");
+        for (int k = 0; k < 4000; k ++) {
+            this.sendMessagesToRemoteClientReadingList(lines, interval);
+        }
+    }
+    private void testFour(int interval){
+
+        List<String> lines = this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers1-no-crc.txt");
+        lines.addAll(this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers2-no-crc.txt"));
+        lines.addAll(this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers3-no-crc.txt"));
+        lines.addAll(this.readTestScenaryAndProduceDataForTest("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt"));
+
+        for (int i = 0; i < 4000; i++){
+            this.sendMessagesToRemoteClientReadingList(lines, interval);
+        }
+
     }
 
     private List<String> sendMessagesToRemoteClient(String resource, int pause) {
