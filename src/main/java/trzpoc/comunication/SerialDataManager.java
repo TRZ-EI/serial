@@ -28,10 +28,8 @@ public class SerialDataManager {
     private char NEW_LINE;
 
     private SerialPort serialPort;
-    //private SerialCommunicator serialCommunicator;
     private MultipleCommandSplitter multipleCommandSplitter;
     private BlockingQueue<String> serialBuffer;
-    private BooleanProperty isDataAvalaible = new SimpleBooleanProperty(false);
 
     private DrawingText main;
 
@@ -91,8 +89,6 @@ public class SerialDataManager {
                     }
                     try {
                         StringBuilder message = new StringBuilder();
-                        //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
-                        System.out.println("LISTENING_EVENT_DATA_AVAILABLE true");
                         while ( ( data = serialPort.getInputStream().read()) > -1 ){
                             if ( data == NEW_LINE ) {
                                 receivedCommands ++;
@@ -112,8 +108,6 @@ public class SerialDataManager {
 
                                 // TO MANAGE MULTIPLE COMMANDS IN A SINGLE ROW
                                 List<String> commands = multipleCommandSplitter.splitMultipleCommand(message.toString());
-                                //TODO: ONLY FOR DEBUG - DELETE WHEN DONE
-                                System.out.println("Command added to serialBuffer:" + commands.size());
                                 System.out.println("Total commands received: " + receivedCommands);
 
                                 serialBuffer.addAll(commands);
@@ -193,21 +187,6 @@ public class SerialDataManager {
             }
         }
         return retValue;
-    }
-
-    // TODO: REMOVE
-    public BooleanProperty getIsDataAvalaible() {
-        return isDataAvalaible;
-    }
-
-    // TODO: REMOVE
-    public BlockingQueue<String> getSerialBuffer() {
-        return serialBuffer;
-    }
-
-    // TODO: REMOVE
-    public void setIsDataAvalaible(boolean value) {
-        this.isDataAvalaible.set(value);
     }
 
     public void setMain(DrawingText main){
