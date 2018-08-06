@@ -68,16 +68,12 @@ public class StructureVisitor {
     }
 
     public Runnable visit(Clear cell){
-        //this.mainWindow.getRoot().getScene().
-        //ObservableList<Node> nodes = this.mainWindow.getRoot().getChildren();
-        //this.mainWindow.getRoot().getChildren().removeAll(nodes);
         this.mainWindow.getRows().clear();
+        this.multipleItems.clear();
         return new JfxCleaner(this.mainWindow);
     }
     public Runnable visit(RowCleaner cell){
         Collection<javafx.scene.Node> contents = this.mainWindow.getRows().get(cell.getId());
-
-
 
         return new JfxRowCleaner(this.mainWindow, contents);
     }

@@ -4,16 +4,13 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list id="b4e93cff-d048-4a6f-92cd-4a82a397bf5b" name="New changelist" comment="" />
     <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/serial.iws" beforeDir="false" afterPath="$PROJECT_DIR$/serial.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicatorLocalClientForTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicatorLocalClientForTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialDataManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialDataManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Text.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/structure/Text.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/utils/RightTextAligner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/utils/RightTextAligner.java" afterDir="false" />
     </list>
+    <list id="b4e93cff-d048-4a6f-92cd-4a82a397bf5b" name="New changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -929,34 +926,6 @@
       <option name="presentableId" value="Default" />
       <updated>1489661415561</updated>
     </task>
-    <task id="LOCAL-00016" summary="Refactoring">
-      <created>1496505545118</created>
-      <option name="number" value="00016" />
-      <option name="presentableId" value="LOCAL-00016" />
-      <option name="project" value="LOCAL" />
-      <updated>1496505545118</updated>
-    </task>
-    <task id="LOCAL-00017" summary="Refactoring to separate serial input from graphic controls">
-      <created>1496565875225</created>
-      <option name="number" value="00017" />
-      <option name="presentableId" value="LOCAL-00017" />
-      <option name="project" value="LOCAL" />
-      <updated>1496565875225</updated>
-    </task>
-    <task id="LOCAL-00018" summary="Refactoring to add to Cell position for including rectangle">
-      <created>1496664051643</created>
-      <option name="number" value="00018" />
-      <option name="presentableId" value="LOCAL-00018" />
-      <option name="project" value="LOCAL" />
-      <updated>1496664051643</updated>
-    </task>
-    <task id="LOCAL-00019" summary="Added canvas to draw grid">
-      <created>1496668203324</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1496668203324</updated>
-    </task>
     <task id="LOCAL-00020" summary="Added method to draw grid - refactored main method">
       <created>1496668258029</created>
       <option name="number" value="00020" />
@@ -1272,7 +1241,35 @@
       <option name="project" value="LOCAL" />
       <updated>1533378529019</updated>
     </task>
-    <option name="localTasksCounter" value="65" />
+    <task id="LOCAL-00065" summary="RightTextAligner: added todo on suspect method">
+      <created>1533547810717</created>
+      <option name="number" value="00065" />
+      <option name="presentableId" value="LOCAL-00065" />
+      <option name="project" value="LOCAL" />
+      <updated>1533547810717</updated>
+    </task>
+    <task id="LOCAL-00066" summary="RightTextAligner: added todo on suspect method">
+      <created>1533547834792</created>
+      <option name="number" value="00066" />
+      <option name="presentableId" value="LOCAL-00066" />
+      <option name="project" value="LOCAL" />
+      <updated>1533547834793</updated>
+    </task>
+    <task id="LOCAL-00067" summary="SerialCommunicatorLocalClientForTest: modified to perform test">
+      <created>1533547935049</created>
+      <option name="number" value="00067" />
+      <option name="presentableId" value="LOCAL-00067" />
+      <option name="project" value="LOCAL" />
+      <updated>1533547935049</updated>
+    </task>
+    <task id="LOCAL-00068" summary="SerialDataManager: removed debug println">
+      <created>1533548186791</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1533548186791</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1410,9 +1407,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Modified rows and columns management" />
-    <MESSAGE value="Emproved deploy scripts" />
-    <MESSAGE value="WIP for multiple serial commands" />
     <MESSAGE value="Added touch screen to stop application" />
     <MESSAGE value="main canvas to front" />
     <MESSAGE value="New version semplified" />
@@ -1435,7 +1429,10 @@
     <MESSAGE value="Classes added to emprove Jfx thread management" />
     <MESSAGE value="removed because no more util" />
     <MESSAGE value="various configurations" />
-    <option name="LAST_COMMIT_MESSAGE" value="various configurations" />
+    <MESSAGE value="RightTextAligner: added todo on suspect method" />
+    <MESSAGE value="SerialCommunicatorLocalClientForTest: modified to perform test" />
+    <MESSAGE value="SerialDataManager: removed debug println" />
+    <option name="LAST_COMMIT_MESSAGE" value="SerialDataManager: removed debug println" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

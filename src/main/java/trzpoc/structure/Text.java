@@ -60,7 +60,6 @@ public class Text extends Cell{
     }
 
     private int calculateHashedId(int x, int y) {
-        // TODO
         return String.valueOf((this.calculateIdUsingIniectiveFunctionForXandY(x, y))).hashCode();
     }
 
