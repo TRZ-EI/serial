@@ -27,8 +27,9 @@ public class RightTextAligner {
     }
 
 
-
+    // TODO: why method overload?
     public int calculatePrintingPositionByCell(Cell cell){
+
         int retValue = cell.getPixelScreenXPos();
         if (cell instanceof Number) {
             retValue = this.calculatePositionByCell((Number) cell);
