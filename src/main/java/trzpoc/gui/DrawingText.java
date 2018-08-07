@@ -23,6 +23,7 @@ import trzpoc.utils.ConfigurationHolder;
 import trzpoc.utils.SerialDataEmulator;
 
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.concurrent.BlockingQueue;
@@ -59,8 +60,6 @@ public class DrawingText extends Application {
 
         stage.setScene(scene);
         stage.setTitle("TRZ bar for instruments");
-        this.addCombinationKeyAcceleratorToExit(stage);
-        this.addCombinationKeyAcceleratorToClerScreen(stage);
         stage.show();
 
 
@@ -84,51 +83,12 @@ public class DrawingText extends Application {
         if (this.canvasForGrid == null){
             this.canvasForGrid = new Canvas(800d,480d);
             GraphicDesigner.createNewInstance().drawGridForGraphicHelp(this.canvasForGrid);
-            this.addTouchEventToExit(this.canvasForGrid);
         }
         return this.canvasForGrid;
 
 
     }
 
-    private void addCombinationKeyAcceleratorToExit(Stage primaryStage) {
-        primaryStage.getScene().getAccelerators().put(
-                KeyCombination.keyCombination("CTRL+C"),
-                new Runnable() {
-                    public void run() {
-                        serialDataManager.disconnectFromSerialPort();
-                        Platform.exit();
-                    }
-                }
-        );
-    }
-    private void addCombinationKeyAcceleratorToClerScreen(Stage primaryStage) {
-        primaryStage.getScene().getAccelerators().put(
-                KeyCombination.keyCombination("CTRL+W"),
-                new Runnable() {
-                    public void run() {
-                        root.getChildren().clear();
-                        drawGridOnCanvas();
-                    }
-                }
-        );
-    }
-    private void addTouchEventToExit(Canvas canvas) {
-        canvas.setOnTouchPressed(new EventHandler<TouchEvent>() {
-            private int touches;
-            private long firstTouch = 0;
-            private long secondTouch = 0;
-            public void handle(TouchEvent event) {
-                firstTouch = (firstTouch == 0)? new Date().getTime(): firstTouch;
-                secondTouch = (firstTouch > 0)? new Date().getTime(): secondTouch;
-                touches += (touches < 2 && event.getEventSetId() == 1)? 1: 0;
-                if (touches == 2 && (secondTouch - firstTouch) > 0 && (secondTouch - firstTouch) <= 1000) {
-                    serialDataManager.disconnectFromSerialPort();
-                    Platform.exit();
-                }
-            }
-        });
-    }
     private Runnable writeTextOnScene(String value) throws UnsupportedEncodingException {
         //System.out.println("DEBUG INFO - 3 --> call writeTextOnScene:" + System.currentTimeMillis());
         Runnable retValue = null;
@@ -145,19 +105,7 @@ public class DrawingText extends Application {
         ConfigurationHolder.createSingleInstanceByConfigUri(resourceFile);
     }
 
-/*
-    public void runAndWaitMyRunnable() throws InterruptedException, ExecutionException {
 
-        while (!this.serialBuffer.isEmpty()) {
-            FutureTask future = new FutureTask(this.myRunnable, null);
-            this.myRunnable.setMessage(this.serialBuffer.take());
-            Platform.runLater(future);
-            future.get();
-        }
-
-
-    }
-*/
     public void runAndWaitMyRunnable() throws InterruptedException, ExecutionException {
 
         while (!this.serialBuffer.isEmpty()) {
@@ -183,55 +131,7 @@ public class DrawingText extends Application {
 
             serialDataManager.connectToSerialPort();
             /* TODO: EXPORT THIS BLOCK TO A METHOD, TO INVOKE ONLY FOR TEST REASONS */
-            SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 10);
-
-            //sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt");
-
-            sde.runScenario("serialInputs/clean-row-before-cleaner-test.txt");
-            runAndWaitMyRunnable();
-            sde.runScenario("serialInputs/clean-row-after-cleaner-test.txt");
-            runAndWaitMyRunnable();
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-1-no-crc.txt");
-            runAndWaitMyRunnable();
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-2-no-crc.txt");
-            runAndWaitMyRunnable();
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-3-no-crc.txt");
-            runAndWaitMyRunnable();
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-no-crc.txt");
-            runAndWaitMyRunnable();
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt");
-            runAndWaitMyRunnable();
-            sde.runScenario("serialInputs/barAndVariable-fragment.txt");
-            runAndWaitMyRunnable();
-            sde.runScenario("serialInputs/real-examples-prova2-no-crc.txt");
-            runAndWaitMyRunnable();
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlign-no-crc.txt");
-            runAndWaitMyRunnable();
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables-no-crc.txt");
-            runAndWaitMyRunnable();
-            Thread.sleep(1000);
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables1-no-crc.txt");
-            runAndWaitMyRunnable();
-            Thread.sleep(1000);
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables2-no-crc.txt");
-            runAndWaitMyRunnable();
-            Thread.sleep(1000);
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables3-no-crc.txt");
-            runAndWaitMyRunnable();
-            Thread.sleep(1000);
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers1-no-crc.txt");
-            runAndWaitMyRunnable();
-            Thread.sleep(1000);
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers2-no-crc.txt");
-            runAndWaitMyRunnable();
-            Thread.sleep(1000);
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers3-no-crc.txt");
-            runAndWaitMyRunnable();
-            Thread.sleep(1000);
-            sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt");
-            runAndWaitMyRunnable();
-            sde.runScenario("serialInputs/test-bars-no-crc.txt");
-            runAndWaitMyRunnable();
+            testSimulatingSerialData();
             while (true) {
 
             }
@@ -239,15 +139,60 @@ public class DrawingText extends Application {
         }
     };
 
-
+    public void testSimulatingSerialData() throws IOException, InterruptedException, ExecutionException {
+        SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 10);
+        sde.runScenario("serialInputs/clean-row-before-cleaner-test.txt");
+        this.runAndWaitMyRunnable();
+        sde.runScenario("serialInputs/clean-row-after-cleaner-test.txt");
+        this.runAndWaitMyRunnable();
+        sde.runScenario("serialInputs/real-examples-prova3-fragment1-1-no-crc.txt");
+        this.runAndWaitMyRunnable();
+        sde.runScenario("serialInputs/real-examples-prova3-fragment1-2-no-crc.txt");
+        this.runAndWaitMyRunnable();
+        sde.runScenario("serialInputs/real-examples-prova3-fragment1-3-no-crc.txt");
+        this.runAndWaitMyRunnable();
+        sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-no-crc.txt");
+        this.runAndWaitMyRunnable();
+        sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt");
+        this.runAndWaitMyRunnable();
+        sde.runScenario("serialInputs/barAndVariable-fragment.txt");
+        this.runAndWaitMyRunnable();
+        sde.runScenario("serialInputs/real-examples-prova2-no-crc.txt");
+        this.runAndWaitMyRunnable();
+        sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlign-no-crc.txt");
+        this.runAndWaitMyRunnable();
+        sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables-no-crc.txt");
+        this.runAndWaitMyRunnable();
+        Thread.sleep(1000);
+        sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables1-no-crc.txt");
+        this.runAndWaitMyRunnable();
+        Thread.sleep(1000);
+        sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables2-no-crc.txt");
+        this.runAndWaitMyRunnable();
+        Thread.sleep(1000);
+        sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables3-no-crc.txt");
+        this.runAndWaitMyRunnable();
+        Thread.sleep(1000);
+        sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers1-no-crc.txt");
+        this.runAndWaitMyRunnable();
+        Thread.sleep(1000);
+        sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers2-no-crc.txt");
+        this.runAndWaitMyRunnable();
+        Thread.sleep(1000);
+        sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers3-no-crc.txt");
+        this.runAndWaitMyRunnable();
+        Thread.sleep(1000);
+        sde.runScenario("serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt");
+        this.runAndWaitMyRunnable();
+        sde.runScenario("serialInputs/test-bars-no-crc.txt");
+        this.runAndWaitMyRunnable();
+    }
     public static void main(String[] args) {
         launch(args);
     }
-
     public Group getRoot() {
         return root;
     }
-
     public Multimap<Integer, javafx.scene.Node> getRows() {
         return rows;
     }
