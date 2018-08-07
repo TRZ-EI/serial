@@ -64,12 +64,8 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
     }
 
     public SerialPort connect() {
-        try {
-            this.serialPort = SerialDataManager.createNewInstance().connectToSerialPort();
-            this.initIOStream();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        this.serialPort = SerialDataManager.createNewInstance().connectToSerialPort();
+        this.initIOStream();
         return this.serialPort;
     }
 
