@@ -26,13 +26,6 @@
             <fileMode>0755</fileMode>
         </fileSet>
         <fileSet>
-            <directory>serialLib</directory>
-            <outputDirectory>serialLib</outputDirectory>
-            <includes>
-                <include>librxtxSerial.so</include>
-            </includes>
-        </fileSet>
-        <fileSet>
             <directory>src/main/resources/</directory>
             <outputDirectory>/</outputDirectory>
             <includes>

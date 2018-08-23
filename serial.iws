@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/serial.iws" beforeDir="false" afterPath="$PROJECT_DIR$/serial.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicatorLocalClientForTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicatorLocalClientForTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assembly/bin.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/assembly/bin.xml" afterDir="false" />
     </list>
     <list id="b4e93cff-d048-4a6f-92cd-4a82a397bf5b" name="New changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -30,14 +28,33 @@
       <file leaf-file-name="SerialCommunicatorLocalClientForTest.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicatorLocalClientForTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="15">
+            <state relative-caret-position="810">
               <caret line="67" column="28" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="bin.xml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="bin.xml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/assembly/bin.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="120">
+              <caret line="8" selection-start-line="8" selection-end-line="8" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="run-console.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/bin/run-console.sh">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="run.sh" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/bin/run.sh">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+      <file leaf-file-name="notesForDeploy.txt" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/notesForDeploy.txt">
           <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
@@ -48,15 +65,6 @@
               <folding>
                 <element signature="n#!!doc" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="RightTextAligner.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/utils/RightTextAligner.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="29" column="7" selection-start-line="29" selection-start-column="7" selection-end-line="29" selection-end-column="7" />
             </state>
           </provider>
         </entry>
@@ -84,18 +92,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="810">
               <caret line="65" selection-start-line="65" selection-end-line="65" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TRZSerialPortListener.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/comunication/TRZSerialPortListener.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -208,7 +204,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/serialInputs/test-bars-no-crc.txt" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/BarDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java" />
         <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlign-no-crc.txt" />
@@ -259,6 +254,7 @@
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicatorLocalClientForTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java" />
         <option value="$PROJECT_DIR$/README.md" />
+        <option value="$PROJECT_DIR$/src/assembly/bin.xml" />
       </list>
     </option>
   </component>
@@ -291,10 +287,10 @@
     </treeState>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="59" />
-    <option name="y" value="-4" />
-    <option name="width" value="1307" />
-    <option name="height" value="772" />
+    <option name="x" value="65" />
+    <option name="y" value="24" />
+    <option name="width" value="1215" />
+    <option name="height" value="776" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -302,79 +298,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="serial" type="58d84e3e:PackageViewProjectNode" />
-              <item name="serial" type="616d4139:PackageViewModuleNode" />
-            </path>
-            <path>
-              <item name="serial" type="58d84e3e:PackageViewProjectNode" />
-              <item name="serial" type="616d4139:PackageViewModuleNode" />
-              <item name="trzpoc" type="1f31426a:PackageElementNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="serial" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="serial" type="462c0819:PsiDirectoryNode" />
-              <item name="serialLib" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="serial" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="serial" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="assembly" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="serial" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="serial" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="serial" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="trzpoc" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="serial" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="462c0819:PsiDirectoryNode" />
-              <item name="java" type="462c0819:PsiDirectoryNode" />
-              <item name="trzpoc" type="462c0819:PsiDirectoryNode" />
-              <item name="comunication" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
       <pane id="Scope">
         <subPane subId="Project Files">
           <expand>
@@ -531,13 +454,45 @@
           <select />
         </subPane>
       </pane>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="serial" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="serial" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="serial" type="58d84e3e:PackageViewProjectNode" />
+              <item name="serial" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="serial" type="58d84e3e:PackageViewProjectNode" />
+              <item name="serial" type="616d4139:PackageViewModuleNode" />
+              <item name="trzpoc" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="TEXT&#10;JAVA" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="TestNG" />
     <property name="extract.method.default.visibility" value="public" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/serialInputs" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../MockupRoot" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
@@ -842,34 +797,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1489661415561</updated>
-    </task>
-    <task id="LOCAL-00024" summary="Added new class for CRC16 CCITT kermit">
-      <created>1501329557283</created>
-      <option name="number" value="00024" />
-      <option name="presentableId" value="LOCAL-00024" />
-      <option name="project" value="LOCAL" />
-      <updated>1501329557283</updated>
-    </task>
-    <task id="LOCAL-00025" summary="Added new class for CRC16 CCITT kermit">
-      <created>1501329587022</created>
-      <option name="number" value="00025" />
-      <option name="presentableId" value="LOCAL-00025" />
-      <option name="project" value="LOCAL" />
-      <updated>1501329587022</updated>
-    </task>
-    <task id="LOCAL-00026" summary="Fixed bug for hex to int conversion">
-      <created>1501332883369</created>
-      <option name="number" value="00026" />
-      <option name="presentableId" value="LOCAL-00026" />
-      <option name="project" value="LOCAL" />
-      <updated>1501332883369</updated>
-    </task>
-    <task id="LOCAL-00027" summary="Bug fixing">
-      <created>1501596114592</created>
-      <option name="number" value="00027" />
-      <option name="presentableId" value="LOCAL-00027" />
-      <option name="project" value="LOCAL" />
-      <updated>1501596114592</updated>
     </task>
     <task id="LOCAL-00028" summary="Added to manage configuration everywhere">
       <created>1501596182900</created>
@@ -1186,7 +1113,35 @@
       <option name="project" value="LOCAL" />
       <updated>1533656995304</updated>
     </task>
-    <option name="localTasksCounter" value="73" />
+    <task id="LOCAL-00073" summary="SerialCommunicatorLocalClientForTest: removed unuseful exceptions">
+      <created>1533657080455</created>
+      <option name="number" value="00073" />
+      <option name="presentableId" value="LOCAL-00073" />
+      <option name="project" value="LOCAL" />
+      <updated>1533657080455</updated>
+    </task>
+    <task id="LOCAL-00074" summary="DrawingText: removed combinations key accelerators and touch screen">
+      <created>1533657136272</created>
+      <option name="number" value="00074" />
+      <option name="presentableId" value="LOCAL-00074" />
+      <option name="project" value="LOCAL" />
+      <updated>1533657136272</updated>
+    </task>
+    <task id="LOCAL-00075" summary="removed seriallib">
+      <created>1533657338516</created>
+      <option name="number" value="00075" />
+      <option name="presentableId" value="LOCAL-00075" />
+      <option name="project" value="LOCAL" />
+      <updated>1533657338516</updated>
+    </task>
+    <task id="LOCAL-00076" summary="added scripts files">
+      <created>1533657696599</created>
+      <option name="number" value="00076" />
+      <option name="presentableId" value="LOCAL-00076" />
+      <option name="project" value="LOCAL" />
+      <updated>1533657696599</updated>
+    </task>
+    <option name="localTasksCounter" value="77" />
     <servers />
   </component>
   <component name="TestHistory">
@@ -1231,30 +1186,30 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
+    <frame x="65" y="-4" width="1301" height="772" extended-state="6" />
     <layout>
-      <window_info anchor="bottom" id="TODO" order="4" weight="0.32917318" />
-      <window_info anchor="bottom" id="Messages" order="10" weight="0.31669268" />
-      <window_info anchor="right" id="Palette&#9;" order="5" />
-      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.512253" side_tool="true" weight="0.35439137" />
-      <window_info anchor="right" id="Maven Projects" order="4" weight="0.32828686" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49586776" weight="0.32633787" />
-      <window_info anchor="bottom" id="Run" order="12" sideWeight="0.48774704" weight="0.41185647" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.4477379" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.39203188" />
+      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.4063745" />
+      <window_info anchor="bottom" id="TODO" order="4" weight="0.32917318" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.512253" side_tool="true" weight="0.35413417" />
+      <window_info anchor="right" id="Maven Projects" order="4" weight="0.32828686" />
+      <window_info anchor="bottom" id="Run" order="12" sideWeight="0.48774704" weight="0.41185647" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49586776" weight="0.32633787" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24940239" />
-      <window_info id="Favorites" order="2" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.4477379" />
       <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.4980716" weight="0.4071763" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Enso" order="6" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24980174" />
       <window_info anchor="right" id="Data View" order="8" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="SonarQube" order="9" weight="0.32972136" />
-      <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32972136" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.31669268" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32972136" />
       <window_info anchor="right" id="Code Iris" order="7" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
@@ -1263,20 +1218,20 @@
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49586776" weight="0.32633787" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24980174" />
       <window_info content_ui="combo" id="Project" order="4" visible="true" weight="0.38565737" />
       <window_info active="true" anchor="bottom" id="Run" order="12" sideWeight="0.48774704" visible="true" weight="0.41185647" />
       <window_info anchor="bottom" id="SonarQube" order="9" weight="0.32972136" />
-      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="right" id="Data View" order="8" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24940239" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" id="Enso" order="6" />
       <window_info anchor="bottom" id="TODO" order="4" weight="0.32917318" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49586776" weight="0.32633787" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32972136" />
       <window_info id="Designer" order="0" />
-      <window_info anchor="right" id="Enso" order="6" />
+      <window_info id="UI Designer" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.36363637" />
       <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.4980716" weight="0.4071763" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
@@ -1288,7 +1243,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.31669268" />
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.32828686" />
-      <window_info id="UI Designer" order="3" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout-to-restore>
   </component>
   <component name="Vcs.Log.History.Properties">
@@ -1324,11 +1279,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="updated to manage signed hex values" />
-    <MESSAGE value="Added NumberSerialDataParser to manage ^n command" />
-    <MESSAGE value="Refactoring code to clear project" />
-    <MESSAGE value="Added serial data emulator" />
-    <MESSAGE value="modification to test bar devels" />
     <MESSAGE value="modification to emprove bar behaviour" />
     <MESSAGE value="added resources to test right align" />
     <MESSAGE value="Fixing leakage resources" />
@@ -1349,7 +1299,12 @@
     <MESSAGE value="SerialPortTimer; SerialPortTimerTask deleted" />
     <MESSAGE value="Created a new class for SerialPortListener" />
     <MESSAGE value="Removed inner class for serial data listener" />
-    <option name="LAST_COMMIT_MESSAGE" value="Removed inner class for serial data listener" />
+    <MESSAGE value="SerialCommunicatorLocalClientForTest: removed unuseful exceptions" />
+    <MESSAGE value="DrawingText: removed combinations key accelerators and touch screen" />
+    <MESSAGE value="IntelliJ automatic update project file" />
+    <MESSAGE value="removed seriallib" />
+    <MESSAGE value="added scripts files" />
+    <option name="LAST_COMMIT_MESSAGE" value="added scripts files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1416,30 +1371,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables2-no-crc.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignVariables1-no-crc.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/fragment-prova3.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1926">
-          <caret line="107" column="9" selection-start-line="107" selection-start-column="9" selection-end-line="107" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/DrawingText.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5184">
-          <caret line="288" column="38" selection-start-line="288" selection-start-column="38" selection-end-line="288" selection-end-column="38" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicator.java.old">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="234">
@@ -1554,9 +1485,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="345">
           <caret line="23" selection-start-line="23" selection-end-line="23" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1606,10 +1534,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="285">
           <caret line="19" column="25" selection-start-line="19" selection-start-column="25" selection-end-line="19" selection-end-column="25" />
-          <folding>
-            <element signature="e#277#278#0" expanded="true" />
-            <element signature="e#317#318#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1617,10 +1541,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="130">
           <caret line="70" selection-start-line="70" selection-end-line="70" />
-          <folding>
-            <element signature="e#2858#2859#0" expanded="true" />
-            <element signature="e#2914#2915#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1656,9 +1576,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
           <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1707,7 +1624,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicatorLocalClientForTest.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
+        <state relative-caret-position="810">
           <caret line="67" column="28" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
         </state>
       </provider>
@@ -1719,7 +1636,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/run.bak.sh" />
     <entry file="file://$PROJECT_DIR$/src/assembly/bin.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/run-debug.sh" />
+    <entry file="file://$PROJECT_DIR$/src/bin/run-from-command-line.sh" />
+    <entry file="file://$PROJECT_DIR$/src/bin/run-console.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/bin/run.sh">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/notesForDeploy.txt">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
   </component>
