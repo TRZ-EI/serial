@@ -1,5 +1,5 @@
 def user = "pi"
-def pwd = "raspberry"
+def pwd = "raspberry-prod"
 
 
 
