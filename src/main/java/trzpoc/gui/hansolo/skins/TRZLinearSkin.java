@@ -50,8 +50,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
     private double                stepSize;
     private Pane                  pane;
     private Orientation           orientation;
-    private Line                  barBorder1;
-    private Line                  barBorder2;
     private Line                  zeroMark;
     private Rectangle             barBackground;
     private Rectangle             bar;
@@ -102,8 +100,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
             }
         }
 
-        barBorder1 = new Line();
-        barBorder2 = new Line();
         this.zeroMark = new Line();
 
         barBackground = new Rectangle();
@@ -114,8 +110,8 @@ public class TRZLinearSkin extends GaugeSkinBase {
         barHighlight.setStroke(null);
         Helper.enableNode(barHighlight, gauge.isBarEffectEnabled());
 
-        pane = new Pane(barBorder1,
-                        barBorder2,
+        pane = new Pane(//barBorder1,
+                        //barBorder2,
                         this.zeroMark,
                         barBackground,
                         bar,
@@ -220,13 +216,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
             barHighlight.setLayoutY(layoutY);
             barHighlight.setHeight(valueHeight);
 
-//            valueText.setText(formatNumber(gauge.getLocale(), gauge.getFormatString(), gauge.getDecimals(), VALUE));
-//
-//            if (gauge.isLcdVisible()) {
-//                valueText.setLayoutX((0.88 * width - valueText.getLayoutBounds().getWidth()));
-//            } else {
-//                valueText.setLayoutX((width - valueText.getLayoutBounds().getWidth()) * 0.5);
-//            }
 
         } else {
 
@@ -317,9 +306,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
             orientation = gauge.getOrientation();
 
             double  currentValue   = gauge.getCurrentValue();
-            Color   tickMarkColor  = gauge.getTickMarkColor();
-            Color   barBorderColor = Color.color(tickMarkColor.getRed(), tickMarkColor.getGreen(), tickMarkColor.getBlue(), 0.5);
-            boolean isFlatLed      = LedType.FLAT == gauge.getLedType();
 
             if (Orientation.VERTICAL == orientation) {
                 width    = height / aspectRatio;
@@ -347,19 +333,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
                 maxValuePosition = barBackground.getLayoutY();
                 zeroPosition     = maxValuePosition - (maxValuePosition * 0.3);
 
-
-
-                barBorder1.setStartX(barBackground.getLayoutX() - 1);
-                barBorder1.setStartY(maxValuePosition);
-                barBorder1.setEndX(barBackground.getLayoutX() - 1);
-                barBorder1.setEndY(minValuePosition);
-                barBorder2.setStartX(barBackground.getLayoutX() + barBackground.getLayoutBounds().getWidth() + 1);
-                barBorder2.setStartY(maxValuePosition);
-                barBorder2.setEndX(barBackground.getLayoutX() + barBackground.getLayoutBounds().getWidth() + 1);
-                barBorder2.setEndY(minValuePosition);
-
-                barBorder1.setStroke(barBorderColor);
-                barBorder2.setStroke(barBorderColor);
 
                 bar.setWidth(0.14286 * width);
                 bar.setLayoutX(0);
@@ -408,19 +381,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
 
                 double ypos1 = barBackground.getLayoutY() - 1;
                 double ypos2 = barBackground.getLayoutY() + barBackground.getLayoutBounds().getHeight() + 1;
-
-                barBorder1.setStartX(minValuePosition);
-                barBorder1.setStartY(ypos1);
-                barBorder1.setEndX(maxValuePosition);
-                barBorder1.setEndY(ypos1);
-
-                barBorder2.setStartX(minValuePosition);
-                barBorder2.setStartY(ypos2);
-                barBorder2.setEndX(maxValuePosition);
-                barBorder2.setEndY(ypos2);
-
-                barBorder1.setStroke(barBorderColor);
-                barBorder2.setStroke(barBorderColor);
 
                 this.zeroMark.setStartX(zeroPosition);
                 this.zeroMark.setStartY(ypos1);
