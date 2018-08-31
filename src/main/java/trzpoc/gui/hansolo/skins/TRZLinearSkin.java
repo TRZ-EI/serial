@@ -79,7 +79,7 @@ public class TRZLinearSkin extends GaugeSkinBase {
             preferredWidth  = 140;
             preferredHeight = 350;
         } else {
-            preferredWidth  = 350;
+            preferredWidth  = 800;
             preferredHeight = 140;
         }
 
@@ -106,16 +106,16 @@ public class TRZLinearSkin extends GaugeSkinBase {
         bar = new Rectangle();
         bar.setStroke(null);
 
-        barHighlight = new Rectangle();
-        barHighlight.setStroke(null);
-        Helper.enableNode(barHighlight, gauge.isBarEffectEnabled());
+//        barHighlight = new Rectangle();
+//        barHighlight.setStroke(null);
+//        Helper.enableNode(barHighlight, gauge.isBarEffectEnabled());
 
         pane = new Pane(//barBorder1,
                         //barBorder2,
                         this.zeroMark,
                         barBackground,
-                        bar,
-                        barHighlight);
+                        bar
+                        /*,barHighlight*/);
         pane.setBorder(new Border(new BorderStroke(gauge.getBorderPaint(), BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(gauge.getBorderWidth()))));
         pane.setBackground(new Background(new BackgroundFill(gauge.getBackgroundPaint(), CornerRadii.EMPTY, Insets.EMPTY)));
 
@@ -138,7 +138,7 @@ public class TRZLinearSkin extends GaugeSkinBase {
                 redraw();
             }
         } else if ("VISIBILITY".equals(EVENT_TYPE)) {
-            Helper.enableNode(barHighlight, gauge.isBarEffectEnabled());
+            //Helper.enableNode(barHighlight, gauge.isBarEffectEnabled());
             resize();
             redraw();
         } else if ("SECTION".equals(EVENT_TYPE)) {
@@ -213,8 +213,8 @@ public class TRZLinearSkin extends GaugeSkinBase {
 
             bar.setLayoutY(layoutY);
             bar.setHeight(valueHeight);
-            barHighlight.setLayoutY(layoutY);
-            barHighlight.setHeight(valueHeight);
+//            barHighlight.setLayoutY(layoutY);
+//            barHighlight.setHeight(valueHeight);
 
 
         } else {
@@ -256,8 +256,8 @@ public class TRZLinearSkin extends GaugeSkinBase {
 
             bar.setLayoutX(layoutX);
             bar.setWidth(valueWidth);
-            barHighlight.setLayoutX(layoutX);
-            barHighlight.setWidth(valueWidth);
+            //barHighlight.setLayoutX(layoutX);
+            //barHighlight.setWidth(valueWidth);
 
             //valueText.setText(formatNumber(gauge.getLocale(), gauge.getFormatString(), gauge.getDecimals(), VALUE));
             //valueText.setLayoutX(( 0.98 * width - valueText.getLayoutBounds().getWidth() ));
@@ -307,49 +307,7 @@ public class TRZLinearSkin extends GaugeSkinBase {
 
             double  currentValue   = gauge.getCurrentValue();
 
-            if (Orientation.VERTICAL == orientation) {
-                width    = height / aspectRatio;
-                size     = width < height ? width : height;
-                stepSize = Math.abs((0.66793 * height) / gauge.getRange());
 
-                pane.setMaxSize(width, height);
-                pane.relocate((gauge.getWidth() - width) * 0.5, (gauge.getHeight() - height) * 0.5);
-
-                width  = pane.getLayoutBounds().getWidth();
-                height = pane.getLayoutBounds().getHeight();
-
-                barBackground.setWidth(0.14286 * width);
-                barBackground.setHeight(0.67143 * height);
-                barBackground.relocate((width - barBackground.getWidth()) * 0.5, (height - barBackground.getHeight()) * 0.5);
-                barBackground.setStroke(null);
-                barBackground.setFill(new LinearGradient(0, barBackground.getLayoutBounds().getMinY(),
-                                                         0, barBackground.getLayoutBounds().getMaxY(),
-                                                         false, CycleMethod.NO_CYCLE,
-                                                         new Stop(0.0, Color.rgb(255, 255, 255, 0.05)),
-                                                         new Stop(0.5, Color.rgb(255, 255, 255, 0.15)),
-                                                         new Stop(1.0, Color.rgb(255, 255, 255, 0.05))));
-
-                minValuePosition = barBackground.getLayoutY() + barBackground.getLayoutBounds().getHeight();
-                maxValuePosition = barBackground.getLayoutY();
-                zeroPosition     = maxValuePosition - (maxValuePosition * 0.3);
-
-
-                bar.setWidth(0.14286 * width);
-                bar.setLayoutX(0);
-                bar.setLayoutY(0);
-                bar.setTranslateX((width - bar.getWidth()) * 0.5);
-                bar.setTranslateY(gauge.isStartFromZero() ? zeroPosition : minValuePosition);
-
-                barHighlight.setWidth(bar.getWidth());
-                barHighlight.setLayoutX(0);
-                barHighlight.setLayoutY(0);
-                barHighlight.setTranslateX(bar.getTranslateX());
-                barHighlight.setTranslateY(bar.getTranslateY());
-
-                setBar(currentValue);
-
-
-            } else {
                 height   = width / aspectRatio;
                 size     = width < height ? width : height;
                 stepSize = Math.abs(0.9 * width / gauge.getRange());
@@ -373,6 +331,7 @@ public class TRZLinearSkin extends GaugeSkinBase {
 
                 minValuePosition = barBackground.getLayoutX();
                 maxValuePosition = barBackground.getLayoutX() + barBackground.getLayoutBounds().getWidth() + 80;
+
                 // TODO: CHANGE VALUE OF maxValuePosition to change red bar max
                 zeroPosition = maxValuePosition -(maxValuePosition * 0.3);
 
@@ -394,22 +353,21 @@ public class TRZLinearSkin extends GaugeSkinBase {
                 bar.setLayoutY(0);
                 bar.setTranslateX(gauge.isStartFromZero() ? zeroPosition : minValuePosition);
                 bar.setTranslateY((height - bar.getHeight()) * 0.5);
-
+/*
                 barHighlight.setHeight(bar.getHeight());
                 barHighlight.setLayoutX(0);
                 barHighlight.setLayoutY(0);
                 barHighlight.setTranslateX(bar.getTranslateX());
                 barHighlight.setTranslateY(bar.getTranslateY());
-
+*/
                 setBar(currentValue);
             }
 
             resizeText();
-        }
     }
 
     @Override protected void redraw() {
-        locale                = gauge.getLocale();
+        locale = gauge.getLocale();
         //tickLabelFormatString = new StringBuilder("%.").append(Integer.toString(gauge.getTickLabelDecimals())).append("f").toString();
 
         // Background stroke and fill
@@ -421,6 +379,7 @@ public class TRZLinearSkin extends GaugeSkinBase {
         } else {
             bar.setFill(gauge.getBarColor());
         }
+/*
 
         if (Orientation.VERTICAL == orientation) {
             barHighlight.setFill(new LinearGradient(barHighlight.getLayoutX(), 0, barHighlight.getLayoutX() + barHighlight.getWidth(), 0,
@@ -435,6 +394,7 @@ public class TRZLinearSkin extends GaugeSkinBase {
                                                     new Stop(0.92, Color.TRANSPARENT),
                                                     new Stop(1.0, Color.rgb(0, 0, 0, 0.2))));
         }
+*/
 
     }
 }
