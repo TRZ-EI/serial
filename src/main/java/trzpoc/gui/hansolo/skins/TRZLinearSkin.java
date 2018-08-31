@@ -58,7 +58,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
     private double                maxValuePosition;
     private double                zeroPosition;
     private List<Section>         sections;
-    private List<Section>         areas;
     private InvalidationListener  currentValueListener;
     private InvalidationListener  paneSizeListener;
 
@@ -70,7 +69,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
         //orientation           = gauge.getOrientation();
         locale                = gauge.getLocale();
         sections              = gauge.getSections();
-        areas                 = gauge.getAreas();
         currentValueListener  = o -> setBar(gauge.getCurrentValue());
         paneSizeListener      = o -> handleEvents("RESIZE");
         preferredWidth  = 800;
@@ -136,7 +134,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
             redraw();
         } else if ("SECTION".equals(EVENT_TYPE)) {
             sections = gauge.getSections();
-            areas    = gauge.getAreas();
             resize();
             redraw();
         } else if ("RECALC".equals(EVENT_TYPE)) {
@@ -206,14 +203,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
             bar.setFill(gauge.getGradientLookup().getColorAt((VALUE - gauge.getMinValue()) / gauge.getRange()));
         } else {
             bar.setFill(gauge.getBarColor());
-            int listSize = areas.size();
-            for (int i = 0 ; i < listSize ; i++) {
-                Section area = areas.get(i);
-                if (area.contains(VALUE)) {
-                    bar.setFill(area.getColor());
-                    break;
-                }
-            }
         }
     }
 
