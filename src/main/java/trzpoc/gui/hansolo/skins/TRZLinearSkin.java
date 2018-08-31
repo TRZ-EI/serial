@@ -57,7 +57,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
     private double                minValuePosition;
     private double                maxValuePosition;
     private double                zeroPosition;
-    private List<Section>         sections;
     private InvalidationListener  currentValueListener;
     private InvalidationListener  paneSizeListener;
 
@@ -68,7 +67,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
         if (gauge.isAutoScale()) gauge.calcAutoScale();
         //orientation           = gauge.getOrientation();
         locale                = gauge.getLocale();
-        sections              = gauge.getSections();
         currentValueListener  = o -> setBar(gauge.getCurrentValue());
         paneSizeListener      = o -> handleEvents("RESIZE");
         preferredWidth  = 800;
@@ -133,7 +131,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
             resize();
             redraw();
         } else if ("SECTION".equals(EVENT_TYPE)) {
-            sections = gauge.getSections();
             resize();
             redraw();
         } else if ("RECALC".equals(EVENT_TYPE)) {
