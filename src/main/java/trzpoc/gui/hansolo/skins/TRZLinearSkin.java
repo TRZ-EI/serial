@@ -49,7 +49,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
     private double                height;
     private double                stepSize;
     private Pane                  pane;
-    private Orientation           orientation;
     private Line                  zeroMark;
     private Rectangle             barBackground;
     private Rectangle             bar;
@@ -68,20 +67,14 @@ public class TRZLinearSkin extends GaugeSkinBase {
     public TRZLinearSkin(Gauge gauge) {
         super(gauge);
         if (gauge.isAutoScale()) gauge.calcAutoScale();
-        orientation           = gauge.getOrientation();
+        //orientation           = gauge.getOrientation();
         locale                = gauge.getLocale();
         sections              = gauge.getSections();
         areas                 = gauge.getAreas();
         currentValueListener  = o -> setBar(gauge.getCurrentValue());
         paneSizeListener      = o -> handleEvents("RESIZE");
-
-        if (Orientation.VERTICAL == orientation) {
-            preferredWidth  = 140;
-            preferredHeight = 350;
-        } else {
-            preferredWidth  = 800;
-            preferredHeight = 140;
-        }
+        preferredWidth  = 800;
+        preferredHeight = 140;
 
         initGraphics();
         registerListeners();
@@ -147,12 +140,7 @@ public class TRZLinearSkin extends GaugeSkinBase {
             resize();
             redraw();
         } else if ("RECALC".equals(EVENT_TYPE)) {
-            orientation = gauge.getOrientation();
-            if (Orientation.VERTICAL == orientation) {
-                width    = height / aspectRatio;
-            } else {
-                height   = width / aspectRatio;
-            }
+            height   = width / aspectRatio;
             resize();
             redraw();
         }
@@ -172,98 +160,42 @@ public class TRZLinearSkin extends GaugeSkinBase {
     private void setBar(final double VALUE) {
 
         double maxValue = ( gauge.getMaxValue() - gauge.getMinValue() ) * stepSize;
+        double valueWidth = 0;
+        double layoutX = 0;
 
-        if (Orientation.VERTICAL == orientation) {
+        if (gauge.isStartFromZero()) {
 
-            double valueHeight = 0;
-            double layoutY = 0;
+            double maxV = gauge.getMaxValue();
+            double maxX = maxV * stepSize;
+            double minV = gauge.getMinValue();
+            double minX = minV * stepSize;
+            double valX = VALUE * stepSize;
 
-            if (gauge.isStartFromZero()) {
+            if ( ( valX > minX || minX < 0 ) && ( valX < maxX || maxX > 0 ) ) {
 
-                double maxV = gauge.getMaxValue();
-                double maxY = maxV * stepSize;
-                double minV = gauge.getMinValue();
-                double minY = minV * stepSize;
-                double valY = VALUE * stepSize;
+                valX = clamp(minX, maxX, valX);
 
-                if ( ( valY > minY || minY < 0 ) && ( valY < maxY || maxY > 0 ) ) {
-
-                    valY = clamp(minY, maxY, valY);
-
-                    if ( maxY < 0 ) {
-                        layoutY = - maxY;
-                        valueHeight = maxY - valY;
-                    } else if ( minY > 0 ) {
-                        layoutY = - valY;
-                        valueHeight = valY - minY;
-                    } else if ( valY < 0 ) {
-                        layoutY = 0;
-                        valueHeight = - valY;
-                    } else {
-                        layoutY = - valY;
-                        valueHeight = valY;
-                    }
-
+                if ( maxX < 0 ) {
+                    layoutX = valX;
+                    valueWidth = maxX - valX;
+                } else if ( minX > 0 ) {
+                    layoutX = minX;
+                    valueWidth = valX - minX;
+                } else if ( valX < 0 ) {
+                    layoutX = valX;
+                    valueWidth = - valX;
+                } else {
+                    layoutX = 0;
+                    valueWidth = valX;
                 }
 
-            } else {
-                valueHeight = clamp(0, maxValue, ( VALUE - gauge.getMinValue() ) * stepSize);
-                layoutY = -valueHeight;
             }
-
-            bar.setLayoutY(layoutY);
-            bar.setHeight(valueHeight);
-//            barHighlight.setLayoutY(layoutY);
-//            barHighlight.setHeight(valueHeight);
-
 
         } else {
-
-            double valueWidth = 0;
-            double layoutX = 0;
-
-            if (gauge.isStartFromZero()) {
-
-                double maxV = gauge.getMaxValue();
-                double maxX = maxV * stepSize;
-                double minV = gauge.getMinValue();
-                double minX = minV * stepSize;
-                double valX = VALUE * stepSize;
-
-                if ( ( valX > minX || minX < 0 ) && ( valX < maxX || maxX > 0 ) ) {
-
-                    valX = clamp(minX, maxX, valX);
-
-                    if ( maxX < 0 ) {
-                        layoutX = valX;
-                        valueWidth = maxX - valX;
-                    } else if ( minX > 0 ) {
-                        layoutX = minX;
-                        valueWidth = valX - minX;
-                    } else if ( valX < 0 ) {
-                        layoutX = valX;
-                        valueWidth = - valX;
-                    } else {
-                        layoutX = 0;
-                        valueWidth = valX;
-                    }
-
-                }
-
-            } else {
-                valueWidth = clamp(0, maxValue, ( VALUE - gauge.getMinValue() ) * stepSize);
-            }
-
-            bar.setLayoutX(layoutX);
-            bar.setWidth(valueWidth);
-            //barHighlight.setLayoutX(layoutX);
-            //barHighlight.setWidth(valueWidth);
-
-            //valueText.setText(formatNumber(gauge.getLocale(), gauge.getFormatString(), gauge.getDecimals(), VALUE));
-            //valueText.setLayoutX(( 0.98 * width - valueText.getLayoutBounds().getWidth() ));
-
+            valueWidth = clamp(0, maxValue, ( VALUE - gauge.getMinValue() ) * stepSize);
         }
-
+        bar.setLayoutX(layoutX);
+        bar.setWidth(valueWidth);
         setBarColor(VALUE);
 
     }
@@ -287,15 +219,8 @@ public class TRZLinearSkin extends GaugeSkinBase {
 
 
     private void resizeText() {
-        if (Orientation.VERTICAL == orientation) {
-            double maxWidth = width * 0.95;
-            double fontSize = width * 0.13;
-
-        } else {
-            double maxWidth = width * 0.8;
-            double fontSize = height * 0.15;
-
-        }
+        double maxWidth = width * 0.8;
+        double fontSize = height * 0.15;
     }
 
     @Override protected void resize() {
@@ -303,64 +228,50 @@ public class TRZLinearSkin extends GaugeSkinBase {
         height = gauge.getHeight() - gauge.getInsets().getTop() - gauge.getInsets().getBottom();
 
         if (width > 0 && height > 0) {
-            orientation = gauge.getOrientation();
-
             double  currentValue   = gauge.getCurrentValue();
+            height   = width / aspectRatio;
+            size     = width < height ? width : height;
+            stepSize = Math.abs(0.9 * width / gauge.getRange());
 
+            pane.setMaxSize(width, height);
+            pane.relocate((gauge.getWidth() - width) * 0.5, (gauge.getHeight() - height) * 0.5);
 
-                height   = width / aspectRatio;
-                size     = width < height ? width : height;
-                stepSize = Math.abs(0.9 * width / gauge.getRange());
+            width  = pane.getLayoutBounds().getWidth();
+            height = pane.getLayoutBounds().getHeight();
 
-                pane.setMaxSize(width, height);
-                pane.relocate((gauge.getWidth() - width) * 0.5, (gauge.getHeight() - height) * 0.5);
+            barBackground.setWidth(0.9 * width);
+            barBackground.setHeight(0.14286 * height);
+            barBackground.relocate((width - barBackground.getWidth()) * 0.5, (height - barBackground.getHeight()) * 0.5);
+            barBackground.setStroke(null);
+            barBackground.setFill(new LinearGradient(barBackground.getLayoutBounds().getMinX(), 0,
+                                                     barBackground.getLayoutBounds().getMaxX(), 0,
+                                                     false, CycleMethod.NO_CYCLE,
+                                                     new Stop(0.0, Color.rgb(255, 255, 255, 0.05)),
+                                                     new Stop(0.5, Color.rgb(255, 255, 255, 0.15)),
+                                                     new Stop(1.0, Color.rgb(255, 255, 255, 0.05))));
 
-                width  = pane.getLayoutBounds().getWidth();
-                height = pane.getLayoutBounds().getHeight();
+            minValuePosition = barBackground.getLayoutX();
+            maxValuePosition = barBackground.getLayoutX() + barBackground.getLayoutBounds().getWidth() + 80;
 
-                barBackground.setWidth(0.9 * width);
-                barBackground.setHeight(0.14286 * height);
-                barBackground.relocate((width - barBackground.getWidth()) * 0.5, (height - barBackground.getHeight()) * 0.5);
-                barBackground.setStroke(null);
-                barBackground.setFill(new LinearGradient(barBackground.getLayoutBounds().getMinX(), 0,
-                                                         barBackground.getLayoutBounds().getMaxX(), 0,
-                                                         false, CycleMethod.NO_CYCLE,
-                                                         new Stop(0.0, Color.rgb(255, 255, 255, 0.05)),
-                                                         new Stop(0.5, Color.rgb(255, 255, 255, 0.15)),
-                                                         new Stop(1.0, Color.rgb(255, 255, 255, 0.05))));
+            // TODO: CHANGE VALUE OF maxValuePosition to change red bar max
+            zeroPosition = maxValuePosition -(maxValuePosition * 0.3);
 
-                minValuePosition = barBackground.getLayoutX();
-                maxValuePosition = barBackground.getLayoutX() + barBackground.getLayoutBounds().getWidth() + 80;
+            double ypos1 = barBackground.getLayoutY() - 1;
+            double ypos2 = barBackground.getLayoutY() + barBackground.getLayoutBounds().getHeight() + 1;
 
-                // TODO: CHANGE VALUE OF maxValuePosition to change red bar max
-                zeroPosition = maxValuePosition -(maxValuePosition * 0.3);
+            this.zeroMark.setStartX(zeroPosition);
+            this.zeroMark.setStartY(ypos1);
+            this.zeroMark.setEndX(zeroPosition);
+            this.zeroMark.setEndY(ypos2);
+            this.zeroMark.setStroke(Color.BLUE);
+            this.zeroMark.setStrokeWidth(3);
 
-
-
-
-                double ypos1 = barBackground.getLayoutY() - 1;
-                double ypos2 = barBackground.getLayoutY() + barBackground.getLayoutBounds().getHeight() + 1;
-
-                this.zeroMark.setStartX(zeroPosition);
-                this.zeroMark.setStartY(ypos1);
-                this.zeroMark.setEndX(zeroPosition);
-                this.zeroMark.setEndY(ypos2);
-                this.zeroMark.setStroke(Color.BLUE);
-                this.zeroMark.setStrokeWidth(3);
-
-                bar.setHeight(0.14286 * height);
-                bar.setLayoutX(0);
-                bar.setLayoutY(0);
-                bar.setTranslateX(gauge.isStartFromZero() ? zeroPosition : minValuePosition);
-                bar.setTranslateY((height - bar.getHeight()) * 0.5);
-/*
-                barHighlight.setHeight(bar.getHeight());
-                barHighlight.setLayoutX(0);
-                barHighlight.setLayoutY(0);
-                barHighlight.setTranslateX(bar.getTranslateX());
-                barHighlight.setTranslateY(bar.getTranslateY());
-*/
-                setBar(currentValue);
+            bar.setHeight(0.14286 * height);
+            bar.setLayoutX(0);
+            bar.setLayoutY(0);
+            bar.setTranslateX(gauge.isStartFromZero() ? zeroPosition : minValuePosition);
+            bar.setTranslateY((height - bar.getHeight()) * 0.5);
+            setBar(currentValue);
             }
 
             resizeText();
@@ -371,7 +282,7 @@ public class TRZLinearSkin extends GaugeSkinBase {
         //tickLabelFormatString = new StringBuilder("%.").append(Integer.toString(gauge.getTickLabelDecimals())).append("f").toString();
 
         // Background stroke and fill
-        pane.setBorder(new Border(new BorderStroke(gauge.getBorderPaint(), BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(Orientation.HORIZONTAL == orientation ? gauge.getBorderWidth() / preferredHeight * height : gauge.getBorderWidth() / preferredWidth * width))));
+        pane.setBorder(new Border(new BorderStroke(gauge.getBorderPaint(), BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(gauge.getBorderWidth() / preferredHeight * height))));
         pane.setBackground(new Background(new BackgroundFill(gauge.getBackgroundPaint(), CornerRadii.EMPTY, Insets.EMPTY)));
 
         if (gauge.getAreasVisible()) {
@@ -379,22 +290,5 @@ public class TRZLinearSkin extends GaugeSkinBase {
         } else {
             bar.setFill(gauge.getBarColor());
         }
-/*
-
-        if (Orientation.VERTICAL == orientation) {
-            barHighlight.setFill(new LinearGradient(barHighlight.getLayoutX(), 0, barHighlight.getLayoutX() + barHighlight.getWidth(), 0,
-                                                    false, CycleMethod.NO_CYCLE,
-                                                    new Stop(0.0, Color.rgb(255, 255, 255, 0.65)),
-                                                    new Stop(0.92, Color.TRANSPARENT),
-                                                    new Stop(1.0, Color.rgb(0, 0, 0, 0.2))));
-        } else {
-            barHighlight.setFill(new LinearGradient(0, barHighlight.getLayoutY(), 0, barHighlight.getLayoutY() + barHighlight.getHeight(),
-                                                    false, CycleMethod.NO_CYCLE,
-                                                    new Stop(0.0, Color.rgb(255, 255, 255, 0.65)),
-                                                    new Stop(0.92, Color.TRANSPARENT),
-                                                    new Stop(1.0, Color.rgb(0, 0, 0, 0.2))));
-        }
-*/
-
     }
 }
