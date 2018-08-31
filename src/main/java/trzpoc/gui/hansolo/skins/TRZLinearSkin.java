@@ -191,10 +191,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
     }
 
 
-    private void resizeText() {
-        double maxWidth = width * 0.8;
-        double fontSize = height * 0.15;
-    }
 
     @Override protected void resize() {
         width  = gauge.getWidth() - gauge.getInsets().getLeft() - gauge.getInsets().getRight();
@@ -246,8 +242,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
             bar.setTranslateY((height - bar.getHeight()) * 0.5);
             setBar(currentValue);
             }
-
-            resizeText();
     }
 
     @Override protected void redraw() {
