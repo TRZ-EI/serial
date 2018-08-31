@@ -52,8 +52,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
     private Line                  zeroMark;
     private Rectangle             barBackground;
     private Rectangle             bar;
-    private Rectangle             barHighlight;
-    private Locale                locale;
     private double                minValuePosition;
     private double                maxValuePosition;
     private double                zeroPosition;
@@ -65,8 +63,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
     public TRZLinearSkin(Gauge gauge) {
         super(gauge);
         if (gauge.isAutoScale()) gauge.calcAutoScale();
-        //orientation           = gauge.getOrientation();
-        locale                = gauge.getLocale();
         currentValueListener  = o -> setBar(gauge.getCurrentValue());
         paneSizeListener      = o -> handleEvents("RESIZE");
         preferredWidth  = 800;
@@ -95,16 +91,8 @@ public class TRZLinearSkin extends GaugeSkinBase {
         bar = new Rectangle();
         bar.setStroke(null);
 
-//        barHighlight = new Rectangle();
-//        barHighlight.setStroke(null);
-//        Helper.enableNode(barHighlight, gauge.isBarEffectEnabled());
 
-        pane = new Pane(//barBorder1,
-                        //barBorder2,
-                        this.zeroMark,
-                        barBackground,
-                        bar
-                        /*,barHighlight*/);
+        pane = new Pane(this.zeroMark, barBackground, bar);
         pane.setBorder(new Border(new BorderStroke(gauge.getBorderPaint(), BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(gauge.getBorderWidth()))));
         pane.setBackground(new Background(new BackgroundFill(gauge.getBackgroundPaint(), CornerRadii.EMPTY, Insets.EMPTY)));
 
@@ -127,7 +115,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
                 redraw();
             }
         } else if ("VISIBILITY".equals(EVENT_TYPE)) {
-            //Helper.enableNode(barHighlight, gauge.isBarEffectEnabled());
             resize();
             redraw();
         } else if ("SECTION".equals(EVENT_TYPE)) {
@@ -264,9 +251,6 @@ public class TRZLinearSkin extends GaugeSkinBase {
     }
 
     @Override protected void redraw() {
-        locale = gauge.getLocale();
-        //tickLabelFormatString = new StringBuilder("%.").append(Integer.toString(gauge.getTickLabelDecimals())).append("f").toString();
-
         // Background stroke and fill
         pane.setBorder(new Border(new BorderStroke(gauge.getBorderPaint(), BorderStrokeStyle.SOLID, CornerRadii.EMPTY, new BorderWidths(gauge.getBorderWidth() / preferredHeight * height))));
         pane.setBackground(new Background(new BackgroundFill(gauge.getBackgroundPaint(), CornerRadii.EMPTY, Insets.EMPTY)));
