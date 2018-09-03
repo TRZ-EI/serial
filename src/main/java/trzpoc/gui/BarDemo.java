@@ -136,14 +136,14 @@ public class BarDemo extends Application {
 
         root.getChildren().add(gauge21);
         root.getChildren().add(gauge22);
-        r = new TRZBar(root);
+        r = new TRZBar();
 
         r.setHeight(30d);
         r.setWidth(800d);
         r.setX(0d);
         r.setY(50d);
         r.setFill(null);
-        r.setupZeroBar(70d);
+        r.setupZeroBar(70d, root);
         r.setMinValue(-2D);
         r.setMaxValue(1D);
         r.calculateBarParams();
