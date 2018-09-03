@@ -24,6 +24,8 @@ import javafx.geometry.Orientation;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 import javafx.stage.Stage;
 import trzpoc.gui.hansolo.skins.TRZLinearSkin;
 import trzpoc.utils.ConfigurationHolder;
@@ -42,6 +44,8 @@ public class BarDemo extends Application {
     private AnimationTimer timer;
     private long lastTimerCall;
     private final String DEFAULT_RESOURCE_FILE_NAME = "application.properties";
+    private Gauge gauge22;
+    private TRZBar r;
 
     @Override public void init() throws FileNotFoundException {
         // TODO: isolate this
@@ -50,7 +54,7 @@ public class BarDemo extends Application {
 
 
         gauge21 = GaugeBuilder.create()
-                              //.skinType(SkinType.LINEAR)
+                              //.skinType(Gauge.SkinType.LINEAR)
                               //.title("Linear")
             .tickLabelDecimals(0)
             .minValue(-2)
@@ -70,16 +74,43 @@ public class BarDemo extends Application {
             .build();
         gauge21.setSkin(new TRZLinearSkin(gauge21));
 
+        gauge22 = GaugeBuilder.create()
+                //.skinType(Gauge.SkinType.LINEAR)
+                //.title("Linear")
+                .tickLabelDecimals(0)
+                .minValue(-2)
+                .maxValue(1)
+                .areasVisible(true)
+                .startFromZero(true)
+                .orientation(Orientation.HORIZONTAL)
+                .sectionsVisible(true)
+                .valueVisible(false)
+                .foregroundBaseColor(Color.BLUE)
+                .barColor(Color.GREEN)
+                .barEffectEnabled(true)
+                .barBorderColor(Color.CHOCOLATE)
+
+
+
+                .build();
+        gauge22.setSkin(new TRZLinearSkin(gauge22));
+
         lastTimerCall = System.nanoTime();
         timer = new AnimationTimer() {
+            double value = -2d;
             @Override public void handle(long now) {
                 if (now > lastTimerCall + 3_000_000_000l) {
-                    double value = RND.nextDouble() * gauge21.getRange() + gauge21.getMinValue();
+                    //double value = RND.nextDouble() * gauge21.getRange() + gauge21.getMinValue();
+
+
                     gauge21.setValue(value);
-                    if (value >= 60d){
-                        gauge21.setBarColor(Color.BLUE);
+                    r.setValue(value);
+
+                    System.out.println("Value is: " + value);
+                    if (value <= gauge21.getMaxValue()){
+                        value += 0.1d;
                     }else{
-                        gauge21.setBarColor(Color.GREEN);
+                        value = -2d;
                     }
                     lastTimerCall = now;
                 }
@@ -88,30 +119,48 @@ public class BarDemo extends Application {
 
 
 
-
     }
 
-    @Override public void start(Stage stage) throws FileNotFoundException {
+    @Override public void start(Stage stage) throws FileNotFoundException, InterruptedException {
         stage.setWidth(800d);
         stage.setHeight(480d);
         Group root = new Group();
+
         gauge21.setPrefSize(800d, 200d);
         gauge21.setLayoutX(0);
-        gauge21.setLayoutY(300);
+        gauge21.setLayoutY(140);
+
+        gauge22.setPrefSize(800d, 200d);
+        gauge22.setLayoutX(0);
+        gauge22.setLayoutY(240);
+
         root.getChildren().add(gauge21);
-        
-        //GridPane pane = new GridPane();
-        //pane.add(gauge21, 6, 1);
-        //pane.setHgap(10);
-        //pane.setVgap(10);
-        //pane.setBackground(new Background(new BackgroundFill(Color.rgb(90, 90, 90), CornerRadii.EMPTY, Insets.EMPTY)));
-        stage.setScene(new Scene(root));
+        root.getChildren().add(gauge22);
+        r = new TRZBar(root);
+
+        r.setHeight(30d);
+        r.setWidth(800d);
+        r.setX(0d);
+        r.setY(50d);
+        r.setFill(null);
+        r.setupZeroBar(70d);
+        r.setMinValue(-2D);
+        r.setMaxValue(1D);
+        r.calculateBarParams();
+        root.getChildren().add(r);
+        Scene s = new Scene(root);
+
+        stage.setScene(s);
         stage.setTitle("TRZ bar for instruments");
         stage.show();
+        r.setValue(0.9D);
+        Thread.sleep(2000);
+        r.setValue(0.3D);
         timer.start();
 
 
     }
+
     private void readProperties() throws FileNotFoundException {
         String resourceFile = (!this.getParameters().getRaw().isEmpty())? this.getParameters().getRaw().get(0): DEFAULT_RESOURCE_FILE_NAME;
         ConfigurationHolder.createSingleInstanceByConfigUri(resourceFile);
