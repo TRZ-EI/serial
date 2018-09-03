@@ -4,10 +4,10 @@ def pwd = "raspberry-prod"
 
 
 /* RASPBERRY PARAMS HOME */
-def host = "192.168.188.48"
+//def host = "192.168.188.48"
 
 /* RASPBERRY PARAMS BT */
-//def host = "192.168.1.120"
+def host = "192.168.1.105"
 
 /* LAPTOP PARAMS */
 //def host = "192.168.1.111"
