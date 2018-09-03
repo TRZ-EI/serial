@@ -1,28 +1,17 @@
 package trzpoc.gui;
 
-import eu.hansolo.medusa.Gauge;
-import eu.hansolo.medusa.GaugeBuilder;
-import javafx.geometry.Orientation;
 import javafx.scene.Group;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
-import trzpoc.gui.hansolo.skins.TRZLinearSkin;
-import trzpoc.structure.Bar;
 import trzpoc.utils.ConfigurationHolder;
 import trzpoc.utils.FontAndColorSelector;
 
-import java.util.HashMap;
-import java.util.LinkedList;
-import java.util.Map;
-import java.util.Queue;
 
 public class GraphicDesigner {
     private  String debug;
     private Canvas canvas, canvasForGrid;
     private Group group;
-    private Map<Integer, Gauge> bars;
-    private Queue<Gauge> preFetchedBars = new LinkedList<>();
     private FontAndColorSelector fcs;
     private boolean gridIsDrawn;
 
@@ -46,55 +35,12 @@ public class GraphicDesigner {
         this.group = group;
         this.canvas = canvas;
         this.debug = debug;
-        this.bars = new HashMap<>();
-        this.preFetchedBars.add(this.createOrUpdateHorizontalBar(0,0));
-        this.preFetchedBars.add(this.createOrUpdateHorizontalBar(0,0));
         this.fcs = FontAndColorSelector.getNewInstance();
         this.gridIsDrawn = false;
     }
 
 
-    public Gauge configureBar(Bar cellBar) {
-        // TODO: EXPERIMENTS WITH BARS
-        double prefHeight = 200d;
-        double prefWidth = 890d;
-        int pixelScreenYPos = cellBar.getPixelScreenYPos();
-        Gauge bar = this.createOrUpdateHorizontalBar(cellBar.getMinValue(), cellBar.getMaxValue());
 
-        bar.setValue(cellBar.getMinValue());
-        bar.setMinValue(cellBar.getMinValue());
-        bar.setMaxValue(cellBar.getMaxValue());
-
-
-
-        bar.setPrefSize(prefWidth, prefHeight);
-        bar.setLayoutX(-45);
-        bar.setLayoutY(pixelScreenYPos - prefHeight / 2);
-        return bar;
-    }
-
-    private Gauge createOrUpdateHorizontalBar(long minValue, long maxValue) {
-        Gauge gauge = GaugeBuilder.create()
-                .value(minValue)
-                .minValue(minValue)
-                .maxValue(maxValue)
-                .skinType(Gauge.SkinType.LINEAR)
-                .startFromZero(true)
-                .keepAspect(false)
-                .animated(false)
-                .orientation(Orientation.HORIZONTAL)
-                .valueVisible(false)
-                .foregroundBaseColor(Color.BLUE)
-                .barColor(Color.GREEN)
-
-
-
-                .build();
-        gauge.setSkin(new TRZLinearSkin(gauge));
-        return gauge;
-
-
-    }
 
 
     public void drawGridForGraphicHelp(Canvas gridCanvas){
