@@ -16,13 +16,9 @@
 package trzpoc.gui.hansolo.skins;
 
 import eu.hansolo.medusa.Gauge;
-import eu.hansolo.medusa.Gauge.LedType;
-import eu.hansolo.medusa.Section;
 import eu.hansolo.medusa.skins.GaugeSkinBase;
-import eu.hansolo.medusa.tools.Helper;
 import javafx.beans.InvalidationListener;
 import javafx.geometry.Insets;
-import javafx.geometry.Orientation;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.CycleMethod;
