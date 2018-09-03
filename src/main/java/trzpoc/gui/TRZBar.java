@@ -10,18 +10,17 @@ public class TRZBar extends Rectangle {
     private double minValue;
     private double maxValue;
     private double value;
-    private final double RESOLUTION = 0.1D;
 
     private double zeroPosInPixel;
     private double positiveStepSizeinPixel;
     private double negativeStepSizeinPixel;
 
-    public TRZBar(Group root){
+    private Color color;
+
+    private final double RESOLUTION = 0.1D;
+
+    public TRZBar(){
         super();
-        this.zeroMark = new Line();
-        root.getChildren().add(this.zeroMark);
-
-
     }
 
     public void calculateBarParams() {
@@ -31,7 +30,7 @@ public class TRZBar extends Rectangle {
         negativeStepSizeinPixel = (this.zeroPosInPixel) / (negativeRange / RESOLUTION);
     }
 
-    public void setupZeroBar(double i) {
+    public void setupZeroBar(double i, Group root) {
         if (this.zeroMark == null){
             this.zeroMark = new Line();
         }
@@ -42,8 +41,10 @@ public class TRZBar extends Rectangle {
         this.zeroMark.setEndX(this.zeroPosInPixel);
         this.zeroMark.setStartY(yPos);
         this.zeroMark.setEndY(yPos + this.getHeight());
-        this.zeroMark.setStroke(Color.RED);
+        this.zeroMark.setStroke(Color.BLUE);
         this.zeroMark.setStrokeWidth(3);
+        root.getChildren().add(this.zeroMark);
+
     }
 
     private double calculateZeroPosInPixel(double i) {
@@ -72,18 +73,26 @@ public class TRZBar extends Rectangle {
     private void drawValue(double value) {
         double sizeInPixel = 0D;
 
+        Color actualColor = this.selectColorBasedOnValue(value);
+
         if (value < 0){
             sizeInPixel = ((this.value * -1)/RESOLUTION) * this.negativeStepSizeinPixel;
             this.setX(this.zeroPosInPixel - sizeInPixel);
             this.setWidth(sizeInPixel);
-            this.setFill(Color.GREEN);
-
-
         }else{
             sizeInPixel = (this.value/RESOLUTION) * this.positiveStepSizeinPixel;
             this.setX(this.zeroPosInPixel);
             this.setWidth(sizeInPixel);
-            this.setFill(Color.GREEN);
         }
+        this.setFill(actualColor);
+    }
+
+    private Color selectColorBasedOnValue(double value) {
+        return (value < this.minValue || value > this.maxValue)? Color.RED: this.color;
+
+    }
+
+    public void setColor(Color color) {
+        this.color = color;
     }
 }
