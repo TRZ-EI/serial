@@ -2,11 +2,12 @@ package trzpoc.structure;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
-import eu.hansolo.medusa.Gauge;
+//import eu.hansolo.medusa.Gauge;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import trzpoc.gui.DrawingText;
-import trzpoc.gui.GraphicDesigner;
+//import trzpoc.gui.GraphicDesigner;
+import trzpoc.gui.TRZBar;
 import trzpoc.utils.RightTextAligner;
 
 import java.util.Collection;
@@ -86,10 +87,33 @@ public class StructureVisitor {
         String id = String.valueOf(variable.getId());
         Node bar = this.mainWindow.getRoot().getScene().lookup("#" + id);
         if (bar == null){
-            bar = GraphicDesigner.createNewInstance().configureBar(variable);
-            returnValue = this.addNodeToJfxTree(variable, bar);
+            bar = this.configureBar(variable);
+            returnValue = this.addBarToJfxTree(variable, bar);
         }
         return returnValue;
+    }
+    private Runnable addBarToJfxTree(Bar variable, Node bar) {
+        this.mainWindow.getRows().put(variable.getyPos(), bar);
+        this.multipleItems.put(variable.getId(), bar);
+        return new JfxTreeEnhancerForTRZBar(bar, this.mainWindow);
+    }
+
+    private Node configureBar(Bar variable) {
+        TRZBar retValue = new TRZBar();
+        // TODO: EXPERIMENTS WITH BARS
+        double height = 30d;
+        double width = 800d;
+        int pixelScreenYPos = variable.getPixelScreenYPos();
+        retValue.setMinValue(variable.getMinValue());
+        retValue.setMaxValue(variable.getMaxValue());
+        retValue.setHeight(height);
+        retValue.setWidth(width);
+        retValue.setX(0d);
+        retValue.setY(pixelScreenYPos);
+        retValue.setFill(null);
+
+
+        return retValue;
     }
 
 
@@ -124,7 +148,7 @@ public class StructureVisitor {
             if (n instanceof javafx.scene.text.Text){
                retValue.add(this.update(cell, (javafx.scene.text.Text)n));
             }else{
-               retValue.add(this.update((Gauge)n, cell.getValue()));
+               retValue.add(this.update((TRZBar)n, cell.getValue()));
             }
         }
         return retValue;
@@ -134,10 +158,10 @@ public class StructureVisitor {
         return new JfxTextUpdaterFragment(t, value);
     }
 
-    private RunnableFragment update(Gauge t, String rawValue){
-        Color color = null;
-        double finalValue = 0;
-
+    private RunnableFragment update(TRZBar t, String rawValue){
+        Color color = Color.GREEN;
+        double finalValue = Double.parseDouble(rawValue);
+/*
         double valueInDouble = Double.parseDouble(rawValue);
         if (valueInDouble >= t.getMaxValue() || valueInDouble <= t.getMinValue()){
             color = Color.RED;
@@ -148,6 +172,7 @@ public class StructureVisitor {
             color = Color.GREEN;
             finalValue = valueInDouble;
         }
+*/
         return new JfxGaugeBarUpdaterFragment(color, finalValue, t);
     }
 
