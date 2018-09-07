@@ -104,9 +104,7 @@ public class BarDemo extends Application {
 
 
                     gauge21.setValue(value);
-                    r.setValue(value);
-
-                    System.out.println("Value is: " + value);
+                    r.setValue(value * 10);
                     if (value <= gauge21.getMaxValue()){
                         value += 0.1d;
                     }else{
@@ -144,18 +142,16 @@ public class BarDemo extends Application {
         r.setY(50d);
         r.setFill(null);
         r.setupZeroBar(70d, root);
-        r.setMinValue(-2D);
-        r.setMaxValue(1D);
+        r.setMinValue(-20D);
+        r.setMaxValue(10D);
         r.calculateBarParams();
+        r.setColor(Color.GREEN);
         root.getChildren().add(r);
         Scene s = new Scene(root);
 
         stage.setScene(s);
         stage.setTitle("TRZ bar for instruments");
         stage.show();
-        r.setValue(0.9D);
-        Thread.sleep(2000);
-        r.setValue(0.3D);
         timer.start();
 
 
