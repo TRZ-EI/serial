@@ -7,7 +7,7 @@ def pwd = "raspberry-prod"
 //def host = "192.168.188.48"
 
 /* RASPBERRY PARAMS BT */
-def host = "192.168.1.105"
+def host = "192.168.1.112"
 
 /* LAPTOP PARAMS */
 //def host = "192.168.1.111"
