@@ -129,7 +129,9 @@
                     </execution>
                 </executions>                
                 <configuration>
-                    <descriptor>src/assembly/bin.xml</descriptor>
+                    <descriptors>
+                        <descriptor>src/assembly/bin.xml</descriptor>
+                    </descriptors>
                     <finalName>${file-name}</finalName>
                 </configuration>
             </plugin>
