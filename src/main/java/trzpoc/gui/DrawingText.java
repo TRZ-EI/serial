@@ -14,16 +14,21 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.input.KeyCombination;
 import javafx.scene.input.TouchEvent;
 import javafx.scene.paint.Color;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import trzpoc.comunication.SerialDataManager;
 import trzpoc.structure.Cell;
 import trzpoc.structure.StructureVisitor;
 import trzpoc.structure.serial.SerialDataFacade;
 import trzpoc.utils.ConfigurationHolder;
+import trzpoc.utils.PomReader;
 import trzpoc.utils.SerialDataEmulator;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.concurrent.BlockingQueue;
@@ -57,6 +62,7 @@ public class DrawingText extends Application {
         this.root = new Group();
         Scene scene = new Scene(root, 800d, 480d, Color.WHITE);
         this.drawGridOnCanvas();
+        this.drawVersionAndProperties();
 
         stage.setScene(scene);
         stage.setTitle("TRZ bar for instruments");
@@ -70,6 +76,30 @@ public class DrawingText extends Application {
         serialThread.start();
 
         //this.myRunnable = new MyRunnable(this.serialBuffer);
+
+    }
+
+    private void drawVersionAndProperties() {
+        InputStream streamPom = this.getClass().getClassLoader().getResourceAsStream("pom.xml");
+        PomReader pr = PomReader.getNewInstanceByInputStream(streamPom);
+        String version = pr.readProjectVersionFromPom();
+        String groupId = pr.readGroupIdFromPom();
+        String artifactId = pr.readArtifactIdFromPom();
+
+        String message = groupId + ":" + artifactId + System.lineSeparator() + "version: " + version
+                + " - " + pr.getPropertyByKeyFromPomProperties("description") + System.lineSeparator()
+                + pr.getPropertyByKeyFromPomProperties("releaseDate");
+
+        Text t = new Text();
+        t.setX(200);
+        t.setY(200);
+        t.setFill(Color.VIOLET);
+        t.setText(message);
+        t.setFont(Font.font("Monospaced", FontWeight.findByName("BOLD"), Integer.parseInt("25")));
+
+        this.root.getChildren().add(t);
+
+
 
     }
 
