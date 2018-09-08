@@ -11,6 +11,7 @@ import trzpoc.crc.Crc16CcittKermit;
 import trzpoc.utils.ConfigurationHolder;
 
 import java.io.*;
+import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -196,7 +197,8 @@ public class SerialCommunicatorLocalClientForTest implements SerialCommunicatorI
     }
     public List<String> readTestScenaryAndProduceDataForTest(String scenary){
         List<String> list = new ArrayList<>();
-        String realFileName = this.getClass().getClassLoader().getResource(scenary).getFile();
+        URL url = this.getClass().getClassLoader().getResource(scenary);
+        String realFileName = url.getFile();
             try {
                 BufferedReader reader = new BufferedReader(new FileReader(realFileName));
                 String line;
