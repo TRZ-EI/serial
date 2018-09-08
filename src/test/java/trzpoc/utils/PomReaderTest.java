@@ -16,8 +16,8 @@ public class PomReaderTest {
     @DataProvider(name = "propertiesData")
     private Object[][] getPropertiesData(){
         return new Object[][]{
-                {"description","fix bar problems"},
-                {"releaseDate","03-09-2018"}
+                {"description","Visualize version info on screen"},
+                {"releaseDate","08-09-2018"}
         };
     }
 
@@ -32,7 +32,7 @@ public class PomReaderTest {
 
     @Test
     public void testReadProjectVersionFromPom() {
-        assertEquals(PomReader.getNewInstanceByPomFile(this.url).readProjectVersionFromPom(), "2.7");
+        assertEquals(PomReader.getNewInstanceByPomFile(this.url).readProjectVersionFromPom(), "2.8");
     }
 
     @Test
