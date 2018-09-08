@@ -4,15 +4,14 @@
     <option name="SCOPE_TYPE" value="3" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/src/main/java/trzpoc/utils/PomReader.java" afterDir="false" />
+    <list default="true" id="f0099658-d919-4da9-8afa-26f7a10607eb" name="Default" comment="BarDemo: update">
+      <change afterPath="$PROJECT_DIR$/CALCOLO_BARRA.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/trzpoc/utils/PomReaderTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/resources/test-pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.groovy" beforeDir="false" afterPath="$PROJECT_DIR$/build.groovy" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial.iml" beforeDir="false" afterPath="$PROJECT_DIR$/serial.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/serial.ipr" beforeDir="false" afterPath="$PROJECT_DIR$/serial.ipr" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/serial.iws" beforeDir="false" afterPath="$PROJECT_DIR$/serial.iws" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/BarDemo.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/BarDemo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/trzpoc/gui/TRZBar.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/trzpoc/gui/TRZBar.java" afterDir="false" />
     </list>
     <list id="b4e93cff-d048-4a6f-92cd-4a82a397bf5b" name="New changelist" comment="" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -31,107 +30,108 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="TRZLinearSkin.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/hansolo/skins/TRZLinearSkin.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="390">
-              <caret line="54" column="51" selection-start-line="54" selection-start-column="51" selection-end-line="54" selection-end-column="51" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="log4j.xml" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.xml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="77" column="29" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="29" />
+            <state relative-caret-position="180">
+              <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PomReader.class" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/target/classes/trzpoc/utils/PomReader.class">
+      <file leaf-file-name="BarSerialDataParserTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/BarSerialDataParserTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#803#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="105">
+              <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
             </state>
           </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="12" column="21" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="SerialCommunicatorLocalClientForTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicatorLocalClientForTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="454">
+              <caret line="200" selection-start-line="200" selection-end-line="200" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="application.properties" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/resources/application.properties">
+          <provider selected="true" editor-type-id="text-editor" />
         </entry>
       </file>
       <file leaf-file-name="PomReader.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/utils/PomReader.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="240">
-              <caret line="16" selection-start-line="16" selection-end-line="16" />
+            <state relative-caret-position="285">
+              <caret line="19" selection-start-line="19" selection-end-line="19" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#707#708#0" expanded="true" />
+                <element signature="e#744#745#0" expanded="true" />
+                <element signature="e#457#458#0" expanded="true" />
+                <element signature="e#558#559#0" expanded="true" />
+                <element signature="e#603#604#0" expanded="true" />
+                <element signature="e#1040#1041#0" expanded="true" />
+                <element signature="e#1075#1076#0" expanded="true" />
+                <element signature="e#852#853#0" expanded="true" />
+                <element signature="e#901#902#0" expanded="true" />
+                <element signature="e#930#931#0" expanded="true" />
+                <element signature="e#974#975#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="build.groovy" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.groovy">
+      <file leaf-file-name="PomReaderTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/test/java/trzpoc/utils/PomReaderTest.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="135">
-              <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="TRZBar.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/TRZBar.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-116">
-              <caret line="41" column="93" selection-start-line="41" selection-start-column="93" selection-end-line="41" selection-end-column="93" />
+            <state relative-caret-position="285">
+              <caret line="29" column="60" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
               <folding>
-                <element signature="e#4475#4476#0" expanded="true" />
-                <element signature="e#4509#4510#0" expanded="true" />
+                <element signature="e#282#283#0" expanded="true" />
+                <element signature="e#379#380#0" expanded="true" />
+                <element signature="e#231#232#0" expanded="true" />
+                <element signature="e#261#262#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="readme.txt" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/resources/readme.txt">
+      <file leaf-file-name="DrawingText.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="450">
-              <caret line="37" column="14" selection-start-line="37" selection-start-column="6" selection-end-line="37" selection-end-column="14" />
+            <state relative-caret-position="305">
+              <caret line="97" column="93" selection-start-line="97" selection-start-column="93" selection-end-line="97" selection-end-column="93" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BarDemo.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/BarDemo.java">
+      <file leaf-file-name="log4j.xml" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="64">
-              <caret line="144" column="28" selection-start-line="144" selection-start-column="28" selection-end-line="144" selection-end-column="28" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="345">
+              <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="BarSerialDataParser.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/BarSerialDataParser.java">
+      <file leaf-file-name="FontAndColorSelector.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/utils/FontAndColorSelector.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="645">
-              <caret line="55" column="54" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
+            <state relative-caret-position="275">
+              <caret line="148" column="86" selection-start-line="148" selection-start-column="15" selection-end-line="148" selection-end-column="86" />
             </state>
           </provider>
         </entry>
@@ -141,9 +141,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="TestNG Test Class" />
         <option value="Interface" />
         <option value="Class" />
+        <option value="TestNG Test Class" />
       </list>
     </option>
   </component>
@@ -177,8 +177,8 @@
       <find>stepSize</find>
       <find>bar</find>
       <find>Gauge</find>
-      <find>Value is</find>
       <find>-3</find>
+      <find>Value is</find>
     </findStrings>
     <replaceStrings>
       <replace>\\n</replace>
@@ -232,7 +232,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers1-no-crc.txt" />
         <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers3-no-crc.txt" />
         <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-rightAlignNumbers4-no-crc.txt" />
         <option value="$PROJECT_DIR$/src/test/java/trzpoc/utils/RightTextAlignerTest.java" />
@@ -266,8 +265,6 @@
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/utils/RightTextAligner.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/comunication/TRZSerialPortListener.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialDataManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicatorLocalClientForTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java" />
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/src/assembly/bin.xml" />
         <option value="$PROJECT_DIR$/src/main/resources/serialInputs/real-examples-prova3-fragment1-4-bars-no-crc.txt" />
@@ -276,13 +273,16 @@
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/structure/JfxTreeEnhancerForTRZBar.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/GraphicDesigner.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/hansolo/skins/TRZLinearSkin.java" />
-        <option value="$PROJECT_DIR$/build.groovy" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/BarDemo.java" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/TRZBar.java" />
         <option value="$PROJECT_DIR$/trz.log" />
-        <option value="$PROJECT_DIR$/pom.xml" />
+        <option value="$PROJECT_DIR$/build.groovy" />
         <option value="$PROJECT_DIR$/src/main/java/trzpoc/utils/PomReader.java" />
+        <option value="$PROJECT_DIR$/src/test/java/trzpoc/utils/PomReaderTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicatorLocalClientForTest.java" />
+        <option value="$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java" />
         <option value="$PROJECT_DIR$/src/main/resources/log4j.xml" />
+        <option value="$PROJECT_DIR$/pom.xml" />
       </list>
     </option>
   </component>
@@ -326,7 +326,22 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
+      <pane id="PackagesPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="serial" type="58d84e3e:PackageViewProjectNode" />
+              <item name="serial" type="616d4139:PackageViewModuleNode" />
+            </path>
+            <path>
+              <item name="serial" type="58d84e3e:PackageViewProjectNode" />
+              <item name="serial" type="616d4139:PackageViewModuleNode" />
+              <item name="trzpoc" type="1f31426a:PackageElementNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -376,6 +391,15 @@
               <item name="main" type="462c0819:PsiDirectoryNode" />
               <item name="java" type="462c0819:PsiDirectoryNode" />
               <item name="trzpoc" type="462c0819:PsiDirectoryNode" />
+              <item name="gui" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
+              <item name="serial" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="462c0819:PsiDirectoryNode" />
+              <item name="java" type="462c0819:PsiDirectoryNode" />
+              <item name="trzpoc" type="462c0819:PsiDirectoryNode" />
               <item name="structure" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
@@ -399,44 +423,172 @@
               <item name="serial" type="462c0819:PsiDirectoryNode" />
               <item name="target" type="462c0819:PsiDirectoryNode" />
             </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope">
+        <subPane subId="Project Files">
+          <expand>
             <path>
-              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="serial" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
             </path>
             <path>
-              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="serial" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="eu" type="462c0819:PsiDirectoryNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
             </path>
             <path>
-              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="serial" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="trzpoc" type="462c0819:PsiDirectoryNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
             </path>
             <path>
-              <item name="serial" type="b2602c69:ProjectViewProjectNode" />
-              <item name="serial" type="462c0819:PsiDirectoryNode" />
-              <item name="target" type="462c0819:PsiDirectoryNode" />
-              <item name="classes" type="462c0819:PsiDirectoryNode" />
-              <item name="trzpoc" type="462c0819:PsiDirectoryNode" />
-              <item name="utils" type="462c0819:PsiDirectoryNode" />
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="trzpoc" type="cbb8eebc:String" user="trzpoc" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="trzpoc" type="cbb8eebc:String" user="trzpoc" />
+              <item name="comunication" type="cbb8eebc:String" user="comunication" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="trzpoc" type="cbb8eebc:String" user="trzpoc" />
+              <item name="gui" type="cbb8eebc:String" user="gui" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="trzpoc" type="cbb8eebc:String" user="trzpoc" />
+              <item name="structure" type="cbb8eebc:String" user="structure" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="trzpoc" type="cbb8eebc:String" user="trzpoc" />
+              <item name="structure" type="cbb8eebc:String" user="structure" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="trzpoc" type="cbb8eebc:String" user="trzpoc" />
+              <item name="utils" type="cbb8eebc:String" user="utils" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+              <item name="resources" type="cbb8eebc:String" user="resources" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="main" type="cbb8eebc:String" user="main" />
+              <item name="resources" type="cbb8eebc:String" user="resources" />
+              <item name="serialInputs" type="cbb8eebc:String" user="serialInputs" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="test" type="cbb8eebc:String" user="test" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="test" type="cbb8eebc:String" user="test" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="test" type="cbb8eebc:String" user="test" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="trzpoc" type="cbb8eebc:String" user="trzpoc" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="test" type="cbb8eebc:String" user="test" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="trzpoc" type="cbb8eebc:String" user="trzpoc" />
+              <item name="crc" type="cbb8eebc:String" user="crc" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="test" type="cbb8eebc:String" user="test" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="trzpoc" type="cbb8eebc:String" user="trzpoc" />
+              <item name="structure" type="cbb8eebc:String" user="structure" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="test" type="cbb8eebc:String" user="test" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="trzpoc" type="cbb8eebc:String" user="trzpoc" />
+              <item name="structure" type="cbb8eebc:String" user="structure" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+            </path>
+            <path>
+              <item name="Root" type="cbb8eebc:String" user="Root" />
+              <item name="serial" type="cbb8eebc:String" user="serial" />
+              <item name="src" type="cbb8eebc:String" user="src" />
+              <item name="test" type="cbb8eebc:String" user="test" />
+              <item name="java" type="cbb8eebc:String" user="java" />
+              <item name="trzpoc" type="cbb8eebc:String" user="trzpoc" />
+              <item name="utils" type="cbb8eebc:String" user="utils" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$2/Languages" value="TEXT&#10;JAVA" />
     <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="TestNG" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.TestNG" value="" />
     <property name="extract.method.default.visibility" value="public" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
@@ -445,6 +597,9 @@
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="trzpoc.structure" />
+    </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="trzpoc.comunication" />
       <recent name="trzpoc.structure.serial" />
@@ -464,11 +619,6 @@
       <recent name="trzpoc.utils" />
       <recent name="trzpoc.structure" />
     </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/src/main/resources/serialInputs/testToRightAlign" />
-      <recent name="$PROJECT_DIR$/src/main/resources/serialInputs" />
-      <recent name="$PROJECT_DIR$/src/main/resources" />
-    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="trzpoc.gui.hansolo.skins" />
       <recent name="trzpoc.structure" />
@@ -477,14 +627,17 @@
       <recent name="trzpoc.crc" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources" />
+      <recent name="$PROJECT_DIR$/src/test" />
       <recent name="$PROJECT_DIR$" />
       <recent name="$PROJECT_DIR$/src/main/resources/serialInputs" />
       <recent name="$PROJECT_DIR$/src/main/java/trzpoc/gui" />
-      <recent name="$PROJECT_DIR$/src/main/scripts" />
-      <recent name="$PROJECT_DIR$/src/test/resources" />
     </key>
-    <key name="CreateClassDialog.RecentsKey">
-      <recent name="trzpoc.structure" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/test/resources" />
+      <recent name="$PROJECT_DIR$/src/main/resources/serialInputs/testToRightAlign" />
+      <recent name="$PROJECT_DIR$/src/main/resources/serialInputs" />
+      <recent name="$PROJECT_DIR$/src/main/resources" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -499,7 +652,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.PomReader">
+  <component name="RunManager" selected="Application.SerialCommunicatorLocalClientForTest">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
     </configuration>
@@ -508,17 +661,6 @@
       <module name="serial" />
       <option name="PROGRAM_PARAMETERS" value="src/main/resources/application.properties" />
       <option name="WORKING_DIRECTORY" value="file://$PROJECT_DIR$" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="trzpoc.gui.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-    </configuration>
-    <configuration name="DrawingTextOriginal" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="trzpoc.gui.DrawingTextOriginal" />
-      <module name="serial" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="trzpoc.gui.*" />
@@ -544,11 +686,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-    </configuration>
-    <configuration name="PomReader" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="trzpoc.utils.PomReader" />
-      <module name="serial" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
     </configuration>
     <configuration name="RunConfigurationMock" type="Application" factoryName="Application">
       <option name="MAIN_CLASS_NAME" value="trzpoc.utils.ConfigurationMock" />
@@ -625,6 +762,29 @@
         <option name="LOCAL" value="false" />
       </RunnerSettings>
     </configuration>
+    <configuration name="BarSerialDataParserTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="serial" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="trzpoc.structure.serial" />
+      <option name="MAIN_CLASS_NAME" value="trzpoc.structure.serial.BarSerialDataParserTest" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
     <configuration name="FontAndColorSelectorTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
       <module name="serial" />
       <extension name="coverage">
@@ -638,6 +798,29 @@
       <option name="SUITE_NAME" />
       <option name="PACKAGE_NAME" value="trzpoc.utils" />
       <option name="MAIN_CLASS_NAME" value="trzpoc.utils.FontAndColorSelectorTest" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$MODULE_DIR$" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration name="PomReaderTest" type="TestNG" factoryName="TestNG" temporary="true" nameIsGenerated="true">
+      <module name="serial" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" value="trzpoc.utils" />
+      <option name="MAIN_CLASS_NAME" value="trzpoc.utils.PomReaderTest" />
       <option name="METHOD_NAME" />
       <option name="GROUP_NAME" />
       <option name="TEST_OBJECT" value="CLASS" />
@@ -714,19 +897,19 @@
       <item itemvalue="Application.BarDemo" />
       <item itemvalue="Remote.Mac-remote" />
       <item itemvalue="Remote.TRZ-remote" />
-      <item itemvalue="Application.DrawingTextOriginal" />
       <item itemvalue="Groovy.build" />
       <item itemvalue="TestNG.FontAndColorSelectorTest" />
       <item itemvalue="TestNG.TextMetricCalculatorTest" />
-      <item itemvalue="Application.PomReader" />
+      <item itemvalue="TestNG.PomReaderTest" />
+      <item itemvalue="TestNG.BarSerialDataParserTest" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.PomReader" />
+        <item itemvalue="TestNG.PomReaderTest" />
+        <item itemvalue="TestNG.BarSerialDataParserTest" />
         <item itemvalue="TestNG.TextMetricCalculatorTest" />
         <item itemvalue="TestNG.FontAndColorSelectorTest" />
         <item itemvalue="Groovy.build" />
-        <item itemvalue="Application.DrawingTextOriginal" />
       </list>
     </recent_temporary>
   </component>
@@ -737,41 +920,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1489661415561</updated>
-    </task>
-    <task id="LOCAL-00048" summary="Refactoring code to clear project">
-      <created>1510933286714</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1510933286714</updated>
-    </task>
-    <task id="LOCAL-00049" summary="Refactoring code to clear project">
-      <created>1511105922050</created>
-      <option name="number" value="00049" />
-      <option name="presentableId" value="LOCAL-00049" />
-      <option name="project" value="LOCAL" />
-      <updated>1511105922050</updated>
-    </task>
-    <task id="LOCAL-00050" summary="Added serial data emulator">
-      <created>1515842558546</created>
-      <option name="number" value="00050" />
-      <option name="presentableId" value="LOCAL-00050" />
-      <option name="project" value="LOCAL" />
-      <updated>1515842558547</updated>
-    </task>
-    <task id="LOCAL-00051" summary="modification to test bar devels">
-      <created>1515842594171</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1515842594171</updated>
-    </task>
-    <task id="LOCAL-00052" summary="modification to emprove bar behaviour">
-      <created>1515842722920</created>
-      <option name="number" value="00052" />
-      <option name="presentableId" value="LOCAL-00052" />
-      <option name="project" value="LOCAL" />
-      <updated>1515842722920</updated>
     </task>
     <task id="LOCAL-00053" summary="wip">
       <created>1519310325893</created>
@@ -1081,39 +1229,74 @@
       <option name="project" value="LOCAL" />
       <updated>1536132772488</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="BarDemo: update">
+      <created>1536312918480</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1536312918480</updated>
+    </task>
+    <task id="LOCAL-00098" summary="SerialCommunicatorLocalClientForTest: modified method to find resources">
+      <created>1536399274866</created>
+      <option name="number" value="00098" />
+      <option name="presentableId" value="LOCAL-00098" />
+      <option name="project" value="LOCAL" />
+      <updated>1536399274866</updated>
+    </task>
+    <task id="LOCAL-00099" summary="DrawingText: added method drawVersionAndProperties to read info from pom and print them on screen">
+      <created>1536399349453</created>
+      <option name="number" value="00099" />
+      <option name="presentableId" value="LOCAL-00099" />
+      <option name="project" value="LOCAL" />
+      <updated>1536399349454</updated>
+    </task>
+    <task id="LOCAL-00100" summary="POmReader: various emprovments">
+      <created>1536399426133</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1536399426133</updated>
+    </task>
+    <task id="LOCAL-00101" summary="log4j.xml: logger level to info">
+      <created>1536399458892</created>
+      <option name="number" value="00101" />
+      <option name="presentableId" value="LOCAL-00101" />
+      <option name="project" value="LOCAL" />
+      <updated>1536399458893</updated>
+    </task>
+    <option name="localTasksCounter" value="102" />
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="FontAndColorSelectorTest - 2018.05.01 at 14h 34m 48s.xml">
-      <configuration name="FontAndColorSelectorTest" configurationId="TestNG" />
+    <history-entry file="PomReaderTest - 2018.09.07 at 13h 53m 06s.xml">
+      <configuration name="PomReaderTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="FontAndColorSelectorTest - 2018.05.01 at 14h 35m 04s.xml">
-      <configuration name="FontAndColorSelectorTest" configurationId="TestNG" />
+    <history-entry file="PomReaderTest - 2018.09.07 at 13h 57m 25s.xml">
+      <configuration name="PomReaderTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TextMetricCalculatorTest - 2018.05.01 at 18h 36m 09s.xml">
-      <configuration name="TextMetricCalculatorTest" configurationId="TestNG" />
+    <history-entry file="PomReaderTest - 2018.09.07 at 13h 58m 10s.xml">
+      <configuration name="PomReaderTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TextMetricCalculatorTest - 2018.05.01 at 18h 39m 41s.xml">
-      <configuration name="TextMetricCalculatorTest" configurationId="TestNG" />
+    <history-entry file="PomReaderTest - 2018.09.07 at 13h 58m 29s.xml">
+      <configuration name="PomReaderTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="TextMetricCalculatorTest - 2018.05.01 at 18h 43m 02s.xml">
-      <configuration name="TextMetricCalculatorTest" configurationId="TestNG" />
+    <history-entry file="PomReaderTest - 2018.09.07 at 13h 58m 49s.xml">
+      <configuration name="PomReaderTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="VariableValueSerialDataParserTest - 2017.12.19 at 14h 51m 27s.xml">
-      <configuration name="VariableValueSerialDataParserTest" configurationId="TestNG" />
+    <history-entry file="PomReaderTest - 2018.09.07 at 13h 59m 42s.xml">
+      <configuration name="PomReaderTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="VariableValueSerialDataParserTest - 2017.12.19 at 14h 53m 27s.xml">
-      <configuration name="VariableValueSerialDataParserTest" configurationId="TestNG" />
+    <history-entry file="PomReaderTest - 2018.09.07 at 14h 03m 05s.xml">
+      <configuration name="PomReaderTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="VariableValueSerialDataParserTest - 2018.01.05 at 10h 52m 59s.xml">
-      <configuration name="VariableValueSerialDataParserTest" configurationId="TestNG" />
+    <history-entry file="PomReaderTest - 2018.09.07 at 14h 04m 23s.xml">
+      <configuration name="PomReaderTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="_default_ - 2017.12.19 at 14h 56m 50s.xml">
-      <configuration name="&lt;default&gt;" configurationId="TestNG" />
+    <history-entry file="BarSerialDataParserTest - 2018.09.07 at 14h 29m 05s.xml">
+      <configuration name="BarSerialDataParserTest" configurationId="TestNG" />
     </history-entry>
-    <history-entry file="_default_ - 2017.12.19 at 14h 57m 39s.xml">
-      <configuration name="&lt;default&gt;" configurationId="TestNG" />
+    <history-entry file="PomReaderTest - 2018.09.07 at 14h 52m 15s.xml">
+      <configuration name="PomReaderTest" configurationId="TestNG" />
     </history-entry>
   </component>
   <component name="TodoView">
@@ -1127,35 +1310,47 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="64" y="-11" width="1303" height="780" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="4" weight="0.32917318" />
       <window_info anchor="bottom" id="Messages" order="10" weight="0.31669268" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.512253" side_tool="true" weight="0.35413417" />
       <window_info anchor="right" id="Maven Projects" order="4" weight="0.32828686" />
-      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49586776" weight="0.32633787" />
-      <window_info anchor="bottom" id="Run" order="12" sideWeight="0.48774704" weight="0.3322933" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49586776" weight="0.5959438" />
+      <window_info anchor="bottom" id="Run" order="12" sideWeight="0.48774704" visible="true" weight="0.3322933" />
       <window_info anchor="bottom" id="Terminal" order="11" weight="0.5943838" />
       <window_info id="Designer" order="0" />
-      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.31155378" />
+      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.31394422" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24940239" />
       <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.4980716" visible="true" weight="0.4071763" />
+      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.4980716" weight="0.4071763" />
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Enso" order="6" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24980174" />
+      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.31155378" />
       <window_info anchor="right" id="Data View" order="8" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="SonarQube" order="9" weight="0.32972136" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.5943838" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.24940239" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="TODO" order="4" weight="0.32917318" />
+      <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49586776" weight="0.32633787" />
+      <window_info anchor="bottom" id="Run" order="12" sideWeight="0.48774704" weight="0.3322933" />
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32972136" />
+      <window_info id="Designer" order="0" />
       <window_info anchor="right" id="Code Iris" order="7" />
+      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.4980716" visible="true" weight="0.4071763" />
+      <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.512253" side_tool="true" weight="0.35413417" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
       <window_info id="UI Designer" order="3" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.36349455" />
+      <window_info anchor="bottom" id="Messages" order="10" weight="0.31669268" />
+      <window_info anchor="right" id="Maven Projects" order="4" weight="0.32828686" />
+      <window_info id="Favorites" order="2" side_tool="true" />
     </layout>
     <layout-to-restore>
       <window_info anchor="right" id="Palette" order="3" />
@@ -1163,10 +1358,10 @@
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.24980174" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" id="Data View" order="8" />
-      <window_info active="true" anchor="bottom" id="Run" order="12" sideWeight="0.48774704" visible="true" weight="0.3322933" />
+      <window_info anchor="bottom" id="Run" order="12" sideWeight="0.48774704" weight="0.3322933" />
       <window_info anchor="bottom" id="SonarQube" order="9" weight="0.32972136" />
       <window_info anchor="bottom" id="Cvs" order="3" weight="0.25" />
-      <window_info content_ui="combo" id="Project" order="4" visible="true" weight="0.10358566" />
+      <window_info active="true" content_ui="combo" id="Project" order="4" visible="true" weight="0.31155378" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.24940239" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="4" weight="0.32917318" />
@@ -1174,9 +1369,9 @@
       <window_info anchor="bottom" id="Inspection Results" order="8" weight="0.32972136" />
       <window_info id="Designer" order="0" />
       <window_info anchor="right" id="Code Iris" order="7" />
-      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.4980716" weight="0.4071763" />
+      <window_info anchor="bottom" id="Debug" order="2" sideWeight="0.4980716" visible="true" weight="0.4071763" />
       <window_info anchor="right" id="Palette&#9;" order="5" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="1.0" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.5943838" />
       <window_info anchor="bottom" id="Event Log" order="6" sideWeight="0.512253" side_tool="true" weight="0.35413417" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="Version Control" order="7" sideWeight="0.49586776" weight="0.32633787" />
@@ -1223,11 +1418,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="SerialCommunicatorLocalClientForTest: removed unuseful exceptions" />
-    <MESSAGE value="DrawingText: removed combinations key accelerators and touch screen" />
-    <MESSAGE value="IntelliJ automatic update project file" />
-    <MESSAGE value="removed seriallib" />
-    <MESSAGE value="added scripts files" />
     <MESSAGE value="build.groovy: modified Raspberry password" />
     <MESSAGE value="TRZLinearSkin: removed border lines" />
     <MESSAGE value="TRZLinearSkin: removed barHightlight" />
@@ -1248,7 +1438,12 @@
     <MESSAGE value="Created to configure and add TRZBar to graphical tree" />
     <MESSAGE value="Modified to configure and add TRZBar to graphical tree" />
     <MESSAGE value="Project configuration update" />
-    <option name="LAST_COMMIT_MESSAGE" value="Project configuration update" />
+    <MESSAGE value="BarDemo: update" />
+    <MESSAGE value="SerialCommunicatorLocalClientForTest: modified method to find resources" />
+    <MESSAGE value="DrawingText: added method drawVersionAndProperties to read info from pom and print them on screen" />
+    <MESSAGE value="POmReader: various emprovments" />
+    <MESSAGE value="log4j.xml: logger level to info" />
+    <option name="LAST_COMMIT_MESSAGE" value="log4j.xml: logger level to info" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -1290,41 +1485,16 @@
           <option name="timeStamp" value="339" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <condition expression="value &gt; 0.8" language="JAVA" />
-          <url>file://$PROJECT_DIR$/src/main/java/trzpoc/gui/TRZBar.java</url>
-          <line>131</line>
+          <url>file://$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicatorLocalClientForTest.java</url>
+          <line>264</line>
           <properties />
-          <option name="timeStamp" value="444" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/trzpoc/gui/TRZBar.java</url>
-          <line>119</line>
-          <properties />
-          <option name="timeStamp" value="445" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java</url>
-          <line>161</line>
-          <properties />
-          <option name="timeStamp" value="446" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java</url>
-          <line>101</line>
-          <properties />
-          <option name="timeStamp" value="447" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/trzpoc/utils/PomReader.java</url>
-          <line>11</line>
-          <properties />
-          <option name="timeStamp" value="448" />
+          <option name="timeStamp" value="442" />
         </line-breakpoint>
       </breakpoints>
       <breakpoints-dialog>
         <breakpoints-dialog />
       </breakpoints-dialog>
-      <option name="time" value="449" />
+      <option name="time" value="443" />
     </breakpoint-manager>
     <watches-manager>
       <configuration name="Application">
@@ -1351,24 +1521,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/CellInterface.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="17" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/comunication/TRZSerialPortListener.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="16" column="28" selection-start-line="16" selection-start-column="28" selection-end-line="16" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialPortTimer.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialPortTimerTask.java" />
-    <entry file="file://$PROJECT_DIR$/runningResultsTest1.txt" />
-    <entry file="file://$PROJECT_DIR$/src/bin/run.bak.sh" />
     <entry file="file://$PROJECT_DIR$/src/bin/run-debug.sh" />
     <entry file="file://$PROJECT_DIR$/src/bin/run-from-command-line.sh" />
     <entry file="file://$PROJECT_DIR$/src/main/resources/serialInputs/test-bars-no-crc.txt">
@@ -1483,7 +1635,13 @@
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/run.groovy">
-      <provider selected="true" editor-type-id="text-editor" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="n#!!doc" expanded="true" />
+          </folding>
+        </state>
+      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/utils/SerialDataEmulator.java">
       <provider selected="true" editor-type-id="text-editor">
@@ -1496,6 +1654,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="810">
           <caret line="65" selection-start-line="65" selection-end-line="65" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -1508,9 +1669,6 @@
           </folding>
         </state>
       </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
-      <provider selected="true" editor-type-id="text-editor" />
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/example.txt">
       <provider selected="true" editor-type-id="text-editor" />
@@ -1539,13 +1697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicatorLocalClientForTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="67" column="28" selection-start-line="67" selection-start-column="28" selection-end-line="67" selection-end-column="28" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/StructureVisitor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="155">
@@ -1567,13 +1718,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="143">
-          <caret line="94" column="45" lean-forward="true" selection-start-line="94" selection-start-column="45" selection-end-line="94" selection-end-column="45" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/structure/serial/SerialDataFacade.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="230">
@@ -1590,11 +1734,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/BarDemo.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="64">
-          <caret line="144" column="28" selection-start-line="144" selection-start-column="28" selection-end-line="144" selection-end-column="28" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="225">
+          <caret line="29" column="32" selection-start-line="29" selection-start-column="32" selection-end-line="29" selection-end-column="32" />
         </state>
       </provider>
     </entry>
@@ -1623,27 +1764,13 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="135">
-          <caret line="9" column="25" selection-start-line="9" selection-start-column="25" selection-end-line="9" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/hansolo/skins/TRZLinearSkin.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="54" column="51" selection-start-line="54" selection-start-column="51" selection-end-line="54" selection-end-column="51" />
+        <state relative-caret-position="17">
+          <caret line="38" column="18" selection-start-line="38" selection-start-column="18" selection-end-line="38" selection-end-column="18" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/pom.xml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="77" column="29" selection-start-line="77" selection-start-column="29" selection-end-line="77" selection-end-column="29" />
         </state>
       </provider>
     </entry>
@@ -1656,20 +1783,110 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/target/test-classes/test-pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="165">
+          <caret line="11" column="37" selection-start-line="11" selection-start-column="21" selection-end-line="11" selection-end-column="37" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/test-pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="13" selection-start-line="12" selection-end-line="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="90">
+          <caret line="6" column="26" selection-start-line="6" selection-start-column="12" selection-end-line="6" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/trzpoc/structure/serial/BarSerialDataParserTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="20" column="13" selection-start-line="20" selection-start-column="13" selection-end-line="20" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/utils/PomReader.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="240">
-          <caret line="16" selection-start-line="16" selection-end-line="16" />
+        <state relative-caret-position="285">
+          <caret line="19" selection-start-line="19" selection-end-line="19" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#707#708#0" expanded="true" />
+            <element signature="e#744#745#0" expanded="true" />
+            <element signature="e#457#458#0" expanded="true" />
+            <element signature="e#558#559#0" expanded="true" />
+            <element signature="e#603#604#0" expanded="true" />
+            <element signature="e#1040#1041#0" expanded="true" />
+            <element signature="e#1075#1076#0" expanded="true" />
+            <element signature="e#852#853#0" expanded="true" />
+            <element signature="e#901#902#0" expanded="true" />
+            <element signature="e#930#931#0" expanded="true" />
+            <element signature="e#974#975#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/trzpoc/utils/PomReaderTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="285">
+          <caret line="29" column="60" selection-start-line="29" selection-start-column="60" selection-end-line="29" selection-end-column="60" />
+          <folding>
+            <element signature="e#282#283#0" expanded="true" />
+            <element signature="e#379#380#0" expanded="true" />
+            <element signature="e#231#232#0" expanded="true" />
+            <element signature="e#261#262#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/comunication/SerialCommunicatorLocalClientForTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="454">
+          <caret line="200" selection-start-line="200" selection-end-line="200" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/utils/FontAndColorSelector.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="148" column="86" selection-start-line="148" selection-start-column="15" selection-end-line="148" selection-end-column="86" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/resources/application.properties">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="12" column="21" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/trzpoc/gui/DrawingText.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="305">
+          <caret line="97" column="93" selection-start-line="97" selection-start-column="93" selection-end-line="97" selection-end-column="93" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/resources/log4j.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="23" column="27" selection-start-line="23" selection-start-column="27" selection-end-line="23" selection-end-column="27" />
+        <state relative-caret-position="345">
+          <caret line="23" column="26" selection-start-line="23" selection-start-column="26" selection-end-line="23" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="180">
+          <caret line="12" column="23" selection-start-line="12" selection-start-column="23" selection-end-line="12" selection-end-column="23" />
         </state>
       </provider>
     </entry>
