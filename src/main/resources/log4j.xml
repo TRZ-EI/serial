@@ -21,7 +21,7 @@
 
 
     <logger name="trzpoc" additivity="false">
-        <level value="debug" />
+        <level value="info" />
         <appender-ref ref="R0" />
         <appender-ref ref="CONSOLE" />
     </logger>
