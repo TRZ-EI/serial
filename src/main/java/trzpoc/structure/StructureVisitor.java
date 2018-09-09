@@ -159,20 +159,8 @@ public class StructureVisitor {
     }
 
     private RunnableFragment update(TRZBar t, String rawValue){
-        Color color = Color.GREEN;
+        Color color = Color.LIGHTGREEN;
         double finalValue = Double.parseDouble(rawValue);
-/*
-        double valueInDouble = Double.parseDouble(rawValue);
-        if (valueInDouble >= t.getMaxValue() || valueInDouble <= t.getMinValue()){
-            color = Color.RED;
-            finalValue = valueInDouble * 10;
-            // Add 30% value to compensate zero pos fixed to 70% of lenght bar
-            //t.setValue(valueInDouble + (valueInDouble * 0.3));
-        }else{
-            color = Color.GREEN;
-            finalValue = valueInDouble;
-        }
-*/
         return new JfxGaugeBarUpdaterFragment(color, finalValue, t);
     }
 
