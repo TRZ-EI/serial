@@ -16,34 +16,28 @@ public class TRZBar extends Rectangle {
     private double value;
 
     private double zeroPosInPixel;
-    private double positiveStepSizeinPixel;
-    private double negativeStepSizeinPixel;
     private double initialWidth;
 
     private Color color;
 
-    private double RESOLUTION = 0.1D;
-
     private static Logger logger = Logger.getLogger(TRZBar.class);
+    private double positiveSizeinPixel;
+    private double negativeSizeinPixel;
 
     public TRZBar(){
         super();
     }
 
-    public TRZBar(double resolution){
-        super();
-        this.RESOLUTION = resolution;
-    }
 
     public void calculateBarParams() {
         double negativeRange = 0 - this.minValue;
         double positiveRange = this.maxValue - 0;
-        positiveStepSizeinPixel = round((this.getWidth() - this.zeroPosInPixel) / (positiveRange / RESOLUTION));
-        negativeStepSizeinPixel = round((this.zeroPosInPixel) / (negativeRange / RESOLUTION));
+        positiveSizeinPixel = this.getWidth() - this.zeroPosInPixel;
+        negativeSizeinPixel = this.zeroPosInPixel;
         logger.debug("negativeRange: " + negativeRange);
         logger.debug("positiveRange: " + positiveRange);
-        logger.debug("positiveStepSizeinPixel: " + positiveStepSizeinPixel + " px");
-        logger.debug("negativeStepSizeinPixel: " + negativeStepSizeinPixel + " px");
+        logger.debug("positiveSizeinPixel: " + positiveSizeinPixel + " px");
+        logger.debug("negativeSizeinPixel: " + negativeSizeinPixel + " px");
         logger.debug("------------------------------------------------------------------------------------------------");
     }
 
@@ -75,9 +69,6 @@ public class TRZBar extends Rectangle {
         return retValue;
     }
 
-    public void setZeroMark(Line zeroMark) {
-        this.zeroMark = zeroMark;
-    }
 
     public void setMinValue(double minValue) {
         this.minValue = minValue;
@@ -99,19 +90,21 @@ public class TRZBar extends Rectangle {
         logger.debug("actual value: " + roundedValue + "; min value: " + this.minValue + "; max value: " + this.maxValue);
         logger.debug("Selected color based on value: " + this.printColorName(actualColor));
         if (value < 0){
-            logger.debug("negative step size: " + this.negativeStepSizeinPixel);
-            sizeInPixel = this.round(((this.value * -1)/RESOLUTION) * this.negativeStepSizeinPixel);
+            sizeInPixel = this.round((this.negativeSizeinPixel * roundedValue) / this.minValue);
+            //sizeInPixel = this.round(((this.value * -1)/RESOLUTION) * this.negativeStepSizeinPixel);
             logger.debug("Negative total range in pixel: 0 to "  + this.zeroPosInPixel);
-            logger.debug("Rectangle size in pixel calc = (" + roundedValue + " * -1)/" + RESOLUTION + " * " + this.negativeStepSizeinPixel + " --> " + sizeInPixel);
+            logger.debug("Rectangle size in pixel calc = (" + this.negativeSizeinPixel  + " * " + roundedValue + ")/" + this.minValue + " --> " + sizeInPixel);
             logger.debug("Rectangle x pos calc: " + this.zeroPosInPixel + " - " + sizeInPixel);
             logger.debug("Rectangle size in pixel: " + sizeInPixel + "; x pos: " + (this.zeroPosInPixel - sizeInPixel));
             this.setX(this.zeroPosInPixel - sizeInPixel);
             this.setWidth(sizeInPixel);
         }else{
-            logger.debug("positive step size: " + this.positiveStepSizeinPixel);
-            sizeInPixel = this.round((this.value/RESOLUTION) * this.positiveStepSizeinPixel);
+
+            sizeInPixel = this.round(this.positiveSizeinPixel * roundedValue)/this.maxValue;
+
+            //sizeInPixel = this.round((this.value/RESOLUTION) * this.positiveStepSizeinPixel);
             logger.debug("Positive total range in pixel: " + this.zeroPosInPixel + " to " + this.initialWidth);
-            logger.debug("Rectangle size in pixel calc = (" + roundedValue +")/" + RESOLUTION + " * " + this.positiveStepSizeinPixel + " --> " + sizeInPixel);
+            logger.debug("Rectangle size in pixel calc = (" + this.positiveSizeinPixel  + " * " + roundedValue + ")/" + this.maxValue + " --> " + sizeInPixel);
             logger.debug("Rectangle size in pixel: " + sizeInPixel + "; x pos: " + this.zeroPosInPixel);
             this.setX(this.zeroPosInPixel);
             this.setWidth(sizeInPixel);
