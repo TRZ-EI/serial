@@ -8,6 +8,7 @@ import javafx.scene.paint.Color;
 import trzpoc.gui.DrawingText;
 //import trzpoc.gui.GraphicDesigner;
 import trzpoc.gui.TRZBar;
+import trzpoc.utils.FontAndColorSelector;
 import trzpoc.utils.RightTextAligner;
 
 import java.util.Collection;
@@ -159,7 +160,7 @@ public class StructureVisitor {
     }
 
     private RunnableFragment update(TRZBar t, String rawValue){
-        Color color = Color.LIGHTGREEN;
+        Color color = FontAndColorSelector.getNewInstance().getColorForBar();
         double finalValue = Double.parseDouble(rawValue);
         return new JfxGaugeBarUpdaterFragment(color, finalValue, t);
     }

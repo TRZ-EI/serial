@@ -181,8 +181,17 @@ public class FontAndColorSelectorTest {
         int expectedValue = TextMetricCalculator.getInstance().calculateHeight("W", this.bigFont);
         assertEquals(expectedValue, this.sut.getHeightForFont(this.bigFont,"W"));
     }
+    @Test
+    public void testGetCOlorForBar(){
+        Color actual = this.sut.getColorForBar();
+
+        String  expectedColorInWebNotation = ConfigurationHolder.getInstance().getProperties().getProperty(FontProperties.BAR_COLOR.name());
+        Color expected = Color.web(expectedColorInWebNotation);
+        assertEquals(actual, expected);
+
+    }
     private enum FontProperties{
-        SMALL_FONT,SMALL_FONT_WEIGHT,SMALL_SIZE,BIG_FONT,BIG_FONT_WEIGHT,BIG_SIZE;
+        SMALL_FONT,SMALL_FONT_WEIGHT,SMALL_SIZE,BIG_FONT,BIG_FONT_WEIGHT,BIG_SIZE, BAR_COLOR;
     }
 
 }

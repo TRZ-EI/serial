@@ -184,8 +184,13 @@ public class FontAndColorSelector {
         return this.smallBoldFont;
     }
 
+    public Color getColorForBar() {
+        String colorWebString = this.properties.getProperty(FontProperties.BAR_COLOR.name());
+        return Color.web(colorWebString);
+    }
+
     private enum FontProperties{
-        SMALL_FONT,SMALL_FONT_WEIGHT,SMALL_SIZE,BIG_FONT,BIG_FONT_WEIGHT,BIG_SIZE;
+        SMALL_FONT,SMALL_FONT_WEIGHT,SMALL_SIZE,BIG_FONT,BIG_FONT_WEIGHT,BIG_SIZE, BAR_COLOR;
     }
     private enum FontMappings{
         NERO_PICCOLO,ROSSO_PICCOLO,ROSSO_PICCOLO_GRASSETTO,VERDE_PICCOLO,BLU_PICCOLO,
