@@ -1,0 +1,1157 @@
+defined width in pixel: 800.0
+percentage calc: 800.0 * (1 - 70.0/100) --> 240.0
+zero position calc: 800.0 - 240.0 --> 560.0 px
+negativeRange: 40.0
+positiveRange: 5.0
+positiveStepSizeinPixel: 4.8 px
+negativeStepSizeinPixel: 1.4 px
+------------------------------------------------------------------------------------------------
+defined width in pixel: 800.0
+percentage calc: 800.0 * (1 - 70.0/100) --> 240.0
+zero position calc: 800.0 - 240.0 --> 560.0 px
+negativeRange: 40.0
+positiveRange: 14.0
+positiveStepSizeinPixel: 1.71 px
+negativeStepSizeinPixel: 1.4 px
+------------------------------------------------------------------------------------------------
+
+************************************************************************************************
+actual value: -3.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-3.0 * -1)/0.1 * 1.4 --> 42.0
+Rectangle x pos calc: 560.0 - 42.0
+Rectangle size in pixel: 42.0; x pos: 518.0
+************************************************************************************************
+actual value: -3.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-3.0 * -1)/0.1 * 1.4 --> 42.0
+Rectangle x pos calc: 560.0 - 42.0
+Rectangle size in pixel: 42.0; x pos: 518.0
+************************************************************************************************
+actual value: -3.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-3.0 * -1)/0.1 * 1.4 --> 42.0
+Rectangle x pos calc: 560.0 - 42.0
+Rectangle size in pixel: 42.0; x pos: 518.0
+************************************************************************************************
+actual value: -5.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-5.0 * -1)/0.1 * 1.4 --> 70.0
+Rectangle x pos calc: 560.0 - 70.0
+Rectangle size in pixel: 70.0; x pos: 490.0
+************************************************************************************************
+actual value: -7.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-7.0 * -1)/0.1 * 1.4 --> 98.0
+Rectangle x pos calc: 560.0 - 98.0
+Rectangle size in pixel: 98.0; x pos: 462.0
+************************************************************************************************
+actual value: -6.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-6.0 * -1)/0.1 * 1.4 --> 84.0
+Rectangle x pos calc: 560.0 - 84.0
+Rectangle size in pixel: 84.0; x pos: 476.0
+************************************************************************************************
+actual value: -7.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-7.0 * -1)/0.1 * 1.4 --> 98.0
+Rectangle x pos calc: 560.0 - 98.0
+Rectangle size in pixel: 98.0; x pos: 462.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -11.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-11.0 * -1)/0.1 * 1.4 --> 154.0
+Rectangle x pos calc: 560.0 - 154.0
+Rectangle size in pixel: 154.0; x pos: 406.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -11.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-11.0 * -1)/0.1 * 1.4 --> 154.0
+Rectangle x pos calc: 560.0 - 154.0
+Rectangle size in pixel: 154.0; x pos: 406.0
+************************************************************************************************
+actual value: -14.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-14.0 * -1)/0.1 * 1.4 --> 196.0
+Rectangle x pos calc: 560.0 - 196.0
+Rectangle size in pixel: 196.0; x pos: 364.0
+************************************************************************************************
+actual value: -16.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-16.0 * -1)/0.1 * 1.4 --> 224.0
+Rectangle x pos calc: 560.0 - 224.0
+Rectangle size in pixel: 224.0; x pos: 336.0
+************************************************************************************************
+actual value: -17.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-17.0 * -1)/0.1 * 1.4 --> 238.0
+Rectangle x pos calc: 560.0 - 238.0
+Rectangle size in pixel: 238.0; x pos: 322.0
+************************************************************************************************
+actual value: -19.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-19.0 * -1)/0.1 * 1.4 --> 266.0
+Rectangle x pos calc: 560.0 - 266.0
+Rectangle size in pixel: 266.0; x pos: 294.0
+************************************************************************************************
+actual value: -20.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-20.0 * -1)/0.1 * 1.4 --> 280.0
+Rectangle x pos calc: 560.0 - 280.0
+Rectangle size in pixel: 280.0; x pos: 280.0
+************************************************************************************************
+actual value: -19.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-19.0 * -1)/0.1 * 1.4 --> 266.0
+Rectangle x pos calc: 560.0 - 266.0
+Rectangle size in pixel: 266.0; x pos: 294.0
+************************************************************************************************
+actual value: -20.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-20.0 * -1)/0.1 * 1.4 --> 280.0
+Rectangle x pos calc: 560.0 - 280.0
+Rectangle size in pixel: 280.0; x pos: 280.0
+************************************************************************************************
+actual value: -19.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-19.0 * -1)/0.1 * 1.4 --> 266.0
+Rectangle x pos calc: 560.0 - 266.0
+Rectangle size in pixel: 266.0; x pos: 294.0
+************************************************************************************************
+actual value: -20.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-20.0 * -1)/0.1 * 1.4 --> 280.0
+Rectangle x pos calc: 560.0 - 280.0
+Rectangle size in pixel: 280.0; x pos: 280.0
+************************************************************************************************
+actual value: -22.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-22.0 * -1)/0.1 * 1.4 --> 308.0
+Rectangle x pos calc: 560.0 - 308.0
+Rectangle size in pixel: 308.0; x pos: 252.0
+************************************************************************************************
+actual value: -20.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-20.0 * -1)/0.1 * 1.4 --> 280.0
+Rectangle x pos calc: 560.0 - 280.0
+Rectangle size in pixel: 280.0; x pos: 280.0
+************************************************************************************************
+actual value: -22.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-22.0 * -1)/0.1 * 1.4 --> 308.0
+Rectangle x pos calc: 560.0 - 308.0
+Rectangle size in pixel: 308.0; x pos: 252.0
+************************************************************************************************
+actual value: -20.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-20.0 * -1)/0.1 * 1.4 --> 280.0
+Rectangle x pos calc: 560.0 - 280.0
+Rectangle size in pixel: 280.0; x pos: 280.0
+************************************************************************************************
+actual value: -22.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-22.0 * -1)/0.1 * 1.4 --> 308.0
+Rectangle x pos calc: 560.0 - 308.0
+Rectangle size in pixel: 308.0; x pos: 252.0
+************************************************************************************************
+actual value: -20.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-20.0 * -1)/0.1 * 1.4 --> 280.0
+Rectangle x pos calc: 560.0 - 280.0
+Rectangle size in pixel: 280.0; x pos: 280.0
+************************************************************************************************
+actual value: -22.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-22.0 * -1)/0.1 * 1.4 --> 308.0
+Rectangle x pos calc: 560.0 - 308.0
+Rectangle size in pixel: 308.0; x pos: 252.0
+************************************************************************************************
+actual value: -20.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-20.0 * -1)/0.1 * 1.4 --> 280.0
+Rectangle x pos calc: 560.0 - 280.0
+Rectangle size in pixel: 280.0; x pos: 280.0
+************************************************************************************************
+actual value: -22.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-22.0 * -1)/0.1 * 1.4 --> 308.0
+Rectangle x pos calc: 560.0 - 308.0
+Rectangle size in pixel: 308.0; x pos: 252.0
+************************************************************************************************
+actual value: -20.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-20.0 * -1)/0.1 * 1.4 --> 280.0
+Rectangle x pos calc: 560.0 - 280.0
+Rectangle size in pixel: 280.0; x pos: 280.0
+************************************************************************************************
+actual value: -22.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-22.0 * -1)/0.1 * 1.4 --> 308.0
+Rectangle x pos calc: 560.0 - 308.0
+Rectangle size in pixel: 308.0; x pos: 252.0
+************************************************************************************************
+actual value: -20.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-20.0 * -1)/0.1 * 1.4 --> 280.0
+Rectangle x pos calc: 560.0 - 280.0
+Rectangle size in pixel: 280.0; x pos: 280.0
+************************************************************************************************
+actual value: -22.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-22.0 * -1)/0.1 * 1.4 --> 308.0
+Rectangle x pos calc: 560.0 - 308.0
+Rectangle size in pixel: 308.0; x pos: 252.0
+************************************************************************************************
+actual value: -20.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-20.0 * -1)/0.1 * 1.4 --> 280.0
+Rectangle x pos calc: 560.0 - 280.0
+Rectangle size in pixel: 280.0; x pos: 280.0
+************************************************************************************************
+actual value: -22.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-22.0 * -1)/0.1 * 1.4 --> 308.0
+Rectangle x pos calc: 560.0 - 308.0
+Rectangle size in pixel: 308.0; x pos: 252.0
+************************************************************************************************
+actual value: -20.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-20.0 * -1)/0.1 * 1.4 --> 280.0
+Rectangle x pos calc: 560.0 - 280.0
+Rectangle size in pixel: 280.0; x pos: 280.0
+************************************************************************************************
+actual value: -22.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-22.0 * -1)/0.1 * 1.4 --> 308.0
+Rectangle x pos calc: 560.0 - 308.0
+Rectangle size in pixel: 308.0; x pos: 252.0
+************************************************************************************************
+actual value: -20.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-20.0 * -1)/0.1 * 1.4 --> 280.0
+Rectangle x pos calc: 560.0 - 280.0
+Rectangle size in pixel: 280.0; x pos: 280.0
+************************************************************************************************
+actual value: -22.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-22.0 * -1)/0.1 * 1.4 --> 308.0
+Rectangle x pos calc: 560.0 - 308.0
+Rectangle size in pixel: 308.0; x pos: 252.0
+************************************************************************************************
+actual value: -20.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-20.0 * -1)/0.1 * 1.4 --> 280.0
+Rectangle x pos calc: 560.0 - 280.0
+Rectangle size in pixel: 280.0; x pos: 280.0
+************************************************************************************************
+actual value: -22.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-22.0 * -1)/0.1 * 1.4 --> 308.0
+Rectangle x pos calc: 560.0 - 308.0
+Rectangle size in pixel: 308.0; x pos: 252.0
+************************************************************************************************
+actual value: -20.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-20.0 * -1)/0.1 * 1.4 --> 280.0
+Rectangle x pos calc: 560.0 - 280.0
+Rectangle size in pixel: 280.0; x pos: 280.0
+************************************************************************************************
+actual value: -22.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-22.0 * -1)/0.1 * 1.4 --> 308.0
+Rectangle x pos calc: 560.0 - 308.0
+Rectangle size in pixel: 308.0; x pos: 252.0
+************************************************************************************************
+actual value: -22.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-22.0 * -1)/0.1 * 1.4 --> 308.0
+Rectangle x pos calc: 560.0 - 308.0
+Rectangle size in pixel: 308.0; x pos: 252.0
+************************************************************************************************
+actual value: -19.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-19.0 * -1)/0.1 * 1.4 --> 266.0
+Rectangle x pos calc: 560.0 - 266.0
+Rectangle size in pixel: 266.0; x pos: 294.0
+************************************************************************************************
+actual value: -18.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-18.0 * -1)/0.1 * 1.4 --> 252.0
+Rectangle x pos calc: 560.0 - 252.0
+Rectangle size in pixel: 252.0; x pos: 308.0
+************************************************************************************************
+actual value: -19.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-19.0 * -1)/0.1 * 1.4 --> 266.0
+Rectangle x pos calc: 560.0 - 266.0
+Rectangle size in pixel: 266.0; x pos: 294.0
+************************************************************************************************
+actual value: -15.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-15.0 * -1)/0.1 * 1.4 --> 210.0
+Rectangle x pos calc: 560.0 - 210.0
+Rectangle size in pixel: 210.0; x pos: 350.0
+************************************************************************************************
+actual value: -15.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-15.0 * -1)/0.1 * 1.4 --> 210.0
+Rectangle x pos calc: 560.0 - 210.0
+Rectangle size in pixel: 210.0; x pos: 350.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -15.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-15.0 * -1)/0.1 * 1.4 --> 210.0
+Rectangle x pos calc: 560.0 - 210.0
+Rectangle size in pixel: 210.0; x pos: 350.0
+************************************************************************************************
+actual value: -8.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-8.0 * -1)/0.1 * 1.4 --> 112.0
+Rectangle x pos calc: 560.0 - 112.0
+Rectangle size in pixel: 112.0; x pos: 448.0
+************************************************************************************************
+actual value: -8.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-8.0 * -1)/0.1 * 1.4 --> 112.0
+Rectangle x pos calc: 560.0 - 112.0
+Rectangle size in pixel: 112.0; x pos: 448.0
+************************************************************************************************
+actual value: -5.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-5.0 * -1)/0.1 * 1.4 --> 70.0
+Rectangle x pos calc: 560.0 - 70.0
+Rectangle size in pixel: 70.0; x pos: 490.0
+************************************************************************************************
+actual value: -8.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-8.0 * -1)/0.1 * 1.4 --> 112.0
+Rectangle x pos calc: 560.0 - 112.0
+Rectangle size in pixel: 112.0; x pos: 448.0
+************************************************************************************************
+actual value: -5.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-5.0 * -1)/0.1 * 1.4 --> 70.0
+Rectangle x pos calc: 560.0 - 70.0
+Rectangle size in pixel: 70.0; x pos: 490.0
+************************************************************************************************
+actual value: -2.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-2.0 * -1)/0.1 * 1.4 --> 28.0
+Rectangle x pos calc: 560.0 - 28.0
+Rectangle size in pixel: 28.0; x pos: 532.0
+************************************************************************************************
+actual value: 0.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+positive step size: 4.8
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (0.0)/0.1 * 4.8 --> 0.0
+Rectangle size in pixel: 0.0; x pos: 560.0
+************************************************************************************************
+actual value: -2.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-2.0 * -1)/0.1 * 1.4 --> 28.0
+Rectangle x pos calc: 560.0 - 28.0
+Rectangle size in pixel: 28.0; x pos: 532.0
+************************************************************************************************
+actual value: 0.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+positive step size: 4.8
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (0.0)/0.1 * 4.8 --> 0.0
+Rectangle size in pixel: 0.0; x pos: 560.0
+************************************************************************************************
+actual value: 1.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+positive step size: 1.71
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (1.0)/0.1 * 1.71 --> 17.1
+Rectangle size in pixel: 17.1; x pos: 560.0
+************************************************************************************************
+actual value: 3.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+positive step size: 4.8
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (3.0)/0.1 * 4.8 --> 144.0
+Rectangle size in pixel: 144.0; x pos: 560.0
+************************************************************************************************
+actual value: 1.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+positive step size: 1.71
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (1.0)/0.1 * 1.71 --> 17.1
+Rectangle size in pixel: 17.1; x pos: 560.0
+************************************************************************************************
+actual value: 3.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+positive step size: 4.8
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (3.0)/0.1 * 4.8 --> 144.0
+Rectangle size in pixel: 144.0; x pos: 560.0
+************************************************************************************************
+actual value: 1.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+positive step size: 1.71
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (1.0)/0.1 * 1.71 --> 17.1
+Rectangle size in pixel: 17.1; x pos: 560.0
+************************************************************************************************
+actual value: 3.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+positive step size: 4.8
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (3.0)/0.1 * 4.8 --> 144.0
+Rectangle size in pixel: 144.0; x pos: 560.0
+************************************************************************************************
+actual value: 1.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+positive step size: 1.71
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (1.0)/0.1 * 1.71 --> 17.1
+Rectangle size in pixel: 17.1; x pos: 560.0
+************************************************************************************************
+actual value: 3.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+positive step size: 4.8
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (3.0)/0.1 * 4.8 --> 144.0
+Rectangle size in pixel: 144.0; x pos: 560.0
+************************************************************************************************
+actual value: 1.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+positive step size: 1.71
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (1.0)/0.1 * 1.71 --> 17.1
+Rectangle size in pixel: 17.1; x pos: 560.0
+************************************************************************************************
+actual value: 3.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+positive step size: 4.8
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (3.0)/0.1 * 4.8 --> 144.0
+Rectangle size in pixel: 144.0; x pos: 560.0
+************************************************************************************************
+actual value: 1.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+positive step size: 1.71
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (1.0)/0.1 * 1.71 --> 17.1
+Rectangle size in pixel: 17.1; x pos: 560.0
+************************************************************************************************
+actual value: 3.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+positive step size: 4.8
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (3.0)/0.1 * 4.8 --> 144.0
+Rectangle size in pixel: 144.0; x pos: 560.0
+************************************************************************************************
+actual value: 1.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+positive step size: 1.71
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (1.0)/0.1 * 1.71 --> 17.1
+Rectangle size in pixel: 17.1; x pos: 560.0
+************************************************************************************************
+actual value: 3.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+positive step size: 4.8
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (3.0)/0.1 * 4.8 --> 144.0
+Rectangle size in pixel: 144.0; x pos: 560.0
+************************************************************************************************
+actual value: 1.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+positive step size: 1.71
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (1.0)/0.1 * 1.71 --> 17.1
+Rectangle size in pixel: 17.1; x pos: 560.0
+************************************************************************************************
+actual value: 0.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+positive step size: 4.8
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (0.0)/0.1 * 4.8 --> 0.0
+Rectangle size in pixel: 0.0; x pos: 560.0
+************************************************************************************************
+actual value: 1.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+positive step size: 1.71
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (1.0)/0.1 * 1.71 --> 17.1
+Rectangle size in pixel: 17.1; x pos: 560.0
+************************************************************************************************
+actual value: 0.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+positive step size: 4.8
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (0.0)/0.1 * 4.8 --> 0.0
+Rectangle size in pixel: 0.0; x pos: 560.0
+************************************************************************************************
+actual value: -2.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-2.0 * -1)/0.1 * 1.4 --> 28.0
+Rectangle x pos calc: 560.0 - 28.0
+Rectangle size in pixel: 28.0; x pos: 532.0
+************************************************************************************************
+actual value: -3.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-3.0 * -1)/0.1 * 1.4 --> 42.0
+Rectangle x pos calc: 560.0 - 42.0
+Rectangle size in pixel: 42.0; x pos: 518.0
+************************************************************************************************
+actual value: -2.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-2.0 * -1)/0.1 * 1.4 --> 28.0
+Rectangle x pos calc: 560.0 - 28.0
+Rectangle size in pixel: 28.0; x pos: 532.0
+************************************************************************************************
+actual value: -3.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-3.0 * -1)/0.1 * 1.4 --> 42.0
+Rectangle x pos calc: 560.0 - 42.0
+Rectangle size in pixel: 42.0; x pos: 518.0
+************************************************************************************************
+actual value: -6.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-6.0 * -1)/0.1 * 1.4 --> 84.0
+Rectangle x pos calc: 560.0 - 84.0
+Rectangle size in pixel: 84.0; x pos: 476.0
+************************************************************************************************
+actual value: -7.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-7.0 * -1)/0.1 * 1.4 --> 98.0
+Rectangle x pos calc: 560.0 - 98.0
+Rectangle size in pixel: 98.0; x pos: 462.0
+************************************************************************************************
+actual value: -6.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-6.0 * -1)/0.1 * 1.4 --> 84.0
+Rectangle x pos calc: 560.0 - 84.0
+Rectangle size in pixel: 84.0; x pos: 476.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -9.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-9.0 * -1)/0.1 * 1.4 --> 126.0
+Rectangle x pos calc: 560.0 - 126.0
+Rectangle size in pixel: 126.0; x pos: 434.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -10.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-10.0 * -1)/0.1 * 1.4 --> 140.0
+Rectangle x pos calc: 560.0 - 140.0
+Rectangle size in pixel: 140.0; x pos: 420.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -11.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-11.0 * -1)/0.1 * 1.4 --> 154.0
+Rectangle x pos calc: 560.0 - 154.0
+Rectangle size in pixel: 154.0; x pos: 406.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -11.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-11.0 * -1)/0.1 * 1.4 --> 154.0
+Rectangle x pos calc: 560.0 - 154.0
+Rectangle size in pixel: 154.0; x pos: 406.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -11.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-11.0 * -1)/0.1 * 1.4 --> 154.0
+Rectangle x pos calc: 560.0 - 154.0
+Rectangle size in pixel: 154.0; x pos: 406.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -11.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-11.0 * -1)/0.1 * 1.4 --> 154.0
+Rectangle x pos calc: 560.0 - 154.0
+Rectangle size in pixel: 154.0; x pos: 406.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -11.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-11.0 * -1)/0.1 * 1.4 --> 154.0
+Rectangle x pos calc: 560.0 - 154.0
+Rectangle size in pixel: 154.0; x pos: 406.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -11.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-11.0 * -1)/0.1 * 1.4 --> 154.0
+Rectangle x pos calc: 560.0 - 154.0
+Rectangle size in pixel: 154.0; x pos: 406.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -11.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-11.0 * -1)/0.1 * 1.4 --> 154.0
+Rectangle x pos calc: 560.0 - 154.0
+Rectangle size in pixel: 154.0; x pos: 406.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -11.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-11.0 * -1)/0.1 * 1.4 --> 154.0
+Rectangle x pos calc: 560.0 - 154.0
+Rectangle size in pixel: 154.0; x pos: 406.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -11.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-11.0 * -1)/0.1 * 1.4 --> 154.0
+Rectangle x pos calc: 560.0 - 154.0
+Rectangle size in pixel: 154.0; x pos: 406.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -11.0; min value: -40.0; max value: 5.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-11.0 * -1)/0.1 * 1.4 --> 154.0
+Rectangle x pos calc: 560.0 - 154.0
+Rectangle size in pixel: 154.0; x pos: 406.0
+************************************************************************************************
+actual value: -12.0; min value: -40.0; max value: 14.0
+Selected color based on value: GREEN
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-12.0 * -1)/0.1 * 1.4 --> 168.0
+Rectangle x pos calc: 560.0 - 168.0
+Rectangle size in pixel: 168.0; x pos: 392.0
+************************************************************************************************
+actual value: -50.0; min value: -40.0; max value: 5.0
+Selected color based on value: RED
+negative step size: 1.4
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-50.0 * -1)/0.1 * 1.4 --> 700.0
+Rectangle x pos calc: 560.0 - 700.0
+Rectangle size in pixel: 700.0; x pos: -140.0
+************************************************************************************************
+actual value: 20.0; min value: -40.0; max value: 14.0
+Selected color based on value: RED
+positive step size: 1.71
+Positive total range in pixel: 560.0 to 800.0
+Rectangle size in pixel calc = (20.0)/0.1 * 1.71 --> 342.0
+Rectangle size in pixel: 342.0; x pos: 560.0
+************************************************************************************************
+defined width in pixel: 800.0
+percentage calc: 800.0 * (1 - 70.0/100) --> 240.0
+zero position calc: 800.0 - 240.0 --> 560.0 px
+negativeRange: 20.0
+positiveRange: 10.0
+positiveStepSizeinPixel: 2.4 px
+negativeStepSizeinPixel: 2.8 px
+------------------------------------------------------------------------------------------------
+actual value: -20.0; min value: -20.0; max value: 10.0
+Selected color based on value: GREEN
+negative step size: 2.8
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-20.0 * -1)/0.1 * 2.8 --> 560.0
+Rectangle x pos calc: 560.0 - 560.0
+Rectangle size in pixel: 560.0; x pos: 0.0
+************************************************************************************************
+actual value: -19.0; min value: -20.0; max value: 10.0
+Selected color based on value: GREEN
+negative step size: 2.8
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-19.0 * -1)/0.1 * 2.8 --> 532.0
+Rectangle x pos calc: 560.0 - 532.0
+Rectangle size in pixel: 532.0; x pos: 28.0
+************************************************************************************************
+actual value: -18.0; min value: -20.0; max value: 10.0
+Selected color based on value: GREEN
+negative step size: 2.8
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-18.0 * -1)/0.1 * 2.8 --> 504.0
+Rectangle x pos calc: 560.0 - 504.0
+Rectangle size in pixel: 504.0; x pos: 56.0
+************************************************************************************************
+actual value: -17.0; min value: -20.0; max value: 10.0
+Selected color based on value: GREEN
+negative step size: 2.8
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-17.0 * -1)/0.1 * 2.8 --> 476.0
+Rectangle x pos calc: 560.0 - 476.0
+Rectangle size in pixel: 476.0; x pos: 84.0
+************************************************************************************************
+actual value: -16.0; min value: -20.0; max value: 10.0
+Selected color based on value: GREEN
+negative step size: 2.8
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-16.0 * -1)/0.1 * 2.8 --> 448.0
+Rectangle x pos calc: 560.0 - 448.0
+Rectangle size in pixel: 448.0; x pos: 112.0
+************************************************************************************************
+actual value: -15.0; min value: -20.0; max value: 10.0
+Selected color based on value: GREEN
+negative step size: 2.8
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-15.0 * -1)/0.1 * 2.8 --> 420.0
+Rectangle x pos calc: 560.0 - 420.0
+Rectangle size in pixel: 420.0; x pos: 140.0
+************************************************************************************************
+actual value: -14.0; min value: -20.0; max value: 10.0
+Selected color based on value: GREEN
+negative step size: 2.8
+Negative total range in pixel: 0 to 560.0
+Rectangle size in pixel calc = (-14.0 * -1)/0.1 * 2.8 --> 392.0
+Rectangle x pos calc: 560.0 - 392.0
+Rectangle size in pixel: 392.0; x pos: 168.0
+************************************************************************************************
