@@ -117,8 +117,8 @@ public class FontAndColorSelector {
         retValue.put(BLU_PICCOLO, Color.BLUE);
         retValue.put(BLU_GRANDE, Color.BLUE);
 
-        retValue.put(VERDE_PICCOLO, Color.GREEN);
-        retValue.put(VERDE_GRANDE, Color.GREEN);
+        retValue.put(VERDE_PICCOLO, Color.web("00ff00"));
+        retValue.put(VERDE_GRANDE, Color.web("00ff00"));
         return retValue;
     }
 

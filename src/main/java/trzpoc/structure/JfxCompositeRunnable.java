@@ -12,11 +12,17 @@ public class JfxCompositeRunnable implements Runnable {
 
     @Override
     public void run() {
-        for (RunnableFragment rf: this.fragments){
-            rf.executeFragment();
+        if (this.fragments != null) {
+            for (RunnableFragment rf : this.fragments) {
+                if (rf != null) {
+                    rf.executeFragment();
+                }
+            }
         }
     }
     public void add(RunnableFragment fragment){
-        this.fragments.add(fragment);
+        if (this.fragments != null) {
+            this.fragments.add(fragment);
+        }
     }
 }

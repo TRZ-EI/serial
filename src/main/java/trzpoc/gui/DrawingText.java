@@ -141,10 +141,12 @@ public class DrawingText extends Application {
         while (!this.serialBuffer.isEmpty()) {
             try {
                 this.aRunnable = this.writeTextOnScene(this.serialBuffer.take());
-                if (this.aRunnable != null){
+                if (this.aRunnable != null) {
                     this.future = new FutureTask(aRunnable, null);
-                    Platform.runLater(this.future);
-                    this.future.get();
+                    if (this.future != null){
+                        Platform.runLater(this.future);
+                        this.future.get();
+                    }
                 }
 
             } catch (UnsupportedEncodingException e) {
@@ -170,6 +172,7 @@ public class DrawingText extends Application {
     };
 
     public void testSimulatingSerialData() throws IOException, InterruptedException, ExecutionException {
+
         SerialDataEmulator sde = SerialDataEmulator.getNewInstanceBySerialBufferAndWaitingTime(serialBuffer, 10);
         sde.runScenario("serialInputs/clean-row-before-cleaner-test.txt");
         this.runAndWaitMyRunnable();
@@ -216,6 +219,7 @@ public class DrawingText extends Application {
         this.runAndWaitMyRunnable();
         sde.runScenario("serialInputs/test-bars-no-crc.txt");
         this.runAndWaitMyRunnable();
+
     }
     public static void main(String[] args) {
         launch(args);

@@ -50,8 +50,8 @@ public class FontAndColorSelectorTest {
             {ROSSO_GRANDE, Color.RED},
             {BLU_PICCOLO, Color.BLUE},
             {BLU_GRANDE, Color.BLUE},
-            {VERDE_PICCOLO, Color.GREEN},
-            {VERDE_GRANDE, Color.GREEN},
+            {VERDE_PICCOLO, Color.web("00ff00")},
+            {VERDE_GRANDE, Color.web("00ff00")},
         };
     }
     @DataProvider

@@ -17,7 +17,9 @@ public class JfxCleaner implements Runnable {
 
     @Override
     public void run() {
-        this.window.getRoot().getChildren().clear();
-        this.window.drawGridOnCanvas();
+        if (this.window != null) {
+            this.window.getRoot().getChildren().clear();
+            this.window.drawGridOnCanvas();
+        }
     }
 }

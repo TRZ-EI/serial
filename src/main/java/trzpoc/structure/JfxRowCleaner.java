@@ -21,6 +21,8 @@ public class JfxRowCleaner implements Runnable {
     }
     @Override
     public void run() {
-        this.window.getRoot().getChildren().removeAll(this.contents);
+        if (this.window != null && this.contents != null) {
+            this.window.getRoot().getChildren().removeAll(this.contents);
+        }
     }
 }

@@ -20,7 +20,9 @@ public class JfxTreeEnhancer implements Runnable {
     }
     @Override
     public void run() {
-        this.window.getRoot().getChildren().add(node);
+        if (this.window != null && this.node != null) {
+            this.window.getRoot().getChildren().add(node);
+        }
 
     }
 }

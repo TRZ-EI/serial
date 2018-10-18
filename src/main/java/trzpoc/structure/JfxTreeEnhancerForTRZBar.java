@@ -14,11 +14,13 @@ public class JfxTreeEnhancerForTRZBar implements Runnable {
     }
     @Override
     public void run() {
-        TRZBar trzBar = (TRZBar)this.node;
-        // ZERO POS: 70% width (800 px)
-        trzBar.setupZeroBar(70d, this.window.getRoot());
-        trzBar.calculateBarParams();
-        this.window.getRoot().getChildren().add(node);
+        if (this.window != null && this.node != null) {
+            TRZBar trzBar = (TRZBar) this.node;
+            // ZERO POS: 70% width (800 px)
+            trzBar.setupZeroBar(70d, this.window.getRoot());
+            trzBar.calculateBarParams();
+            this.window.getRoot().getChildren().add(node);
+        }
 
     }
 }

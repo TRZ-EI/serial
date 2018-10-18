@@ -17,8 +17,10 @@ public class JfxGaugeBarUpdaterFragment implements RunnableFragment {
 
     @Override
     public void executeFragment() {
-        this.gauge.setColor(color);
-        this.gauge.setValue(value);
+        if (this.gauge != null) {
+            this.gauge.setColor(color);
+            this.gauge.setValue(value);
+        }
     }
 }
 

@@ -2,11 +2,9 @@ package trzpoc.structure;
 
 import com.google.common.collect.ArrayListMultimap;
 import com.google.common.collect.Multimap;
-//import eu.hansolo.medusa.Gauge;
 import javafx.scene.Node;
 import javafx.scene.paint.Color;
 import trzpoc.gui.DrawingText;
-//import trzpoc.gui.GraphicDesigner;
 import trzpoc.gui.TRZBar;
 import trzpoc.utils.FontAndColorSelector;
 import trzpoc.utils.RightTextAligner;
@@ -155,8 +153,8 @@ public class StructureVisitor {
         return retValue;
     }
     private RunnableFragment update(Cell cell, javafx.scene.text.Text t){
-        this.updateStartingPositionToWriteText(cell, t);
-        return new JfxTextUpdaterFragment(t, value);
+        int rightPos = this.rightTextAligner.calculatePrintingPositionByCell(cell);
+        return new JfxTextUpdaterFragment(t, value, rightPos, cell.getPixelScreenYPos());
     }
 
     private RunnableFragment update(TRZBar t, String rawValue){
